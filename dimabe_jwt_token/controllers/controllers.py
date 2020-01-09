@@ -14,7 +14,7 @@ class JWTTokenController(http.Controller):
         user_id = common.authenticate(db_name, str(user), str(password), {})
         res = {}
         if user_id:
-            exp = datetime.datetime.utcnow() + datetime.timedelta(seconds=9)
+            exp = datetime.datetime.utcnow() + datetime.timedelta(hours=9)
             payload = {
                 'exp': exp,
                 'iat': datetime.datetime.utcnow(),
