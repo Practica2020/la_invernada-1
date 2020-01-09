@@ -7,8 +7,8 @@ from xmlrpc import client
 
 @http.route('/api/get_token', type='json', auth='none', cors='*')
 def login(self, user, password):
-    server_url = 'https://felipecarocadimabe-testerp-dev-792847.dev.odoo.com'
-    db_name = 'felipecarocadimabe-testerp-dev-792847'
+    server_url = 'https://dimabe-odoo-la-invernada-dev-801206.dev.odoo.com'
+    db_name = 'dimabe-odoo-la-invernada-dev-801206'
     common = client.ServerProxy('%s/xmlrpc/2/common' % server_url)
     user_id = common.authenticate(db_name, str(user), str(password), {})
     res = {}
