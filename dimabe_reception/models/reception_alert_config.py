@@ -4,7 +4,7 @@ _logger = logging.getLogger(__name__)
 
 
 class ReceptionAlertConfig(models.Model):
-    _name = 'dimabe_reception.alert.config'
+    _name = 'reception.alert.config'
 
     hr_alert = fields.Float('hr para alerta')
 
