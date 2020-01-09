@@ -18,9 +18,10 @@ class ItHttp(models.AbstractModel):
                     algorithms=['HS256']
                 )
                 if 'sub' in payload:
-                    request.env.user = request.env['res.users'].sudo().search(
+                    u = request.env['res.users'].sudo().search(
                         [('id', '=', 2)]
                     )
+                    exceptions._logger.error('AAAAA {}'.format(u))
             except jwt.ExpiredSignatureError:
                 raise exceptions.AccessDenied()
             exceptions._logger.error('AAAAA {}'.format(request.env.user))
