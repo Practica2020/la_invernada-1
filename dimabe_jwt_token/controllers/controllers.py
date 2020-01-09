@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import http
+from odoo import http, exceptions
 import jwt
 import datetime
 from xmlrpc import client
@@ -14,7 +14,7 @@ class JWTTokenController(http.Controller):
         user_id = common.authenticate(db_name, str(user), str(password), {})
         res = {}
         if user_id:
-            exp = datetime.datetime.utcnow() + datetime.timedelta(seconds=30)
+            exp = datetime.datetime.utcnow() + datetime.timedelta(hours=9)
             payload = {
                 'exp': exp,
                 'iat': datetime.datetime.utcnow(),
@@ -30,7 +30,5 @@ class JWTTokenController(http.Controller):
                 'access_token': token
             }
         else:
-            res = {
-                'error': 'nop'
-            }
+            raise exceptions.AccessDenied()
         return res
