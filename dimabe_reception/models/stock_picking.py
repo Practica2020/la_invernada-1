@@ -200,7 +200,7 @@ class StockPicking(models.Model):
 
     @api.multi
     def notify_alerts(self):
-        alert_config = self.env['dimabe_reception.alert.config'].search([])
+        alert_config = self.env['reception.alert.config'].search([])
         if self.hr_alert_notification_count == 0 and self.elapsed_time > alert_config.hr_alert:
             self.ensure_one()
             self.reception_alert = alert_config
