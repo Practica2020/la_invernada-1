@@ -23,7 +23,7 @@
         'base',
         'purchase_requisition',
         'purchase',
-        'billing_rut'
+        'dimabe_billing_rut'
     ],
 
     # always loaded
