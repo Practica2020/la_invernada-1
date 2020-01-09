@@ -22,7 +22,7 @@
     'depends': [
         'base',
         'stock',
-        'dimabe_jwt',
+        'dimabe_jwt_token',
     ],
     # always loaded
     'data': [
