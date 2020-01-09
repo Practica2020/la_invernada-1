@@ -22,7 +22,7 @@
     # any module necessary for this one to work correctly
     'depends': [
         'base',
-        'sale',
+        'sale_management',
         'contacts',
         'account',
         'stock'

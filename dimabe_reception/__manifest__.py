@@ -36,7 +36,7 @@
         'views/res_partner.xml',
         'views/stock_move.xml',
         'views/templates.xml',
-        'views/carrier.xml',
+        'views/custom_carrier.xml',
         'views/reception_alert_config.xml',
         'reports/reception_label_report.xml',
         'data/alert_config_data.xml',
