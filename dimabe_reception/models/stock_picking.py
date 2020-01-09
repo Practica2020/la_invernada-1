@@ -93,7 +93,7 @@ class StockPicking(models.Model):
         related='partner_id.sag_code'
     )
 
-    reception_alert = fields.Many2one('dimabe_reception.alert.config')
+    reception_alert = fields.Many2one('reception.alert.config')
 
     @api.one
     @api.depends('tare_weight', 'gross_weight', 'move_ids_without_package', 'quality_weight')
