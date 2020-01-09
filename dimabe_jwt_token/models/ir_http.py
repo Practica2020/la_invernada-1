@@ -12,7 +12,12 @@ class ItHttp(models.AbstractModel):
         if token:
             token = token.split(' ')[1]
             try:
-                a = jwt.decode(token, 'skjdfe48ueq893rihesdio*($U*WIO$u8', algorithms=['HS256'])
+                a = jwt.decode(
+                    token,
+                    'skjdfe48ueq893rihesdio*($U*WIO$u8',
+                    leeway=10,
+                    algorithms=['HS256']
+                )
             except jwt.ExpiredSignatureError:
                 raise exceptions.AccessDenied()
             exceptions._logger.error('AAAAA {}'.format(a))
