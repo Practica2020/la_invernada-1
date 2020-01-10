@@ -52,4 +52,4 @@ class JWTTokenController(http.Controller):
             return self.errcode(code=400, message='incorrect login')
         # login success, generate token
 
-        return self.response(data={'user': uid, 'token': 'token'})
+        return {'user': uid, 'token': 'token'}
