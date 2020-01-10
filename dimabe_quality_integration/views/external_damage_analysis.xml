@@ -3,7 +3,7 @@
 
     <record id="external_damage_analysis_action" model="ir.actions.act_window">
       <field name="name">Acción de Daño Externo</field>
-      <field name="res_model">external_damage_analysis</field>
+      <field name="res_model">external.damage.analysis</field>
       <field name="view_mode">tree</field>
     </record>
 
