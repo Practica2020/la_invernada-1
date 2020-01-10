@@ -8,9 +8,9 @@ from xmlrpc import client
 
 class JWTTokenController(http.Controller):
 
-    @http.route('/api/info', auth='none', cors='*')
+    @http.route('/api/info', auth='none', type='json', cors='*', methods=['GET'])
     def info(self):
-        return 'ok'
+        return {'ok': 'ok'}
     # @http.route('/api/get_token', type='json', auth='none', cors='*')
     # def login(self, user, password):
     #     server_url = 'https://dimabe-odoo-la-invernada-dev-801206.dev.odoo.com'
