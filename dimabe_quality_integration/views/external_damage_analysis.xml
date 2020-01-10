@@ -1,0 +1,22 @@
+<odoo>
+  <data>
+
+    <record id="external_damage_analysis_action" model="ir.actions.act_window">
+      <field name="name">Acción de Daño Externo</field>
+      <field name="res_model">external_damage_analysis</field>
+      <field name="view_mode">tree</field>
+    </record>
+
+    <record id="external_damage_analysis_list_view" model="ir.ui.view">
+      <field name="name">Lista de Análisis de Daño Externo</field>
+      <field name="model">external.damage.analysis</field>
+      <field name="arch" type="xml">
+        <tree create="false" edit="false" delete="false">
+          <field name="name" />
+          <field name="percent" />
+        </tree>
+      </field>
+    </record>
+
+  </data>
+</odoo>

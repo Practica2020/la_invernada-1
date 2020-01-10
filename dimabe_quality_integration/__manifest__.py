@@ -29,6 +29,7 @@
         'security/ir.model.access.csv',
         'views/stock_picking.xml',
         'views/caliber_analysis.xml',
+        'views/external_damage_analysis.xml',
 
     ],
     # only loaded in demonstration mode
