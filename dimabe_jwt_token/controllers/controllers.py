@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from odoo import http, exceptions
 import jwt
 import datetime
