@@ -19,7 +19,7 @@ class ItHttp(models.AbstractModel):
                 )
                 if 'sub' in payload:
                     u = request.env['res.users'].sudo().search(
-                        [('id', '=', 2)]
+                        [('id', '=', int(payload['sub']))]
                     )
                     exceptions._logger.error('AAAAA {}'.format(u))
             except jwt.ExpiredSignatureError:
