@@ -2,6 +2,17 @@ from odoo import http, exceptions
 from odoo.http import request
 
 
+def to_tuple_list(data):
+    return [
+        (0, 0, reg) for reg in data
+    ]
+
+
+def process_child(data, field):
+    if field in data and len(data[field]) > 0:
+        data[field] = to_tuple_list(data[field])
+
+
 class QualityAnalysis(http.Controller):
 
     @http.route('/quality_analysis', type='json', auth='token', cors='*', methods=['GET'])
@@ -19,15 +30,18 @@ class QualityAnalysis(http.Controller):
         lot = request.env['stock.production.lot'].search([('name', '=', data['lot'])])
         if not lot:
             raise exceptions.ValidationError('lote no encontrado')
-        if 'caliber_ids' in data and len(data['caliber_ids']) > 0:
-            data['caliber_ids'] = [(0, 0, caliber) for caliber in data['caliber_ids']]
+
+        for data_list in ['caliber_ids', 'external_damage_analysis_ids', 'internal_damage_analysis_ids',
+                          'performance_analysis_ids', 'color_analysis_ids', 'form_analysis_ids',
+                          'impurity_analysis_ids']:
+            process_child(data[data_list])
+
         quality_analysis = request.env['quality.analysis'].create(data)
-        exceptions._logger.error(quality_analysis)
+
         if quality_analysis:
             lot.update({
                 'quality_analysis_id': quality_analysis.id
             })
-            exceptions._logger.error(lot.quality_analysis_id)
 
         return {
             'ok': 'ok',
@@ -66,3 +80,4 @@ class QualityAnalysis(http.Controller):
                 }
             }
         }
+
