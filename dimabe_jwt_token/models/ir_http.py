@@ -28,5 +28,4 @@ class ItHttp(models.AbstractModel):
         else:
             raise exceptions.AccessDenied()
         exceptions._logger.error('AAAAA {}'.format(request.session.uid))
-        cls._auth_method_user()
         print('')
