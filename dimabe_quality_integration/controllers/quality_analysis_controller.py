@@ -37,7 +37,8 @@ class QualityAnalysis(http.Controller):
             process_child(data, data_list)
 
         if 'humidity_analysis_id' in data:
-            data['humidity_analysis_id'] = (0, 0, data['humidity_analysis_id'])
+            humidity_analysis = request.env['humidity.analysis'].create(data['humidity_analysis_id'])
+            data['humidity_analysis_id'] = humidity_analysis.id
 
         quality_analysis = request.env['quality.analysis'].create(data)
 
