@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import http, exceptions
+from odoo.http import request
 import jwt
 import datetime
 from xmlrpc import client
