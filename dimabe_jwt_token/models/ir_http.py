@@ -1,6 +1,7 @@
-from odoo import exceptions, http, models
+from odoo import exceptions, models
 from odoo.http import request
 import jwt
+from ..jwt_token import decode_token
 
 
 class ItHttp(models.AbstractModel):
@@ -12,11 +13,7 @@ class ItHttp(models.AbstractModel):
         if token:
             token = token.split(' ')[1]
             try:
-                payload = jwt.decode(
-                    token,
-                    'skjdfe48ueq893rihesdio*($U*WIO$u8',
-                    algorithms=['HS256']
-                )
+                payload = decode_token(token)
                 if 'sub' in payload:
                     u = request.env['res.users'].sudo().search(
                         [('id', '=', int(payload['sub']))]
