@@ -64,5 +64,5 @@ class QualityAnalysis(models.Model):
     @api.model
     def create(self, values_list):
         res = super(QualityAnalysis, self).create(values_list)
-        res.name = 'Informe QA {}'.format(self.create_date)
+        res.name = 'Informe QA {}'.format(fields.datetime.utcnow())
         return res
