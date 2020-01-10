@@ -7,11 +7,7 @@ class QualityAnalysis(models.Model):
         clase que almacena los datos de calidad del sistema dimabe
     """
 
-    name = fields.Char(
-        'Informe',
-        compute='_compute_name',
-        store=True
-    )
+    name = fields.Char('Informe')
 
     pre_caliber = fields.Float('precalibre')
 
