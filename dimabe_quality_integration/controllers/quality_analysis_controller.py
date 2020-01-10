@@ -13,3 +13,9 @@ class QualityAnalysis(http.Controller):
             'pre_caliber',
             'caliber_ids'
         ])
+
+    @http.route('quality_analysis', type='json', auth='token', cors='*', methods=['POST'])
+    def quality_analysis_post(self):
+        return {
+            'ok': 'ok'
+        }
