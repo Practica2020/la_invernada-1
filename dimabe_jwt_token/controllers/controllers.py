@@ -6,6 +6,21 @@ import datetime
 from xmlrpc import client
 
 
+def generate_token(user_id):
+    exp = datetime.datetime.utcnow() + datetime.timedelta(hours=9)
+    payload = {
+        'exp': exp,
+        'iat': datetime.datetime.utcnow(),
+        'sub': user_id,
+    }
+    token = jwt.encode(
+        payload,
+        'skjdfe48ueq893rihesdio*($U*WIO$u8',
+        algorithm='HS256'
+    )
+    return token
+
+
 class JWTTokenController(http.Controller):
 
     @http.route('/api/info', auth='none', type='json', cors='*', methods=['GET'])
@@ -13,6 +28,7 @@ class JWTTokenController(http.Controller):
         return {
             'ok': 'ok'
         }
+
     # @http.route('/api/get_token', type='json', auth='none', cors='*')
     # def login(self, user, password):
     #     server_url = 'https://dimabe-odoo-la-invernada-dev-801206.dev.odoo.com'
@@ -40,6 +56,7 @@ class JWTTokenController(http.Controller):
     #         raise exceptions.AccessDenied()
     #     return res
     #
+
     @http.route('/api/login', type='json', auth='public', cors='*')
     def do_login(self, user, password):
         # get current db
@@ -52,4 +69,6 @@ class JWTTokenController(http.Controller):
             return self.errcode(code=400, message='incorrect login')
         # login success, generate token
 
-        return {'user': uid, 'token': 'token'}
+        token = generate_token(uid)
+
+        return {'user': uid, 'token': token}
