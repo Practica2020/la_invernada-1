@@ -7,7 +7,6 @@ class ItHttp(models.AbstractModel):
     _inherit = 'ir.http'
 
     def _auth_method_token():
-        exceptions._logger.error('AAAAA bbbbbbbbbbbbbbbbbbbb')
         # raise exceptions.AccessDenied()
         token = request.httprequest.headers.get('authorization', '', type=str)
         if token:
@@ -19,12 +18,11 @@ class ItHttp(models.AbstractModel):
                     algorithms=['HS256']
                 )
                 if 'sub' in payload:
-                    uid = payload['sub']
-                    # u = request.env['res.users'].sudo().search(
-                    #     [('id', '=', int(payload['sub']))]
-                    # )
+                    u = request.env['res.users'].sudo().search(
+                        [('id', '=', 2)]
+                    )
+                    exceptions._logger.error('AAAAA {}'.format(u))
             except jwt.ExpiredSignatureError:
                 raise exceptions.AccessDenied()
-        else:
-            raise exceptions.AccessDenied()
-        exceptions._logger.error('AAAAA {}'.format(uid))
+            exceptions._logger.error('AAAAA {}'.format(request.env.user))
+        print('')
