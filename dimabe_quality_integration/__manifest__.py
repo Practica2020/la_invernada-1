@@ -28,7 +28,8 @@
     'data': [
         'security/ir.model.access.csv',
         'views/stock_picking.xml',
-        'views/templates.xml',
+        'views/caliber_analysis.xml',
+
     ],
     # only loaded in demonstration mode
     'demo': [
