@@ -6,7 +6,8 @@ import jwt
 class ItHttp(models.AbstractModel):
     _inherit = 'ir.http'
 
-    def _auth_method_token(self):
+    @classmethod
+    def _auth_method_token(cls):
         # raise exceptions.AccessDenied()
         token = request.httprequest.headers.get('authorization', '', type=str)
         if token:
@@ -27,5 +28,5 @@ class ItHttp(models.AbstractModel):
             exceptions._logger.error('AAAAA {}'.format(request.env.user))
         else:
             raise exceptions.AccessDenied()
-        self._auth_method_user()
+        cls._auth_method_user()
         print('')
