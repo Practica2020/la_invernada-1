@@ -13,8 +13,52 @@ class QualityAnalysis(http.Controller):
         ])
 
     @http.route('/quality_analysis', type='json', auth='token', cors='*', methods=['POST'])
-    def quality_analysis_post(self, quality_analysis):
+    def quality_analysis_post(self, data):
+        if 'lot' not in data:
+            return self.errcode(code=400, message='debe indicar lote')
+        lot = request.env['stock.production.lot'].search(['name', '=', data['lot']])
+        if not lot:
+            return self.errcode(code=404, message='lote no encontrado')
+        quality_analysis = request.env['quality_analysis'].create(data)
+        if quality_analysis:
+            lot.update({
+                'quality_analysis_id': quality_analysis.id
+            })
+
         return {
             'ok': 'ok',
-            'res': quality_analysis
+            'res': data,
+            'needed': {
+                'data': {
+                    'lot': 'char',
+                    'pre_caliber': 'float',
+                    'caliber_ids': [
+                        {'ref', 'name', 'percent'}
+                    ],
+                    'external_damage_analysis_ids': [
+                        {'ref', 'name', 'percent'}
+                    ],
+                    'internal_damage_analysis_ids': [
+                        {'ref', 'name', 'percent'}
+                    ],
+                    'humidity_analysis_id': {
+                        {'ref', 'name', 'percent', 'tolerance'}
+                    },
+                    'performance_analysis_ids': [
+                        {'ref', 'name', 'percent'}
+                    ],
+                    'color_analysis_ids': [
+                        {'ref', 'name', 'percent'}
+                    ],
+                    'form_analysis_ids': [
+                        {'ref', 'name', 'percent'}
+                    ],
+                    'impurity_analysis_ids': [
+                        {'ref', 'name', 'percent'}
+                    ],
+                    'analysis_observations': 'text',
+                    'analysis_images': 'binary',
+                    'category': 'char'
+                }
+            }
         }
