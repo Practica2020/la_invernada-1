@@ -5,11 +5,12 @@ import simplejson as json
 
 return_fields = ['id', 'login', 'name', 'company_id']
 
+
 class JwtHttp:
 
     def get_state(self):
         return {
-            'd': request.session.db
+            'd': 'dimabe-odoo-la-invernada-dev-801206'
         }
 
     def parse_request(self):
