@@ -25,8 +25,8 @@ class ItHttp(models.AbstractModel):
                     # )
             except jwt.ExpiredSignatureError:
                 raise exceptions.AccessDenied()
-            exceptions._logger.error('AAAAA {}'.format(request.env.user))
         else:
             raise exceptions.AccessDenied()
+        exceptions._logger.error('AAAAA {}'.format(request.session.uid))
         cls._auth_method_user()
         print('')
