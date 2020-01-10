@@ -24,3 +24,5 @@ class ItHttp(models.AbstractModel):
                     request.uid = u.id
             except jwt.ExpiredSignatureError:
                 raise exceptions.AccessDenied()
+        else:
+            raise exceptions.AccessDenied()
