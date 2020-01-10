@@ -20,7 +20,7 @@ class QualityAnalysis(http.Controller):
         lot = request.env['stock.production.lot'].search([('name', '=', data['lot'])])
         if not lot:
             raise exceptions.ValidationError('lote no encontrado')
-        quality_analysis = request.env['quality_analysis'].create(data)
+        quality_analysis = request.env['quality.analysis'].create(data)
         if quality_analysis:
             lot.update({
                 'quality_analysis_id': quality_analysis.id
