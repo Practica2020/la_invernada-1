@@ -17,7 +17,7 @@ class QualityAnalysis(http.Controller):
         exceptions._logger.error(data)
         if 'lot' not in data:
             raise exceptions.ValidationError('debe indicar lote')
-        lot = request.env['stock.production.lot'].search(['name', '=', data['lot']])
+        lot = request.env['stock.production.lot'].search([('name', '=', data['lot'])])
         if not lot:
             raise exceptions.ValidationError('lote no encontrado')
         quality_analysis = request.env['quality_analysis'].create(data)
