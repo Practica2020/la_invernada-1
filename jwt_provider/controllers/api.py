@@ -16,7 +16,7 @@ SENSITIVE_FIELDS = ['password', 'password_crypt', 'new_password', 'create_uid', 
 
 class JwtController(http.Controller):
     # test route
-    @http.route('/api/info', auth='public', csrf=False, cors='*')
+    @http.route('/api/info', auth='none', csrf=False, cors='*')
     def index(self, **kw):
         return 'Hello, world'
 
