@@ -3,8 +3,8 @@ from odoo.http import request
 import jwt
 
 
-class ItHttp(models.AbstractModel):
-    _inherit = 'ir.http'
+# class ItHttp(models.AbstractModel):
+#     _inherit = 'ir.http'
 
     # def _auth_method_token():
     #     # raise exceptions.AccessDenied()
