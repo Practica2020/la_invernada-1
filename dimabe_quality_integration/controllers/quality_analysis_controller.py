@@ -20,7 +20,7 @@ class QualityAnalysis(http.Controller):
         if not lot:
             raise exceptions.ValidationError('lote no encontrado')
         if 'caliber_ids' in data and len(data['caliber_ids']) > 0:
-            data['caliber_ids'] = [(0, 0, caliber) for caliber in data['caliber_id']]
+            data['caliber_ids'] = [(0, 0, caliber) for caliber in data['caliber_ids']]
         quality_analysis = request.env['quality.analysis'].create(data)
         exceptions._logger.error(quality_analysis)
         if quality_analysis:
