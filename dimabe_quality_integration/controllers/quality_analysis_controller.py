@@ -34,7 +34,7 @@ class QualityAnalysis(http.Controller):
         for data_list in ['caliber_ids', 'external_damage_analysis_ids', 'internal_damage_analysis_ids',
                           'performance_analysis_ids', 'color_analysis_ids', 'form_analysis_ids',
                           'impurity_analysis_ids']:
-            process_child(data[data_list])
+            process_child(data, data_list)
 
         quality_analysis = request.env['quality.analysis'].create(data)
 
