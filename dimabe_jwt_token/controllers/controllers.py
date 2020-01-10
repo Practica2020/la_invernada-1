@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import http, exceptions
+from odoo.http import request
 import jwt
 import datetime
 from xmlrpc import client
@@ -32,3 +33,17 @@ class JWTTokenController(http.Controller):
         else:
             raise exceptions.AccessDenied()
         return res
+
+    @http.route('/api/login', type='json', auth='public', cors='*')
+    def do_login(self, user, password):
+        # get current db
+        uid = request.session.authenticate(
+            'dimabe-odoo-la-invernada-dev-801206',
+            user,
+            password
+        )
+        if not uid:
+            return self.errcode(code=400, message='incorrect login')
+        # login success, generate token
+
+        return self.response(data={'user': uid, 'token': 'token'})
