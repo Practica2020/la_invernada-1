@@ -8,7 +8,7 @@ from xmlrpc import client
 
 class JWTTokenController(http.Controller):
 
-    @http.route('/api/info', auth='none', type='json', cors='*', methods=['GET'])
+    @http.route('/api/info', auth='none', type='http', cors='*', methods=['GET'])
     def info(self):
         return {'ok': 'ok'}
     # @http.route('/api/get_token', type='json', auth='none', cors='*')
