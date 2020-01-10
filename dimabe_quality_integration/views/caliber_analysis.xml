@@ -4,7 +4,7 @@
       <field name="name">Lista de Análisis de Calibre</field>
       <field name="model">caliber.analysis</field>
       <field name="arch" type="xml">
-        <tree edit="0" create="0">
+        <tree readonly="1">
           <field name="name" />
           <field name="percent" />
         </tree>
