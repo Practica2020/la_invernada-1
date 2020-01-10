@@ -19,7 +19,7 @@ class ItHttp(models.AbstractModel):
                     algorithms=['HS256']
                 )
                 if 'sub' in payload:
-                    request.session.uid = int(payload['sub'])
+                    request.uid = int(payload['sub'])
                     # u = request.env['res.users'].sudo().search(
                     #     [('id', '=', int(payload['sub']))]
                     # )
