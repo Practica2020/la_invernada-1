@@ -14,17 +14,18 @@ class QualityAnalysis(http.Controller):
 
     @http.route('/quality_analysis', type='json', auth='token', cors='*', methods=['POST'])
     def quality_analysis_post(self, data):
-        exceptions._logger.error(data)
         if 'lot' not in data:
             raise exceptions.ValidationError('debe indicar lote')
         lot = request.env['stock.production.lot'].search([('name', '=', data['lot'])])
         if not lot:
             raise exceptions.ValidationError('lote no encontrado')
         quality_analysis = request.env['quality.analysis'].create(data)
+        exceptions._logger.error(quality_analysis)
         if quality_analysis:
             lot.update({
                 'quality_analysis_id': quality_analysis.id
             })
+            exceptions._logger.error(lot.quality_analysis_id)
 
         return {
             'ok': 'ok',
@@ -43,7 +44,7 @@ class QualityAnalysis(http.Controller):
                         {'ref', 'name', 'percent'}
                     ],
                     'humidity_analysis_id': {
-                        {'ref', 'name', 'percent', 'tolerance'}
+                        'ref', 'name', 'percent', 'tolerance'
                     },
                     'performance_analysis_ids': [
                         {'ref', 'name', 'percent'}
