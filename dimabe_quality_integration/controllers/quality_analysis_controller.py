@@ -14,6 +14,7 @@ class QualityAnalysis(http.Controller):
 
     @http.route('/quality_analysis', type='json', auth='token', cors='*', methods=['POST'])
     def quality_analysis_post(self, data):
+        exceptions._logger.error(data)
         if 'lot' not in data:
             raise exceptions.ValidationError('debe indicar lote')
         lot = request.env['stock.production.lot'].search(['name', '=', data['lot']])
