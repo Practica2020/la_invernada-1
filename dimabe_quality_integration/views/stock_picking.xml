@@ -14,7 +14,7 @@
                     <field name="reference" />
                     <field name="product_id" />
                     <field name="lot_quality_analysis_id"
-                           widwet="many2onebutton"
+                           widget="many2onebutton"
                     />
                   </tree>
                 </field>
