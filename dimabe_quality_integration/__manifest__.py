@@ -31,6 +31,10 @@
         'views/caliber_analysis.xml',
         'views/external_damage_analysis.xml',
         'views/internal_damage_analysis.xml',
+        'views/performance_analysis.xml',
+        'views/color_analysis.xml',
+        'views/form_analysis.xml',
+        'views/impurity_analysis.xml',
 
     ],
     # only loaded in demonstration mode
