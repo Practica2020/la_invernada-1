@@ -3,6 +3,15 @@ from odoo import fields, models, api
 
 class QualityAnalysis(models.Model):
     _name = 'quality.analysis'
+    _description = """
+        clase que almacena los datos de calidad del sistema dimabe
+    """
+
+    name = fields.Char(
+        'Informe',
+        compute='_compute_name',
+        store=True
+    )
 
     pre_caliber = fields.Float('precalibre')
 
@@ -55,3 +64,9 @@ class QualityAnalysis(models.Model):
     analysis_images = fields.Binary('Imágenes')
 
     category = fields.Char('Categoría')
+
+    @api.model
+    def create(self, values_list):
+        res = super(QualityAnalysis, self).create(values_list)
+        res.name = 'Informe QA {}'.format(self.create_date)
+        return res
