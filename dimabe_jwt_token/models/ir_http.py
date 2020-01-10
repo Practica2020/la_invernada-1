@@ -8,6 +8,7 @@ class ItHttp(models.AbstractModel):
 
     def _auth_method_token():
         # raise exceptions.AccessDenied()
+        exceptions._logger.error('aaaaaaaaaaaa')
         token = request.httprequest.headers.get('authorization', '', type=str)
         if token:
             token = token.split(' ')[1]
