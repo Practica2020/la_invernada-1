@@ -354,14 +354,14 @@
           string="Ticket De Pesaje"
           model="stock.picking"
           report_type="qweb-pdf"
-          name="reception.report_weighing_ticket"
+          name="dimabe_reception.report_weighing_ticket"
   />
 
   <report id="action_reception_label_report"
           string="Etiquetas de Recepción"
           model="stock.picking"
           report_type="qweb-pdf"
-          name="reception.report_reception_label_template"
+          name="dimabe_reception.report_reception_label_template"
           paperformat="paper_format_10_x_7"
   />
 
@@ -369,7 +369,7 @@
           string="Etiqueta para Calidad"
           model="stock.picking"
           report_type="qweb-pdf"
-          name="reception.report_quality_label"
+          name="dimabe_reception.report_quality_label"
           paperformat="paper_format_10_x_7"
 
   />
