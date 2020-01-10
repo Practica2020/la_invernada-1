@@ -21,7 +21,7 @@ class ItHttp(models.AbstractModel):
                     u = request.env['res.users'].sudo().search(
                         [('id', '=', int(payload['sub']))]
                     )
-                    exceptions._logger.error('AAAAA {}'.format(u))
+                    exceptions._logger.error('AAAAA {}'.format(u.name))
             except jwt.ExpiredSignatureError:
                 raise exceptions.AccessDenied()
             exceptions._logger.error('AAAAA {}'.format(request.env.user))
