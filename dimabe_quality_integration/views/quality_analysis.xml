@@ -15,10 +15,8 @@
             </group>
             <group>
               <field name="humidity_analysis_id" >
-                <form create="false" delete="false" edit="false">
-                  <field name="percent" />
-                  <field name="tolerance" />
-                </form>
+                <field name="humidity_percent" />
+                <field name="humidity_tolerance" />
               </field>
               <field name="performance_analysis_ids" />
               <field name="internal_damage_analysis_ids" />
