@@ -4,7 +4,7 @@ from odoo.http import request
 
 class StockPickingController(http.Controller):
 
-    @http.route('/api/stock_picking/<model("stock.picking"):lot>', type='json', methods=['GET'], auth='token', cors='*')
+    @http.route('/api/stock_picking', type='json', methods=['GET'], auth='token', cors='*')
     def get_stock_picking(self, lot):
         res = request.env['stock.picking'].search([('name', '=', lot)])
         if res:
