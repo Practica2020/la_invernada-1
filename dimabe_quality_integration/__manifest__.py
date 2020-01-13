@@ -36,6 +36,7 @@
         'views/form_analysis.xml',
         'views/impurity_analysis.xml',
         'views/quality_analysis.xml',
+        'views/humidity_analysis.xml',
 
     ],
     # only loaded in demonstration mode
