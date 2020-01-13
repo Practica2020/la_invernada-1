@@ -4,7 +4,7 @@
       <field name="name">Formulario Analisis de Calidad</field>
       <field name="model">quality.analysis</field>
       <field name="arch" type="xml">
-        <form readonly="1">
+        <form delete="false" create="false" edit="false">
           <group>
             <group>
               <field name="pre_caliber" />
