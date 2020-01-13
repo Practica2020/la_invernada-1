@@ -1,5 +1,6 @@
 <odoo>
     <data>
+
         <record id="humidity_analysis_form_view" model="ir.ui.view">
             <field name="name">Formulario de Analisis de Humedad</field>
             <field name="model">humidity.analysis</field>
@@ -16,5 +17,6 @@
                 </form>
             </field>
         </record>
+
     </data>
 </odoo>
