@@ -12,7 +12,7 @@
               <field name="external_damage_analysis_ids"
                      attrs="{'invisible':[('external_damage_analysis_ids', '=', False)]}" />
               <field name="color_analysis_ids" attrs="{'invisible':[('color_analysis_ids', '=', False)]}" />
-              <field name="impurity_analysis_ids" attrs="{'invisible':[('impurity_analysis_ids', '=', False)]}" />
+              <field name="impurity_analysis_ids" attrs="{'invisible':[(len('impurity_analysis_ids'), '>', 0)]}" />
             </group>
             <group>
               <field name="humidity_analysis_id" attrs="{'invisible':[('humidity_analysis_id', '=', False)]}"/>
