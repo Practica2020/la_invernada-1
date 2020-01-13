@@ -15,7 +15,7 @@ def process_child(data, field):
 
 class QualityAnalysis(http.Controller):
 
-    @http.route('/quality_analysis', type='json', auth='token', cors='*', methods=['GET'])
+    @http.route('/api/quality_analysis', type='json', auth='token', cors='*', methods=['GET'])
     def quality_analysis_list(self):
         res = request.env['quality.analysis'].sudo().search([])
         return res.read([
@@ -23,7 +23,7 @@ class QualityAnalysis(http.Controller):
             'caliber_ids'
         ])
 
-    @http.route('/quality_analysis', type='json', auth='token', cors='*', methods=['POST'])
+    @http.route('/api/quality_analysis', type='json', auth='token', cors='*', methods=['POST'])
     def quality_analysis_post(self, data):
         if 'lot' not in data:
             raise exceptions.ValidationError('debe indicar lote')
@@ -49,39 +49,6 @@ class QualityAnalysis(http.Controller):
 
         return {
             'ok': 'ok',
-            'res': data,
-            'needed': {
-                'data': {
-                    'lot': 'char',
-                    'pre_caliber': 'float',
-                    'caliber_ids': [
-                        {'ref', 'name', 'percent'}
-                    ],
-                    'external_damage_analysis_ids': [
-                        {'ref', 'name', 'percent'}
-                    ],
-                    'internal_damage_analysis_ids': [
-                        {'ref', 'name', 'percent'}
-                    ],
-                    'humidity_analysis_id': {
-                        'ref', 'name', 'percent', 'tolerance'
-                    },
-                    'performance_analysis_ids': [
-                        {'ref', 'name', 'percent'}
-                    ],
-                    'color_analysis_ids': [
-                        {'ref', 'name', 'percent'}
-                    ],
-                    'form_analysis_ids': [
-                        {'ref', 'name', 'percent'}
-                    ],
-                    'impurity_analysis_ids': [
-                        {'ref', 'name', 'percent'}
-                    ],
-                    'analysis_observations': 'text',
-                    'analysis_images': 'binary',
-                    'category': 'char'
-                }
-            }
+            'res': quality_analysis,
         }
 
