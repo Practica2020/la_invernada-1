@@ -9,7 +9,7 @@ class QualityAnalysis(models.Model):
 
     name = fields.Char('Informe')
 
-    pre_caliber = fields.Float('precalibre')
+    pre_caliber = fields.Float('Precalibre')
 
     caliber_ids = fields.One2many(
         'caliber.analysis',
