@@ -8,22 +8,20 @@
           <group>
             <group>
               <field name="pre_caliber" />
-              <field name="caliber_ids" attrs="{'invisible':[('caliber_ids' , '=',False)]}" />
-              <field name="external_damage_analysis_ids"
-                     attrs="{'invisible':[('external_damage_analysis_ids', '=', False)]}" />
-              <field name="color_analysis_ids" attrs="{'invisible':[('color_analysis_ids', '=', False)]}" />
-              <field name="impurity_analysis_ids" attrs="{'invisible':[(len('impurity_analysis_ids'), '>', 0)]}" />
+              <field name="caliber_ids" />
+              <field name="external_damage_analysis_ids"/>
+              <field name="color_analysis_ids" />
+              <field name="impurity_analysis_ids" />
             </group>
             <group>
-              <field name="humidity_analysis_id" attrs="{'invisible':[('humidity_analysis_id', '=', False)]}"/>
-              <field name="humidity_percent" attrs="{'invisible':[('humidity_percent', '=', False)]}"/>
-              <field name="humidity_tolerance" attrs="{'invisible':[('humidity_tolerance', '=', False)]}"/>
-              <field name="performance_analysis_ids" attrs="{'invisible':[('performance_analysis_ids', '=', False)]}"/>
-              <field name="internal_damage_analysis_ids"
-                     attrs="{'invisible':[('internal_damage_analysis_ids', '=', False)]}" />
-              <field name="form_analysis_ids" attrs="{'invisible':[('form_analysis_ids', '=', False)]}"/>
-              <field name="analysis_observations" attrs="{'invisible':[('analysis_observations', '=', False)]}"/>
-              <field name="category" attrs="{'invisible':[('category', '=', False)]}"/>
+              <field name="humidity_analysis_id" />
+              <field name="humidity_percent" />
+              <field name="humidity_tolerance" />
+              <field name="performance_analysis_ids" />
+              <field name="internal_damage_analysis_ids" />
+              <field name="form_analysis_ids" />
+              <field name="analysis_observations" />
+              <field name="category" />
             </group>
           </group>
         </form>
