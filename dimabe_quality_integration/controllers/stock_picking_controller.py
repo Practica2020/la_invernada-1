@@ -1,5 +1,6 @@
 from odoo import http, exceptions
 from odoo.http import request
+import json
 
 
 class StockPickingController(http.Controller):
@@ -8,6 +9,6 @@ class StockPickingController(http.Controller):
     def get_stock_picking(self, lot):
         res = request.env['stock.picking'].search([('name', '=', lot)])
         if res:
-            return res
+            return json.dumps(res)
         else:
             raise exceptions.ValidationError(lot)
