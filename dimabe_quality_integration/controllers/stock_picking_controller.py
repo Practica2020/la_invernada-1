@@ -1,8 +1,6 @@
 from odoo import http, exceptions
 from odoo.http import request
 import werkzeug
-import json
-from datetime import datetime
 
 
 class StockPickingController(http.Controller):

@@ -2,6 +2,7 @@ from odoo import http, exceptions
 from odoo.http import request
 import werkzeug
 
+
 def to_tuple_list(data):
     return [
         (0, 0, reg) for reg in data
@@ -29,7 +30,7 @@ class QualityAnalysis(http.Controller):
             raise werkzeug.exceptions.BadRequest('debe indicar lote')
         lot = request.env['stock.production.lot'].search([('name', '=', data['lot'])])
         if not lot:
-            raise werkzeug.exceptions.BadRequest('lote no encontrado')
+            raise werkzeug.exceptions.NotFound('lote no encontrado')
 
         for data_list in ['caliber_ids', 'external_damage_analysis_ids', 'internal_damage_analysis_ids',
                           'performance_analysis_ids', 'color_analysis_ids', 'form_analysis_ids',
