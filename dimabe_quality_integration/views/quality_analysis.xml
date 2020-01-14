@@ -25,5 +25,22 @@
         </form>
       </field>
     </record>
+
+    <record id="quality_analysis_tree_view" model="ir.ui.view">
+      <field name="name">Listado de Calidad</field>
+      <field name="model">quality.analysis</field>
+      <field name="arch" type="xml">
+        <tree delete="false" edit="false" create="false">
+          <field name="" />
+        </tree>
+      </field>
+    </record>
+
+    <menuitem id="quality_analysis_tree_menu"
+              action="quality_analysis_tree_view"
+              name="Listado de Calidad"
+              parent="stock.menu_stock_inventory_control"
+    />
+
   </data>
 </odoo>

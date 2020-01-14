@@ -7,6 +7,12 @@ class QualityAnalysis(models.Model):
         clase que almacena los datos de calidad del sistema dimabe
     """
 
+    stock_production_lot_ids = fields.One2many(
+        'stock.production.lot',
+        'quality_analysis_id',
+        string='Lote'
+    )
+
     name = fields.Char('Informe')
 
     pre_caliber = fields.Float('Precalibre')

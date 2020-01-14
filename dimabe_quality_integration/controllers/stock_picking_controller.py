@@ -1,4 +1,4 @@
-from odoo import http, exceptions
+from odoo import http
 from odoo.http import request
 import werkzeug
 
