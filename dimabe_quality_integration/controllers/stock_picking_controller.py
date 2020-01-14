@@ -1,5 +1,6 @@
 from odoo import http, exceptions
 from odoo.http import request
+import werkzeug
 import json
 
 
@@ -11,4 +12,4 @@ class StockPickingController(http.Controller):
         if res:
             return json.dumps(res)
         else:
-            raise exceptions.ValidationError(lot)
+            raise werkzeug.exceptions.NotFound()
