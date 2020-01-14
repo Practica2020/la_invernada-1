@@ -1,53 +1,49 @@
 <odoo>
-  <data>
-    <record id="quality_analysis_form_view" model="ir.ui.view">
-      <field name="name">Formulario Analisis de Calidad</field>
-      <field name="model">quality.analysis</field>
-      <field name="arch" type="xml">
-        <form delete="false" create="false" edit="false">
+  <record id="quality_analysis_form_view" model="ir.ui.view">
+    <field name="name">Formulario Analisis de Calidad</field>
+    <field name="model">quality.analysis</field>
+    <field name="arch" type="xml">
+      <form delete="false" create="false" edit="false">
+        <group>
           <group>
-            <group>
-              <field name="pre_caliber" />
-              <field name="caliber_ids" />
-              <field name="external_damage_analysis_ids"/>
-              <field name="color_analysis_ids" />
-            </group>
-            <group>
-              <field name="humidity_analysis_id" />
-              <field name="humidity_percent" />
-              <field name="humidity_tolerance" />
-              <field name="performance_analysis_ids" />
-              <field name="internal_damage_analysis_ids" />
-              <field name="analysis_observations" />
-              <field name="category" />
-            </group>
+            <field name="pre_caliber"/>
+            <field name="caliber_ids"/>
+            <field name="external_damage_analysis_ids"/>
+            <field name="color_analysis_ids"/>
           </group>
-        </form>
-      </field>
-    </record>
+          <group>
+            <field name="humidity_analysis_id"/>
+            <field name="humidity_percent"/>
+            <field name="humidity_tolerance"/>
+            <field name="performance_analysis_ids"/>
+            <field name="internal_damage_analysis_ids"/>
+            <field name="analysis_observations"/>
+            <field name="category"/>
+          </group>
+        </group>
+      </form>
+    </field>
+  </record>
 
-    <record id="quality_analysis_tree_view" model="ir.ui.view">
-      <field name="name">Listado de Calidad</field>
-      <field name="model">quality.analysis</field>
-      <field name="arch" type="xml">
-        <tree delete="false" edit="false" create="false">
-          <field name="" />
-        </tree>
-      </field>
-    </record>
+  <record id="quality_analysis_tree_view" model="ir.ui.view">
+    <field name="name">Listado de Calidad</field>
+    <field name="model">quality.analysis</field>
+    <field name="arch" type="xml">
+      <tree delete="false" edit="false" create="false">
+        <field name=""/>
+      </tree>
+    </field>
+  </record>
 
-    <record id="quality_analysis_action" model="ir.actions.act_window">
-      <field name="name">Acción de Calidad</field>
-      <field name="res_model">quality.analysis</field>
-      <field name="view_type">form</field>
-      <field name="view_mode">tree,form</field>
-    </record>
+  <record id="dimabe_quality_integration.quality_analysis_action" model="ir.actions.act_window">
+    <field name="name">Acción de Calidad</field>
+    <field name="res_model">quality.analysis</field>
+    <field name="view_mode">tree,form</field>
+  </record>
 
-    <menuitem id="quality_analysis_tree_menu"
-              action="dimabe_quality_integration.quality_analysis_action"
-              name="Listado de Calidad"
-              parent="stock.menu_stock_inventory_control"
-    />
-
-  </data>
+  <menuitem id="quality_analysis_tree_menu"
+            action="dimabe_quality_integration.quality_analysis_action"
+            name="Listado de Calidad"
+            parent="stock.menu_stock_inventory_control"
+  />
 </odoo>
