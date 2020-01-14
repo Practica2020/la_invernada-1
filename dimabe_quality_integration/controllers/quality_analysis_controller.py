@@ -49,6 +49,6 @@ class QualityAnalysis(http.Controller):
 
         return {
             'ok': 'ok',
-            'res': quality_analysis,
+            'res': data,
         }
 
