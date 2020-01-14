@@ -55,7 +55,7 @@
                 <tr>
                   <td style="text-align: right !important;">ENVASE:</td>
                   <td>
-                    <span t-esc="o.get_canning_move()"/>
+                    <span t-esc="o.move_ids_without_package"/>
                   </td>
                 </tr>
                 <tr>
