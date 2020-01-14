@@ -41,9 +41,5 @@
     <field name="view_mode">tree,form</field>
   </record>
 
-  <menuitem id="quality_analysis_tree_menu"
-            action="dimabe_quality_integration.quality_analysis_action"
-            name="Listado de Calidad"
-            parent="stock.menu_stock_inventory_control"
-  />
+
 </odoo>
