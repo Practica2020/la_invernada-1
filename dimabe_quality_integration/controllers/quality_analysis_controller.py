@@ -1,6 +1,6 @@
 from odoo import http, exceptions
 from odoo.http import request
-
+import werkzeug
 
 def to_tuple_list(data):
     return [
@@ -26,10 +26,10 @@ class QualityAnalysis(http.Controller):
     @http.route('/api/quality_analysis', type='json', auth='token', cors='*', methods=['POST'])
     def quality_analysis_post(self, data):
         if 'lot' not in data:
-            raise exceptions.ValidationError('debe indicar lote')
+            raise werkzeug.exceptions.BadRequest('debe indicar lote')
         lot = request.env['stock.production.lot'].search([('name', '=', data['lot'])])
         if not lot:
-            raise exceptions.ValidationError('lote no encontrado')
+            raise werkzeug.exceptions.BadRequest('lote no encontrado')
 
         for data_list in ['caliber_ids', 'external_damage_analysis_ids', 'internal_damage_analysis_ids',
                           'performance_analysis_ids', 'color_analysis_ids', 'form_analysis_ids',
