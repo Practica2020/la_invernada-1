@@ -3,7 +3,6 @@
 <odoo>
   <template id="report_reception_label_template">
     <t t-call="web.html_container">
-
       <t t-foreach="docs" t-as="o">
         <t t-foreach="o.get_mp_move().move_line_ids" t-as="move_line">
           <t t-foreach="move_line.lot_id.stock_production_lot_serial_ids" t-as="serial">
@@ -14,7 +13,6 @@
                     <img
                       t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)"
                       style="width:100px !important;"
-
                     />
                   </td>
                 </tr>
@@ -45,7 +43,7 @@
                 <tr>
                   <td style="text-align: right !important;">PRODUCTO:</td>
                   <td>
-                    <span t-field="move_line.product_id.name"/>
+                    <span t-field="move_line.product_id.display_name"/>
                   </td>
                 </tr>
                 <tr>
@@ -76,12 +74,11 @@
                   </td>
                 </tr>
               </table>
-              <p style="page-break-after:always;"></p>
+              <p style="page-break-after:always;"> </p>
             </div>
           </t>
         </t>
       </t>
-
     </t>
   </template>
   <template id="report_quality_label">
@@ -371,7 +368,6 @@
           report_type="qweb-pdf"
           name="dimabe_reception.report_quality_label"
           paperformat="paper_format_10_x_7"
-
   />
 
 </odoo>
