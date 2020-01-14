@@ -23,6 +23,7 @@
         'base',
         'stock',
         'dimabe_jwt_token',
+        'dimabe_reception'
     ],
     # always loaded
     'data': [
