@@ -187,7 +187,11 @@ class StockPicking(models.Model):
         if not self.weight_guide:
             message += 'debe agregar kilos guía \n'
 
-        raise models.ValidationError(self.get_canning_move())
+        raise models.ValidationError('{} {} {}'.format(
+            self.get_canning_move().name,
+            self.get_canning_move().product_id,
+            self.get_canning_move().quantity_done
+        ))
         if not self.get_canning_move():
             message += 'debe agregar envases'
         if not self.get_mp_move():
