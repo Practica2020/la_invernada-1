@@ -189,7 +189,7 @@ class StockPicking(models.Model):
 
         raise models.ValidationError('{} {} {}'.format(
             self.get_canning_move().name,
-            self.get_canning_move().product_id,
+            self.get_canning_move().product_id.name,
             self.get_canning_move().quantity_done
         ))
         if not self.get_canning_move():

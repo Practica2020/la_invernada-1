@@ -19,7 +19,7 @@ class StockPickingController(http.Controller):
                 'DispatchGuideNumber': res.guide_number,
                 'ReceptionDate': res.scheduled_date,
                 'ReceptionKgs': res.net_weight,
-                'ContainerTpe': res.get_canning_move().product_id.name,
+                'ContainerType': res.get_canning_move().product_id.name,
                 'Season': res.scheduled_date.year,
                 'tare': res.tare_weight,
                 'Warehouse': res.location_dest_id.name,
