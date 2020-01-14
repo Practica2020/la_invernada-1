@@ -39,7 +39,7 @@
     <record id="quality_analysis_action" model="ir.actions.act_window">
       <field name="name">Acción de Calidad</field>
       <field name="res_model">quality.analysis</field>
-      <field name="view_type">tree,form</field>
+      <field name="view_mode">tree,form</field>
     </record>
 
     <menuitem id="quality_analysis_tree_menu"
