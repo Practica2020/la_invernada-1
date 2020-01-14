@@ -43,7 +43,7 @@
                 <tr>
                   <td style="text-align: right !important;">PRODUCTO:</td>
                   <td>
-                    <span t-field="move_line.product_id.display_name"/>
+                    <span t-field="move_line.product_id.name"/>
                   </td>
                 </tr>
                 <tr>

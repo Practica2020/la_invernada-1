@@ -25,8 +25,7 @@ class StockPickingController(http.Controller):
                 'Warehouse': res.location_dest_id.name,
                 'QualityWeight': res.quality_weight,
                 'ContainerQuantity': res.get_canning_move().quantity_done,
-                'ArticleDescription': res.get_mp_move().product_id.display_name,
-                'QualityGreenId': ''
+                'ArticleDescription': res.get_mp_move().product_id.display_name
             }
         else:
             raise werkzeug.exceptions.NotFound('lote no encontrado')
