@@ -49,13 +49,6 @@ class StockMove(models.Model):
                     for stock_move_line in stock_move.move_line_ids:
                         if stock_move.product_id.categ_id.is_mp:
                             total_qty = stock_move.picking_id.get_canning_move().product_uom_qty
-                            models._logger.error('aaaaaaaaaaaaaaaaaa {} {} {} {} {}'.format(
-                                total_qty,
-                                stock_move_line.display_name,
-                                stock_move.picking_id.get_canning_move().id,
-                                stock_move.picking_id.move_ids_without_package,
-                                stock_move.product_id.name
-                            ))
                             calculated_weight = stock_move_line.qty_done / total_qty
                             if stock_move_line.lot_id:
 
