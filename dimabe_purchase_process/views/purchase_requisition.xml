@@ -24,7 +24,7 @@
           <attribute name="groups">dimabe_purchase_process.group_purchase_requisition_user</attribute>
         </button>
         <xpath expr="//field[@name='line_ids']/tree/field[@name='account_analytic_id']" position="attributes">
-          <attribute name="required">True</attribute>
+          <attribute name="string">Centro de Costo</attribute>
         </xpath>
       </field>
     </record>
