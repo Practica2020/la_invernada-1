@@ -51,7 +51,7 @@ class StockMove(models.Model):
                             total_qty = stock_move.picking_id.get_canning_move().product_uom_qty
                             models._logger.error('aaaaaaaaaaaaaaaaaa {} {} {}'.format(
                                 total_qty,
-                                stock_move_line.name,
+                                stock_move_line.display_name,
                                 stock_move.picking_id.get_canning_move().name
                             ))
                             calculated_weight = stock_move_line.qty_done / total_qty
