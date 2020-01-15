@@ -205,7 +205,7 @@ class StockPicking(models.Model):
         alert_config = self.env['reception.alert.config'].search([])
         elapsed_datetime = datetime.strptime(self.elapsed_time, '%H:%M:%S')
         models._logger.error('aaaaaaaaaaaa {}'.format(elapsed_datetime.hour))
-        if self.hr_alert_notification_count == 0 and self.elapsed_datetime.hour >= alert_config.hr_alert:
+        if self.hr_alert_notification_count == 0 and elapsed_datetime.hour >= alert_config.hr_alert:
             self.ensure_one()
             self.reception_alert = alert_config
             template_id = self.env.ref('dimabe_reception.truck_not_out_mail_template')
