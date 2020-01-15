@@ -30,7 +30,21 @@
     <field name="model">quality.analysis</field>
     <field name="arch" type="xml">
       <tree delete="false" edit="false" create="false">
+        <field name="stock_production_lot_ids"/>
         <field name="pre_caliber"/>
+        <field name="caliber_ids" />
+        <field name="external_damage_analysis_ids" />
+        <field name="internal_damage_analysis_ids" />
+        <field name="humidity_analysis_id" />
+        <field name="humidity_percent" />
+        <field name="humidity_tolerance" />
+        <field name="performance_analysis_ids" />
+        <field name="color_analysis_ids" />
+        <field name="form_analysis_ids" />
+        <field name="impurity_analysis_ids" />
+        <field name="analysis_observations" />
+        <field name="analysis_images" />
+        <field name="category" />
       </tree>
     </field>
   </record>
