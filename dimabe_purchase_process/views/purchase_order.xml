@@ -44,6 +44,10 @@
         <xpath expr="//field[@name='incoterm_id']" position="after">
           <field name="provider_po_document" />
         </xpath>
+        <xpath expr="//field[@name='order_line']/tree/field[@name='account_analytic_id']" position="attributes">
+          <attribute name="required">True</attribute>
+          <attribute name="string">Centro de Costo</attribute>
+        </xpath>
       </field>
     </record>
   </data>
