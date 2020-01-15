@@ -25,25 +25,25 @@
     </field>
   </record>
 
-<!--  <record id="quality_analysis_tree_view" model="ir.ui.view">-->
-<!--    <field name="name">Listado de Calidad</field>-->
-<!--    <field name="model">quality.analysis</field>-->
-<!--    <field name="arch" type="xml">-->
-<!--      <tree delete="false" edit="false" create="false">-->
-<!--        <field name="pre_caliber"/>-->
-<!--      </tree>-->
-<!--    </field>-->
-<!--  </record>-->
+  <record id="quality_analysis_tree_view" model="ir.ui.view">
+    <field name="name">Listado de Calidad</field>
+    <field name="model">quality.analysis</field>
+    <field name="arch" type="xml">
+      <tree delete="false" edit="false" create="false">
+        <field name="pre_caliber"/>
+      </tree>
+    </field>
+  </record>
 
-<!--  <record id="dimabe_quality_integration.quality_analysis_action" model="ir.actions.act_window">-->
-<!--    <field name="name">Acción de Calidad</field>-->
-<!--    <field name="res_model">quality.analysis</field>-->
-<!--    <field name="view_mode">tree,form</field>-->
-<!--  </record>-->
+  <record id="dimabe_quality_integration.quality_analysis_action" model="ir.actions.act_window">
+    <field name="name">Acción de Calidad</field>
+    <field name="res_model">quality.analysis</field>
+    <field name="view_mode">tree,form</field>
+  </record>
 
-<!--  <menuitem id="quality_analysis_tree_menu"-->
-<!--            action="dimabe_quality_integration.quality_analysis_action"-->
-<!--            name="Listado de Calidad"-->
-<!--            parent="stock.menu_stock_inventory_control"-->
-<!--  />-->
+  <menuitem id="quality_analysis_tree_menu"
+            action="dimabe_quality_integration.quality_analysis_action"
+            name="Listado de Calidad"
+            parent="stock.menu_stock_inventory_control"
+  />
 </odoo>
