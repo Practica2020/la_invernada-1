@@ -52,7 +52,7 @@ class StockMove(models.Model):
                             models._logger.error('aaaaaaaaaaaaaaaaaa {} {} {}'.format(
                                 total_qty,
                                 stock_move_line.display_name,
-                                stock_move.picking_id.get_canning_move().name
+                                stock_move.picking_id.name
                             ))
                             calculated_weight = stock_move_line.qty_done / total_qty
                             if stock_move_line.lot_id:
