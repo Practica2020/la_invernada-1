@@ -82,3 +82,11 @@ class PurchaseOrder(models.Model):
             usr.partner_id.email for usr in user_group.users if usr.partner_id.email
         ]
         return ','.join(email_list)
+
+    @api.model
+    def create(self, values_list):
+        res = super(PurchaseOrder, self).create(values_list)
+        if res.order_line and len(res.order_line) > 0:
+            for line in res.order_line:
+                if not line.price_unit or line.price_unit == 0:
+                    raise models.ValidationError('debe agregar precio unitario')
