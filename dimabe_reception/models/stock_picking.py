@@ -204,7 +204,7 @@ class StockPicking(models.Model):
     def notify_alerts(self):
         alert_config = self.env['reception.alert.config'].search([])
         elapsed_datetime = datetime.strptime(self.elapsed_time, '%H:%M:%S')
-        raise models._logger.error('aaaaaaaaaaaa {}'.format(elapsed_datetime.hour))
+        models._logger.error('aaaaaaaaaaaa {}'.format(elapsed_datetime.hour))
         if self.hr_alert_notification_count == 0 and self.elapsed_time > alert_config.hr_alert:
             self.ensure_one()
             self.reception_alert = alert_config
