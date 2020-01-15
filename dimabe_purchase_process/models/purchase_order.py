@@ -95,7 +95,7 @@ class PurchaseOrder(models.Model):
     @api.multi
     def write(self, values):
 
-        models._logger.error(values)
+        raise models.ValidationError('price_unit' in values)
         res = super(PurchaseOrder, self).write(values)
 
         return res
