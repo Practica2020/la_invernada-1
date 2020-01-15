@@ -86,8 +86,17 @@ class PurchaseOrder(models.Model):
     @api.model
     def create(self, values_list):
         res = super(PurchaseOrder, self).create(values_list)
+        self.validate_price_unit(res)
+        return res
+
+    @api.multi
+    def write(self, values):
+        res = super(PurchaseOrder, self).write(values)
+        self.validate_price_unit(res)
+        return res
+
+    def validate_price_unit(self, res):
         if res.order_line and len(res.order_line) > 0:
             for line in res.order_line:
                 if not line.price_unit or line.price_unit == 0:
                     raise models.ValidationError('debe agregar precio unitario')
-        return res
