@@ -94,9 +94,11 @@ class PurchaseOrder(models.Model):
 
     @api.multi
     def write(self, values):
-
-        models._logger.error(values)
         res = super(PurchaseOrder, self).write(values)
-
+        for item in self:
+            if item.order_line and len(item.order_line) > 0:
+                for line in item.order_line:
+                    if not line.price_unit or line.price_unit == 0:
+                        raise models.ValidationError('debe agregar precio unitario')
         return res
 
