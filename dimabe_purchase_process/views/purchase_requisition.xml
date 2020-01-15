@@ -25,5 +25,16 @@
         </button>
       </field>
     </record>
+
+    <record id="purchase_requisition_tree_inherit" model="ir.ui.view">
+      <field name="name">Acuerdos de Compra</field>
+      <field name="model">purchase.requisition</field>
+      <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_tree" />
+      <field name="arch" type="xml">
+        <field name="name" position="attributes">
+          <attribute name="string">N° Solicitud de Compra</attribute>
+        </field>
+      </field>
+    </record>
   </data>
 </odoo>
