@@ -48,7 +48,7 @@ class StockMove(models.Model):
                 if stock_move.product_id.tracking == 'lot' and not stock_move.has_serial_generated:
                     for stock_move_line in stock_move.move_line_ids:
                         if stock_move.product_id.categ_id.is_mp:
-                            models._logger.error('{}'.format(
+                            models._logger.error('aaaaaaaaaa {}'.format(
                                 stock_move.picking_id.move_ids_without_package.mapped('product_id.categ_id.is_canning')
                             ))
                             total_qty = stock_move.picking_id.get_canning_move().product_uom_qty
