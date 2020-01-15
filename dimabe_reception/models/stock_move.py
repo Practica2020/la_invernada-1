@@ -53,7 +53,7 @@ class StockMove(models.Model):
                                 total_qty,
                                 stock_move_line.display_name,
                                 stock_move.picking_id.name,
-                                stock_move.picking_id.get_canning_move(),
+                                stock_move.picking_id.move_ids_without_package,
                                 stock_move.product_id.name
                             ))
                             calculated_weight = stock_move_line.qty_done / total_qty
