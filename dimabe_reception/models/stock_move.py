@@ -52,7 +52,7 @@ class StockMove(models.Model):
                             models._logger.error('aaaaaaaaaaaaaaaaaa {} {} {} {} {}'.format(
                                 total_qty,
                                 stock_move_line.display_name,
-                                stock_move.picking_id.name,
+                                stock_move.picking_id.get_canning_move().id,
                                 stock_move.picking_id.move_ids_without_package,
                                 stock_move.product_id.name
                             ))
