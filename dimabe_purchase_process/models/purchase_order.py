@@ -90,3 +90,4 @@ class PurchaseOrder(models.Model):
             for line in res.order_line:
                 if not line.price_unit or line.price_unit == 0:
                     raise models.ValidationError('debe agregar precio unitario')
+        return res
