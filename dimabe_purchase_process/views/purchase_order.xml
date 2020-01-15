@@ -48,6 +48,9 @@
           <attribute name="required">True</attribute>
           <attribute name="string">Centro de Costo</attribute>
         </xpath>
+        <field name="amount_untaxed" position="attributes">
+          <attribute name="string">Valor Neto</attribute>
+        </field>
       </field>
     </record>
   </data>

@@ -1,4 +1,5 @@
 from odoo import fields, models, api
+from odoo.addons import decimal_precision as dp
 
 
 class PurchaseRequisitionLine(models.Model):
@@ -8,4 +9,11 @@ class PurchaseRequisitionLine(models.Model):
         'account.analytic.account',
         string='Analytic Account',
         required=True
+    )
+
+    price_unit = fields.Float(
+        string='Unit Price',
+        digits=dp.get_precision('Product Price'),
+        required=True,
+        default=None
     )
