@@ -10,7 +10,7 @@
                     <field name="reception_type_selection"
                            widget="radio"
                            options="{'horizontal':true}"
-                           attrs="{'readonly': [('state', '=', 'done')]}"
+                           attrs="{'readonly': [('state', '=', 'done')], 'invisible':[('picking_type_code', '=', 'outgoing')]}"
                     />
                     <field name="is_mp_reception"
                            invisible="1"

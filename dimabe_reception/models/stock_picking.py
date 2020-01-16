@@ -1,5 +1,5 @@
 from odoo import models, api, fields
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 class StockPicking(models.Model):
@@ -203,7 +203,9 @@ class StockPicking(models.Model):
     @api.multi
     def notify_alerts(self):
         alert_config = self.env['reception.alert.config'].search([])
-        if self.hr_alert_notification_count == 0 and self.elapsed_time > alert_config.hr_alert:
+
+        elapsed_datetime = datetime.strptime(self.elapsed_time, '%H:%M:%S')
+        if self.hr_alert_notification_count == 0 and elapsed_datetime.hour >= alert_config.hr_alert:
             self.ensure_one()
             self.reception_alert = alert_config
             template_id = self.env.ref('dimabe_reception.truck_not_out_mail_template')
