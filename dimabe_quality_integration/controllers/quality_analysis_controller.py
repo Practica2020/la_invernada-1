@@ -1,4 +1,4 @@
-from odoo import http, exceptions, model
+from odoo import http, exceptions, models
 from odoo.http import request
 import werkzeug
 
@@ -54,14 +54,14 @@ class QualityAnalysis(http.Controller):
 
         quality_analysis = request.env['quality.analysis'].create(data)
 
-        model._logger.error('AAAAAAAAAAAAA {}'.format(quality_analysis))
+        models._logger.error('AAAAAAAAAAAAA {}'.format(quality_analysis))
 
         if quality_analysis:
             lot.update({
                 'quality_analysis_id': quality_analysis.id
             })
 
-        model._logger.error('AAAAAAAAAAAAAAA {} {} '.format(lot.name, lot.quality_analysis_id))
+        models._logger.error('AAAAAAAAAAAAAAA {} {} '.format(lot.name, lot.quality_analysis_id))
 
         return {
             'ok': 'ok',
