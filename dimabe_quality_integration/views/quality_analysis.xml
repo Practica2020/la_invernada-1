@@ -30,6 +30,7 @@
     <field name="model">quality.analysis</field>
     <field name="arch" type="xml">
       <tree delete="false" edit="false" create="false">
+
         <field name="lot_name"/>
         <field name="pre_caliber"/>
         <field name="caliber_ids" />
