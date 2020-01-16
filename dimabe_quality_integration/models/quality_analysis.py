@@ -85,9 +85,10 @@ class QualityAnalysis(models.Model):
         res.name = 'Informe QA {}'.format(fields.datetime.utcnow())
         return res
 
-    @api.model
+    @api.multi
     @api.depends('stock_production_lot_ids')
     def _compute_lot_name(self):
-        if self.stock_production_lot_ids and len(self.stock_production_lot_ids) > 0:
-            self.lot_name = self.stock_production_lot_ids[0].name
+        for item in self:
+            if item.stock_production_lot_ids and len(item.stock_production_lot_ids) > 0:
+                item.lot_name = item.stock_production_lot_ids[0].name
 
