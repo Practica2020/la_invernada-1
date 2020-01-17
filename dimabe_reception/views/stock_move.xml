@@ -5,7 +5,7 @@
       <field name="model">stock.move.line</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="location_det_id" />
+          <field name="location_dest_id" />
           <field name="lot_name" />
           <field name="lot_id" />
           <field name="result_package_id" />
