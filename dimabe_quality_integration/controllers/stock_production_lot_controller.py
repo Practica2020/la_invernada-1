@@ -5,15 +5,15 @@ import werkzeug
 
 class StockProductionLotController(http.Controller):
     
-    @http.route("/api/stock_production_lot/<model('stock.production.lot'):lot>",
+    @http.route("/api/stock_production_lot",
                 cors='*',
                 auth='token',
                 methods=['PUT'],
                 type='json'
                 )
-    def put_lot(self, lot):
+    def put_lot(self):
         
         return {
-            'lot': lot.id
+            'lot': 'lot.id'
         }
 
