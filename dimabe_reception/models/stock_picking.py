@@ -177,8 +177,10 @@ class StockPicking(models.Model):
                     })
                     models._logger.error('LLLLLLLLLLLLLLL {}'.format(lot))
                     if lot:
-                        move_line.lot_id = lot.id
-
+                        move_line.update({
+                            'lot_id': lot.id
+                        })
+                        models._logger.error(' mmmmmmmmmmmmmmmm {}'.format(move_line.lot_id))
             return res
 
     @api.multi
