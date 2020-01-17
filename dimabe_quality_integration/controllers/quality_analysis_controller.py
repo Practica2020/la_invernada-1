@@ -60,10 +60,10 @@ class QualityAnalysis(http.Controller):
     @http.route("/api/quality_analysis", type='json', auth='token', cors='*', methods=['PUT'])
     def put_lot(self, lot, data):
 
-        quality_analysis_ids = request['quality.analysis'].search([('lot_name', '=', lot)])
-        if quality_analysis_ids:
-            for quality_analysis in quality_analysis_ids:
-                quality_analysis.update(data)
+        # quality_analysis_ids = request['quality.analysis'].search([('lot_name', '=', lot)])
+        # if quality_analysis_ids:
+        #     for quality_analysis in quality_analysis_ids:
+        #         quality_analysis.update(data)
         return {
             'lot': lot,
             'data': data
