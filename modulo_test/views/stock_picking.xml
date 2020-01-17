@@ -4,7 +4,9 @@
     <field name="model" >stock.picking</field>
     <field name="inherit_id" ref="stock.view_picking_form" />
     <field name="arch" type="xml">
-
+      <field name="client_label" position="after">
+        <field name="client_label_file" />
+      </field>
     </field>
   </record>
 </odoo>
