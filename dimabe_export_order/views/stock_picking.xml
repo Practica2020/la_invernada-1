@@ -1,66 +1,69 @@
 <odoo>
-    <data>
-        <record id="stock_picking_form_inherit" model="ir.ui.view">
-            <field name="name">Export Page</field>
-            <field name="model">stock.picking</field>
-            <field name="inherit_id" ref="stock.view_picking_form"/>
-            <field name="arch" type="xml">
+  <data>
+    <record id="stock_picking_form_inherit" model="ir.ui.view">
+      <field name="name">Export Page</field>
+      <field name="model">stock.picking</field>
+      <field name="inherit_id" ref="stock.view_picking_form"/>
+      <field name="arch" type="xml">
 
-                <field name="backorder_id" position="after">
-                    <field name="picking_type_code" invisible="1" />
-                    <field name="consignee_id"
-                           attrs="{'invisible':[('picking_type_code', '=', 'incoming')]}"
-                    />
-                    <field name="notify_ids"
-                           attrs="{'invisible':[('picking_type_code', '=', 'incoming')]}"
-                    />
-                </field>
+        <field name="backorder_id" position="after">
+          <field name="picking_type_code" invisible="1"/>
+          <field name="consignee_id"
+                 attrs="{'invisible':[('picking_type_code', '=', 'incoming')]}"
+          />
+          <field name="notify_ids"
+                 attrs="{'invisible':[('picking_type_code', '=', 'incoming')]}"
+          />
+        </field>
 
-                <xpath expr="//page[@name='extra']" position="after">
-                    <page string="COMEX" id="export_data"
-                          attrs="{'invisible':[('picking_type_code', '=', 'incoming')]}"
-                    >
-                        <group name="export_data"
-                               position="inside"
-                        >
-                            <group string="Información de envío"
-                                   style="width:100%%"
-                            >
-                                <group>
-                                    <!--
-                                    <field name="reserved_amount"/>
-                                    -->
-                                    <field name="shipping_number"/>
-                                    <field name="contract_correlative_view"/>
-                                    <field name="contract_correlative" invisible="1"/>
-                                    <field name="shipping_id"/>
-                                    <field name="agent_id"/>
-                                    <field name="total_commission"/>
-                                    <field name="charging_mode"/>
-                                    <field name="booking_number"/>
-                                    <field name="bl_number"/>
-                                    <field name="container_number"
-                                           placeholder="Ingrese número de contenedor"/>
-                                    <field name="container_type"
-                                           placeholder="Seleccione el tipo de contenedor"/>
-                                </group>
-                                <group>
-                                    <field name="client_label"/>
-                                    <field name="freight_value"/>
-                                    <field name="safe_value"/>
-                                    <field name="total_value"/>
-                                    <field name="value_per_kilogram"/>
-                                </group>
-                            </group>
-                            <group style="width:100%%">
-                                <group>
-                                    <field name="remarks"/>
-                                </group>
-                            </group>
-                        </group>
-                    </page>
-                </xpath>
-            </field>
-        </record>
-    </data>
+        <xpath expr="//page[@name='extra']" position="after">
+          <page string="COMEX" id="export_data"
+                attrs="{'invisible':[('picking_type_code', '=', 'incoming')]}"
+          >
+            <group name="export_data"
+                   position="inside"
+            >
+              <group string="Información de envío"
+                     style="width:100%%"
+              >
+                <group>
+                  <!--
+                  <field name="reserved_amount"/>
+                  -->
+                  <field name="shipping_number"/>
+                  <field name="contract_correlative_view"/>
+                  <field name="contract_correlative" invisible="1"/>
+                  <field name="shipping_id"/>
+                  <field name="agent_id"/>
+                  <field name="total_commission"/>
+                  <field name="charging_mode"/>
+                  <field name="booking_number"/>
+                  <field name="bl_number"/>
+                  <field name="container_number"
+                         placeholder="Ingrese número de contenedor"/>
+                  <field name="container_type"
+                         placeholder="Seleccione el tipo de contenedor"/>
+                </group>
+                <group>
+                  <field name="client_label"/>
+                  <field name="client_label_file"
+                         attrs="{'invisible':[('client_label', '=', False)]}"
+                  />
+                  <field name="freight_value"/>
+                  <field name="safe_value"/>
+                  <field name="total_value"/>
+                  <field name="value_per_kilogram"/>
+                </group>
+              </group>
+              <group style="width:100%%">
+                <group>
+                  <field name="remarks"/>
+                </group>
+              </group>
+            </group>
+          </page>
+        </xpath>
+      </field>
+    </record>
+  </data>
 </odoo>
