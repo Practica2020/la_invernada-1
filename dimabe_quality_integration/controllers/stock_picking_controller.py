@@ -30,7 +30,7 @@ class StockPickingController(http.Controller):
 
     @http.route("/api/stock_picking", type='json', methods=['PUT'], auth='token', cors='*')
     def put_lot(self, lot, data):
-        stock_picking_ids = request.env['stock.picking'].search([('lot_name', '=', lot)])
+        stock_picking_ids = request.env['stock.picking'].search([('name', '=', lot)])
         models._logger.error(stock_picking_ids)
         if stock_picking_ids:
             for stock_picking in stock_picking_ids:
