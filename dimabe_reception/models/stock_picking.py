@@ -207,7 +207,9 @@ class StockPicking(models.Model):
                     message = 'Debe agregar kg tara'
                 if message:
                     raise models.ValidationError(message)
-        return super(StockPicking, self).button_validate()
+        res = super(StockPicking, self).button_validate()
+        models._logger.error('rrrrrrrrrrrrrrrrrrrrr {}'.format(res))
+        return res
 
     @api.model
     def validate_mp_reception(self):
