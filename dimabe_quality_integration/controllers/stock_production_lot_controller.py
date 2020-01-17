@@ -14,5 +14,5 @@ class StockProductionLotController(http.Controller):
     def put_lot(self, lot):
         models._logger.error(lot)
         return {
-            'lot': lot.id
+            'lot': lot.name
         }
