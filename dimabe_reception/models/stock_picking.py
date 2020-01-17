@@ -166,8 +166,6 @@ class StockPicking(models.Model):
             res = super(StockPicking, self).action_confirm()
             mp_move = stock_picking.get_mp_move()
 
-            models._logger.error('SSSSSSSSSSSSSSSSs {}'.format(mp_move.move_line_ids))
-
             if mp_move and mp_move.move_line_ids and mp_move.picking_id \
                     and mp_move.picking_id.picking_type_code == 'incoming':
                 for move_line in mp_move.move_line_ids:
@@ -175,12 +173,27 @@ class StockPicking(models.Model):
                         'name': stock_picking.name,
                         'product_id': move_line.product_id.id
                     })
-                    models._logger.error('LLLLLLLLLLLLLLL {}'.format(lot))
                     if lot:
                         move_line.update({
                             'lot_id': lot.id
                         })
-                        models._logger.error(' mmmmmmmmmmmmmmmm {}'.format(move_line.lot_id))
+
+                if mp_move.product_id.tracking == 'lot' and not mp_move.has_serial_generated:
+                    for stock_move_line in mp_move.move_line_ids:
+                        if mp_move.product_id.categ_id.is_mp:
+                            total_qty = mp_move.picking_id.get_canning_move().product_uom_qty
+                            calculated_weight = stock_move_line.qty_done / total_qty
+                            if stock_move_line.lot_id:
+
+                                for i in range(int(total_qty)):
+                                    tmp = '00{}'.format(i + 1)
+                                    self.env['stock.production.lot.serial'].create({
+                                        'calculated_weight': calculated_weight,
+                                        'stock_production_lot_id': stock_move_line.lot_id.id,
+                                        'serial_number': '{}{}'.format(stock_move_line.lot_name, tmp[-3:])
+                                    })
+
+                                mp_move.has_serial_generated = True
             return res
 
     @api.multi
