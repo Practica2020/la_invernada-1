@@ -27,3 +27,14 @@ class StockPickingController(http.Controller):
             }
         else:
             raise werkzeug.exceptions.NotFound('lote no encontrado')
+
+    @http.route("/api/stock_picking", type='json', methods=['PUT'], auth='token', cors='*')
+    def put_lot(self, lot, data):
+        quality_analysis_ids = request['quality.analysis'].search([('lot_name', '=', lot)])
+        if quality_analysis_ids:
+            for quality_analysis in quality_analysis_ids:
+                quality_analysis.update(data)
+        return {
+            'lot': lot,
+            'data': data
+        }
