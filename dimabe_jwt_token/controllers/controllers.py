@@ -20,4 +20,4 @@ class JWTTokenController(http.Controller):
 
         token = generate_token(uid)
 
-        return {'user': uid, 'token': token}
+        return {'user': uid, 'token': token, db:  request.env.cr.dbname}
