@@ -57,3 +57,10 @@ class QualityAnalysis(http.Controller):
             'res': '{} {}'.format(lot.quality_analysis_id, quality_analysis.id),
         }
 
+    @http.route("/api/quality_analysis", type='json', auth='token', cors='*', methods=['PUT'])
+    def put_lot(self, lot, data):
+
+        return {
+            'lot': lot,
+            'data': data
+        }
