@@ -42,15 +42,10 @@ class QualityAnalysis(http.Controller):
             data['humidity_analysis_id'] = humidity_analysis.id
 
         quality_analysis = request.env['quality.analysis'].create(data)
-
-        models._logger.error('AAAAAAAAAAAAA {}'.format(quality_analysis))
-
         if quality_analysis:
             lot.update({
                 'quality_analysis_id': quality_analysis.id
             })
-
-        models._logger.error('AAAAAAAAAAAAAAA {} {} '.format(lot.name, lot.quality_analysis_id))
 
         return {
             'ok': 'ok',
