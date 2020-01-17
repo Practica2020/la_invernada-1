@@ -164,7 +164,17 @@ class StockPicking(models.Model):
                 stock_picking.validate_mp_reception()
                 stock_picking.truck_in_date = fields.datetime.now()
             res = super(StockPicking, self).action_confirm()
-            models._logger.error(res)
+            mp_move = stock_picking.get_mp_move()
+
+            if mp_move and mp_move.move_line_ids and mp_move.picking_id \
+                    and mp_move.picking_id.picking_type_code == 'incoming':
+                for move_line in mp_move.move_line_ids:
+                    lot = self.env['stock.production.lot'].create({
+                        'name': stock_picking.name,
+                        'product_id': move_line.product_id.id
+                    })
+                    if lot:
+                        move_line.lot_id = lot.id
 
             return res
 
