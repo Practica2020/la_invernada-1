@@ -208,7 +208,9 @@ class StockPicking(models.Model):
                 if message:
                     raise models.ValidationError(message)
         res = super(StockPicking, self).button_validate()
-        models._logger.error('rrrrrrrrrrrrrrrrrrrrr {}'.format(res))
+        if self.get_mp_move():
+            self.get_mp_move().quantity_done = self.net_weight
+        models._logger.error('rrrrrrrrrrrrrrrrrrrrr {}'.format(self.get_mp_move()))
         return res
 
     @api.model
