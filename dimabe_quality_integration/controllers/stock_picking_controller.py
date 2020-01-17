@@ -1,4 +1,4 @@
-from odoo import http
+from odoo import http, models
 from odoo.http import request
 import werkzeug
 
@@ -30,10 +30,11 @@ class StockPickingController(http.Controller):
 
     @http.route("/api/stock_picking", type='json', methods=['PUT'], auth='token', cors='*')
     def put_lot(self, lot, data):
-        quality_analysis_ids = request['quality.analysis'].search([('lot_name', '=', lot)])
-        if quality_analysis_ids:
-            for quality_analysis in quality_analysis_ids:
-                quality_analysis.update(data)
+        stock_picking_ids = request['stock.picking'].search([('lot_name', '=', lot)])
+        models._logger.error(stock_picking_ids)
+        if stock_picking_ids:
+            for stock_picking in stock_picking_ids:
+                stock_picking.update(data)
         return {
             'lot': lot,
             'data': data
