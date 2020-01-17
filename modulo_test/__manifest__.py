@@ -21,7 +21,9 @@
     # any module necessary for this one to work correctly
     'depends': [
         'base',
-        'stock'
+        'stock',
+        'dimabe_export_order'
+
     ],
 
     # always loaded
@@ -29,6 +31,7 @@
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
+        'views/stock_picking.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
