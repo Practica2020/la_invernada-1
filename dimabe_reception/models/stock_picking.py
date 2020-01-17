@@ -166,6 +166,8 @@ class StockPicking(models.Model):
             res = super(StockPicking, self).action_confirm()
             mp_move = stock_picking.get_mp_move()
 
+            models._logger.error('SSSSSSSSSSSSSSSSs {}'.format(mp_move.move_line_ids))
+
             if mp_move and mp_move.move_line_ids and mp_move.picking_id \
                     and mp_move.picking_id.picking_type_code == 'incoming':
                 for move_line in mp_move.move_line_ids:
@@ -173,6 +175,7 @@ class StockPicking(models.Model):
                         'name': stock_picking.name,
                         'product_id': move_line.product_id.id
                     })
+                    models._logger.error('LLLLLLLLLLLLLLL {}'.format(lot))
                     if lot:
                         move_line.lot_id = lot.id
 

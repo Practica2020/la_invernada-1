@@ -1,5 +1,5 @@
 <odoo>
-  <data>
+
     <record id="move_line_id_tree" model="ir.ui.view">
       <field name="name">lista</field>
       <field name="model">stock.move.line</field>
@@ -15,21 +15,5 @@
         </tree>
       </field>
     </record>
-<!--    <record model="ir.ui.view" id="stock_move_operations_form_inherit">-->
-<!--      <field name="name">formulario de movimientos</field>-->
-<!--      <field name="model">stock.move</field>-->
-<!--      <field name="inherit_id" ref="stock.view_stock_move_operations"/>-->
-<!--      <field name="arch" type="xml">-->
-<!--        <xpath expr="//footer" position="inside">-->
-<!--          <field name="has_serial_generated" invisible="1"/>-->
-<!--          <field name="has_tracking" invisible="1"/>-->
-<!--          <button name="generate_serial"-->
-<!--                  string="Generar Códigos"-->
-<!--                  type="object"-->
-<!--                  attrs="{'invisible':['|',('has_serial_generated', '=', True),('has_tracking', 'not in', ['serial', 'lot'])]}"-->
-<!--          />-->
-<!--        </xpath>-->
-<!--      </field>-->
-<!--    </record>-->
-  </data>
+
 </odoo>
