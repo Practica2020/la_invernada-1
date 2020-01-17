@@ -37,31 +37,3 @@ class StockMove(models.Model):
             # ('categ_id', 'in', self.picking_type_id.warehouse_id.products_can_be_stored)
         ]
         return domain
-
-    # @api.multi
-    # def write(self, values):
-    #     res = super(StockMove, self).write(values)
-    #
-    #     for stock_move in self:
-    #
-    #         if stock_move.picking_id and stock_move.picking_id.picking_type_code == 'incoming':
-    #             if stock_move.product_id.tracking == 'lot' and not stock_move.has_serial_generated:
-    #                 for stock_move_line in stock_move.move_line_ids:
-    #                     if stock_move.product_id.categ_id.is_mp:
-    #                         models._logger.error('aaaaaaaaaa {}'.format(
-    #                             stock_move.picking_id.move_ids_without_package.mapped('product_id.categ_id.is_canning')
-    #                         ))
-    #                         total_qty = stock_move.picking_id.get_canning_move().product_uom_qty
-    #                         calculated_weight = stock_move_line.qty_done / total_qty
-    #                         if stock_move_line.lot_id:
-    #
-    #                             for i in range(int(total_qty)):
-    #                                 tmp = '00{}'.format(i + 1)
-    #                                 self.env['stock.production.lot.serial'].create({
-    #                                     'calculated_weight': calculated_weight,
-    #                                     'stock_production_lot_id': stock_move_line.lot_id.id,
-    #                                     'serial_number': '{}{}'.format(stock_move_line.lot_name, tmp[-3:])
-    #                                 })
-    #
-    #                             stock_move.has_serial_generated = True
-    #     return res
