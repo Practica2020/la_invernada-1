@@ -164,6 +164,8 @@ class StockPicking(models.Model):
                 stock_picking.validate_mp_reception()
                 stock_picking.truck_in_date = fields.datetime.now()
             res = super(StockPicking, self).action_confirm()
+            models._logger.error(res)
+
             return res
 
     @api.multi
