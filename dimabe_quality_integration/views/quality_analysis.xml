@@ -60,4 +60,5 @@
             name="Listado de Calidad"
             parent="stock.menu_stock_inventory_control"
   />
+
 </odoo>
