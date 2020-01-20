@@ -65,6 +65,7 @@ class PurchaseOrder(models.Model):
 
         approve_message = self.message_ids.filtered(lambda x: x.subtype_id.name == 'SdP aprobada')
         if approve_message:
+            models._logger.error("aaaaaaaaaaaaaaaaaaa",approve_message)
             approve_message = approve_message[0]
             return '{} {}'.format(approve_message.author_id.name, approve_message.date)
         return ''
