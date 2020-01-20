@@ -16,7 +16,7 @@ class ResPartner(models.Model):
     client_identifier_value = fields.Char('Valor Identificador')
 
     company_type = fields.Selection(string='Company Type',
-                                    selection=[('person', 'Individual'), ('company', 'Company')],
+                                    selection=[('company', 'Company'), ('person', 'Individual')],
                                     compute='_compute_company_type',
                                     inverse='_write_company_type',
                                     default='company'
