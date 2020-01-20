@@ -5,6 +5,9 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form" />
             <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_type']" position="selection">
+                    <attribute name="selection">[('company','Company'), ('person','Individual')]</attribute>
+                </xpath>
                 <field name="company_type" position="replace" >
                      <field name="company_type"
                             widget="radio"
