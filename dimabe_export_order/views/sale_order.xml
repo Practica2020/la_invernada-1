@@ -1,14 +1,26 @@
 <odoo>
-  <data>
-    <record id="view_order_form_inherit" model="ir.ui.view">
-      <field name="name">formulario de ordenes</field>
-      <field name="model">sale.order</field>
-      <field name="inherit_id" ref="sale.view_order_form"/>
-      <field name="arch" type="xml">
-        <field name="partner_id" position="after">
-            <field name="contract_number"/>
-        </field>
-      </field>
-    </record>
-  </data>
+    <data>
+        <record id="view_order_form_inherit" model="ir.ui.view">
+            <field name="name">formulario de ordenes</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="contract_number"/>
+                </field>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="domain">[('is_company', '=', True), ('customer', '=', True)]</attribute>
+                </xpath>
+                <xpath expr="//page[@name='other_information']" position="before">
+                    <page string="Contrato" id="order_contract_page">
+                        <group name="order_contract_page" position="inside">
+                            <group>
+                                <field name="contract_number" />
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
 </odoo>
