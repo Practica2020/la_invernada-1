@@ -35,6 +35,7 @@
                     <field name="quality_weight"
                            attrs="{'invisible':[('is_mp_reception', '=', False)]}"
                            readonly="1"
+
                     />
                     <field name="net_weight"
                            attrs="{'invisible':[('is_mp_reception', '=', False)]}"
