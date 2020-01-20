@@ -22,6 +22,8 @@ class ResPartner(models.Model):
                                     default='company'
                                     )
 
+
+
     @api.constrains('commission')
     def _check_data_typed(self):
         for item in self:
