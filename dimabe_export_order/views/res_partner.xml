@@ -10,7 +10,7 @@
                             widget="radio"
                             class="oe_edit_only"
                             options="{'horizontal': true}"
-                            default="company"
+                            default="[1][0]"
                      />
                 </field>
                 <field name="vat" invisible="1"/>
