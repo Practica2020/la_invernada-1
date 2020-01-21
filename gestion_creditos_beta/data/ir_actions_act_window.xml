@@ -1,0 +1,540 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="studio_customization.capital_3ad998e4-e573-4de4-84aa-54d6913ce322" model="ir.actions.act_window" context="{'studio': True}">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        This is your new action ; by default, it contains a list view and a form view.
+                    </p>
+                    <p>
+                        You can start customizing these screens by clicking on the Studio icon on the
+                        top right corner (you can also customize this help message there).
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Capital</field>
+    <field name="res_model">x_creditos</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+  <record id="studio_customization.cobros_646ce76d-79be-4bcc-8cdd-3c1f83526796" model="ir.actions.act_window" context="{'studio': True}">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        This is your new action ; by default, it contains a list view and a form view.
+                    </p>
+                    <p>
+                        You can start customizing these screens by clicking on the Studio icon on the
+                        top right corner (you can also customize this help message there).
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Cobros</field>
+    <field name="res_model">account.invoice</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form,dashboard</field>
+    <field name="view_type">form</field>
+  </record>
+  <record id="studio_customization.configuracion_2ee3e60e-eace-41b4-a91f-cb4d2de1ce7b" model="ir.actions.act_window" context="{'studio': True}">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        This is your new action ; by default, it contains a list view and a form view.
+                    </p>
+                    <p>
+                        You can start customizing these screens by clicking on the Studio icon on the
+                        top right corner (you can also customize this help message there).
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Configuracion</field>
+    <field name="res_model">x_ajustes_de_credito</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree</field>
+    <field name="view_type">form</field>
+  </record>
+  <record id="studio_customization.creditos_52e5ba7f-f3eb-4e36-9762-cd80e2ef0c50" model="ir.actions.act_window" context="{'studio': True}">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        This is your new action ; by default, it contains a list view and a form view.
+                    </p>
+                    <p>
+                        You can start customizing these screens by clicking on the Studio icon on the
+                        top right corner (you can also customize this help message there).
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Creditos</field>
+    <field name="res_model">x_creditos</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form,pivot,graph,gantt</field>
+    <field name="view_type">form</field>
+  </record>
+  <record id="studio_customization.creditos_62788adc-39ac-4fdb-a5cf-0949d52f88d4" model="ir.actions.act_window" context="{'studio': True}">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'search_default_x_studio_field_5Mg0D': active_id,'default_x_studio_field_5Mg0D': active_id}</field>
+    <field name="domain">[('x_studio_field_5Mg0D', '=', active_id)]</field>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help" eval="False"/>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Creditos</field>
+    <field name="res_model">x_creditos</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+  <record id="studio_customization.creditos_ddd490a6-8439-44f6-92e4-1e169dc5b003" model="ir.actions.act_window" context="{'studio': True}">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        This is your new action ; by default, it contains a list view and a form view.
+                    </p>
+                    <p>
+                        You can start customizing these screens by clicking on the Studio icon on the
+                        top right corner (you can also customize this help message there).
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Creditos</field>
+    <field name="res_model">x_creditos</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form,kanban,graph,pivot,dashboard,gantt</field>
+    <field name="view_type">form</field>
+  </record>
+  <record id="studio_customization.creditos_emitidos_055caa22-9db6-403b-998e-2769288a4eb4" model="ir.actions.act_window" context="{'studio': True}">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        This is your new action ; by default, it contains a list view and a form view.
+                    </p>
+                    <p>
+                        You can start customizing these screens by clicking on the Studio icon on the
+                        top right corner (you can also customize this help message there).
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Creditos Emitidos</field>
+    <field name="res_model">x_creditos</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+  <record id="studio_customization.creditos_emitidos_e25ab407-af2b-4183-9b54-1deb04e2c4be" model="ir.actions.act_window" context="{'studio': True}">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'search_default_x_studio_field_5Mg0D': active_id,'default_x_studio_field_5Mg0D': active_id}</field>
+    <field name="domain">[('x_studio_field_5Mg0D', '=', active_id)]</field>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help" eval="False"/>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Creditos Emitidos</field>
+    <field name="res_model">x_creditos</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+  <record id="studio_customization.creditos_en_cobro_f3de3c62-1520-436f-9057-26a2eb529286" model="ir.actions.act_window" context="{'studio': True}">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        This is your new action ; by default, it contains a list view and a form view.
+                    </p>
+                    <p>
+                        You can start customizing these screens by clicking on the Studio icon on the
+                        top right corner (you can also customize this help message there).
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Creditos en cobro</field>
+    <field name="res_model">x_creditos</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+  <record id="studio_customization.creditos_pagados_e95b03a6-850e-4ed5-b760-e8ed699db228" model="ir.actions.act_window" context="{'studio': True}">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        This is your new action ; by default, it contains a list view and a form view.
+                    </p>
+                    <p>
+                        You can start customizing these screens by clicking on the Studio icon on the
+                        top right corner (you can also customize this help message there).
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Creditos Pagados</field>
+    <field name="res_model">x_creditos</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+  <record id="studio_customization.dashboard_88c9b8d6-fe54-4ead-ad87-74487d037e43" model="ir.actions.act_window" context="{'studio': True}">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        This is your new action ; by default, it contains a list view and a form view.
+                    </p>
+                    <p>
+                        You can start customizing these screens by clicking on the Studio icon on the
+                        top right corner (you can also customize this help message there).
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Dashboard</field>
+    <field name="res_model">x_creditos</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">dashboard,form</field>
+    <field name="view_type">form</field>
+  </record>
+  <record id="studio_customization.incobrable_bf7ebb11-db74-4fee-b580-c17d7d27b738" model="ir.actions.act_window" context="{'studio': True}">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        This is your new action ; by default, it contains a list view and a form view.
+                    </p>
+                    <p>
+                        You can start customizing these screens by clicking on the Studio icon on the
+                        top right corner (you can also customize this help message there).
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Incobrable</field>
+    <field name="res_model">x_creditos</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+  <record id="studio_customization.informes_bcb00940-b06a-4d33-a2bc-df2756be5c48" model="ir.actions.act_window" context="{'studio': True}">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        This is your new action ; by default, it contains a list view and a form view.
+                    </p>
+                    <p>
+                        You can start customizing these screens by clicking on the Studio icon on the
+                        top right corner (you can also customize this help message there).
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Informes</field>
+    <field name="res_model">x_creditos</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+  <record id="studio_customization.inteligencia_empresa_057ad029-f547-428a-8c6a-4da8f8bf9277" model="ir.actions.act_window" context="{'studio': True}">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        This is your new action ; by default, it contains a list view and a form view.
+                    </p>
+                    <p>
+                        You can start customizing these screens by clicking on the Studio icon on the
+                        top right corner (you can also customize this help message there).
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Inteligencia Empresarial</field>
+    <field name="res_model">x_creditos</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+  <record id="studio_customization.nuevo_credito_102849d4-9684-46fa-98fc-58fd2b0a5eab" model="ir.actions.act_window" context="{'studio': True}">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        This is your new action ; by default, it contains a list view and a form view.
+                    </p>
+                    <p>
+                        You can start customizing these screens by clicking on the Studio icon on the
+                        top right corner (you can also customize this help message there).
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Nuevo Credito</field>
+    <field name="res_model">x_nuevo_credito</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+  <record id="studio_customization.nuevo_credito_a99add19-d5ec-47cc-8ded-e4a8b0f99e28" model="ir.actions.act_window" context="{'studio': True}">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        This is your new action ; by default, it contains a list view and a form view.
+                    </p>
+                    <p>
+                        You can start customizing these screens by clicking on the Studio icon on the
+                        top right corner (you can also customize this help message there).
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Nuevo Credito</field>
+    <field name="res_model">x_creditos</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+  <record id="studio_customization.planificacion_34e53129-856f-4d87-b410-8f9c6e007303" model="ir.actions.act_window" context="{'studio': True}">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        This is your new action ; by default, it contains a list view and a form view.
+                    </p>
+                    <p>
+                        You can start customizing these screens by clicking on the Studio icon on the
+                        top right corner (you can also customize this help message there).
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Planificación</field>
+    <field name="res_model">x_creditos</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+  <record id="studio_customization.proyecciones_6ae68fba-78b4-4983-90b7-0425f9498bac" model="ir.actions.act_window" context="{'studio': True}">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        This is your new action ; by default, it contains a list view and a form view.
+                    </p>
+                    <p>
+                        You can start customizing these screens by clicking on the Studio icon on the
+                        top right corner (you can also customize this help message there).
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Proyecciones</field>
+    <field name="res_model">x_creditos</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+  <record id="studio_customization.recuperacion_7ed8967e-c805-409d-aa94-829e5de8c6c5" model="ir.actions.act_window" context="{'studio': True}">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        This is your new action ; by default, it contains a list view and a form view.
+                    </p>
+                    <p>
+                        You can start customizing these screens by clicking on the Studio icon on the
+                        top right corner (you can also customize this help message there).
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Recuperacion</field>
+    <field name="res_model">x_creditos</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+</odoo>

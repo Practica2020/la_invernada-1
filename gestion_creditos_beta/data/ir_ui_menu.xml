@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="studio_customization.gestion_de_creditos_92c85c0a-9363-4ac4-9dc8-a72f25bd4f2a" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" eval="False"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Gestion de Creditos</field>
+    <field name="parent_id" eval="False"/>
+    <field name="sequence">10</field>
+    <field name="web_icon">fa fa-area-chart,#2ecc71,#34495e</field>
+  </record>
+  <record id="studio_customization.gestion_de_creditos__7b2c2a22-2f7c-4def-bf1e-6a6b975c3263" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="base.action_open_website"/>
+    <field name="active" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Creditos</field>
+    <field name="parent_id" ref="studio_customization.gestion_de_creditos_92c85c0a-9363-4ac4-9dc8-a72f25bd4f2a"/>
+    <field name="sequence" eval="False"/>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="studio_customization.gestion_de_creditos__69b4cd0f-ec5f-4478-9feb-92e9c48428b0" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="studio_customization.creditos_ddd490a6-8439-44f6-92e4-1e169dc5b003"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Creditos</field>
+    <field name="parent_id" ref="studio_customization.gestion_de_creditos__7b2c2a22-2f7c-4def-bf1e-6a6b975c3263"/>
+    <field name="sequence" eval="False"/>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="studio_customization.gestion_de_creditos__ffac20d8-5f97-438a-8579-b5425a4f9a28" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="studio_customization.cobros_646ce76d-79be-4bcc-8cdd-3c1f83526796"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Cobros</field>
+    <field name="parent_id" ref="studio_customization.gestion_de_creditos_92c85c0a-9363-4ac4-9dc8-a72f25bd4f2a"/>
+    <field name="sequence">2</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="studio_customization.gestion_de_creditos__bd38c3a8-fbfa-4edb-b9e1-714bfa383d6c" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="studio_customization.creditos_52e5ba7f-f3eb-4e36-9762-cd80e2ef0c50"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Creditos</field>
+    <field name="parent_id" ref="studio_customization.gestion_de_creditos_92c85c0a-9363-4ac4-9dc8-a72f25bd4f2a"/>
+    <field name="sequence">1</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="studio_customization.gestion_de_creditos__eb8d4fe2-96fd-4936-b6c0-743dc6909ada" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="studio_customization.informes_bcb00940-b06a-4d33-a2bc-df2756be5c48"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [ref('account.group_account_manager'), ref('base.group_system'), ref('base.group_erp_manager')])]"/>
+    <field name="name">Informes</field>
+    <field name="parent_id" ref="studio_customization.gestion_de_creditos_92c85c0a-9363-4ac4-9dc8-a72f25bd4f2a"/>
+    <field name="sequence">3</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="studio_customization.gestion_de_creditos__e2db43de-f2b5-4df1-be3e-17a3abdc86a9" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="studio_customization.dashboard_88c9b8d6-fe54-4ead-ad87-74487d037e43"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Dashboard</field>
+    <field name="parent_id" ref="studio_customization.gestion_de_creditos_92c85c0a-9363-4ac4-9dc8-a72f25bd4f2a"/>
+    <field name="sequence" eval="False"/>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="studio_customization.gestion_de_creditos__63b687dd-2af7-4d65-bb31-50d874642044" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="studio_customization.inteligencia_empresa_057ad029-f547-428a-8c6a-4da8f8bf9277"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [ref('account.group_account_manager'), ref('base.group_system')])]"/>
+    <field name="name">Inteligencia Empresarial</field>
+    <field name="parent_id" ref="studio_customization.gestion_de_creditos_92c85c0a-9363-4ac4-9dc8-a72f25bd4f2a"/>
+    <field name="sequence">10</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="studio_customization.gestion_de_creditos__4918456c-588b-4aba-b000-2ca071c04471" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="studio_customization.planificacion_34e53129-856f-4d87-b410-8f9c6e007303"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Planificación</field>
+    <field name="parent_id" ref="studio_customization.gestion_de_creditos__63b687dd-2af7-4d65-bb31-50d874642044"/>
+    <field name="sequence" eval="False"/>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="studio_customization.gestion_de_creditos__3c92fd1c-1f60-4f13-a822-d71c62ac1c56" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="studio_customization.proyecciones_6ae68fba-78b4-4983-90b7-0425f9498bac"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Proyecciones</field>
+    <field name="parent_id" ref="studio_customization.gestion_de_creditos__63b687dd-2af7-4d65-bb31-50d874642044"/>
+    <field name="sequence">1</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="studio_customization.gestion_de_creditos__107dda66-c401-4b8b-8ff1-69a010ec272a" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="studio_customization.recuperacion_7ed8967e-c805-409d-aa94-829e5de8c6c5"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Recuperacion</field>
+    <field name="parent_id" ref="studio_customization.gestion_de_creditos__3c92fd1c-1f60-4f13-a822-d71c62ac1c56"/>
+    <field name="sequence" eval="False"/>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="studio_customization.gestion_de_creditos__4febd20c-0c27-499e-b33a-a7d9cb8ecde3" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="studio_customization.capital_3ad998e4-e573-4de4-84aa-54d6913ce322"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Capital</field>
+    <field name="parent_id" ref="studio_customization.gestion_de_creditos__3c92fd1c-1f60-4f13-a822-d71c62ac1c56"/>
+    <field name="sequence">1</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="studio_customization.gestion_de_creditos__e0698afd-b340-40ec-b384-4ae62eb2bdfb" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="studio_customization.creditos_emitidos_055caa22-9db6-403b-998e-2769288a4eb4"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Creditos Emitidos</field>
+    <field name="parent_id" ref="studio_customization.gestion_de_creditos__eb8d4fe2-96fd-4936-b6c0-743dc6909ada"/>
+    <field name="sequence" eval="False"/>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="studio_customization.gestion_de_creditos__1948c333-a9c8-4abf-a6c4-91f13ab34a57" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="studio_customization.creditos_en_cobro_f3de3c62-1520-436f-9057-26a2eb529286"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Creditos en cobro</field>
+    <field name="parent_id" ref="studio_customization.gestion_de_creditos__eb8d4fe2-96fd-4936-b6c0-743dc6909ada"/>
+    <field name="sequence">1</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="studio_customization.gestion_de_creditos__cb77e592-2106-4373-af68-6ecdff2bb120" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="studio_customization.creditos_pagados_e95b03a6-850e-4ed5-b760-e8ed699db228"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Creditos Pagados</field>
+    <field name="parent_id" ref="studio_customization.gestion_de_creditos__eb8d4fe2-96fd-4936-b6c0-743dc6909ada"/>
+    <field name="sequence">2</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="studio_customization.gestion_de_creditos__fb9436af-d58b-4369-ab9a-d206bd8f461e" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="studio_customization.incobrable_bf7ebb11-db74-4fee-b580-c17d7d27b738"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Incobrable</field>
+    <field name="parent_id" ref="studio_customization.gestion_de_creditos__eb8d4fe2-96fd-4936-b6c0-743dc6909ada"/>
+    <field name="sequence">3</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="studio_customization.gestion_de_creditos__e22aff63-57a8-492b-a04c-2dde2ab1d37d" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="studio_customization.nuevo_credito_a99add19-d5ec-47cc-8ded-e4a8b0f99e28"/>
+    <field name="active" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Nuevo Credito</field>
+    <field name="parent_id" ref="studio_customization.gestion_de_creditos_92c85c0a-9363-4ac4-9dc8-a72f25bd4f2a"/>
+    <field name="sequence">10</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="studio_customization.gestion_de_creditos__890cad66-b9ba-4a48-a773-71abe680a805" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="studio_customization.nuevo_credito_102849d4-9684-46fa-98fc-58fd2b0a5eab"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Nuevo Credito</field>
+    <field name="parent_id" ref="studio_customization.gestion_de_creditos_92c85c0a-9363-4ac4-9dc8-a72f25bd4f2a"/>
+    <field name="sequence">10</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="studio_customization.gestion_de_creditos__259d50b0-62ae-41a3-b859-48fbb49fb37d" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="studio_customization.configuracion_2ee3e60e-eace-41b4-a91f-cb4d2de1ce7b"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Configuracion</field>
+    <field name="parent_id" ref="studio_customization.gestion_de_creditos_92c85c0a-9363-4ac4-9dc8-a72f25bd4f2a"/>
+    <field name="sequence">10</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+</odoo>

@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="studio_customization.nuevo_credito_group__b65502aa-4946-4788-8fd7-9fafb5b9d744" model="ir.model.access" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="group_id" ref="base.group_system"/>
+    <field name="model_id" ref="studio_customization.nuevo_credito_db787a69-0d5f-40a6-86d9-8751a40867fc"/>
+    <field name="name">Nuevo Credito group_system</field>
+    <field name="perm_create" eval="True"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_unlink" eval="True"/>
+    <field name="perm_write" eval="True"/>
+  </record>
+  <record id="studio_customization.nuevo_credito_group__eff387e9-70f0-4aa0-8eb1-5d6868f1fd79" model="ir.model.access" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="group_id" ref="base.group_user"/>
+    <field name="model_id" ref="studio_customization.nuevo_credito_db787a69-0d5f-40a6-86d9-8751a40867fc"/>
+    <field name="name">Nuevo Credito group_user</field>
+    <field name="perm_create" eval="False"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_unlink" eval="False"/>
+    <field name="perm_write" eval="False"/>
+  </record>
+  <record id="studio_customization.ajustes_de_credito_g_7713ece2-7773-4b4d-ad53-94e8c1d1acbe" model="ir.model.access" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="group_id" ref="base.group_system"/>
+    <field name="model_id" ref="studio_customization.ajustes_de_credito_4be0f01c-776f-4693-b126-5f6ae25dcd8b"/>
+    <field name="name">Ajustes de credito group_system</field>
+    <field name="perm_create" eval="True"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_unlink" eval="True"/>
+    <field name="perm_write" eval="True"/>
+  </record>
+  <record id="studio_customization.ajustes_de_credito_g_4aeb28a8-0770-4d0f-bf4d-63183f115816" model="ir.model.access" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="group_id" ref="base.group_user"/>
+    <field name="model_id" ref="studio_customization.ajustes_de_credito_4be0f01c-776f-4693-b126-5f6ae25dcd8b"/>
+    <field name="name">Ajustes de credito group_user</field>
+    <field name="perm_create" eval="False"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_unlink" eval="False"/>
+    <field name="perm_write" eval="False"/>
+  </record>
+  <record id="studio_customization.creditos_group_syste_344e4e23-3e0d-4aa3-b62e-c2de82febcb3" model="ir.model.access" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="group_id" ref="base.group_system"/>
+    <field name="model_id" ref="studio_customization.creditos_55e90f75-5151-4ead-94ff-2c150b8283d7"/>
+    <field name="name">Creditos group_system</field>
+    <field name="perm_create" eval="True"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_unlink" eval="True"/>
+    <field name="perm_write" eval="True"/>
+  </record>
+  <record id="studio_customization.creditos_group_user_f9c18119-2b49-4dba-80d1-c0baa5d4fdda" model="ir.model.access" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="group_id" ref="base.group_user"/>
+    <field name="model_id" ref="studio_customization.creditos_55e90f75-5151-4ead-94ff-2c150b8283d7"/>
+    <field name="name">Creditos group_user</field>
+    <field name="perm_create" eval="False"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_unlink" eval="False"/>
+    <field name="perm_write" eval="False"/>
+  </record>
+  <record id="studio_customization.caracte_group_system_f02082fd-42bf-42cc-84f6-61489f28c0b9" model="ir.model.access" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="group_id" ref="base.group_system"/>
+    <field name="model_id" ref="studio_customization.caracte_89de8d1a-51ef-4cc4-82bf-07965500eb16"/>
+    <field name="name">caracte group_system</field>
+    <field name="perm_create" eval="True"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_unlink" eval="True"/>
+    <field name="perm_write" eval="True"/>
+  </record>
+  <record id="studio_customization.caracte_group_user_41cff392-6678-4f78-84b7-9a324ddb6cc2" model="ir.model.access" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="group_id" ref="base.group_user"/>
+    <field name="model_id" ref="studio_customization.caracte_89de8d1a-51ef-4cc4-82bf-07965500eb16"/>
+    <field name="name">caracte group_user</field>
+    <field name="perm_create" eval="False"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_unlink" eval="False"/>
+    <field name="perm_write" eval="False"/>
+  </record>
+  <record id="studio_customization.creditos_group_admin_85a2c9f4-09df-4c70-9cc3-1e6309798d80" model="ir.model.access" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="group_id" ref="base.group_system"/>
+    <field name="model_id" ref="studio_customization.creditos_55e90f75-5151-4ead-94ff-2c150b8283d7"/>
+    <field name="name">creditos group_admin</field>
+    <field name="perm_create" eval="True"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_unlink" eval="True"/>
+    <field name="perm_write" eval="True"/>
+  </record>
+  <record id="studio_customization.contabilidad_550d256a-9539-4f49-9bc2-8dfe8bfc0c41" model="ir.model.access" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="group_id" ref="account.group_account_manager"/>
+    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="name">Contabilidad</field>
+    <field name="perm_create" eval="True"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_unlink" eval="True"/>
+    <field name="perm_write" eval="True"/>
+  </record>
+</odoo>

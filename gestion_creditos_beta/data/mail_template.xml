@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="studio_customization.recordatorio_cuota_a_d5bcf585-cdc1-49e8-9074-c79f6a8ff56c" model="mail.template" context="{'studio': True}">
+    <field name="auto_delete" eval="True"/>
+    <field name="body_html">&lt;p style="margin:0px 0 1rem 0;font-size:13px;font-family:&amp;quot;Lucida Grande&amp;quot;, Helvetica, Verdana, Arial, sans-serif;"&gt;&lt;br&gt;&lt;/p&gt;</field>
+    <field name="copyvalue" eval="False"/>
+    <field name="email_cc" eval="False"/>
+    <field name="email_from" eval="False"/>
+    <field name="email_to" eval="False"/>
+    <field name="lang" eval="False"/>
+    <field name="model_id" ref="studio_customization.creditos_55e90f75-5151-4ead-94ff-2c150b8283d7"/>
+    <field name="model_object_field" eval="False"/>
+    <field name="name">Recordatorio Cuota atrasada</field>
+    <field name="null_value" eval="False"/>
+    <field name="partner_to" eval="False"/>
+    <field name="ref_ir_act_window" eval="False"/>
+    <field name="reply_to" eval="False"/>
+    <field name="report_name" eval="False"/>
+    <field name="report_template" eval="False"/>
+    <field name="scheduled_date" eval="False"/>
+    <field name="sub_model_object_field" eval="False"/>
+    <field name="sub_object" eval="False"/>
+    <field name="subject" eval="False"/>
+    <field name="use_default_to" eval="False"/>
+    <field name="user_signature" eval="False"/>
+  </record>
+</odoo>

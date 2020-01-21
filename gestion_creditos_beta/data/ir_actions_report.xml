@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="studio_customization.creditos_reporte_ba6df091-2675-460b-bf90-bbd3e63e42ca" model="ir.actions.report" context="{'studio': True}">
+    <field name="attachment" eval="False"/>
+    <field name="attachment_use" eval="True"/>
+    <field name="binding_model_id" ref="studio_customization.creditos_55e90f75-5151-4ead-94ff-2c150b8283d7"/>
+    <field name="binding_type">report</field>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="model">x_creditos</field>
+    <field name="multi" eval="True"/>
+    <field name="name">Creditos Reporte</field>
+    <field name="report_name">studio_customization.report_d284dfca-4cd0-4fd2-9255-e17e37c1d0f7</field>
+    <field name="report_type">qweb-pdf</field>
+  </record>
+</odoo>
