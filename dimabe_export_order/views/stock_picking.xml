@@ -15,7 +15,6 @@
                  attrs="{'invisible':[('picking_type_code', '=', 'incoming')]}"
           />
         </field>
-
         <xpath expr="//page[@name='extra']" position="after">
           <page string="COMEX" id="export_data"
                 attrs="{'invisible':[('picking_type_code', '=', 'incoming')]}"
