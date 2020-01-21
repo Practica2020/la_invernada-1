@@ -7,6 +7,16 @@ class QualityAnalysis(models.Model):
         clase que almacena los datos de calidad del sistema dimabe
     """
 
+    stock_production_lot_ids = fields.One2many(
+        'stock.production.lot',
+        'quality_analysis_id',
+        string='Lote'
+    )
+
+    lot_name = fields.Char(
+        compute='_compute_lot_name'
+    )
+
     name = fields.Char('Informe')
 
     pre_caliber = fields.Float('Precalibre')
@@ -74,3 +84,11 @@ class QualityAnalysis(models.Model):
         res = super(QualityAnalysis, self).create(values_list)
         res.name = 'Informe QA {}'.format(fields.datetime.utcnow())
         return res
+
+    @api.multi
+    @api.depends('stock_production_lot_ids')
+    def _compute_lot_name(self):
+        for item in self:
+            if item.stock_production_lot_ids and len(item.stock_production_lot_ids) > 0:
+                item.lot_name = item.stock_production_lot_ids[0].name
+

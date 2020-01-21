@@ -10,7 +10,7 @@
                     <field name="reception_type_selection"
                            widget="radio"
                            options="{'horizontal':true}"
-                           attrs="{'readonly': [('state', '=', 'done')]}"
+                           attrs="{'readonly': [('state', '=', 'done')], 'invisible':[('picking_type_code', '=', 'outgoing')]}"
                     />
                     <field name="is_mp_reception"
                            invisible="1"
@@ -34,6 +34,8 @@
                     />
                     <field name="quality_weight"
                            attrs="{'invisible':[('is_mp_reception', '=', False)]}"
+                           readonly="1"
+
                     />
                     <field name="net_weight"
                            attrs="{'invisible':[('is_mp_reception', '=', False)]}"
@@ -53,7 +55,7 @@
                         </group>
                     </page>
                 </xpath>
-                <xpath expr="//page[@name='operations']" position="replace">
+             <!--<xpath expr="//page[@name='operations']" position="replace">
                     <page string="Operations">
                         <field name="id" invisible="1"/>
                         <field name="immediate_transfer" invisible="1"/>
@@ -108,7 +110,7 @@
                                 attrs="{'invisible': [('state', 'in', ('draft', 'done', 'cancel'))]}"
                                 groups="stock.group_tracking_lot"/>
                     </page>
-                </xpath>
+                </xpath>-->
             </field>
         </record>
 

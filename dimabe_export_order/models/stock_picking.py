@@ -57,6 +57,8 @@ class StockPicking(models.Model):
 
     client_label = fields.Boolean('Etiqueta Cliente', default=False)
 
+    client_label_file = fields.Binary(string='Archivo Etiqueta Cliente')
+
     container_number = fields.Char('N° Contenedor')
 
     freight_value = fields.Float('Valor Flete')
