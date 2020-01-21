@@ -3,7 +3,7 @@
     <record id="action_custom_dispatched_view" model="ir.actions.act_window">
       <field name="name">Despachos</field>
       <field name="type">ir.actions.act_window</field>
-      <field name="res_model">custom_dispatched</field>
+      <field name="res_model">custom.dispatched</field>
       <field name="view_mode">tree,form</field>
     </record>
   </data>
