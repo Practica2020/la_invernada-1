@@ -60,5 +60,5 @@ class QualityAnalysis(http.Controller):
 
         return {
             'ok': 'ok',
-            'res': '{} {}'.format(lot.quality_analysis_id, quality_analysis.id),
+            'res': '{} {}'.format(lot.quality_analysis_id, quality_analysis.id)
         }
