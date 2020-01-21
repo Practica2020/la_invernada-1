@@ -1,5 +1,7 @@
 <odoo>
   <data>
+    <menuitem id="menu_dispatched_list" action="action_custom_dispatched_view" parent="mrp.menu_mrp_root" name="Despachos"/>
+
     <!-- explicit list view definition -->
     <!--
     <record model="ir.ui.view" id="dimabe_manufacturing.list">
