@@ -21,7 +21,7 @@ class ProductCategory(models.Model):
 
     @api.one
     def _compute_is_mp(self):
-        self.is_mp = self.name == 'Materia Prima'
+        self.is_mp = 'Materia Prima' in self.name
         if not self.is_mp and self.parent_id:
             self.is_mp = self.parent_id.is_mp
 
