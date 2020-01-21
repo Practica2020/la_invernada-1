@@ -1,6 +1,6 @@
 <odoo>
   <data>
-    <menuitem id="menu_custom_dispatched" parent="mrp.menu_mrp_root" name="Despachos"/>
+    <menuitem id="menu_custom_dispatched" parent="mrp.mrp_menu_root" name="Despachos"/>
 
     <menuitem id="menu_dispatched"
               name="Despachos"
