@@ -17,12 +17,10 @@ class ResPartner(models.Model):
 
     company_type = fields.Selection(string='Company Type',
                                     selection=[('person', 'Individual'), ('company', 'Company')],
+                                    default='company',
                                     compute='_compute_company_type',
-                                    inverse='_write_company_type',
-                                    default='company'
+                                    inverse='_write_company_type'
                                     )
-
-
 
     @api.constrains('commission')
     def _check_data_typed(self):
