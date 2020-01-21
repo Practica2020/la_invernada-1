@@ -1,6 +1,6 @@
 <odoo>
   <data>
-    <menuitem id="menu_custom_dispatched" action="action_custom_dispatched_view" parent="mrp.menu_mrp_root" name="Despachos"/>
+    <menuitem id="menu_custom_dispatched" action="action_custom_dispatched_views" parent="mrp.menu_mrp_root" name="Despachos"/>
 
     <!-- explicit list view definition -->
     <!--
