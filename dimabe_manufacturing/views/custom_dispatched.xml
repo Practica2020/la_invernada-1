@@ -1,7 +1,7 @@
 <odoo>
   <data>
-    <record id="action_custom_dispatched_view" model="ir.actions.act_window">
-      <field name="name">Despachos</field>
+       <record id="action_custom_dispatched_views" model="ir.actions.act_window">
+      <field name="name">Despachados</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">custom.dispatched</field>
       <field name="view_mode">tree,form</field>
