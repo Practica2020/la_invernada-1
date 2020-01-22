@@ -7,8 +7,8 @@
       <t t-foreach="docs" t-as="o">
         <t t-foreach="o.get_mp_move().move_line_ids" t-as="move_line">
           <t t-foreach="move_line.lot_id.stock_production_lot_serial_ids" t-as="serial">
-            <div class="page" style="font-size: 11px !important;">
-              <table>
+            <div class="page">
+              <table style="font-size: 11px !important;">
                 <tr>
                   <td colspan="2" style="text-align: center; font-weight: bold;">
                     <span t-field="move_line.product_id.name"/>
