@@ -95,7 +95,7 @@ class StockPicking(models.Model):
 
     reception_alert = fields.Many2one('reception.alert.config')
 
-    harvest = fields.Integer(
+    harvest = fields.Char(
         'Cosecha',
         default=datetime.now().year
     )
