@@ -95,6 +95,11 @@ class StockPicking(models.Model):
 
     reception_alert = fields.Many2one('reception.alert.config')
 
+    harvest = fields.Integer(
+        'Cosecha',
+        default=datetime.now().year
+    )
+
     @api.one
     @api.depends('tare_weight', 'gross_weight', 'move_ids_without_package', 'quality_weight')
     def _compute_net_weight(self):
