@@ -7,6 +7,8 @@
             <field name="arch" type="xml">
                 <field name="code" position="after">
                     <field name="products_can_be_stored" />
+                </field>
+                <field name="sag_code" position="after">
                     <field name="CSP" />
                 </field>
             </field>

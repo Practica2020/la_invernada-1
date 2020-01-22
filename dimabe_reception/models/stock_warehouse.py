@@ -9,4 +9,4 @@ class StockWarehouse(models.Model):
         string='Productos que pueden ser almacenados'
     )
 
-    csp = fields.Char('CSP')
+    csp = fields.Char('csp')
