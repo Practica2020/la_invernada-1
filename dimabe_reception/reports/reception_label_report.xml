@@ -7,7 +7,7 @@
       <t t-foreach="docs" t-as="o">
         <t t-foreach="o.get_mp_move().move_line_ids" t-as="move_line">
           <t t-foreach="move_line.lot_id.stock_production_lot_serial_ids" t-as="serial">
-            <div class="page">
+            <div class="page" style="font-size: 15px !important;">
               <table>
                 <tr>
                   <td colspan="2" style="text-align: center; font-weight: bold;">
@@ -405,23 +405,6 @@
     <field name="dpi">90</field>
   </record>
 
-  <record id="paper_format_10_x_7_60_dpi"
-          model="report.paperformat"
-  >
-    <field name="name">Etiqueta 10x7</field>
-    <field name="default" eval="False"/>
-    <field name="format">custom</field>
-    <field name="page_height">71</field>
-    <field name="page_width">100</field>
-    <field name="orientation">Portrait</field>
-    <field name="margin_top">5</field>
-    <field name="margin_bottom">5</field>
-    <field name="margin_left">5</field>
-    <field name="margin_right">5</field>
-    <field name="header_line" eval="False"/>
-    <field name="header_spacing">0</field>
-    <field name="dpi">60</field>
-  </record>
 
   <report id="action_reception_weighing_ticket_report"
           string="Ticket De Pesaje"
@@ -443,7 +426,7 @@
           model="stock.picking"
           report_type="qweb-pdf"
           name="dimabe_reception.report_reception_standard_label_template"
-          paperformat="paper_format_10_x_7_60_dpi"
+          paperformat="paper_format_10_x_7"
   />
 
   <report id="action_reception_quality_label_report"
