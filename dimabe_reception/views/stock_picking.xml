@@ -21,6 +21,7 @@
                     <field name="date_done"/>
                     <field name="elapsed_time"/>
                     <field name="harvest"
+                           widget="char"
                            attrs="{'invisible':[('is_mp_reception', '=', False)]}"
                      />
                     <field name="guide_number"
