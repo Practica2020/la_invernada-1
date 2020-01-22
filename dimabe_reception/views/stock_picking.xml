@@ -20,7 +20,9 @@
                     <field name="truck_in_date"/>
                     <field name="date_done"/>
                     <field name="elapsed_time"/>
-                    <field name="harvest" />
+                    <field name="harvest"
+                           attrs="{'invisible':[('is_mp_reception', '=', False)]}"
+                     />
                     <field name="guide_number"
                            attrs="{'invisible':[('is_mp_reception', '=', False)], 'readonly': [('state', '=', 'done')]}"
                     />
