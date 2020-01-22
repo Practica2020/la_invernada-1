@@ -8,8 +8,8 @@
                 <field name="code" position="after">
                     <field name="products_can_be_stored" />
                 </field>
-                <field name="sag_code" position="after">
-                    <field name="CSP" />
+                <field name="partner_id" position="after">
+                    <field name="csp" />
                 </field>
             </field>
         </record>
