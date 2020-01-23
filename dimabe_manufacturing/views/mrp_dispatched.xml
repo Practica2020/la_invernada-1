@@ -1,16 +1,22 @@
 <odoo>
     <data>
-        <record id="mrp_dispatched_list">
+        <record id="view_mrp_dispatched_tree" model="ir.ui.view">
             <field name="name">Dispatched</field>
             <field name="model">stock.picking</field>
             <field name="arch" type="xml">
-                <tree string="Dispatched Information">
+                <tree string="Dispatched">
                     <field name="shipping_number" />
                     <field name="charging_mode" />
-                    <field name="client_label" />
-                    <field name="required_loading_date" />
+                    <field name="client_label"/>
+                    <field name="required_loading_date"/>
                 </tree>
             </field>
+        </record>
+        <record id="action_mrp_dispatched" model="ir.actions.act_window">
+            <field name="name">Dispatched</field>
+            <field name="res_model">stock.picking</field>
+            <field name="view_type">tree</field>
+            <field name="view_mode">list,tree</field>
         </record>
     </data>
 </odoo>
