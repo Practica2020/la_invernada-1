@@ -208,6 +208,8 @@ class StockPicking(models.Model):
             if stock_picking.is_mp_reception:
                 if not stock_picking.gross_weight:
                     message = 'Debe agregar kg brutos \n'
+                if stock_picking.gross_weight < stock_picking.weight_guide:
+                    message = 'Los kilos de la Guía no pueden ser mayores a los Kilos brutos ingresados'
                 if not stock_picking.tare_weight:
                     message = 'Debe agregar kg tara'
                 if message:
