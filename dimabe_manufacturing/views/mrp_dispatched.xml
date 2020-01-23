@@ -3,7 +3,7 @@
         <record id="view_mrp_dispatched_tree" model="ir.ui.view">
             <field name="name">Dispatched</field>
             <field name="model">stock.picking</field>
-            <field name="inherit_id" ref="dimabe_export_order.stock_picking" />
+            <field name="inherit_id" ref="stock_picking" />
             <field name="arch" type="xml">
                 <tree string="Dispatched">
                     <field name="shipping_number" />
