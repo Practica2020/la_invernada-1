@@ -137,7 +137,7 @@ class StockPicking(models.Model):
     @api.one
     @api.depends('reception_type_selection', 'picking_type_id')
     def _compute_is_mp_reception(self):
-        self.is_mp_reception = self.reception_type_selection == 'mp' or 'Materia Prima' in self.picking_type_id.name
+        self.is_mp_reception = self.reception_type_selection == 'mp' or 'Materia Prima' in self.picking_type_id.warehouse_id.name
 
     @api.one
     @api.depends('production_net_weight', 'tare_weight', 'gross_weight', 'move_ids_without_package')
