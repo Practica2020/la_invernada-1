@@ -36,7 +36,7 @@ class StockPicking(models.Model):
         ('mp', 'Materia Prima')
     ],
         default='ins',
-        string='Tipo de Recepción'
+        string='Tipo de <'
     )
 
     is_mp_reception = fields.Boolean(
@@ -137,7 +137,7 @@ class StockPicking(models.Model):
     @api.one
     @api.depends('reception_type_selection')
     def _compute_is_mp_reception(self):
-        self.is_mp_reception = self.reception_type_selection == 'mp'
+        self.is_mp_reception = self.reception_type_selection == 'mp' or 'Materia Prima' in self.picking_type_id
 
     @api.one
     @api.depends('production_net_weight', 'tare_weight', 'gross_weight', 'move_ids_without_package')
