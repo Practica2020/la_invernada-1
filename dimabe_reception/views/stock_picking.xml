@@ -14,7 +14,7 @@
                            widget="radio"
                            options="{'horizontal':true}"
                            attrs="{'readonly': [('state', '=', 'done')], 
-                                   'invisible':[('picking_type_code', '=', 'outgoing'), ('is_mp_reception', '=', True)]}"
+                                   'invisible':['|',('picking_type_code', '=', 'outgoing'), ('is_mp_reception', '=', True)]}"
                     />
                     <field name="is_mp_reception"
                            invisible="1"
