@@ -1,6 +1,17 @@
-from odoo import http, exceptions
+from odoo import http, exceptions, models
 from odoo.http import request
 import werkzeug
+
+
+def to_tuple_list(data):
+    return [
+        (0, 0, reg) for reg in data
+    ]
+
+
+def process_child(data, field):
+    if field in data and len(data[field]) > 0:
+        data[field] = to_tuple_list(data[field])
 
 
 def to_tuple_list(data):
@@ -42,7 +53,6 @@ class QualityAnalysis(http.Controller):
             data['humidity_analysis_id'] = humidity_analysis.id
 
         quality_analysis = request.env['quality.analysis'].create(data)
-
         if quality_analysis:
             lot.update({
                 'quality_analysis_id': quality_analysis.id
@@ -50,6 +60,5 @@ class QualityAnalysis(http.Controller):
 
         return {
             'ok': 'ok',
-            'res': '{} {}'.format(lot.quality_analysis_id, quality_analysis.id),
+            'res': '{} {}'.format(lot.quality_analysis_id, quality_analysis.id)
         }
-

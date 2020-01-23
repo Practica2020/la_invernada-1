@@ -5,12 +5,15 @@
             <field name="model">stock.picking</field>
             <field name="inherit_id" ref="stock.view_picking_form"/>
             <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="domain">[('is_company', '=', True), ('customer', '=', True)]</attribute>
+                </xpath>
                 <field name="picking_type_id" position="after">
                     <field name="sag_code"/>
                     <field name="reception_type_selection"
                            widget="radio"
                            options="{'horizontal':true}"
-                           attrs="{'readonly': [('state', '=', 'done')]}"
+                           attrs="{'readonly': [('state', '=', 'done')], 'invisible':[('picking_type_code', '=', 'outgoing')]}"
                     />
                     <field name="is_mp_reception"
                            invisible="1"
@@ -20,6 +23,9 @@
                     <field name="truck_in_date"/>
                     <field name="date_done"/>
                     <field name="elapsed_time"/>
+                    <field name="harvest"
+                           attrs="{'invisible':[('is_mp_reception', '=', False)]}"
+                     />
                     <field name="guide_number"
                            attrs="{'invisible':[('is_mp_reception', '=', False)], 'readonly': [('state', '=', 'done')]}"
                     />
@@ -34,6 +40,8 @@
                     />
                     <field name="quality_weight"
                            attrs="{'invisible':[('is_mp_reception', '=', False)]}"
+                           readonly="1"
+
                     />
                     <field name="net_weight"
                            attrs="{'invisible':[('is_mp_reception', '=', False)]}"
@@ -53,7 +61,7 @@
                         </group>
                     </page>
                 </xpath>
-                <xpath expr="//page[@name='operations']" position="replace">
+             <!--<xpath expr="//page[@name='operations']" position="replace">
                     <page string="Operations">
                         <field name="id" invisible="1"/>
                         <field name="immediate_transfer" invisible="1"/>
@@ -108,7 +116,7 @@
                                 attrs="{'invisible': [('state', 'in', ('draft', 'done', 'cancel'))]}"
                                 groups="stock.group_tracking_lot"/>
                     </page>
-                </xpath>
+                </xpath>-->
             </field>
         </record>
 

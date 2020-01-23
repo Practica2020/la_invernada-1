@@ -1,5 +1,5 @@
 from odoo import models, api, fields
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 class StockPicking(models.Model):
@@ -95,6 +95,11 @@ class StockPicking(models.Model):
 
     reception_alert = fields.Many2one('reception.alert.config')
 
+    harvest = fields.Char(
+        'Cosecha',
+        default=datetime.now().year
+    )
+
     @api.one
     @api.depends('tare_weight', 'gross_weight', 'move_ids_without_package', 'quality_weight')
     def _compute_net_weight(self):
@@ -164,6 +169,36 @@ class StockPicking(models.Model):
                 stock_picking.validate_mp_reception()
                 stock_picking.truck_in_date = fields.datetime.now()
             res = super(StockPicking, self).action_confirm()
+            mp_move = stock_picking.get_mp_move()
+
+            if mp_move and mp_move.move_line_ids and mp_move.picking_id \
+                    and mp_move.picking_id.picking_type_code == 'incoming':
+                for move_line in mp_move.move_line_ids:
+                    lot = self.env['stock.production.lot'].create({
+                        'name': stock_picking.name,
+                        'product_id': move_line.product_id.id
+                    })
+                    if lot:
+                        move_line.update({
+                            'lot_id': lot.id
+                        })
+
+                if mp_move.product_id.tracking == 'lot' and not mp_move.has_serial_generated:
+                    for stock_move_line in mp_move.move_line_ids:
+                        if mp_move.product_id.categ_id.is_mp:
+                            total_qty = mp_move.picking_id.get_canning_move().product_uom_qty
+                            calculated_weight = stock_move_line.qty_done / total_qty
+                            if stock_move_line.lot_id:
+
+                                for i in range(int(total_qty)):
+                                    tmp = '00{}'.format(i + 1)
+                                    self.env['stock.production.lot.serial'].create({
+                                        'calculated_weight': calculated_weight,
+                                        'stock_production_lot_id': stock_move_line.lot_id.id,
+                                        'serial_number': '{}{}'.format(stock_move_line.lot_name, tmp[-3:])
+                                    })
+
+                                mp_move.has_serial_generated = True
             return res
 
     @api.multi
@@ -173,11 +208,17 @@ class StockPicking(models.Model):
             if stock_picking.is_mp_reception:
                 if not stock_picking.gross_weight:
                     message = 'Debe agregar kg brutos \n'
+                if stock_picking.gross_weight < stock_picking.weight_guide:
+                    message = 'Los kilos de la Guía no pueden ser mayores a los Kilos brutos ingresados'
                 if not stock_picking.tare_weight:
                     message = 'Debe agregar kg tara'
                 if message:
                     raise models.ValidationError(message)
-        return super(StockPicking, self).button_validate()
+        res = super(StockPicking, self).button_validate()
+        if self.get_mp_move():
+            self.get_mp_move().quantity_done = self.net_weight
+        models._logger.error('rrrrrrrrrrrrrrrrrrrrr {}'.format(self.get_mp_move()))
+        return res
 
     @api.model
     def validate_mp_reception(self):
@@ -203,7 +244,9 @@ class StockPicking(models.Model):
     @api.multi
     def notify_alerts(self):
         alert_config = self.env['reception.alert.config'].search([])
-        if self.hr_alert_notification_count == 0 and self.elapsed_time > alert_config.hr_alert:
+
+        elapsed_datetime = datetime.strptime(self.elapsed_time, '%H:%M:%S')
+        if self.hr_alert_notification_count == 0 and elapsed_datetime.hour >= alert_config.hr_alert:
             self.ensure_one()
             self.reception_alert = alert_config
             template_id = self.env.ref('dimabe_reception.truck_not_out_mail_template')

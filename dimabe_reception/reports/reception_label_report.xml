@@ -1,6 +1,64 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <odoo>
+
+  <template id="report_reception_standard_label_template">
+    <t t-call="web.html_container">
+      <t t-foreach="docs" t-as="o">
+        <t t-foreach="o.get_mp_move().move_line_ids" t-as="move_line">
+          <t t-foreach="move_line.lot_id.stock_production_lot_serial_ids" t-as="serial">
+            <div class="page">
+              <table style="font-size: 11px !important;">
+                <tr>
+                  <td colspan="2" style="text-align: center; font-weight: bold;">
+                    <span t-field="move_line.product_id.name"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: right !important;">GROWER/PRODUCTOR:</td>
+                  <td>PACKED BY/EMBALADO POR</td>
+                </tr>
+                <tr>
+                  <td style="text-align: right !important;">
+                    <span t-field="o.partner_id.short_name"/>
+                  </td>
+                  <td>
+                    <span t-field="o.company_id.name" />
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: right !important;">
+                    CSG: <span t-field="o.partner_id.sag_code" />
+                  </td>
+                  <td>
+                    CSP: <span t-field="o.company_id.sag_code"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: right !important;">
+                    PROVINCE/PROVINCIA: <span t-field="o.partner_id.state_id.name" />
+                  </td>
+                  <td>
+                    PROVINCE/PROVINCIA: <span t-field="o.company_id.state_id.name" />
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: right !important;">
+                    TOWNSHIP/COMUNA: <span t-field="o.partner_id.city" />
+                  </td>
+                  <td>
+                    TOWNSHIP/COMUNA: <span t-field="o.company_id.city" />
+                  </td>
+                </tr>
+              </table>
+              <p style="page-break-after:always;"> </p>
+            </div>
+          </t>
+        </t>
+      </t>
+    </t>
+  </template>
+
   <template id="report_reception_label_template">
     <t t-call="web.html_container">
       <t t-foreach="docs" t-as="o">
@@ -347,6 +405,7 @@
     <field name="dpi">90</field>
   </record>
 
+
   <report id="action_reception_weighing_ticket_report"
           string="Ticket De Pesaje"
           model="stock.picking"
@@ -359,6 +418,14 @@
           model="stock.picking"
           report_type="qweb-pdf"
           name="dimabe_reception.report_reception_label_template"
+          paperformat="paper_format_10_x_7"
+  />
+
+  <report id="report_reception_standard_label_report"
+          string="Etiquetas PT"
+          model="stock.picking"
+          report_type="qweb-pdf"
+          name="dimabe_reception.report_reception_standard_label_template"
           paperformat="paper_format_10_x_7"
   />
 

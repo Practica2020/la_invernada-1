@@ -1,4 +1,4 @@
-from odoo import http
+from odoo import http, models
 from odoo.http import request
 import werkzeug
 
@@ -27,3 +27,15 @@ class StockPickingController(http.Controller):
             }
         else:
             raise werkzeug.exceptions.NotFound('lote no encontrado')
+
+    @http.route("/api/stock_picking", type='json', methods=['PUT'], auth='token', cors='*')
+    def put_lot(self, lot, data):
+        stock_picking_ids = request.env['stock.picking'].search([('name', '=', lot)])
+
+        if stock_picking_ids:
+            for stock_picking in stock_picking_ids:
+                stock_picking.update(data)
+        return {
+            'lot': lot,
+            'data': data
+        }

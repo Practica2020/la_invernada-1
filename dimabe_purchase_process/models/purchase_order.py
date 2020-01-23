@@ -65,6 +65,7 @@ class PurchaseOrder(models.Model):
 
         approve_message = self.message_ids.filtered(lambda x: x.subtype_id.name == 'SdP aprobada')
         if approve_message:
+            models._logger()
             approve_message = approve_message[0]
             return '{} {}'.format(approve_message.author_id.name, approve_message.date)
         return ''
@@ -82,3 +83,23 @@ class PurchaseOrder(models.Model):
             usr.partner_id.email for usr in user_group.users if usr.partner_id.email
         ]
         return ','.join(email_list)
+
+    @api.model
+    def create(self, values_list):
+        res = super(PurchaseOrder, self).create(values_list)
+        if res.order_line and len(res.order_line) > 0:
+            for line in res.order_line:
+                if not line.price_unit or line.price_unit == 0:
+                    raise models.ValidationError('debe agregar precio unitario')
+        return res
+
+    @api.multi
+    def write(self, values):
+        res = super(PurchaseOrder, self).write(values)
+        for item in self:
+            if item.order_line and len(item.order_line) > 0:
+                for line in item.order_line:
+                    if not line.price_unit or line.price_unit == 0:
+                        raise models.ValidationError('debe agregar precio unitario')
+        return res
+

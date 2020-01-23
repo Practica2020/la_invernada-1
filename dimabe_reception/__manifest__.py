@@ -35,6 +35,7 @@
         'views/views.xml',
         'views/stock_picking.xml',
         'views/res_partner.xml',
+        'views/res_company.xml',
         'views/stock_move.xml',
         'views/templates.xml',
         'views/custom_carrier.xml',
