@@ -36,7 +36,7 @@ class StockPicking(models.Model):
         ('mp', 'Materia Prima')
     ],
         default='ins',
-        string='Tipo de <'
+        string='Tipo de recepción'
     )
 
     is_mp_reception = fields.Boolean(
@@ -135,7 +135,7 @@ class StockPicking(models.Model):
             self.elapsed_time = '00:00:00'
 
     @api.one
-    @api.depends('reception_type_selection')
+    @api.depends('reception_type_selection', 'picking_type_id')
     def _compute_is_mp_reception(self):
         self.is_mp_reception = self.reception_type_selection == 'mp' or 'Materia Prima' in self.picking_type_id
 
