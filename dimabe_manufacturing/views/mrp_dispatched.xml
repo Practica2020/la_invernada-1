@@ -2,16 +2,22 @@
     <data>
         <record id="view_mrp_dispatched_tree" model="ir.ui.view">
             <field name="name">Despachos</field>
-            <field name="model">mrp.dispatched</field>
+            <field name="model">stock.picking</field>
             <field name="arch" type="xml">
                 <tree string="Dispatched">
-                    <field name="mrp.dispatched"/>
+                    <field name="display_name"/>
+                    <field name="shipping_id" widget="many2one" />
+                    <field name="partner_id" widget="many2one" />
+                    <field name="shipping_number" />
+                    <field name="client_label" />
+                    <field name="charging_mode" />
+                    <field name="state"/>
                 </tree>
             </field>
         </record>
         <record id="action_mrp_dispatched" model="ir.actions.act_window">
             <field name="name">Dispatched</field>
-            <field name="res_model">mrp.dispatched</field>
+            <field name="res_model">stock.picking</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
