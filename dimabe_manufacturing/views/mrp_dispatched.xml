@@ -5,9 +5,10 @@
             <field name="model">stock.picking</field>
             <field name="arch" type="xml">
                 <tree string="Dispatched">
+                    <field name="origin" />
                     <field name="shipping_number" />
                     <field name="charging_mode" />
-                    <field name="client_label"/><!-- 
+                    <field name="client_label" /> <!-- 
                     <field name="required_loading_date"/> -->
                     <!-- <field name="required_loading_date"/> -->
                 </tree>
@@ -20,6 +21,6 @@
             <field name="view_mode">tree</field>
         </record>
         <menuitem id="menu_mrp_dispatched_root" name="Despachos" parent="mrp.menu_mrp_root" groups="base.group_user" />
-        <menuitem id="mrp_dispatched_child" name="Despachos" parent="menu_mrp_dispatched_root" action="action_mrp_dispatched"/>
+        <menuitem id="mrp_dispatched_child" name="Despachos" parent="menu_mrp_dispatched_root" action="action_mrp_dispatched" />
     </data>
 </odoo>
