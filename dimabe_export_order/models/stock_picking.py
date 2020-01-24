@@ -17,7 +17,7 @@ class StockPicking(models.Model):
 
     test_data = fields.Many2one('sale.order.line','Test Data')
 
-    test_data_value = fields.Char(related="test_data.product_uom_qty")
+    test_data_value = fields.Float(related="test_data.product_uom_qty")
 
     contract_correlative = fields.Integer('corr')
 
