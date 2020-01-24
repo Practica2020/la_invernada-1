@@ -13,9 +13,10 @@ class StockPicking(models.Model):
         'Embarque'
     )
 
-    required_loading_date = fields.Date(related='shipping_id.required_loading_date')
+    name = fields.Char('Variedad')
 
-
+    required_loading_date = fields.Date(
+        related='shipping_id.required_loading_date')
 
     contract_correlative = fields.Integer('corr')
 
@@ -134,3 +135,8 @@ class StockPicking(models.Model):
         # )
         # else:
         # self.contract_correlative_view = ''
+
+     @api.model
+     def _get_variety(self):
+         variety = fields.Many2one('product.template.attribute.value')
+         name = variety  
