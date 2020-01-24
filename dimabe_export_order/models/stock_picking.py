@@ -15,7 +15,9 @@ class StockPicking(models.Model):
 
     required_loading_date = fields.Date(related='shipping_id.required_loading_date')
 
-    test_data = fields.Many2one('sale.order.line.product_oum_line','Test Data')
+    test_data = fields.Many2one('sale.order.line','Test Data')
+
+    test_data_value = fields.Char(related="test_data.product_uom_line")
 
     contract_correlative = fields.Integer('corr')
 
