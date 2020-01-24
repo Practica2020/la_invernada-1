@@ -13,7 +13,7 @@ class StockPicking(models.Model):
         'Embarque'
     )
 
-    name = fields.Char('Variedad')
+    name = fields.Char('Variedad',compute="_get_variety")
 
     required_loading_date = fields.Date(
         related='shipping_id.required_loading_date')
@@ -90,6 +90,11 @@ class StockPicking(models.Model):
     )
 
     @api.model
+    def _get_variety(self):
+        v = fields.Many2one('product.template.atrribute.value')
+        name = fields.Char(related = 'v.html_color')
+
+    @api.model
     @api.depends('freight_value', 'safe_value')
     def _compute_total_value(self):
         print('')
@@ -114,6 +119,8 @@ class StockPicking(models.Model):
         # cambiar amount_total
         # self.total_commission = (self.agent_id.commission / 100) * self.amount_total
 
+    
+
     @api.model
     # @api.depends('contract_id')
     def _get_correlative_text(self):
@@ -135,8 +142,3 @@ class StockPicking(models.Model):
         # )
         # else:
         # self.contract_correlative_view = ''
-
-     @api.model
-     def _get_variety(self):
-         variety = fields.Many2one('product.template.attribute.value')
-         name = variety  
