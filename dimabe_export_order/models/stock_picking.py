@@ -93,6 +93,7 @@ class StockPicking(models.Model):
     def _get_variety(self):
         v = fields.Many2one('product.template.atrribute.value')
         name = fields.Char(related='v.attribute_id')
+        models._logger('AAAAAAAAAAAAAAAAAAAA',name)
         if not name:
             variety = "Error"
 
