@@ -11,6 +11,7 @@
                     <field name="client_label" />
                     <field name="charging_mode" />
                     <field name="state"/>
+                    <field nama="company_id" widget="many2one"/>
                 </tree>
             </field>
         </record>
