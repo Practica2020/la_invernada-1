@@ -92,7 +92,8 @@ class StockPicking(models.Model):
     @api.model
     def _get_variety(self):
         v = fields.Many2one('product.template.atrribute.value')
-        name = fields.Char(related = 'v.attribute_id')
+        if 'Variedad' in v.attribute_id
+            variety = 'Tiene Variedad'
 
     @api.model
     @api.depends('freight_value', 'safe_value')
