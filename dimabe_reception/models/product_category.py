@@ -27,6 +27,6 @@ class ProductCategory(models.Model):
 
     @api.one
     def _compute_is_canning(self):
-        self.is_canning = self.name == 'Envases'
+        self.is_canning = 'Envases' in self.name
         if not self.is_canning and self.parent_id:
             self.is_canning = self.parent_id.is_canning

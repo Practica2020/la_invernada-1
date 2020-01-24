@@ -7,7 +7,9 @@ class StockPicking(models.Model):
 
     guide_number = fields.Integer('Número de Guía')
 
-    weight_guide = fields.Integer('Kilos Guía')
+    weight_guide = fields.Integer('Kilos Guía',
+                            compute='_compute_weight_guide',
+                            store=True)
 
     gross_weight = fields.Integer('Kilos Brutos')
 
@@ -107,6 +109,12 @@ class StockPicking(models.Model):
         if self.is_mp_reception:
             if self.canning_weight:
                 self.net_weight = self.net_weight - self.canning_weight
+    @api.one
+    @api.depends('move_ids_without_package')
+    def _compute_weight_guide(self):
+        if self.is_mp_reception:
+            if self.get_mp_move():
+                self.weight_guide = self.get_mp_move().product_uom_qty
 
     @api.one
     @api.depends('move_ids_without_package')
