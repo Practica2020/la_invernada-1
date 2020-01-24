@@ -13,7 +13,8 @@ class StockPicking(models.Model):
         'Embarque'
     )
 
-    variety = fields.Char('Variedad', related='v.attribute_id')
+    v = fields.Many2one('product.template.atrribute.value')
+    variety = fields.Char('Variedad', compute="v.attribute_id")
 
     required_loading_date = fields.Date(
         related='shipping_id.required_loading_date')
