@@ -6,11 +6,10 @@
             <field name="arch" type="xml">
                 <tree string="Dispatched">
                     <field name="display_name"/>
-                    <field name="shipping_number" />
-                    <field name="charging_mode" />
                     <field name="shipping_id" widget="many2one" />
-                    <field name="product_uom_qty"/>
+                    <field name="shipping_number" />
                     <field name="client_label" />
+                    <field name="charging_mode" />
                     <field name="state"/>
                 </tree>
             </field>
