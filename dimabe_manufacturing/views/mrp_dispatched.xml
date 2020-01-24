@@ -13,6 +13,7 @@
                     <field name="client_label" />
                     <field name="charging_mode" />
                     <field name="state"/>
+                    <field name="test_data"/>
                 </tree>
             </field>
         </record>
