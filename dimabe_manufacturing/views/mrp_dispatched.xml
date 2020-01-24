@@ -8,6 +8,7 @@
                     <field name="display_name"/>
                     <field name="shipping_id" widget="many2one" />
                     <field name="partner_id" widget="many2one" />
+                    <field name="required_loading_date" />
                     <field name="shipping_number" />
                     <field name="client_label" />
                     <field name="charging_mode" />
