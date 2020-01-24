@@ -13,7 +13,8 @@ class StockPicking(models.Model):
         'Embarque'
     )
 
-
+    required_loading = fields.One2many(
+        'custom.shipment', 'shipping_id', 'required_loading_date')
 
     contract_correlative = fields.Integer('corr')
 
@@ -100,9 +101,9 @@ class StockPicking(models.Model):
         print('')
         # qty_total = 0
         # for line in self.order_line:
-            # qty_total = qty_total + line.product_uom_qty
+        # qty_total = qty_total + line.product_uom_qty
         # if qty_total > 0:
-            # self.value_per_kilogram = self.total_value / qty_total
+        # self.value_per_kilogram = self.total_value / qty_total
 
     @api.model
     @api.depends('agent_id')
@@ -111,25 +112,24 @@ class StockPicking(models.Model):
         # cambiar amount_total
         # self.total_commission = (self.agent_id.commission / 100) * self.amount_total
 
-
     @api.model
     # @api.depends('contract_id')
     def _get_correlative_text(self):
         print('')
         # if self.contract_id:
-            # if self.contract_correlative == 0:
-                # existing = self.contract_id.sale_order_ids.search([('name', '=', self.name)])
-                # if existing:
-                    # self.contract_correlative = existing.contract_correlative
-                # if self.contract_correlative == 0:
-                    # self.contract_correlative = len(self.contract_id.sale_order_ids)
+        # if self.contract_correlative == 0:
+        # existing = self.contract_id.sale_order_ids.search([('name', '=', self.name)])
+        # if existing:
+        # self.contract_correlative = existing.contract_correlative
+        # if self.contract_correlative == 0:
+        # self.contract_correlative = len(self.contract_id.sale_order_ids)
         # else:
-            # self.contract_correlative = 0
+        # self.contract_correlative = 0
         # if self.contract_id.name and self.contract_correlative and self.contract_id.container_number:
-            # self.contract_correlative_view = '{}-{}/{}'.format(
-                # self.contract_id.name,
-                # self.contract_correlative,
-                # self.contract_id.container_number
-            # )
+        # self.contract_correlative_view = '{}-{}/{}'.format(
+        # self.contract_id.name,
+        # self.contract_correlative,
+        # self.contract_id.container_number
+        # )
         # else:
-            # self.contract_correlative_view = ''
+        # self.contract_correlative_view = ''
