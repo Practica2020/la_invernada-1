@@ -15,10 +15,6 @@ class StockPicking(models.Model):
 
     required_loading_date = fields.Date(related='shipping_id.required_loading_date')
 
-    test = fields.Many2one(
-        'sale.order',
-        'Test'
-    )
 
     test_data = fields.Char(related='test.name')
 
