@@ -31,7 +31,7 @@
                            attrs="{'invisible':[('is_mp_reception', '=', False)], 'readonly': [('state', '=', 'done')]}"
                     />
                     <field name="weight_guide"
-                           attrs="{'invisible':[('is_mp_reception', '=', False)], 'readonly': [('state', '=', 'done')]}"
+                           attrs="{'invisible':[('is_mp_reception', '=', False)], 'readonly': 1}"
                     />
                     <field name="gross_weight"
                            attrs="{'invisible':[('is_mp_reception', '=', False)], 'readonly': [('state', '=', 'done')]}"
