@@ -8,9 +8,8 @@
                     <field name="display_name"/>
                     <field name="shipping_number" />
                     <field name="charging_mode" />
-                    <field name="client_label" /> <!-- 
-                    <field name="required_loading_date"/> -->
-                    <!-- <field name="required_loading_date"/> -->
+                    <field name="client_label" /> 
+                    <field name="custom.shipment.required_loading_date"/>
                 </tree>
             </field>
         </record>
