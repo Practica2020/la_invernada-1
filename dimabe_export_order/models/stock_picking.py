@@ -13,6 +13,7 @@ class StockPicking(models.Model):
         'Embarque'
     )
 
+    required_loading_date = fields.Date('custom.shipment.required_loading_date')
 
     contract_correlative = fields.Integer('corr')
 
