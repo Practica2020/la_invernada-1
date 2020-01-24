@@ -12,7 +12,6 @@
                     <field name="client_label" />
                     <field name="charging_mode" />
                     <field name="state"/>
-
                 </tree>
             </field>
         </record>
