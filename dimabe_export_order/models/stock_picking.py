@@ -13,7 +13,9 @@ class StockPicking(models.Model):
         'Embarque'
     )
 
-    document_origin = fields.Many2one('sale.order')
+    sale_order = fields.Many2one('sale.order')
+
+    document_origin = fields.Char(related='sale_order.name')
 
     required_loading_date = fields.Date(related='shipping_id.required_loading_date')
 
