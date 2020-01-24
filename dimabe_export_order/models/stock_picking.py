@@ -13,7 +13,7 @@ class StockPicking(models.Model):
         'Embarque'
     )
 
-    required_loading = fields.One2many('custom.shipment','shipping_id','required_loading_date')
+
 
     contract_correlative = fields.Integer('corr')
 
