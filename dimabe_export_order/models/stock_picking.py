@@ -13,7 +13,7 @@ class StockPicking(models.Model):
         'Embarque'
     )
 
-    name = fields.Char('Variedad',compute="_get_variety")
+    variety = fields.Char('Variedad', compute="_get_variety")
 
     required_loading_date = fields.Date(
         related='shipping_id.required_loading_date')
