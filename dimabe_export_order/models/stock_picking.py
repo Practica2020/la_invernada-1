@@ -112,7 +112,7 @@ class StockPicking(models.Model):
     @api.model
     @api.depends('shipping_id')
     def _get_required_loading_date(self):
-        models._logger(self.shipping_id)
+        print(self.shipping_id)
 
 
     @api.model
