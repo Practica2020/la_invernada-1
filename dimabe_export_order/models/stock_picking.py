@@ -110,6 +110,11 @@ class StockPicking(models.Model):
         # self.total_commission = (self.agent_id.commission / 100) * self.amount_total
 
     @api.model
+    @api.depends('shipping_id')
+    def _get_required_loading_date(self):
+        models._logger(self.shipping_id)
+
+    @api.model
     # @api.depends('contract_id')
     def _get_correlative_text(self):
         print('')
