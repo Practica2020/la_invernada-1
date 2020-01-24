@@ -225,6 +225,11 @@ class StockPicking(models.Model):
         res = super(StockPicking, self).button_validate()
         if self.get_mp_move():
             self.get_mp_move().quantity_done = self.net_weight
+            if self.get_mp_move().has_serial_generated and self.avg_unitary_weight:
+                self.env['stock.production.lot.serial'].search([('stock_production_lot_id', '=', self.name)]).write({'real_weight': self.avg_unitary_weight})
+
+                    
+
         models._logger.error('rrrrrrrrrrrrrrrrrrrrr {}'.format(self.get_mp_move()))
         return res
 
