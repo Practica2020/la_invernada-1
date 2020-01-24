@@ -1,7 +1,7 @@
 <odoo>
     <data>
         <record id="view_mrp_dispatched_tree" model="ir.ui.view">
-            <field name="name">Dispatched</field>
+            <field name="name">Despachos</field>
             <field name="model">stock.picking</field>
             <field name="arch" type="xml">
                 <tree string="Dispatched">
@@ -9,7 +9,6 @@
                     <field name="shipping_number" />
                     <field name="charging_mode" />
                     <field name="client_label" />
-                    <field name="client_label_file"/> 
                     <field name="state"/>
                 </tree>
             </field>
