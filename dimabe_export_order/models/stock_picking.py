@@ -51,6 +51,8 @@ class StockPicking(models.Model):
         'Modo de Carga'
     )
 
+    required_loading_date = fields.Date('Fecha requerida de Carga')
+
     booking_number = fields.Char('N° Booking')
 
     bl_number = fields.Char('N° BL')
@@ -109,10 +111,9 @@ class StockPicking(models.Model):
         # cambiar amount_total
         # self.total_commission = (self.agent_id.commission / 100) * self.amount_total
 
-    @api.model
-    @api.depends('shipping_id')
+    @api.onchange('shipping_id')
     def _get_required_loading_date(self):
-        print(self.shipping_id)
+        self.required_loading_date = self.shipping_id.required_loading_date
 
 
     @api.model
