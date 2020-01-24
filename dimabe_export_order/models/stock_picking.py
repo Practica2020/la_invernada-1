@@ -114,6 +114,7 @@ class StockPicking(models.Model):
     def _get_required_loading_date(self):
         models._logger(self.shipping_id)
 
+
     @api.model
     # @api.depends('contract_id')
     def _get_correlative_text(self):
