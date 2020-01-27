@@ -231,8 +231,6 @@ class StockPicking(models.Model):
                 self.env['stock.production.lot.serial'].search([('stock_production_lot_id', '=', self.name)]).write({'real_weight': self.avg_unitary_weight})
 
                     
-
-        models._logger.error('rrrrrrrrrrrrrrrrrrrrr {}'.format(self.get_mp_move()))
         return res
 
     @api.model
@@ -259,7 +257,7 @@ class StockPicking(models.Model):
     @api.multi
     def notify_alerts(self):
         alert_config = self.env['reception.alert.config'].search([])
-        models._logger.error(alert_config)
+        models._logger.error('entró al metodo')
         elapsed_datetime = datetime.strptime(self.elapsed_time, '%H:%M:%S')
         if self.hr_alert_notification_count == 0 and elapsed_datetime.hour >= alert_config.hr_alert:
             self.ensure_one()
