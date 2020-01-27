@@ -223,6 +223,7 @@ class StockPicking(models.Model):
                 if message:
                     raise models.ValidationError(message)
         res = super(StockPicking, self).button_validate()
+        self.sendKgNotify()
         if self.get_mp_move():
             mp_move = self.get_mp_move()
             mp_move.quantity_done = self.net_weight
@@ -253,8 +254,7 @@ class StockPicking(models.Model):
         self.ensure_one()
         base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
         return base_url
-    @api.one
-    @api.depends('weight_guide', 'net_weight')
+
     def sendKgNotify(self):
         if self.kg_diff_alert_notification_count == 0:
             if self.weight_guide > 0 and self.net_weight > 0:
@@ -266,6 +266,7 @@ class StockPicking(models.Model):
                     self.message_post_with_template(template_id.id)
                     self.kg_diff_alert_notification_count += self.kg_diff_alert_notification_count
 
+    
     @api.multi
     def notify_alerts(self):
         alert_config = self.env['reception.alert.config'].search([])
