@@ -27,7 +27,7 @@
             <field name="view_mode">tree,form</field>
         </record>
         <record id="action_mrp_produccion" model="ir_actions.act_window">
-            <field name="PO">PO</field>
+            <field name="name">PO</field>
             <field name="res_model">mrp.production</field>
             <field name="view_type">form</field>
             <field name="view_mode">form</field>
