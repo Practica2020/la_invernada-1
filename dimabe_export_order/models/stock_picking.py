@@ -13,9 +13,7 @@ class StockPicking(models.Model):
         'Embarque'
     )
 
-    variety = fields.Many2many(related="product_id.attribute_value_ids")
-
-    
+    variety = fields.Many2many(related="product_id.attribute_value_ids[0]")
 
     required_loading_date = fields.Date(
         related='shipping_id.required_loading_date')
@@ -90,6 +88,8 @@ class StockPicking(models.Model):
         'custom.container.type',
         'Tipo de contenedor'
     )
+
+
 
     @api.model
     @api.depends('freight_value', 'safe_value')
