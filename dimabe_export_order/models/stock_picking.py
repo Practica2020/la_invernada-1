@@ -13,9 +13,9 @@ class StockPicking(models.Model):
         'Embarque'
     )
 
-    variety = fields.Many2many(related="product_id.attribute_value_ids")
+    variety = fields.Many2many(related="product_id.value_ids")
 
-    color = fields.Many2one(related='variety.attribute_id')
+#    color = fields.Many2one(related='variety.attribute_id')
 
     required_loading_date = fields.Date(
         related='shipping_id.required_loading_date')
