@@ -16,8 +16,6 @@ class StockPicking(models.Model):
     required_loading_date = fields.Date(
         related='shipping_id.required_loading_date')
 
-    # country_id = fields.Many2one('res.partner','Country_id')    
-
     contract_correlative = fields.Integer('corr')
 
     contract_correlative_view = fields.Char(
