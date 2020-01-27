@@ -23,7 +23,7 @@ class StockPicking(models.Model):
         compute='_get_correlative_text'
     )
 
-
+    product = fields.Many2one('product')
 
     consignee_id = fields.Many2one(
         'res.partner',
