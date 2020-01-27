@@ -5,12 +5,11 @@
             <field name="model">stock.picking</field>
             <field name="arch" type="xml">
                 <tree string="Dispatched">
-                    <field name="shipping_id" widget="many2one" />
+                    <field name="required_loading_date" />
                     <field name="partner_id" widget="many2one" />
                     <field name="origin"/>
                     <field name="state"/>
                     <field name="name"/>
-                    <field name="required_loading_date" />
                     <field name="shipping_number" />
                     <field name="client_label" />
                     <field name="charging_mode" />
