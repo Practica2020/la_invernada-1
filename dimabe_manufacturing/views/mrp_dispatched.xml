@@ -5,7 +5,7 @@
             <field name="model">stock.picking</field>
             <field name="arch" type="xml">
                 <tree string="Dispatched">
-                    <field name="origin" widget="many2one"/>
+                    <field name="origin"/>
                     <field name="name"/>
                     <field name="shipping_id" widget="many2one" />
                     <field name="partner_id" widget="many2one" />
