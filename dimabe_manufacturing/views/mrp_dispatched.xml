@@ -5,7 +5,7 @@
             <field name="model">stock.picking</field>
             <field name="arch" type="xml">
                 <tree string="Dispatched">
-                    <field name="required_loading_date" attrs="{'invisible':[('state','=','Cancelado')]}"/>
+                    <field name="required_loading_date" />
                     <field name="partner_id"/>
                     <field name="country"/>
                     <field name="variety" widget="many2many_tags" />
@@ -24,6 +24,7 @@
             <field name="res_model">stock.picking</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
+            <field name="domain">[('state', '=', 'Cancelado')]</field>
         </record>
         <menuitem id="menu_mrp_dispatched_root" name="Despachos" parent="mrp.menu_mrp_root" groups="base.group_user" />
         <menuitem id="mrp_dispatched_child" name="Despachos" parent="menu_mrp_dispatched_root" action="action_mrp_dispatched" />
