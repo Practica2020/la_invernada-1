@@ -16,8 +16,6 @@ class StockPicking(models.Model):
     required_loading_date = fields.Date(
         related='shipping_id.required_loading_date')
 
-    weigth_packing = fields.Many2one('stock.move','Kilos')
-
     contract_correlative = fields.Integer('corr')
 
     contract_correlative_view = fields.Char(
