@@ -13,9 +13,7 @@ class StockPicking(models.Model):
         'Embarque'
     )
 
-    variety = fields.Many2many(related="product_id.attribute_value_ids")
-
-    variety_id = fields.Many2one(related="variety.attribute_id")
+    color = fields.Char('Color')
 
     required_loading_date = fields.Date(
         related='shipping_id.required_loading_date')
@@ -26,7 +24,6 @@ class StockPicking(models.Model):
         'N° Orden',
         compute='_get_correlative_text'
     )
-
 
     consignee_id = fields.Many2one(
         'res.partner',
@@ -92,11 +89,13 @@ class StockPicking(models.Model):
         'Tipo de contenedor'
     )
 
-#    """  @api.model
-#     @api.depends('product_id')
-#     def _get_product_variety(self):
-#         v = fields.Many2one('product.attribute.attribute_id')
-#         if v.display_name in  """
+    @api.model
+    @api.depends('variety')
+    def _get_product_variety(self):
+        variety = fields.Many2many(related="product_id.attribute_value_ids")
+        for v in variety:
+            if v.variety_id == 'Color':
+                color = v.variety_id
 
 
     @api.model

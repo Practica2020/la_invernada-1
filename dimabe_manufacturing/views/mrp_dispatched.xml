@@ -9,6 +9,7 @@
                     <field name="partner_id" widget="many2one" />
                     <field name="product_id" widget="many2one"/>
                     <field name="variety_id"/>
+                    <field name="color"/>
                     <field name="origin" />
                     <field name="state" />
                     <field name="name" />
