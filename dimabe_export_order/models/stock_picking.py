@@ -13,7 +13,7 @@ class StockPicking(models.Model):
         'Embarque'
     )
 
-    color = fields.Char('Color')
+    color = fields.Char('Color', compute='_get_product_variety')
 
     required_loading_date = fields.Date(
         related='shipping_id.required_loading_date')
