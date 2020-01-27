@@ -16,7 +16,7 @@
                     <field name="charging_mode" />
                     <field name="client_label"/>
                     <field name="quantity_done"/>
-                    <button string="Crear PO" icon="terp-gtk-jump-to-ltr" help="calls window action" />
+                    <button string="Crear PO" help="calls window action" />
                 </tree>
             </field>
         </record>
