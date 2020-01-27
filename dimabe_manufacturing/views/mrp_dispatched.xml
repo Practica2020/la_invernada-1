@@ -15,6 +15,7 @@
                     <field name="shipping_number" />
                     <field name="client_label" />
                     <field name="charging_mode" />
+                    
                 </tree>
             </field>
         </record>
