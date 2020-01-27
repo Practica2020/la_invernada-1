@@ -21,6 +21,8 @@ class StockPicking(models.Model):
 
     country = fields.Char(related='partner_id.country_id.name')
 
+    quantity_done = fields.Float(related='move_ids_without_package.quantity_done')
+
     contract_correlative = fields.Integer('corr')
 
     contract_correlative_view = fields.Char(
