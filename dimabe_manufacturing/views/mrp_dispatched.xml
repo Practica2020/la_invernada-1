@@ -16,7 +16,7 @@
                     <field name="charging_mode" />
                     <field name="client_label"/>
                     <field name="quantity_done"/>
-                    <button string="Crear PO" name="action_mrp_production"/>
+                    <button string="Crear PO" name="action_mrp_production" type="action"/>
                 </tree>
             </field>
         </record>
