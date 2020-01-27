@@ -16,7 +16,9 @@ class StockPicking(models.Model):
     required_loading_date = fields.Date(
         related='shipping_id.required_loading_date')
 
-    variety = fields.Many2one('product.attribute.value')
+    variety = fields.Many2many(related="product_id.attribute_value_ids")
+
+    item = fields.Char()
 
     contract_correlative = fields.Integer('corr')
 
@@ -88,6 +90,13 @@ class StockPicking(models.Model):
         'custom.container.type',
         'Tipo de contenedor'
     )
+
+    @api.model
+    def _get_product_variety(self)
+        for item in self.variety:
+            if item.name == 'Color':
+                self.item = 'Color'
+            
 
     @api.model
     @api.depends('freight_value', 'safe_value')
