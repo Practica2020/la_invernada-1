@@ -13,6 +13,8 @@ class StockPicking(models.Model):
         'Embarque'
     )
 
+    product_test = fields.Boolean(related="product_id.sale_ok")
+
     required_loading_date = fields.Date(
         related='shipping_id.required_loading_date')
 
