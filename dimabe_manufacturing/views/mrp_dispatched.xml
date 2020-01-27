@@ -3,7 +3,6 @@
         <record id="view_mrp_dispatched_tree" model="ir.ui.view">
             <field name="name">Despachos</field>
             <field name="model">stock.picking</field>
-            <field name="inherit_id" ref="stock.view_move_form" />
             <field name="arch" type="xml">
                 <tree string="Dispatched">
                     <field name="display_name"/>
