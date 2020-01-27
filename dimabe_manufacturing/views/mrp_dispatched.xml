@@ -16,7 +16,7 @@
                     <field name="charging_mode" />
                     <field name="client_label"/>
                     <field name="quantity_done"/>
-                    <button string="Crear PO"/>
+                    <button string="Crear PO" name="action_mrp_produccion"/>
                 </tree>
             </field>
         </record>
@@ -25,6 +25,12 @@
             <field name="res_model">stock.picking</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
+        </record>
+        <record id="action_mrp_produccion" model="ir_actions.act_window">
+            <field name="PO">PO</field>
+            <field name="res_model">mrp.production</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
         </record>
         <menuitem id="menu_mrp_dispatched_root" name="Despachos" parent="mrp.menu_mrp_root" groups="base.group_user" />
         <menuitem id="mrp_dispatched_child" name="Despachos" parent="menu_mrp_dispatched_root" action="action_mrp_dispatched" />
