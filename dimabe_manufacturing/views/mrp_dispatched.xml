@@ -6,11 +6,12 @@
             <field name="arch" type="xml">
                 <tree string="Dispatched">
                     <field name="required_loading_date" />
-                    <field name="partner_id" widget="many2one"/>
-                    <field name="product_id"/>
-                    <field name="origin"/>
-                    <field name="state"/>
-                    <field name="name"/>
+                    <field name="partner_id" widget="many2one" />
+                    <field name="product_varietys" invisible="1" />
+                    <field name="given_to_variety" domain="[('id','in',product_varietys[0] and product_varietys[0][2] or False)]" />
+                    <field name="origin" />
+                    <field name="state" />
+                    <field name="name" />
                     <field name="shipping_number" />
                     <field name="client_label" />
                     <field name="charging_mode" />
