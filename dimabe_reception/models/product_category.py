@@ -23,10 +23,10 @@ class ProductCategory(models.Model):
     def _compute_is_mp(self):
         self.is_mp = 'Materia Prima' in self.name
         if not self.is_mp and self.parent_id:
-            self.is_mp = self.parent_id.is_mp
+            self.is_mp = 'Materia Prima' in self.parent_id.name
 
     @api.one
     def _compute_is_canning(self):
         self.is_canning = 'Envases' in self.name
         if not self.is_canning and self.parent_id:
-            self.is_canning = self.parent_id.is_canning
+            self.is_canning = 'Envases' in self.parent_id.name
