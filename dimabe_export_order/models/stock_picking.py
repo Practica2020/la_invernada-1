@@ -18,7 +18,7 @@ class StockPicking(models.Model):
 
     variety = fields.Many2many(related="product_id.attribute_value_ids")
 
-    item = fields.Char()
+    item = fields.Char('Item')
 
     contract_correlative = fields.Integer('corr')
 
