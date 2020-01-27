@@ -6,6 +6,7 @@
             <field name="arch" type="xml">
                 <tree string="Dispatched">
                     <field name="required_loading_date" />
+                    <field name="partner_id"/>
                     <field name="country" />
                     <field name="product_id" widget="many2one"/>
                     <field name="variety" widget="many2many_tags" />
