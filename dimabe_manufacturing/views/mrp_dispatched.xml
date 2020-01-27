@@ -10,6 +10,7 @@
                     <field name="partner_id" widget="many2one" />
                     <field name="required_loading_date" />
                     <field name="shipping_number" />
+                    <field name="weigth_packing" />
                     <field name="client_label" />
                     <field name="charging_mode" />
                     <field name="state"/>
