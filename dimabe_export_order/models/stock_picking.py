@@ -87,10 +87,7 @@ class StockPicking(models.Model):
         'Tipo de contenedor'
     )
 
-    @api.model
-    def _get_product_variety(self):
-        variety = fields.Many2many(related="product_id.attribute_value_ids")
-        for
+
 
     @api.model
     @api.depends('freight_value', 'safe_value')
