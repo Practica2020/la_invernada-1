@@ -5,7 +5,7 @@
             <field name="model">stock.picking</field>
             <field name="arch" type="xml">
                 <tree string="Dispatched">
-                    <field name="required_loading_date" />
+                    <field name="required_loading_date" attrs="{'invisible':[('state','=','Cancelado')]}"/>
                     <field name="partner_id"/>
                     <field name="country"/>
                     <field name="variety" widget="many2many_tags" />
