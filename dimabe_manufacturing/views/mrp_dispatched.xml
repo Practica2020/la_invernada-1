@@ -7,16 +7,15 @@
                 <tree string="Dispatched">
                     <field name="required_loading_date" />
                     <field name="partner_id"/>
-                    <field name="country" />
-                    <field name="product_id" widget="many2one"/>
+                    <field name="country"/>
                     <field name="variety" widget="many2many_tags" />
-                    <field name="origin" />
-                    <field name="state" />
-                    <field name="name" />
-                    <field name="shipping_number" />
-                    <field name="client_label" />
+                    <field name="origin"/>
+                    <field name="state"/>
+                    <field name="name"/>
+                    <field name="shipping_number"/>
                     <field name="charging_mode" />
-
+                    <field name="client_label"/>
+                    <field name="quatity_done"/>
                 </tree>
             </field>
         </record>
