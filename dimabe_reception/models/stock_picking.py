@@ -258,9 +258,9 @@ class StockPicking(models.Model):
     def sendKgNotify(self):
         if self.kg_diff_alert_notification_count == 0:
             if self.weight_guide > 0 and self.net_weight > 0:
+                alert_config = self.env['reception.alert.config'].search([])
                 if abs(self.weight_guide - self.net_weight) > alert_config.kg_diff_alert:
                     self.ensure_one()
-                    alert_config = self.env['reception.alert.config'].search([])
                     self.reception_alert = alert_config
                     template_id = self.env.ref('dimabe_reception.diff_weight_alert_mail_template')
                     self.message_post_with_template(template_id.id)
