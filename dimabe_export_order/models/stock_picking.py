@@ -15,7 +15,7 @@ class StockPicking(models.Model):
 
     variety = fields.Many2many(related="product_id.attribute_value_ids")
 
-    v = variety(1)
+    v = variety[0][0]
 
     required_loading_date = fields.Date(
         related='shipping_id.required_loading_date')
