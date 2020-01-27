@@ -92,7 +92,7 @@ class StockPicking(models.Model):
     @api.model
     @api.depends('variety')
     def _get_product_variety(self):
-        variety = fields.Many2many(related="product_id.attribute_value_ids")
+        v = variety
         for v in variety:
             if v.variety_id == 'Color':
                 color = v.variety_id
