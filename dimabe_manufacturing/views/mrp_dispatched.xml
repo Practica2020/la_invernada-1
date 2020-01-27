@@ -8,7 +8,7 @@
                     <field name="required_loading_date" />
                     <field name="partner_id" widget="many2one" />
                     <field name="product_id" widget="many2one"/>
-                    <field name="v"/>
+                    <field name="variety" widget="many2many"/>
                     <field name="origin" />
                     <field name="state" />
                     <field name="name" />
