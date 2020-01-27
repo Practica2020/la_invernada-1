@@ -253,10 +253,21 @@ class StockPicking(models.Model):
         self.ensure_one()
         base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
         return base_url
+    @api.one
+    @api.depends('weight_guide', 'net_weight')
+    def sendKgNotify(self):
+        if self.kg_diff_alert_notification_count == 0:
+            if self.weight_guide > 0 and self.net_weight > 0:
+                if abs(self.weight_guide - self.net_weight) > alert_config.kg_diff_alert:
+                    self.ensure_one()
+                    alert_config = self.env['reception.alert.config'].search([])
+                    self.reception_alert = alert_config
+                    template_id = self.env.ref('dimabe_reception.diff_weight_alert_mail_template')
+                    self.message_post_with_template(template_id.id)
+                    self.kg_diff_alert_notification_count += self.kg_diff_alert_notification_count
 
     @api.multi
     def notify_alerts(self):
-        models._logger.error('entró al metodo')
         alert_config = self.env['reception.alert.config'].search([])
         elapsed_datetime = datetime.strptime(self.elapsed_time, '%H:%M:%S')
         if self.hr_alert_notification_count == 0 and elapsed_datetime.hour >= alert_config.hr_alert:
