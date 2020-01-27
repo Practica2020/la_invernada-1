@@ -16,6 +16,8 @@ class StockPicking(models.Model):
     required_loading_date = fields.Date(
         related='shipping_id.required_loading_date')
 
+    variety = fields.Many2many(related="product_id.attribute_value_ids")
+
     contract_correlative = fields.Integer('corr')
 
     contract_correlative_view = fields.Char(
@@ -86,8 +88,6 @@ class StockPicking(models.Model):
         'custom.container.type',
         'Tipo de contenedor'
     )
-
-
 
     @api.model
     @api.depends('freight_value', 'safe_value')
