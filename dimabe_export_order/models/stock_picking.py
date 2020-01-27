@@ -15,6 +15,8 @@ class StockPicking(models.Model):
 
     variety = fields.Many2many(related="product_id.attribute_value_ids")
 
+    color = fields.Many2one(related='variety.value')
+
     required_loading_date = fields.Date(
         related='shipping_id.required_loading_date')
 
