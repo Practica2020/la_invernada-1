@@ -7,7 +7,7 @@
                 <tree string="Dispatched">
                     <field name="required_loading_date" />
                     <field name="partner_id" widget="many2one" />
-                    <field name="country"/>
+                    <!-- <field name="country"/> -->
                     <field name="origin"/>
                     <field name="state"/>
                     <field name="name"/>
