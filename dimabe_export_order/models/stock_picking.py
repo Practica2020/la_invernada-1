@@ -94,8 +94,8 @@ class StockPicking(models.Model):
     @api.model
     def _get_product_variety(self):
         for item in self.variety:
-            if item.name == 'Color':
-                self.item = 'Color'
+            models._logger.error(
+                'rrrrrrrrrrrrrrrrrrrrr {}'.format(item))
             
 
     @api.model
