@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+import logging
 
 
 class StockPicking(models.Model):
@@ -92,9 +93,9 @@ class StockPicking(models.Model):
 
     @api.model
     def _get_product_variety(self):
+        _logger = logging.getLogger(__name__)
         for item in self.variety:
-            models._logger.error(
-                'rrrrrrrrrrrrrrrrrrrrr {}'.format(item))
+            _logger.debug(item)
             
 
     @api.model
