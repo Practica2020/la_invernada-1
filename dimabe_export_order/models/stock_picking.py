@@ -21,7 +21,8 @@ class StockPicking(models.Model):
 
     country = fields.Char(related='partner_id.country_id.name')
 
-    quantity_done = fields.Float(related='move_ids_without_package.quantity_done')
+    quantity_done = fields.Float(
+        related='move_ids_without_package.quantity_done')
 
     product = fields.Many2one(related="move_ids_without_package.product_id")
 
@@ -98,16 +99,17 @@ class StockPicking(models.Model):
 
     @api.multi
     def return_action(self):
-        models._logger.error('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa {}'.format(type(self.quantity_done))+str(self.quantity_done))
+        models._logger.error('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa {}'.format(
+            type(self.quantity_done))+str(self.quantity_done))
         return {
             "type": "ir.actions.act_window",
-            "res_model":"mrp.production",
+            "res_model": "mrp.production",
             "view_type": "form",
             "view_mode": "tree,form",
-            "views":[(False,"form")],
+            "views": [(False, "form")],
             "view_id ref='mrp.mrp_production_form_view'": '',
-            "target":"new",
-            "context": "{'default_origin':'"+self.name+"','default_product_qty':1512,00}"
+            "target": "new",
+            "context": "{'default_product_qty':'"+self.quantity_done+"'}"
         }
 
     @api.model
@@ -115,7 +117,6 @@ class StockPicking(models.Model):
         _logger = logging.getLogger(__name__)
         for item in self.variety:
             _logger.debug(item)
-            
 
     @api.model
     @api.depends('freight_value', 'safe_value')
@@ -141,8 +142,6 @@ class StockPicking(models.Model):
         print('')
         # cambiar amount_total
         # self.total_commission = (self.agent_id.commission / 100) * self.amount_total
-
-    
 
     @api.model
     # @api.depends('contract_id')
