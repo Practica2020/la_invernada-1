@@ -100,7 +100,7 @@ class StockPicking(models.Model):
             'view_type':'form',
             'view_mode':'tree,form',
             'res_model':'mrp.production',
-            'views': ['mrp.mrp_production_form_view', 'form'],
+            'views': ['form'],
             'type':'ir.actions.act_window',
             'view_id':'mrp.mrp_production_form_view',
             'target':'new',
