@@ -498,13 +498,6 @@
                   </td>
                 </tr>
               </t>
-              <tr>
-                <td colspan="5" style="border-right:1px solid;"></td>
-                <td style="text-align:right;border-bottom:1px solid;border-right:1px solid;">Neto Pesos</td>
-                <td style="text-align:right;border-bottom:1px solid;border-right:1px solid;">
-                  <span t-field="o.amount_untaxed"/>
-                </td>
-              </tr>
             </table>
           </div>
           <div style="width:100%;">
@@ -562,8 +555,8 @@
     </t>
   </template>
 
-   <report id="purchase.report_purchasequotation"
-          string="Solicitud de PRESUPUESTO"
+   <report id="purchase.report_purchasequotation_document"
+          string="Solicitud de presupuesto"
           model="purchase.order"
           report_type="qweb-pdf"
           name="dimabe_purchase_process.report_request_purchase_order_document"
