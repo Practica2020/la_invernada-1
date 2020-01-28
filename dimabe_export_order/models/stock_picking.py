@@ -96,7 +96,8 @@ class StockPicking(models.Model):
 
     @api.multi
     def return_action(self):
-        models._logger(self)
+        _logger = logging.getLogger(__name__)
+        _logger.debug(self)
         return {
             'name':_("Data from PO"),
             'view_mode':'form',
@@ -107,13 +108,6 @@ class StockPicking(models.Model):
             'target':'new',
             'domain':'[]'
         }
-
-    @api.model
-    def _get_product_variety(self):
-        _logger = logging.getLogger(__name__)
-        for item in self.variety:
-            _logger.debug(item)
-            
 
     @api.model
     @api.depends('freight_value', 'safe_value')
