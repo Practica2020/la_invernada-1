@@ -35,7 +35,7 @@
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="mrp.mrp_production_form_view" />
             <field name="target">new</field>
-            <field name="context">{'default_product_qty':'1512,00'
+            <field name="context">{'default_product_qty':1512,00
                 ,'default_origin':'origin'   
             }</field>
         </record>
