@@ -99,6 +99,8 @@ class StockPicking(models.Model):
 
     @api.multi
     def return_action(self):
+        quantity_done = self.quantity_done
+
         return {
             "type": "ir.actions.act_window",
             "res_model": "mrp.production",
@@ -107,7 +109,7 @@ class StockPicking(models.Model):
             "views": [(False, "form")],
             "view_id ref='mrp.mrp_production_form_view'": '',
             "target": "new",
-            "context": "{'default_product_qty':%s}"%(self.quantity_done)
+            "context": "{'default_product_qty':{}}".format(quantity_done)
         }
 
     @api.model
