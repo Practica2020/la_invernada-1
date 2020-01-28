@@ -98,7 +98,7 @@ class StockPicking(models.Model):
 
     @api.model
     def return_action(self):
-        models._logger.error("Product_ID {}".format(self.product))
+        models._logger.error("Product_ID dfogjudfagidfgjida {}".format(self.product))
 
     @api.model
     def _get_product_variety(self):
