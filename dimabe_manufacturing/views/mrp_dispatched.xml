@@ -5,17 +5,17 @@
             <field name="model">stock.picking</field>
             <field name="arch" type="xml">
                 <tree string="Dispatched">
-                    <field name="required_loading_date" string="Fecha de Carga"/>
-                    <field name="partner_id" string="Cliente"/>
-                    <field name="country" string="Pais"/>
-                    <field name="variety" widget="many2many_tags" string="Atributos"/>
-                    <field name="origin" string="Documento Origen"/>
-                    <field name="state" string="Estado"/>
+                    <field name="required_loading_date" string="Fecha de Carga" />
+                    <field name="partner_id" string="Cliente" />
+                    <field name="country" string="Pais" />
+                    <field name="variety" widget="many2many_tags" string="Atributos" />
+                    <field name="origin" string="Documento Origen" />
+                    <field name="state" string="Estado" />
                     <!-- <field name="name" string="N"/> -->
-                    <field name="shipping_number" string="Embarque"/>
-                    <field name="charging_mode" string="Modo de Carga"/>
-                    <field name="client_label" string="Etiqueta Cliente"/>
-                    <field name="quantity_done" string="Kilos a Envasar"/>
+                    <field name="shipping_number" string="Embarque" />
+                    <field name="charging_mode" string="Modo de Carga" />
+                    <field name="client_label" string="Etiqueta Cliente" />
+                    <field name="quantity_done" string="Kilos a Envasar" />
                     <button string="Crear PO" name="%(action_mrp_production)d" type="action" />
                 </tree>
             </field>
@@ -26,7 +26,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[('state', '!=', 'cancel')]</field>
-            <field name="context">{'product_id':ref(product_id)}</field>
+            <field name="context">{'product_id':ref('product_id')}</field>
         </record>
 
         <record id="action_mrp_production" model="ir.actions.act_window">
