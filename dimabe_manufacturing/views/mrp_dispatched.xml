@@ -10,7 +10,7 @@
                     <field name="country" string="Pais" />
                     <field name="variety" widget="many2many_tags" string="Atributos" />
                     <field name="origin" string="Documento Origen" />
-                    <field nmae="product_id"/>
+                    <field name="product_id"/>
                     <field name="state" string="Estado" />
                     <field name="shipping_number" string="Embarque" />
                     <field name="charging_mode" string="Modo de Carga" />
