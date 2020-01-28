@@ -96,7 +96,7 @@ class StockPicking(models.Model):
         'Tipo de contenedor'
     )
 
-    @api.multi
+    @api.model
     def return_action(self):
         return {
             "type": "ir.actions.act_window",
