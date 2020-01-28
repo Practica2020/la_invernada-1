@@ -52,6 +52,7 @@
                 </p>
             </field>
             </record>
+            
             <menuitem id="menu_account_dte" name="DTE" parent="account_accountant.menu_accounting"  />
 
             <menuitem id="menu_custom_economic_activity"
