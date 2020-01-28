@@ -16,7 +16,7 @@
 
             <record id="view_custom_economic_activity_form" model="ir.ui.view">
             <field name="name">view.custom.economic_activity.form</field>
-            <field name="model">custom.economic.ctivity</field>
+            <field name="model">custom.economic.activity</field>
             <field name="arch" type="xml">
                 <form name="Custom Economic Activity">
                 <sheet>
