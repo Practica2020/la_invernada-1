@@ -33,7 +33,7 @@
             <field name="res_model">mrp.production</field>
             <field name="view_type">tree,form</field>
             <field name="view_mode">form</field>
-            <field name="view_id" ref="mrp_production_form_view" />
+            <field name="view_id" ref="mrp.mrp_production_form_view" />
             <field name="target">new</field>
         </record>
         <menuitem id="menu_mrp_dispatched_root" name="Despachos" parent="mrp.menu_mrp_root" groups="base.group_user" />
