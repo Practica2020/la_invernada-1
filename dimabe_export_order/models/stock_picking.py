@@ -99,13 +99,13 @@ class StockPicking(models.Model):
     @api.multi
     def return_action(self):
         return {
-            'type':'ir.actions.act_window',
-            'res_model':'mrp.production',
-            'view_type': 'form',
-            'view_mode': 'tree,form',
-            'views':[(False,'tree'),(False,'form')],
-            'view_id ref="mrp.mrp_production_form_view"': '',
-            'target':'new',
+            "type":"ir.actions.act_window",
+            "res_model":"mrp.production",
+            "view_type": "form",
+            "view_mode": "tree,form",
+            "views":[(False,"tree"),(False,"form2)],
+            "view_id ref='mrp.mrp_production_form_view'": '',
+            "target":"new",
         }
 
     @api.model
