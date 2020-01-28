@@ -23,7 +23,7 @@ class StockPicking(models.Model):
 
     quantity_done = fields.Float(related='move_ids_without_package.quantity_done')
 
-    product_id = fields.Many2one(related="move_ids_without_package.product_id")
+    product = fields.Many2one(related="move_ids_without_package.product_id")
 
     contract_correlative = fields.Integer('corr')
 
