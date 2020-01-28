@@ -3,7 +3,7 @@
         <record id="view_mrp_dispatched_tree" model="ir.ui.view">
             <field name="name">Despachos</field>
             <field name="model">stock.picking</field>
-            <field name="domain">[('quantity_done', '=', '0,000')]</field>
+            <field name="domain">[('quantity_done', '=', '0')]</field>
             <field name="arch" type="xml">
                 <tree string="Dispatched">
                     <field name="required_loading_date" string="Fecha de Carga"/>
