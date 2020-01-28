@@ -98,7 +98,6 @@ class StockPicking(models.Model):
 
     @api.multi
     def return_action(self):
-
         return {
             "type": "ir.actions.act_window",
             "res_model":"mrp.production",
