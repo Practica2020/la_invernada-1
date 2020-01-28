@@ -24,6 +24,8 @@ class StockPicking(models.Model):
     quantity_done = fields.Float(related='move_ids_without_package.quantity_done')
 
     product = fields.Many2one(related="move_ids_without_package.product_id")
+    product_mrp = fields.Many2one('mrp.production')
+    mrp_pro = fields.Integer(rel="product_mrp.product_id")
 
     contract_correlative = fields.Integer('corr')
 
@@ -98,8 +100,7 @@ class StockPicking(models.Model):
 
     @api.multi
     def return_action(self):
-        product_mrp = fields.Many2one('mrp.production')
-        mrp_pro = fields.Integer(rel="product_mrp.product_id")
+        
         models._logger.error('ppppppppppppppppppppppppppppppppppppppppp{}'.format(mrp_pro))
         return {
             "type": "ir.actions.act_window",
