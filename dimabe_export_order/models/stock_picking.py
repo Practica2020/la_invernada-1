@@ -99,14 +99,6 @@ class StockPicking(models.Model):
     @api.model
     def return_action(self):
         models._logger.error("Product_ID {}".format(self.product))
-        return{
-            "type":"ir.actions.act_window",
-            "res_model":"mrp.production",
-            "views":[[False,"tree"],[False,"form"]],
-            "res_id":"",
-            "target":"new"
-        }
-        
 
     @api.model
     def _get_product_variety(self):
