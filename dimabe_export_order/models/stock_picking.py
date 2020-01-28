@@ -98,7 +98,7 @@ class StockPicking(models.Model):
 
     @api.multi
     def return_action(self):
-        
+
         return {
             "type": "ir.actions.act_window",
             "res_model":"mrp.production",
@@ -107,7 +107,7 @@ class StockPicking(models.Model):
             "views":[(False,"form")],
             "view_id ref='mrp.mrp_production_form_view'": '',
             "target":"new",
-            "context": "{'default_origin':'"+self.name+"','default_product_id':'"+self.product_id.default_code+"'}"
+            "context": "{'default_origin':'"+self.name+"','default_product_id':'"+self.product_id.id+"'}"
         }
 
     @api.model
