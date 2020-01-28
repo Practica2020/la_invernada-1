@@ -11,7 +11,6 @@
                     <field name="variety" widget="many2many_tags" string="Atributos" />
                     <field name="origin" string="Documento Origen" />
                     <field name="state" string="Estado" />
-                    <!-- <field name="name" string="N"/> -->
                     <field name="shipping_number" string="Embarque" />
                     <field name="charging_mode" string="Modo de Carga" />
                     <field name="client_label" string="Etiqueta Cliente" />
