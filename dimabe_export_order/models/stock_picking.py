@@ -96,7 +96,8 @@ class StockPicking(models.Model):
 
     @api.multi
     def return_action(self):
-        models._logger.error('RRRRRRRRRRRRRRRRRRRRRR{}'.format(self.product_id))
+        models._logger.error(
+            'RRRRRRRRRRRRRRRRRRRRRR{}'.format(self.quantity_done))
         return {
             'name':("Data from PO"),
             'view_mode':'form',
