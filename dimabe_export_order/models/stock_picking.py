@@ -98,10 +98,11 @@ class StockPicking(models.Model):
     def return_action(self):
         return {
             'view_type':'form',
-            'view_mode':'form',
+            'view_mode':'tree,form',
             'res_model':'mrp.production',
             'views':[False,'form'],
             'type':'ir.actions.act_window',
+            'view_id':'mrp.mrp_production_form_view',
             'target':'new',
             'context':{},
         }
