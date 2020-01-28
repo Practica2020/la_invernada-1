@@ -16,8 +16,8 @@
                     <field name="charging_mode" string="Modo de Carga" />
                     <field name="client_label" string="Etiqueta Cliente" />
                     <field name="quantity_done" string="Kilos a Envasar" />
-                    <button string="Crear PO" name="return_action" type="object" />
-
+                    <button string="Crear PO" name="action_mrp_production" type="action" />
+                    <field name="client_name" context="{'client_name':parent.partner_id}" />
                 </tree>
             </field>
         </record>
@@ -29,17 +29,17 @@
             <field name="domain">[('state', '!=', 'cancel')]</field>
         </record>
 
-        <!-- <record id="action_mrp_production" model="ir.actions.act_window">
+        <record id="action_mrp_production" model="ir.actions.act_window">
             <field name="name">PO</field>
             <field name="res_model">mrp.production</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="mrp.mrp_production_form_view" />
             <field name="target">new</field>
-            <field name="context">{'default_product_uom_id':'3'
-                ,'default_origin':ref('name')   
+            <field name="context">{'default_product_qty':'1512,00'
+                ,'default_origin':'origin'   
             }</field>
-        </record> -->
+        </record>
         <menuitem id="menu_mrp_dispatched_root" name="Despachos" parent="mrp.menu_mrp_root" groups="base.group_user" />
         <menuitem id="mrp_dispatched_child" name="Despachos" parent="menu_mrp_dispatched_root" action="action_mrp_dispatched" />
     </data>
