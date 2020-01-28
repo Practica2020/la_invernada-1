@@ -98,8 +98,9 @@ class StockPicking(models.Model):
 
     @api.multi
     def return_action(self):
-        product_mrp = fields.Many2one(rel="mrp.production.product_id")
-        models._logger.error('ppppppppppppppppppppppppppppppppppppppppp{}'.format(product_mrp))
+        product_mrp = fields.Many2one('mrp.production')
+        mrp_pro = fields.Many2one(rel="product_mrp.product_id")
+        models._logger.error('ppppppppppppppppppppppppppppppppppppppppp{}'.format(mrp_pro))
         return {
             "type": "ir.actions.act_window",
             "res_model":"mrp.production",
