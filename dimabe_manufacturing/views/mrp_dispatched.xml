@@ -26,7 +26,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[('state', '!=', 'cancel')]</field>
-            <field name="context">{'product_id':ref('product_id')}</field>
+            <!-- <field name="context">{'product_id':'product_id'}</field> -->
         </record>
 
         <record id="action_mrp_production" model="ir.actions.act_window">
