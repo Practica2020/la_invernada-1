@@ -17,7 +17,6 @@
                     <field name="client_label" string="Etiqueta Cliente" />
                     <field name="quantity_done" string="Kilos a Envasar" />
                     <button string="Crear PO" name="action_mrp_production" type="action" />
-                    <field name="client_name" context="{'client_name':parent.partner_id}" />
                 </tree>
             </field>
         </record>
