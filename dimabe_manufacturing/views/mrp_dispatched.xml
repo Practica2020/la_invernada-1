@@ -16,7 +16,7 @@
                     <field name="charging_mode" string="Modo de Carga"/>
                     <field name="client_label" string="Etiqueta Cliente"/>
                     <field name="quantity_done" string="Kilos a Envasar"/>
-                    <button string="Crear PO" name="action_mrp_production" type="action" />
+                    <button string="Crear PO" name="action_mrp_production" type="action" context="{'product_id':product_id}"/>
                 </tree>
             </field>
         </record>
