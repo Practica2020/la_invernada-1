@@ -94,20 +94,8 @@ class StockPicking(models.Model):
         'Tipo de contenedor'
     )
 
-    @api.multi
-    def return_action(self):
-        models._logger.error(
-            'RRRRRRRRRRRRRRRRRRRRRR{}'.format(self.quantity_done))
-        return {
-            'name':("Data from PO"),
-            'view_mode':'form',
-            'view_id':'mrp_production_form_view',
-            'res_model':'mrp.production',
-            'type':'ir.actions.act_window',
-            'nodestroy':True,
-            'target':'new',
-            'domain':'[]',
-        }
+
+        
 
     @api.model
     def _get_product_variety(self):
