@@ -5,6 +5,7 @@
             <field name="model">stock.picking</field>
             <field name="domain">[('shipping_number', '!=', '0')]</field>
             <field name="arch" type="xml">
+                <field name="domain">[('shipping_number', '!=', '0')]</field>
                 <tree string="Dispatched">
                     <field name="required_loading_date" string="Fecha de Carga"/>
                     <field name="partner_id" string="Cliente"/>
