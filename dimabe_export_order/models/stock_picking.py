@@ -25,6 +25,8 @@ class StockPicking(models.Model):
 
     product = fields.Many2one(related="move_ids_without_package.product_id")
 
+    origin_to_po = fields.Char(related="name")
+
     contract_correlative = fields.Integer('corr')
 
     contract_correlative_view = fields.Char(
@@ -106,7 +108,7 @@ class StockPicking(models.Model):
             "views":[(False,"form")],
             "view_id ref='mrp.mrp_production_form_view'": '',
             "target":"new",
-            "context":"{'default_origin':'"+self._name+"'}"
+            "context":"{'default_origin':'"+self..name+"'}"
         }
 
     @api.model
