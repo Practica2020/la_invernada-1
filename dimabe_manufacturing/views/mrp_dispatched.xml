@@ -31,8 +31,8 @@
         <record id="action_mrp_production" model="ir.actions.act_window">
             <field name="name">PO</field>
             <field name="res_model">mrp.production</field>
-            <field name="view_type">tree,form</field>
-            <field name="view_mode">form</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
             <field name="view_id" ref="mrp.mrp_production_form_view" />
             <field name="target">new</field>
         </record>
