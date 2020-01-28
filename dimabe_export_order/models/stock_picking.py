@@ -96,14 +96,16 @@ class StockPicking(models.Model):
 
     @api.multi
     def return_action(self):
+        models._logger(self)
         return {
-            'view_type':'form',
-            'view_mode':'tree,form',
+            'name':_("Data from PO"),
+            'view_mode':'form',
+            'view_id':'mrp.mrp_production_form_view',
             'res_model':'mrp.production',
-            'views': ['mrp.mrp_production_form_view', 'form'],
             'type':'ir.actions.act_window',
+            'nodestroy':True,
             'target':'new',
-            'context':{},
+            'domain':'[]'
         }
 
     @api.model
