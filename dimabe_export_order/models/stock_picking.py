@@ -25,7 +25,7 @@ class StockPicking(models.Model):
 
     product = fields.Many2one(related="move_ids_without_package.product_id")
     product_mrp = fields.Many2one('mrp.production')
-    mrp_pro = fields.Integer(rel="product_mrp.product_id")
+    
 
     contract_correlative = fields.Integer('corr')
 
@@ -100,8 +100,6 @@ class StockPicking(models.Model):
 
     @api.multi
     def return_action(self):
-        
-        models._logger.error('ppppppppppppppppppppppppppppppppppppppppp{}'.format(mrp_pro))
         return {
             "type": "ir.actions.act_window",
             "res_model":"mrp.production",
@@ -110,7 +108,7 @@ class StockPicking(models.Model):
             "views":[(False,"form")],
             "view_id ref='mrp.mrp_production_form_view'": '',
             "target":"new",
-            "context": "{'default_product_id':"+self.product.id+"}"
+            "context": "{'default_origin':"+self.name+",'default_product_qty':'"+self.quantity_done+"'}"
         }
 
     @api.model
