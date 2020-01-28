@@ -10,6 +10,7 @@
                     <field name="country" string="Pais" />
                     <field name="variety" widget="many2many_tags" string="Atributos" />
                     <field name="origin" string="Documento Origen" />
+                    <field nmae="product_id"/>
                     <field name="state" string="Estado" />
                     <field name="shipping_number" string="Embarque" />
                     <field name="charging_mode" string="Modo de Carga" />
@@ -35,6 +36,7 @@
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="mrp.mrp_production_form_view" />
             <field name="target">new</field>
+            
         </record>
         <menuitem id="menu_mrp_dispatched_root" name="Despachos" parent="mrp.menu_mrp_root" groups="base.group_user" />
         <menuitem id="mrp_dispatched_child" name="Despachos" parent="menu_mrp_dispatched_root" action="action_mrp_dispatched" />
