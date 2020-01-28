@@ -98,7 +98,7 @@ class StockPicking(models.Model):
     def return_action(self):
         models._logger.error('RRRRRRRRRRRRRRRRRRRRRR{}'.format(self))
         return {
-            'name':_("Data from PO"),
+            'name':("Data from PO"),
             'view_mode':'form',
             'view_id':'mrp.mrp_production_form_view',
             'res_model':'mrp.production',
