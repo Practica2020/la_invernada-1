@@ -101,7 +101,7 @@ class StockPicking(models.Model):
         return {
             'name':("Data from PO"),
             'view_mode':'form',
-            'view_id':'mrp.mrp_production_form_view',
+            'view_id':'mrp_production_form_view',
             'res_model':'mrp.production',
             'type':'ir.actions.act_window',
             'nodestroy':True,
