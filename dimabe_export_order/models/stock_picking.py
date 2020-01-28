@@ -14,6 +14,8 @@ class StockPicking(models.Model):
         'Embarque'
     )
 
+    original = fields.Char(related='stock.picking.name')
+
     required_loading_date = fields.Date(
         related='shipping_id.required_loading_date')
 
@@ -106,6 +108,7 @@ class StockPicking(models.Model):
             "views":[(False,"form")],
             "view_id ref='mrp.mrp_production_form_view'": '',
             "target":"new",
+            "context":default
         }
 
     @api.model
