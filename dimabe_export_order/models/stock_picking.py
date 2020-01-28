@@ -94,7 +94,15 @@ class StockPicking(models.Model):
         'Tipo de contenedor'
     )
 
-
+    @api.model
+    def return_action(self):
+        return{
+            "type":"ir.actions.act_window",
+            "res_model":"mrp.production",
+            "views":[[False,"tree"],[False,"form"]],
+            "res_id":self.product_id,
+            "target":"new"
+        }
         
 
     @api.model
