@@ -36,7 +36,9 @@
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="mrp.mrp_production_form_view" />
             <field name="target">new</field>
-            <field name="context">{'default_product_uom_id':'3'}</field>
+            <field name="context">{('default_product_uom_id':'3')
+                ,('default_origin':'origin')    
+            }</field>
         </record>
         <menuitem id="menu_mrp_dispatched_root" name="Despachos" parent="mrp.menu_mrp_root" groups="base.group_user" />
         <menuitem id="mrp_dispatched_child" name="Despachos" parent="menu_mrp_dispatched_root" action="action_mrp_dispatched" />
