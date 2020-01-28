@@ -16,7 +16,7 @@
                     <field name="charging_mode" string="Modo de Carga"/>
                     <field name="client_label" string="Etiqueta Cliente"/>
                     <field name="quantity_done" string="Kilos a Envasar"/>
-                    <button string="Crear PO" name="action_mrp_production" type="action" context="{'product_qty':quantity_done}" />
+                <button string="Crear PO" name="action_mrp_production" type="action"/> -->
                 </tree>
             </field>
         </record>
@@ -35,7 +35,7 @@
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="mrp.mrp_production_form_view" />
             <field name="target">new</field>
-            <field name="res_id">context.get('product_qty')</field>
+            <!-- <field name="res_id">context.get('product_qty')</field> -->
         </record>
         <menuitem id="menu_mrp_dispatched_root" name="Despachos" parent="mrp.menu_mrp_root" groups="base.group_user" />
         <menuitem id="mrp_dispatched_child" name="Despachos" parent="menu_mrp_dispatched_root" action="action_mrp_dispatched" />
