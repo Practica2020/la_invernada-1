@@ -14,8 +14,6 @@ class StockPicking(models.Model):
         'Embarque'
     )
 
-    original = fields.Char(related='stock.picking.name')
-
     required_loading_date = fields.Date(
         related='shipping_id.required_loading_date')
 
