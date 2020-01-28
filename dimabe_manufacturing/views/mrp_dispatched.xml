@@ -3,10 +3,10 @@
         <record id="view_mrp_dispatched_tree" model="ir.ui.view">
             <field name="name">Despachos</field>
             <field name="model">stock.picking</field>
-            <field name="domain">[('state','!=','cancel')]</field>
+            <field name="domain">[('state','=','cancel')]</field>
             <field name="arch" type="xml">
                 <tree string="Dispatched">
-                    <field name="required_loading_date" />
+                    <field name="required_loading_date" string="Fecha de Carga"/>
                     <field name="partner_id"/>
                     <field name="country"/>
                     <field name="variety" widget="many2many_tags" />
