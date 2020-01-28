@@ -96,7 +96,7 @@ class StockPicking(models.Model):
         'Tipo de contenedor'
     )
 
-    @api.model
+    @api.multi
     def return_action(self):
         models._logger.error("Product_ID dfogjudfagidfgjida {}".format(self.product))
 
