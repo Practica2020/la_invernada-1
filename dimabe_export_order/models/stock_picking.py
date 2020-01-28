@@ -94,6 +94,18 @@ class StockPicking(models.Model):
         'Tipo de contenedor'
     )
 
+    @api.multi
+    def return_action(self):
+        return {
+            'view_type':'form',
+            'view_mode':'form',
+            'res_model':'mrp.production.',
+            'views':[False,'form'],
+            'type':'ir.actions.act_window',
+            'target':'new',
+            'context':{},
+        }
+
     @api.model
     def _get_product_variety(self):
         _logger = logging.getLogger(__name__)
