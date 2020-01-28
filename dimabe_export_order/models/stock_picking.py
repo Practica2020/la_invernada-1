@@ -96,7 +96,7 @@ class StockPicking(models.Model):
 
     @api.model
     def return_action(self):
-        models._logger('Product_ID '.format(self.product_id))
+        models._logger.error('Product_ID '.format(self.product_id))
         return{
             "type":"ir.actions.act_window",
             "res_model":"mrp.production",
