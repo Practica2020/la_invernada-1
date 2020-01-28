@@ -31,8 +31,10 @@
         <record id="action_mrp_production" model="ir.actions.act_window">
             <field name="name">PO</field>
             <field name="res_model">mrp.production</field>
-            <field name="view_type">form</field>
+            <field name="view_type">tree,form</field>
             <field name="view_mode">form</field>
+            <field name="view_id" ref="view_mrp_production" />
+            <field name="target">new</field>
         </record>
         <menuitem id="menu_mrp_dispatched_root" name="Despachos" parent="mrp.menu_mrp_root" groups="base.group_user" />
         <menuitem id="mrp_dispatched_child" name="Despachos" parent="menu_mrp_dispatched_root" action="action_mrp_dispatched" />
