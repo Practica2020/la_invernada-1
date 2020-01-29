@@ -33,22 +33,3 @@ class AccountMove(models.Model):
                 self.exchange_rate = 1 / rate.rate
         else:
             self.exchange_rate = 0
-
-
-    @api.multi
-    @api.depends('line_ids')
-    def compute_move_totals(self, company_currency, line_ids):
-        total = 0
-        total_currency = 0
-        for line in line_ids:
-            models._logger.error('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
-            models._logger.error(line)
-            if line.currency_id != company_currency:
-                currency = line.currency_id
-                date = self._get_currency_rate_date() or fields.Date.context_today(self)
-                line['currency_id'] = currency.id
-                line['amount_currency'] = currency.round(line['price'])
-                line['price'] = currency.with_context(
-                    optional_usd=self.exchange_rate
-                )._convert(line['price'], company_currency, self.company_id, date)
-        return total, total_currency, line_ids
