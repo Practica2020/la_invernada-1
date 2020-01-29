@@ -8,8 +8,8 @@ class AccountMove(models.Model):
     )
 
 
-     def action_post(self):
-    
+    def action_post(self):
+
         if self.id:
             if not self.exchange_rate or self.exchange_rate == 0:
                 raise models.ValidationError('debe existir una taza de cambio')
