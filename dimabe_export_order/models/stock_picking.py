@@ -109,7 +109,7 @@ class StockPicking(models.Model):
             "views": [(False, "form")],
             "view_id ref='mrp.mrp_production_form_view'": '',
             "target": "new",
-            "context": "{'default_product_id':'"+self.product.id+"','default_origin':'"+self.name+"'}"
+            "context": "{'default_product_id':"+self.product.id+",'default_origin':'"+self.name+"'}"
         }
 
     @api.model
