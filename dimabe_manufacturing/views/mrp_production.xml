@@ -21,6 +21,7 @@
           <notebook>
             <page string="Seleccion Lote">
               <field name="lots" context="{'tree_view_ref':'active_move_lines_ids'}"/>
+              
             </page>
           </notebook>
         </xpath>
