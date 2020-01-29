@@ -99,9 +99,9 @@ class StockPicking(models.Model):
 
     @api.multi
     def return_action(self):
-        models._logger.error(
-            "77777777777777777777777777777777777777777 {}".format(str(self.quantity_done)))
-
+        qty = str(self.quantity_done)
+        product_qty = qty.replace('.',',')
+        models._logger('7887878787878787878787878787878/7878{}'.format(product_qty))
         return {
             "type": "ir.actions.act_window",
             "res_model": "mrp.production",
