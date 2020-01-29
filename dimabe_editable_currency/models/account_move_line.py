@@ -8,8 +8,6 @@ class AccountMoveLine(models.Model):
         """ Helper function to compute value for fields debit/credit/amount_currency based on an amount and the currencies given in parameter"""
 
         optional_usd = self.env.context.get('optional_usd') or False
-        models._logger.error('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
-        models._logger.error(optional_usd)
         amount_currency = False
         currency_id = False
         date = self.env.context.get('date') or fields.Date.today()
