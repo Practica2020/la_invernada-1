@@ -4,7 +4,7 @@ from odoo import fields, models, api
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
-    product = fields.Many2one('stock.move.active_move_lines_ids')
+    product = fields.Many2one('stock.move.active_move_lines_ids.name')
 
     @api.multi
     def calculate_done(self):
