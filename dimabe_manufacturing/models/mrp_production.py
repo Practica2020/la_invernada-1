@@ -4,6 +4,8 @@ from odoo import fields, models, api
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
+    product = fields.Many2many('product.product')
+
     @api.multi
     def calculate_done(self):
         for item in self:
