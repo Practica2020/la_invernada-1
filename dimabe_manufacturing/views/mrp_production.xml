@@ -20,12 +20,7 @@
         <xpath expr="//page[@name='miscellaneous']" position="after">
             <page string="Seleccion Lote">
               <group name="lot_selection" position="inside">
-                <field name="model">mrp.lot</field>
-                <field name="arch" type="xml">
-                  <tree>
-                    <field name="product_id"/>
-                  </tree>
-                </field>
+                <field name="product_id"/>
               </group>
             </page>
         </xpath>
