@@ -100,8 +100,7 @@ class StockPicking(models.Model):
     @api.multi
     def return_action(self):
         qty = fields.Float(related='move_ids_without_package.quantity_done')
-        context = {'default_product_id': self.product.id,
-                   'default_product_qty': qty, 'default_origin': self.name}
+        context = {'default_product_id': self.product.id,'default_product_qty': qty, 'default_origin': self.name}
         models._logger.error(context)
         return {
             "type": "ir.actions.act_window",
