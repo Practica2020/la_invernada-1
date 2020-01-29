@@ -10,13 +10,11 @@ class AccountPayment(models.Model):
     )
 
     @api.one
-    @api.depends('invoice_ids', 'move_line_ids')
+    @api.depends('invoice_ids')
     def _get_usd_val(self):
         try:
             if len(self.invoice_ids) == 1:
                 self.optional_usd = self.invoice_ids.exchange_rate
-            if len(self.move_line_ids) > 0:
-                self.optional_usd = self.move_line_ids.exchange_rate
             else:
                 self.optional_usd = 0
         except:

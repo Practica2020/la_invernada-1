@@ -7,7 +7,7 @@ class AccountMoveLine(models.Model):
     def _compute_amount_fields(self, amount, src_currency, company_currency):
         """ Helper function to compute value for fields debit/credit/amount_currency based on an amount and the currencies given in parameter"""
 
-        optional_usd = self.env.context.get('optional_usd') or False
+        optional_usd = self.env.context.get('optional_usd') or self.exchange_rate or False
         amount_currency = False
         currency_id = False
         date = self.env.context.get('date') or fields.Date.today()

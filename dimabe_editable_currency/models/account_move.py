@@ -35,10 +35,10 @@ class AccountMove(models.Model):
             self.exchange_rate = 0
 
     @api.multi
-    def compute_move_totals(self, company_currency, move_lines):
+    def compute_move_totals(self, company_currency, line_ids):
         total = 0
         total_currency = 0
-        for line in move_lines:
+        for line in line_ids:
             models._logger.error('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
             models._logger.error(line)
             if line.currency_id != company_currency:
@@ -49,4 +49,4 @@ class AccountMove(models.Model):
                 line['price'] = currency.with_context(
                     optional_usd=self.exchange_rate
                 )._convert(line['price'], company_currency, self.company_id, date)
-        return total, total_currency, move_lines
+        return total, total_currency, line_ids
