@@ -23,6 +23,14 @@ class AccountMoveLine(models.Model):
         credit = amount < 0 and -amount or 0.0
         return debit, credit, amount_currency, currency_id
 
+    @api.onchange('date', 'exchange_rate')
+    def _onchange_date(self):
+        '''On the form view, a change on the date will trigger onchange() on account.move
+        but not on account.move.line even the date field is related to account.move.
+        Then, trigger the _onchange_amount_currency manually.
+        '''
+        self.line_ids._onchange_amount_currency()
+
     @api.onchange('amount_currency', 'currency_id')
     def _onchange_amount_currency(self):
         '''Recompute the debit/credit based on amount_currency/currency_id and date.
