@@ -6,6 +6,8 @@ class MrpProduction(models.Model):
 
     lots = fields.Many2one('stock.production.lot','Lots')
 
+    qty = fields.Float(rel='lots.product_qty')
+
     @api.multi
     def calculate_done(self):
         for item in self:
