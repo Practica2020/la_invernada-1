@@ -17,12 +17,12 @@
           <field name="count_stock_production_lot_serial" />
         </xpath>
 
-        <!-- <xpath expr="//page[@name='miscellaneous']" position="after">
+      <xpath expr="//page[@name='miscellaneous']" position="after">
           <notebook>
             <page string="Seleccionar Lote" attrs="{'invisible' :[('product_id' ,'=' ,'0' )]}">
             </page>
           </notebook>
-        </xpath> -->
+        </xpath>
       </field>
     </record>
   </data>
