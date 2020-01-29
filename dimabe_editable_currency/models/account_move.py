@@ -33,3 +33,17 @@ class AccountMove(models.Model):
                 self.exchange_rate = 1 / rate.rate
         else:
             self.exchange_rate = 0
+    
+    @api.onchange('amount_currency', 'currency_id')
+    def _onchange_amount_currency(self):
+        '''Recompute the debit/credit based on amount_currency/currency_id and date.
+        However, date is a related field on account.move. Then, this onchange will not be triggered
+        by the form view by changing the date on the account.move.
+        To fix this problem, see _onchange_date method on account.move.
+        '''
+        for line in self:
+            amount = line.amount_currency
+            if line.currency_id and line.currency_id != line.company_currency_id:
+                amount = line.currency_id.with_context(optional_usd=self.exchange_rate).compute(amount, line.company_currency_id)
+                line.debit = amount > 0 and amount or 0.0
+                line.credit = amount < 0 and -amount or 0.0
