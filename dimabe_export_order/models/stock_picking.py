@@ -26,8 +26,6 @@ class StockPicking(models.Model):
 
     product = fields.Many2one(related="move_ids_without_package.product_id")
 
-    
-
     contract_correlative = fields.Integer('corr')
 
     contract_correlative_view = fields.Char(
@@ -102,7 +100,7 @@ class StockPicking(models.Model):
     @api.multi
     def return_action(self):
         context = {'default_product_id': self.product.id,
-                    'default_mrp.bom.product_qty': self.quantity_done, 'default_origin': self.name})
+                   'default_mrp.bom.product_qty': self.quantity_done, 'default_origin': self.name}
 
         return {
             "type": "ir.actions.act_window",
