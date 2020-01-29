@@ -3,8 +3,9 @@ from odoo import fields, models, api
 
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
+    lots = fields.Many2one('stock.production.lot', 'Lotes')
 
-    active_move = fields.One2many('stock.move.active_move_lines_ids')
+    qty = fields.Float('lots.product_qty')
 
     @api.multi
     def calculate_done(self):
@@ -16,4 +17,3 @@ class MrpProduction(models.Model):
     def button_mark_done(self):
         self.calculate_done()
         return super(MrpProduction, self).button_mark_done()
-
