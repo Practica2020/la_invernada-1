@@ -18,9 +18,9 @@
         </xpath>
 
         <xpath expr="//page[@name='miscellaneous']" position="after">
-            <page string="Seleccion Lote">
+            <page string="Seleccion Lote" id="lot_selection">
               <group name="lot_selection" position="inside">
-                
+                <field name="active_move_lines_ids"/>
               </group>
             </page>
         </xpath>

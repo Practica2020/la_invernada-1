@@ -2,7 +2,8 @@ from odoo import fields, models, api
 
 
 class MrpProduction(models.Model):
-    _inherit = 'mrp.production'
+    _inherit = ['mrp.production','stock.move']
+
 
     @api.multi
     def calculate_done(self):
