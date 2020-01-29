@@ -101,7 +101,7 @@ class StockPicking(models.Model):
     def return_action(self):
         qty = str(self.quantity_done)
         product_qty = qty.replace('.',',')
-        models._logger('7887878787878787878787878787878/7878{}'.format(product_qty))
+        models._logger.error('7887878787878787878787878787878/7878{}'.format(product_qty))
         return {
             "type": "ir.actions.act_window",
             "res_model": "mrp.production",
