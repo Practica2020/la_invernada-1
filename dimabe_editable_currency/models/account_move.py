@@ -42,10 +42,9 @@ class AccountMove(models.Model):
             if line.currency_id != company_currency:
                 currency = line.currency_id
                 date = self._get_currency_rate_date() or fields.Date.context_today(self)
-                if not (line.get('currency_id') and line.get('amount_currency')):
-                    line['currency_id'] = currency.id
-                    line['amount_currency'] = currency.round(line['price'])
-                    line['price'] = currency.with_context(
-                        optional_usd=self.exchange_rate
-                    )._convert(line['price'], company_currency, self.company_id, date)
+                line['currency_id'] = currency.id
+                line['amount_currency'] = currency.round(line['price'])
+                line['price'] = currency.with_context(
+                    optional_usd=self.exchange_rate
+                )._convert(line['price'], company_currency, self.company_id, date)
         return total, total_currency, move_lines
