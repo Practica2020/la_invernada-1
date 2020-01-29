@@ -8,7 +8,6 @@ class AccountMoveLine(models.Model):
         """ Helper function to compute value for fields debit/credit/amount_currency based on an amount and the currencies given in parameter"""
 
         optional_usd = self.env.context.get('optional_usd') or False
-        models._logger.error('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
         amount_currency = False
         currency_id = False
         date = self.env.context.get('date') or fields.Date.today()
@@ -23,3 +22,17 @@ class AccountMoveLine(models.Model):
         debit = amount > 0 and amount or 0.0
         credit = amount < 0 and -amount or 0.0
         return debit, credit, amount_currency, currency_id
+
+    @api.onchange('amount_currency', 'currency_id')
+    def _onchange_amount_currency(self):
+        '''Recompute the debit/credit based on amount_currency/currency_id and date.
+        However, date is a related field on account.move. Then, this onchange will not be triggered
+        by the form view by changing the date on the account.move.
+        To fix this problem, see _onchange_date method on account.move.
+        '''
+        for line in self:
+            amount = line.amount_currency
+            if line.currency_id and line.currency_id != line.company_currency_id:
+                amount = line.currency_id.with_context(optional_usd=self.exchange_rate).compute(amount, line.company_currency_id)
+                line.debit = amount > 0 and amount or 0.0
+                line.credit = amount < 0 and -amount or 0.0
