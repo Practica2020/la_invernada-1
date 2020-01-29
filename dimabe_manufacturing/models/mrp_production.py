@@ -3,9 +3,12 @@ from odoo import fields, models, api
 
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
-    lots = fields.Many2one('stock.production.lot', 'Lotes')
 
-    qty = fields.Float('lots.product_qty.value')
+    lots = fields.Many2one('stock.quant')
+
+    lot = fields.Many2one(rel='lots.lot_id')
+
+
 
     @api.multi
     def calculate_done(self):
