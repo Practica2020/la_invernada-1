@@ -19,7 +19,7 @@
 
         <xpath expr="//page[@name='miscellaneous']" position="after">
           <notebook>
-            <page string="Seleccionar Lote" attrs="" {"invisible" :[("product_id" ,"!=" ,"None" )]}"">
+            <page string="Seleccionar Lote" attrs="{'invisible' :[('product_id' ,'=' ,'0' )]}">
               <field name="active_moves_lines_ids">
                 <tree string="Tree String">
                   <field name="name" />
