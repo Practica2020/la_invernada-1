@@ -102,7 +102,6 @@ class StockPicking(models.Model):
         qty = str(self.quantity_done)
         product_qty = qty.replace('.0', '')
         qty_done = int(product_qty)
-        test = {'default_product_id':self.name,'defualt_product_qty':self.quantity_done}
         models._logger.error('6666666666666666666666666666666666666666666666666  {} '.format(type(test)))
         return {
             "type": "ir.actions.act_window",
@@ -112,7 +111,7 @@ class StockPicking(models.Model):
             "views": [(False, "form")],
             "view_id ref='mrp.mrp_production_form_view'": '',
             "target": "new",
-            "context": "{'default_product_id':"+str(self.product.id)+",'default_product_qty':["+str(self.quantity_done).replace('.0', '')]+",'default_origin':'"+self.name+"'}"
+            "context": "{'default_product_id':"+str(self.product.id)+",'default_product_qty':["+str(self.quantity_done).replace('.0', '')+"],'default_origin':'"+self.name+"'}"
         }
 
     @api.model
