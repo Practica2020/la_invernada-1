@@ -18,7 +18,7 @@
         </xpath>
 
         <xpath expr="//page[@name='miscellaneous']" position="after">
-          <page name="Seleccion Lote">
+          <page string="Seleccion Lote">
           </page>
         </xpath>
       </field>
