@@ -100,7 +100,7 @@ class StockPicking(models.Model):
     @api.multi
     def return_action(self):
         qty = str(self.quantity_done).replace('.',',')
-        context = {'default_product_id':self.product.id,'default_product_qty':1000.0,'default_origin':self.name}
+        context = {'default_product_id':self.product.id,'default_product_qty':1000.000,'default_origin':self.name}
         models._logger.error(context)
         return {
             "type": "ir.actions.act_window",
