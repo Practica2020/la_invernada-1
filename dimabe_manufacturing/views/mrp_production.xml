@@ -17,7 +17,7 @@
           <field name="count_stock_production_lot_serial" />
         </xpath>
         <xpath expr="//page[@name='miscellaneous']" postition="after">
-          <page string="COMEX" id="export_data" attrs="{'invisible':[('picking_type_code', '=', 'incoming')]}">
+          <page string="COMEX" id="export_data">
             <group name="export_data" position="inside">
               <group string="Información de envío" style="width:100%%">
                 <group>
