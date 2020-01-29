@@ -18,13 +18,16 @@
         </xpath>
 
         <xpath expr="//page[@name='miscellaneous']" position="after">
-          <notebook>
             <page string="Seleccion Lote">
-              <tree>
-                <field name="product_id"/>
-              </tree>
+              <group name="lot_selection" position="inside">
+                <field name="model">mrp.lot</field>
+                <field name="arch" type="xml">
+                  <tree>
+                    <field name="product_id"/>
+                  </tree>
+                </field>
+              </group>
             </page>
-          </notebook>
         </xpath>
       </field>
     </record>
