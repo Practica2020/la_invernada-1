@@ -4,8 +4,6 @@ from odoo import fields, models, api
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
-    qty = fields.Float('lots.product_qty')
-
     @api.multi
     def calculate_done(self):
         for item in self:
