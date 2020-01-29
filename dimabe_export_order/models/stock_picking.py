@@ -101,10 +101,11 @@ class StockPicking(models.Model):
 
     @api.multi
     def return_action(self):
-        context = {'default_product_id': self.product.id,
-                   'default_mrp.bom.product_qty': self.quantity_done, 'default_origin': self.name}
-                   res = self.pool.get('mrp.boom').search(['product_tmpl_id','=',self.product_id])
-        models._logger.error(context)
+#        context = {'default_product_id': self.product.id,
+#                    'default_mrp.bom.product_qty': self.quantity_done, 'default_origin': self.name})
+#        models._logger.error(context)
+
+
         return {
             "type": "ir.actions.act_window",
             "res_model": "mrp.production",
