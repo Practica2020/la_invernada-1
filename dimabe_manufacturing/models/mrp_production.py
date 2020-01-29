@@ -5,7 +5,7 @@ class MrpProduction(models.Model):
     _inherit = 'mrp.production'
     lots = fields.Many2one('stock.production.lot', 'Lotes')
 
-    qty = fields.Float('lots.product_qty')
+    qty = fields.Float('lots.product_qty.value')
 
     @api.multi
     def calculate_done(self):
