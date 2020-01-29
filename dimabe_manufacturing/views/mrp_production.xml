@@ -21,6 +21,7 @@
             <page string="Seleccion Lote" id="lot_selection">
               <group name="lot_selection" position="inside">
                 <field name="lots"/>
+                <field name="qty"/>
               </group>
             </page>
         </xpath>
