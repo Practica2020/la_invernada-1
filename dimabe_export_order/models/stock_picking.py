@@ -101,20 +101,18 @@ class StockPicking(models.Model):
 
     @api.multi
     def return_action(self):
-#        context = {'default_product_id': self.product.id,
-#                    'default_mrp.bom.product_qty': self.quantity_done, 'default_origin': self.name})
-#        models._logger.error(context)
-
+        context = {'default_product_id': self.product.id,
+                    'default_mrp.bom.product_qty': self.quantity_done, 'default_origin': self.name})
 
         return {
             "type": "ir.actions.act_window",
             "res_model": "mrp.production",
             "view_type": "form",
-            "view_mode": "tree,form",
+            "view_mode": "form",
             "views": [(False, "form")],
             "view_id ref='mrp.mrp_production_form_view'": '',
             "target": "new",
-            "context": ''
+            "context": context
         }
 
     @api.model
