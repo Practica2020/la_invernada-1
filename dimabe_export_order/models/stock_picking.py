@@ -100,7 +100,7 @@ class StockPicking(models.Model):
     @api.multi
     def return_action(self):
         qty = str(self.quantity_done)
-        product_qty = qty.replace('.0', ',0')
+        product_qty = qty.replace('.0', '')
         qty_done = int(product_qty)
         models._logger.error('6666666666666666666666666666666666666666666666666{} '.format(qty_done))
         return {
