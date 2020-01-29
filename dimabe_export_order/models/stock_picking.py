@@ -111,7 +111,6 @@ class StockPicking(models.Model):
             "target": "new",
             "context": "{'default_product_id':"+str(self.product.id)+",'default_origin':'"+self.name+"'}"
         }
-
     @api.model
     def _get_product_variety(self):
         _logger = logging.getLogger(__name__)
