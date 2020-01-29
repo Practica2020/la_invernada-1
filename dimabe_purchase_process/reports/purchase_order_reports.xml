@@ -433,7 +433,7 @@
                   <span t-field="o.partner_id.name"/>
                 </td>
                 <td style="solid;width:20%;">
-                  <strong style="text-align:right !important;">Cotización:
+                  <strong style="text-align:right !important;">Solicitud de presupuesto:
                     <span t-field="o.id"/>
                   </strong>
                 </td>
@@ -471,30 +471,22 @@
             <table style="width:100%;">
               <tr style="text-align:left;">
                 <th style="border:1px solid;">Código</th>
-                <th style="border-bottom:1px solid;border-right:1px solid;border-top:1px solid;">C.C</th>
                 <th
                   style="text-align:right !important;border-bottom:1px solid;border-right:1px solid;border-top:1px solid;">
                   Unidad
                 </th>
                 <th style="border-bottom:1px solid;border-right:1px solid;border-top:1px solid;">Detalle</th>
-                <th style="border-bottom:1px solid;border-right:1px solid;border-top:1px solid;">Moneda</th>
               </tr>
               <t t-foreach="o.order_line" t-as="line">
                 <tr>
                   <td style="text-align:left;border-left:1px solid;border-bottom:1px solid;border-right:1px solid;">
                     <span t-field="line.product_id.code"/>
                   </td>
-                  <td style="text-align:left;border-bottom:1px solid;border-right:1px solid;">
-                    <span t-field="line.account_analytic_id.name"/>
-                  </td>
                   <td style="text-align:right;border-bottom:1px solid;border-right:1px solid;">
                     <span t-field="line.product_qty"/>
                   </td>
                   <td style="text-align:left;border-bottom:1px solid;border-right:1px solid;">
                     <span t-field="line.product_id.name"/>
-                  </td>
-                  <td style="text-align:left;border-bottom:1px solid;border-right:1px solid;">
-                    <span t-field="o.currency_id.name"/>
                   </td>
                 </tr>
               </t>
@@ -510,30 +502,6 @@
                   </t>
                   <t t-if="not o.date_planned">
                     a convenir
-                  </t>
-                </td>
-              </tr>
-              <tr>
-                <th style="text-align:right;">Lugar de Entrega:</th>
-                <td>
-                  <span t-field="res_company.street"/>
-                  <span t-esc="res_company.city"/>,
-                  <span t-esc="res_company.country_id.name"/>
-                </td>
-              </tr>
-              <tr>
-                <th style="text-align:right;">Condición de Venta:</th>
-                <td>
-                  <span t-field="o.payment_term_id.name"/>
-                </td>
-              </tr>
-              <tr>
-                <th style="text-align:right;">Despacho Factura:</th>
-                <td>
-                  <span t-field="res_company.billing_mail"/>
-                  <t t-if="res_company.billing_email">
-                    , o al
-                    <span t-field="res_company.billing_email"/>
                   </t>
                 </td>
               </tr>
