@@ -102,7 +102,7 @@ class StockPicking(models.Model):
         qty = str(self.quantity_done)
         product_qty = qty.replace('.0', '')
         qty_done = int(product_qty)
-        test = {'default_product_id':self.name,'defualt_product'}
+        test = {'default_product_id':self.name,'defualt_product_qty':self.quantity_done}
         models._logger.error('6666666666666666666666666666666666666666666666666  {} '.format(type(test)))
         return {
             "type": "ir.actions.act_window",
