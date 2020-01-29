@@ -39,6 +39,8 @@ class AccountMove(models.Model):
         total = 0
         total_currency = 0
         for line in move_lines:
+            models._logger.error('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
+            models._logger.error(line)
             if line.currency_id != company_currency:
                 currency = line.currency_id
                 date = self._get_currency_rate_date() or fields.Date.context_today(self)
