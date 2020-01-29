@@ -16,13 +16,13 @@
                postition="inside">
           <field name="count_stock_production_lot_serial" />
         </xpath>
-        <!-- <xpath expr="//page[@nam]" postition="after">
+        <xpath expr="//page[@name='miscellaneous']" postition="after">
           <page name="Seleccion Lote" id="selection_lot">
             <tree>
               <field name="product_id"></field>
             </tree>
           </page>
-        </xpath> -->
+        </xpath>
       </field>
     </record>
   </data>
