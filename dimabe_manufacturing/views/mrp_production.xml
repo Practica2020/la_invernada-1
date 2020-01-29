@@ -20,11 +20,9 @@
       <xpath expr="//page[@name='miscellaneous']" position="after">
         <notebook string="Seleccionar Lote">
             <page string="Seleccionar Lote" attrs="{'invisible' :[('product_id' ,'=' ,'0' )]}">
-              <field name="arch" type="xml">
-                <tree>
+                <tree editable="bottom">
                   <field name="qty"/>
                 </tree>
-              </field>
             </page>
           </notebook>
         </xpath>
