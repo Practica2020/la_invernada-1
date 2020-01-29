@@ -33,6 +33,6 @@ class AccountMoveLine(models.Model):
         for line in self:
             amount = line.amount_currency
             if line.currency_id and line.currency_id != line.company_currency_id:
-                amount = line.currency_id.with_context(optional_usd=self.exchange_rate).compute(amount, line.company_currency_id)
+                amount = line.currency_id.with_context(optional_usd=self.move_id.exchange_rate).compute(amount, line.company_currency_id)
                 line.debit = amount > 0 and amount or 0.0
                 line.credit = amount < 0 and -amount or 0.0
