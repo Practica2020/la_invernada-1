@@ -4,7 +4,7 @@ class AccountMove(models.Model):
     _inherit = 'account.move'
 
     exchange_rate = fields.Float(
-        'Taza de Cambio'
+        'Tasa de Cambio'
     )
 
 
