@@ -33,5 +33,13 @@ class AccountMove(models.Model):
                 self.exchange_rate = 1 / rate.rate
         else:
             self.exchange_rate = 0
+
+    @api.onchange('exchange_rate')
+    def _onchange_date(self):
+        '''On the form view, a change on the exchange rate will trigger onchange() on account.move
+        but not on account.move.line even the date field is related to account.move.
+        Then, trigger the _onchange_amount_currency manually.
+        '''
+        self.line_ids._onchange_amount_currency()
     
     
