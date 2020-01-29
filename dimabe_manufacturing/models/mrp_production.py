@@ -4,8 +4,6 @@ from odoo import fields, models, api
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
-    lots = fields.One2many('stock.move.active_moves_lines_ids', 'Lotes')
-
     qty = fields.Float('lots.product_qty')
 
     @api.multi
