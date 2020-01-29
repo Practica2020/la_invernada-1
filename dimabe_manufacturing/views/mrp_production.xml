@@ -20,11 +20,7 @@
         <xpath expr="//page[@name='miscellaneous']" position="after">
           <notebook>
             <page string="Seleccion Lote">
-              <field name="active_move_line_ids">
-                <tree>
-                  <field name="name"/>
-                </tree>
-              </field>
+                <field name="stock.move.active_move_lines_ids" />
             </page>
           </notebook>
         </xpath>
