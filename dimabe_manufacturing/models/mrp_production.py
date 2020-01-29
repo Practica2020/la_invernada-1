@@ -2,7 +2,7 @@ from odoo import fields, models, api
 
 
 class MrpProduction(models.Model):
-    _inherit = ['mrp.production','stock.move']
+    _inherit = 'mrp.production'
 
 
     @api.multi
