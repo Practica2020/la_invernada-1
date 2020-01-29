@@ -99,7 +99,7 @@ class StockPicking(models.Model):
 
     @api.multi
     def return_action(self):
-        quantity_done = self.quantity_done
+        models._logger("77777777777777777777777777777777777777777{}".format(self.quantity_done))
 
         return {
             "type": "ir.actions.act_window",
@@ -111,6 +111,7 @@ class StockPicking(models.Model):
             "target": "new",
             "context": "{'default_product_id':"+str(self.product.id)+",'default_origin':'"+self.name+"','default_product_qty':"+str(self.quantity_done)+"}"
         }
+
     @api.model
     def _get_product_variety(self):
         _logger = logging.getLogger(__name__)
