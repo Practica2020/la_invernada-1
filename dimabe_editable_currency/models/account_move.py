@@ -34,7 +34,9 @@ class AccountMove(models.Model):
         else:
             self.exchange_rate = 0
 
+
     @api.multi
+    @api.depends('line_ids')
     def compute_move_totals(self, company_currency, line_ids):
         total = 0
         total_currency = 0
