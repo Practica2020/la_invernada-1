@@ -4,7 +4,7 @@ from odoo import fields, models, api
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
-    stock_lots = fields.Many2one("stock.production.lot")
+    stock_lots = fields.Many2one("stock.production.lot",lambda self: product_id)
 
     stock_lots_id = fields.One2many(
         related="stock_lots.stock_production_lot_serial_ids")
