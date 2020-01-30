@@ -8,7 +8,7 @@ class MrpProduction(models.Model):
 
     product_qty = fields.Float(rel="stock.product_qty")
 
-    stock_id = fields.Char(rel="stock.stock_product_lot_id")
+    stock_id = fields.Char(rel="stock.stock_product_lot_id",compute="get_data_of_lot")
 
     @api.multi
     def get_data_of_lot(self):
