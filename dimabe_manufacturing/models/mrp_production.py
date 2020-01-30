@@ -4,7 +4,9 @@ from odoo import fields, models, api
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
-    stock = fields.Many2one("stock.move")
+    stock = fields.Many2one("stock.production.lot")
+
+    product_qty = fields.Integer(rel="stock.product_qty")
 
     stock_id = fields.One2many(related="stock.active_move_line_ids")
 
