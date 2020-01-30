@@ -22,7 +22,7 @@
             <group id="lot_selection" position="inside">
               <group string="Seleccionar Lote" width="100%">
                 <group>
-                  <field name="lot" />
+                  <field name="lots" />
                 </group>
               </group>
             </group>
