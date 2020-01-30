@@ -11,14 +11,15 @@ class MrpProduction(models.Model):
 
     product_lots = fields.Integer(
         related="stock_lots.product_id.id"
-    
     )
+
+    product = fields.Many2one(rel="stock_lots.product_id")
+    lot_product = fields.Integer(rel="product.id")
 
     @api.onchange('product_id')
     def filter_lots(self):
         if self.stock_lots:
-            product = fields.Many2one(rel="stock_lots.product_id")
-            id = fields.Integer(rel="product.id")
+            
             models._logger.error(id)
 
     @api.multi
