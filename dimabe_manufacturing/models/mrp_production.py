@@ -6,7 +6,7 @@ class MrpProduction(models.Model):
 
     stock = fields.Many2one("stock.production.lot")
 
-    lots_id = fields.Char(rel="stock_lot_serial.lot_id")
+    product_id = fields.Many2one(rel="stock.product_id")
 
     @api.multi
     def calculate_done(self):
