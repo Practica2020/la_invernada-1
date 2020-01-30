@@ -19,9 +19,9 @@
         <xpath expr="//page[@name='miscellaneous']" position="after">
           <notebook string="Seleccionar Lote">
             <page string="Seleccionar Lote">
-              <field name="stock" domain="{'stock_production_lot_serial_ids':'!=':None}">
-
-              </field>
+              <tree>
+                <field name="stock.stock_production_lot_serial_ids"/>
+              </tree>
             </page>
           </notebook>
         </xpath>
