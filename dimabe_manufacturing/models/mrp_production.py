@@ -16,7 +16,7 @@ class MrpProduction(models.Model):
                 models._logger.error(
                     "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq {}".format(self.stock_lots.product_id))
                 models._logger.error(
-                    "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq {}".format(lots))
+                    "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq {}".format(self.stock_lots.stock_production_lot_serial_ids))
 
     @api.multi
     def calculate_done(self):
