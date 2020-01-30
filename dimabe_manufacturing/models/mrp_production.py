@@ -8,7 +8,7 @@ class MrpProduction(models.Model):
 
     product_qty = fields.Integer(rel="stock.product_qty")
 
-    stock_id = fields.One2many(related="stock.active_move_line_ids")
+    stock_id = fields.One2many(related="stock.stock_production_lot_serial_ids")
 
     @api.multi
     def calculate_done(self):
