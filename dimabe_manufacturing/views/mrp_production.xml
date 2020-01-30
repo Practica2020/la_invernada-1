@@ -20,7 +20,7 @@
               <tree editable="bottom">
                 <field name="lot_product" attrs="{'invisible':'True'}"/>
                 <field name="stock_lots_id"  />
-                <field name="stock_lots" domain="['product_id':lot_product]" />
+                <field name="stock_lots" />
               </tree>
             </group>
           </page>
