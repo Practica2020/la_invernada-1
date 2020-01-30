@@ -4,10 +4,6 @@ import logging
 class StockMoveLine(models.Model):
     _inherit = 'stock.move.line'
 
-    lots = fields.Many2one("mrp.production.stock_lots")
-    
-    lots_id = fields.Integer(rel="lots.id")
-
     count_stock_production_lot_serial = fields.Integer(
         'Total Bultos',
         compute='_compute_count_stock_production_lot_serial'
