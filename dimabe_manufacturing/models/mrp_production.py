@@ -4,13 +4,14 @@ from odoo import fields, models, api
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
-    stock = fields.Many2one("stock.production.lot")
+    stock = fields.Many2one("stock.move")
 
-    stock_id = fields.One2many(related="stock.stock_production_lot_serial_ids")
-    
-    lot_product_id = fields.Many2one(related="stock_id.display_weigth")
+    stock_id = fields.One2many(related="stock.active_move_line_ids")
 
-    lot_product_id = fields.Char(rel="stock.product_id")
+    @api.multi
+    def get_data_lots(self):
+        for item in self:
+
 
     @api.multi
     def calculate_done(self):
