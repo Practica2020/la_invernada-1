@@ -6,7 +6,7 @@ class MrpProduction(models.Model):
 
     stock = fields.Many2one("stock.production.lot.serial")
 
-    product_qty = fields.Float(rel="stock.product_qty")
+    lot_product_qty = fields.Float(rel="stock.product_qty")
 
     stock_id = fields.Char(rel="stock.stock_product_lot_id",compute="get_data_of_lot")
 
@@ -14,7 +14,7 @@ class MrpProduction(models.Model):
     def get_data_of_lot(self):
         for item in self:
             if item.product_id:
-                models._logger.error('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA {}'.format(self.product_qty))
+                models._logger.error('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA {}'.format(self.lot_product_qty))
 
     @api.multi
     def calculate_done(self):
