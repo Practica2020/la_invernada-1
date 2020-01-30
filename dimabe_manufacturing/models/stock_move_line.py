@@ -9,11 +9,10 @@ class StockMoveLine(models.Model):
         compute='_compute_count_stock_production_lot_serial'
     )
 
-    product_name = fields.Char(rel="product_id.name")
 
     _logger = logging.getLogger(__name__)
 
-    _logger.error(product_name)
+    _logger.error(product_id)
 
     @api.multi
     def _compute_count_stock_production_lot_serial(self):
