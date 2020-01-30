@@ -1,5 +1,5 @@
 from odoo import fields, models, api
-
+import logging
 
 class StockMoveLine(models.Model):
     _inherit = 'stock.move.line'
@@ -8,6 +8,12 @@ class StockMoveLine(models.Model):
         'Total Bultos',
         compute='_compute_count_stock_production_lot_serial'
     )
+
+    product_name = fields.Char(rel="product_id.name")
+
+    _logger = logging.getLogger(__name__)
+
+    _logger.error(product_name)
 
     @api.multi
     def _compute_count_stock_production_lot_serial(self):
