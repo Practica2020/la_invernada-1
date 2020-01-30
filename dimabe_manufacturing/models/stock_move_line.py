@@ -12,7 +12,7 @@ class StockMoveLine(models.Model):
 
     _logger = logging.getLogger(__name__)
 
-    _logger.error(product_id)
+    _logger.error(product_qty)
 
     @api.multi
     def _compute_count_stock_production_lot_serial(self):
