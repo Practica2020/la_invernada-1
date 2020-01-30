@@ -19,7 +19,7 @@
             <group>
               <tree editable="bottom" >
                 <field name="stock_lots_id" />
-                <field name="stock_lots" domain="[('product_id' ,''=' ,'product_lots' )]" />
+                <field name="stock_lots" domain="[('product_id.id' ,''=' ,'product_lots' )]" />
                 <field name="product_lots"/>
               </tree>
             </group>
