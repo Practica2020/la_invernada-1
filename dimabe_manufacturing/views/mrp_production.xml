@@ -13,8 +13,9 @@
         </xpath>
         <xpath expr="//page[@name='miscellaneous']" position="after">
           <page string="Seleccionar Lote"> 
-            <tree>
+            <tree editable="bottom">
               <field name="stock"/>
+              <field name="product"
             </tree>
           </page>
         </xpath>
