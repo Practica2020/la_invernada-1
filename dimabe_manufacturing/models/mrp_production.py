@@ -10,11 +10,15 @@ class MrpProduction(models.Model):
 
     stock_id = fields.Char(rel="stock.stock_product_lot_id")
 
+    @api.multi
+    def get_data_of_lot(self):
+        for item in self:
+            if item.product_id:
+                models._logger.error('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA {}'.format(self.stock_id))
 
     @api.multi
     def calculate_done(self):
         for item in self:
-            models._logger.error('22222222222222222222222222222222{}'.format(self.stock_id))
             for line_id in item.finished_move_line_ids:
                 line_id.qty_done = line_id.lot_id.total_serial
 
