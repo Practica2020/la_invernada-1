@@ -13,9 +13,11 @@
         </xpath>
         <xpath expr="//page[@name='miscellaneous']" position="after">
           <page string="Seleccionar Lote" type="xml">
-            <tree create="false" edit="false" editable="bottom" options="{'no_open':True}">
-              <field name="stock"/>
-            </tree>
+            <group>
+              <tree create="false" edit="false" editable="bottom" options="{'no_open':True}">
+                <field name="stock" />
+              </tree>
+            </group>
           </page>
         </xpath>
       </field>
