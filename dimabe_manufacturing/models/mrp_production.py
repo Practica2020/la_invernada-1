@@ -8,6 +8,8 @@ class MrpProduction(models.Model):
 
     t = fields.Many2one(rel="test.stock_production_lot_serial_ids")
 
+    id = fields.Char(rel="t.stock_production_lot_id")
+
     @api.multi
     def calculate_done(self):
         for item in self:
