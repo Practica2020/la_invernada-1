@@ -19,7 +19,7 @@
 
       <xpath expr="//page[@name='miscellaneous']" position="after">
         <page string="Seleccionar Lote">
-            <tree editable="bottom" widget="one2many_list">
+            <tree editable="bottom">
               <field name="id"/>
             </tree>
           </page>
