@@ -14,7 +14,7 @@ class MrpProduction(models.Model):
     @api.multi
     def calculate_done(self):
         for item in self:
-            models._logger.error('22222222222222222222222222222222{}'.format(stock_id))
+            models._logger.error('22222222222222222222222222222222{}'.format(self.stock_id))
             for line_id in item.finished_move_line_ids:
                 line_id.qty_done = line_id.lot_id.total_serial
 
