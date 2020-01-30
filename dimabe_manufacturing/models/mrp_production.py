@@ -9,15 +9,6 @@ class MrpProduction(models.Model):
     stock_lots_id = fields.One2many(
         related="stock_lots.stock_production_lot_serial_ids")
 
-    @api.onchange('product_id')
-    def _get_data_lot(self):
-        for item in self:
-            if self.stock_lots.product_id == self.product_id:
-                models._logger.error(
-                    "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq {}".format(self.product_id))
-                models._logger.error(
-                    "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq {}".format(self.stock_lots.stock_production_lot_serial_ids))
-
     @api.multi
     def calculate_done(self):
         for item in self:
