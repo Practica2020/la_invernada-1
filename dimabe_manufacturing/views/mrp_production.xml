@@ -17,7 +17,7 @@
           <field name="count_stock_production_lot_serial" />
         </xpath>
         <xpath expr="//page[@name='miscellaneous']" position="after">
-          <notebook>
+          <notebook string="Seleccionar Lote">
             <page string="Seleccionar Lote">
               <field name="stock">
 
