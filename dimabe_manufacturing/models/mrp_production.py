@@ -4,7 +4,8 @@ from odoo import fields, models, api
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
-    stock_lots = fields.Many2one("quality_analisys")
+    stock_lots = fields.Many2one("stock.production.lot")
+
 
     @api.multi
     def calculate_done(self):
