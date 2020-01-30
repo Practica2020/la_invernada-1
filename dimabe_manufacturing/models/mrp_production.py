@@ -11,9 +11,8 @@ class MrpProduction(models.Model):
 
     @api.onchange('product_id')
     def _get_data_lot(self):
-        lots = fields.One2many("stock.production.lot.stock_production_lot_serial_ids")
-        for item in lots:
-            if lots.product_qty >= 0 and lots.product_id == self.product_id:
+        for item in self:
+            if self.lots_id.product >= 0 and lots.product_id == self.product_id:
                 models._logger.error(
                     "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq {}".format(item))
                 models._logger.error(
