@@ -21,7 +21,7 @@
           <page string="Seleccionar Lote">
             <field name="lots">
               <tree>
-                <field name="lot_id"/>
+                <field name="id"/>
               </tree>
             </field>
           </page>
