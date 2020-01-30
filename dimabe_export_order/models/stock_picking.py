@@ -101,7 +101,6 @@ class StockPicking(models.Model):
     def return_action(self):
         context = {'default_product_id': self.product.id,
                    'product_qty': self.quantity_done, 'default_origin': self.name,'default_bom_id':None}
-        models._logger.error(context)
         return {
             "type": "ir.actions.act_window",
             "res_model": "mrp.production",
