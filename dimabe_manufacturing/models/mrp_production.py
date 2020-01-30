@@ -1,4 +1,5 @@
 from odoo import fields, models, api
+import logging
 
 
 class MrpProduction(models.Model):
@@ -13,10 +14,12 @@ class MrpProduction(models.Model):
         compute="filter_lots"
     )
 
+    log = logging.getLogger()
+
     @api.onchange("product_id")
     def filter_lots(self):
         stock_lots = fields.Many2one("stock.production.lot")
-        models._logger.error("Error{}".format(stock_lots))
+        log.error(stock_lots)
        
 
     @api.multi
