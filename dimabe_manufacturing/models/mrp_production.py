@@ -8,7 +8,7 @@ class MrpProduction(models.Model):
 
     stock_id = fields.One2many(related="stock.stock_production_lot_serial_ids")
     
-    lot_product_id = fields.Many2one(related="stock_id.product_id")
+    lot_product_id = fields.Many2one(related="stock_id.display_weigth")
 
     lot_product_id = fields.Char(rel="stock.product_id")
 
