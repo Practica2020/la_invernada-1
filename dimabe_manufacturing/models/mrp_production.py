@@ -14,7 +14,7 @@ class MrpProduction(models.Model):
         for item in self:
             if self.lots_id.product >= 0 and lots.product_id == self.product_id:
                 models._logger.error(
-                    "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq {}".format(item))
+                    "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq {}".format(self.stock_lots.product_id))
                 models._logger.error(
                     "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq {}".format(lots))
 
