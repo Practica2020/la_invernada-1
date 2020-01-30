@@ -13,7 +13,7 @@ class MrpProduction(models.Model):
     lots = fields.Many2one(
         "stock.production.lots.stock_production_serial_ids", "Lotes")
 
-    @api.multi
+    @api.model
     def _get_data_lots(self):
         for item in self.lots:
             if item.lot_id:
