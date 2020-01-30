@@ -20,7 +20,7 @@
           <notebook string="Seleccionar Lote">
             <page string="Seleccionar Lote">
               <tree>
-                <field name="stock.stock_production_lot_serial_ids"/>
+                <field name="stock_lot_serial" />
               </tree>
             </page>
           </notebook>
