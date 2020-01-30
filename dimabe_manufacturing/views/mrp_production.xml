@@ -16,7 +16,6 @@
             <group>
               <tree editable="bottom">
                 <field name="stock_id" />
-                <field name="lot_product_id"/>
               </tree>
             </group>
           </page>
