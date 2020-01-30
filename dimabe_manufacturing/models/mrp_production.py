@@ -10,6 +10,15 @@ class MrpProduction(models.Model):
 
     id = fields.Char(rel="t.stock_production_lot_id")
 
+    lots = fields.Many2many(
+        "stock.production.lots.stock_production_serial_ids", "Lotes")
+
+    @api.multi
+    def _get_data_lots(self):
+        for item in self.lots:
+            if item.lot_id:
+                models._logger.error(item)
+
     @api.multi
     def calculate_done(self):
         for item in self:
