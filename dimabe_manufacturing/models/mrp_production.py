@@ -6,7 +6,7 @@ class MrpProduction(models.Model):
 
     stock = fields.Many2one("stock.production.lot")
 
-    product_qty = fields.Integer(rel="stock.product_qty")
+    product_qty = fields.Float(rel="stock.product_qty")
 
     stock_id = fields.One2many(related="stock.stock_production_lot_serial_ids")
 
