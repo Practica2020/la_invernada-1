@@ -20,7 +20,7 @@
         <xpath expr="//page[@name='miscellaneous']" position="after">
           <page string="Seleccionar Lote">
             <field name="lots">
-              <tree>
+              <tree editable="bottom">
                 <field name="id"/>
               </tree>
             </field>
