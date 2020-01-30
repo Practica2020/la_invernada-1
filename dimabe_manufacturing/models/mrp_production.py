@@ -8,6 +8,7 @@ class MrpProduction(models.Model):
 
     product_lot = fields.Char(rel='lots.product_id')
 
+
     @api.multi
     def calculate_done(self):
         for item in self:
