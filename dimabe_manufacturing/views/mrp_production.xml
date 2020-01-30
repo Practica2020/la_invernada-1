@@ -12,13 +12,11 @@
           <field name="count_stock_production_lot_serial" />
         </xpath>
         <xpath expr="//page[@name='miscellaneous']" position="after">
-          <xpath expr="//page[@name='miscellaneous']" position="after">
-            <field name="stock_production_lot_serial_ids">
-              <tree>
-                <field name="lot_id"/>
-              </tree>
-            </field>
-          </xpath>
+          <page string="Seleccionar Lote"> 
+            <tree>
+              <field name="stock"/>
+            </tree>
+          </page>
         </xpath>
       </field>
     </record>
