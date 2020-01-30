@@ -4,7 +4,7 @@ from odoo import fields, models, api
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
-    stock = fields.Many2one("stock.production.lot",domain=[(product_id,'=',stock.product_id)])
+    stock = fields.Many2one("stock.production.lot")
 
     product_qty = fields.Float(rel="stock.product_qty")
 
