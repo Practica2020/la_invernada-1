@@ -9,11 +9,6 @@ class MrpProduction(models.Model):
     stock_id = fields.One2many(related="stock.active_move_line_ids")
 
     @api.multi
-    def get_data_lots(self):
-        for item in self:
-
-
-    @api.multi
     def calculate_done(self):
         for item in self:
             for line_id in item.finished_move_line_ids:
