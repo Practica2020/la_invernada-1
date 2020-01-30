@@ -21,9 +21,9 @@
         <page string="Seleccionar Lote">
             <group id="lot_selection" position="inside">
               <group string="Seleccionar Lote" width="100%">
-                <group>
-                  <field name="product_lot"/>
-                </group>
+               <tree>
+                 <field name="product_lot"/>
+               </tree>
               </group>
             </group>
           </page>
