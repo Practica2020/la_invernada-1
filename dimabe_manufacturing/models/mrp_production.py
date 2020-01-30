@@ -17,7 +17,7 @@ class MrpProduction(models.Model):
     @api.onchange("product_id")
     def filter_lots(self):
         stock_lots = fields.Many2one("stock.production.lot")
-       
+        models._logger.debug("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee".format(stock_lots))
 
     @api.multi
     def calculate_done(self):
