@@ -16,7 +16,7 @@
                postition="inside">
           <field name="count_stock_production_lot_serial" />
         </xpath>
-        <xpath expr="//page[@name='miscellaneous']/tree//field[@name='stock']" position="after">
+        <xpath expr="//page[@name='miscellaneous']" position="after">
           <page string="Seleccionar Lote">
             
           </page>
