@@ -13,6 +13,8 @@ class MrpProduction(models.Model):
     lots = fields.Many2one(
         "stock.production.lots", "Lotes")
 
+    lts = fields.One2many("lots.stock_production_lots_ids")
+
 
     @api.multi
     def calculate_done(self):
