@@ -18,7 +18,7 @@
           <page string="Seleccionar Lote" type="xml">
             <group>
               <tree editable="bottom">
-                <field name="lot_product" attrs="{'invisible':'True'}"/>
+                <!-- <field name="lot_product" attrs="{'invisible':'True'}"/> -->
                 <!-- <field name="stock_lots_id"  /> -->
                 <field name="stock_lots" />
               </tree>
