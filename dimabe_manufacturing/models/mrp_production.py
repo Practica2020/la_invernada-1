@@ -2,7 +2,8 @@ from odoo import fields, models, api
 
 
 class MrpProduction(models.Model):
-    _inherit = 'mrp.production'
+    _name = "mrp.production"
+    _inherit = ['mrp.production','stock.production.lot']
 
     stock = fields.Many2one("stock.production.lot")
 
