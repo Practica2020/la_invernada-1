@@ -14,9 +14,12 @@
         <xpath expr="//page[@name='miscellaneous']" position="after">
           <page string="Seleccionar Lote" type="xml">
             <group model="ir.ui.view">
-              <tree create="false" edit="false" editable="bottom" options="{'no_open':True}">
-                <field name="stock" />
-              </tree>
+              <field name="arch" type="xml">
+                <tree create="false" edit="false" editable="bottom" options="{'no_open':True}">
+                  <field name="stock" />
+                </tree>
+              </field>
+
             </group>
           </page>
         </xpath>
