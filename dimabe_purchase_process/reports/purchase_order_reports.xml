@@ -485,9 +485,10 @@
                   </td>
                   <td style="text-align:right;border-bottom:1px solid;border-right:1px solid;">
                     <span t-field="line.product_qty"/>
+                    <span t-field="line.product_uom" groups="uom.group_uom"/>
                   </td>
                   <td style="text-align:left;border-bottom:1px solid;border-right:1px solid;">
-                    <span t-field="line.product_id.name"/>
+                    <span t-field="line.name"/>
                   </td>
                 </tr>
               </t>
