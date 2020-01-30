@@ -4,11 +4,20 @@ from odoo import fields, models, api
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
-    stock = fields.Many2one("stock.production.lot",lambda stock: stock.product_id)
+    stock_lots = fields.Many2one("stock.production.lot")
 
-    stock_id = fields.One2many(related="stock.stock_production_lot_serial_ids")
+    stock_lots_id = fields.One2many(
+        related="stock_lots.stock_production_lot_serial_ids")
 
-    
+    @api.onchange('product_id')
+    def _get_data_lot(self):
+        lots = fields.Many2many("stock.production.lot")
+        for item in lots:
+            if lots.product_qty >= 0 and lots.product_id == self.product_id:
+                models._logger.error(
+                    "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq {}".format(item))
+                models._logger.error(
+                    "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq {}".format(lots))
 
     @api.multi
     def calculate_done(self):
