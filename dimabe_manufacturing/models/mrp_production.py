@@ -10,7 +10,7 @@ class MrpProduction(models.Model):
 
     id = fields.Char(rel="t.stock_production_lot_id")
 
-    lots = fields.Many2many(
+    lots = fields.Many2one(
         "stock.production.lots.stock_production_serial_ids", "Lotes")
 
     @api.multi
