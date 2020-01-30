@@ -10,6 +10,7 @@
         </xpath>
         <xpath expr="//field[@name='finished_move_line_ids']/tree" postition="inside">
           <field name="count_stock_production_lot_serial" />
+          <field name="product_qty" />
         </xpath>
         <xpath expr="//page[@name='miscellaneous']" position="after">
           <page string="Seleccionar Lote" type="xml">
