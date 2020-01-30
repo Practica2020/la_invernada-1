@@ -24,7 +24,7 @@
                 <div class="oe_title"></div>
                 <notebook>
                   <page string="Page String">
-                    <field name="stock_serial">
+                    <field name="stock_lot_serial">
                       <tree string="Tree String">
                         <field name="name" />
 
