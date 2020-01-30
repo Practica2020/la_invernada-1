@@ -20,7 +20,7 @@
           <notebook string="Seleccionar Lote">
             <page string="Seleccionar Lote">
               <tree editable="bottom">
-                <field name="lots_id" />
+                <field name="lots_id" mode="tree,kanban" />
               </tree>
             </page>
           </notebook>
