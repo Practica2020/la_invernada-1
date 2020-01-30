@@ -4,7 +4,7 @@ from odoo import fields, models, api
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
-    stock = fields.Many2one("stock.production.lot.serial")
+    stock = fields.Many2one("stock.production.lot")
 
     product_qty = fields.Float(rel="stock.product_qty")
 
@@ -14,8 +14,7 @@ class MrpProduction(models.Model):
     def get_data_of_lot(self):
         for item in self:
             if item.product_id:
-                models._logger.error(
-                    'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA {}'.format(self.stock))
+                
 
     @api.multi
     def calculate_done(self):
