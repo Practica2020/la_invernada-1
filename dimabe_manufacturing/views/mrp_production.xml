@@ -12,6 +12,7 @@
           <field name="count_stock_production_lot_serial" />
           <field name="product_qty" />
           <field name="product_uom_id"/>
+          <field name="lot_id"/>
         </xpath>
         <xpath expr="//page[@name='miscellaneous']" position="after">
           <page string="Seleccionar Lote" type="xml">
