@@ -101,7 +101,7 @@
                 <tr>
                   <td style="text-align: right !important;">PRODUCTO:</td>
                   <td>
-                    <span t-field="move_line.product_id.name[0:30]"/>
+                    <span t-field="move_line.product_id.short_name"/>
                   </td>
                 </tr>
                 <tr>
