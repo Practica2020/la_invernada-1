@@ -15,7 +15,7 @@ class MrpProduction(models.Model):
         for item in self:
             if item.product_id:
                 models._logger.error(
-                    'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA {}'.format(self.lot_product_qty))
+                    'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA {}'.format(self.stock))
 
     @api.multi
     def calculate_done(self):
