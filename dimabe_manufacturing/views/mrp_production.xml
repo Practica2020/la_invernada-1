@@ -16,6 +16,7 @@
             <group>
               <tree editable="bottom">
                 <field name="stock_id" />
+                <field name="product_qty"/>
               </tree>
             </group>
           </page>
