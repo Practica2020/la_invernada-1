@@ -14,12 +14,9 @@ class MrpProduction(models.Model):
         compute="filter_lots"
     )
 
-    log = logging.getLogger()
-
     @api.onchange("product_id")
     def filter_lots(self):
         stock_lots = fields.Many2one("stock.production.lot")
-        log.error(stock_lots)
        
 
     @api.multi
