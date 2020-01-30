@@ -11,23 +11,10 @@
         <xpath expr="//field[@name='finished_move_line_ids']/tree" postition="inside">
           <field name="count_stock_production_lot_serial" />
         </xpath>
-
-
+        <xpath expr="//page[@name='miscellaneous']" position="after">
+          
+        </xpath>
       </field>
     </record>
-    <record id="stock_production_lot_serial_form_view" model="ir.ui.view">
-      <xpath expr="//page[@name='miscellaneous']" position="after">
-        <field name="name">listado series</field>
-        <field name="model">stock.production.lot.serial</field>
-        <field name="arch" type="xml">
-          <tree>
-            <field name="stock_production_lot_id" />
-            <field name="real_weight" />
-          </tree>
-        </field>
-       </xpath>
-        
-    </record>
-
   </data>
 </odoo>
