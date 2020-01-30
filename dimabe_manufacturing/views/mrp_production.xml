@@ -19,13 +19,9 @@
 
       <xpath expr="//page[@name='miscellaneous']" position="after">
         <page string="Seleccionar Lote">
-            <group id="lot_selection" position="inside">
-              <group string="Seleccionar Lote" width="100%">
-               <tree>
-                 <field name="product_lot"/>
-               </tree>
-              </group>
-            </group>
+            <tree editable="bottom">
+
+            </tree>
           </page>
         </xpath>
       </field>
