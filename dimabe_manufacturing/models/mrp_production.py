@@ -16,10 +16,6 @@ class MrpProduction(models.Model):
     product = fields.Many2one(rel="stock_lots.product_id")
     lot_product = fields.Integer(rel="product.id")
 
-    @api.onchange('product_id')
-    def filter_lots(self):
-        models._logger.error(self.product)
-
     @api.multi
     def calculate_done(self):
         for item in self:
