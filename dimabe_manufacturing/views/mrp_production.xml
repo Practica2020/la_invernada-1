@@ -27,7 +27,6 @@
                     <field name="stock_lot_serial">
                       <tree string="Tree String">
                         <field name="name" />
-
                       </tree>
                     </field>
                   </page>
