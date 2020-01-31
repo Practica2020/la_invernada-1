@@ -4,7 +4,7 @@
             <field name="name">Despachos</field>
             <field name="model">stock.picking</field>
             <field name="arch" type="xml">
-                <tree string="Dispatched" default_order='required_loading_date'>
+                <tree string="Dispatched">
                     <field name="required_loading_date" string="Fecha de Carga" />
                     <field name="partner_id" string="Cliente" />
                     <field name="country" string="Pais" />
