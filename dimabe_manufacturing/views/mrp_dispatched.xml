@@ -18,7 +18,6 @@
                     <field name="client_label" string="Etiqueta Cliente" />
                     <field name="quantity_done" string="Kilos a Envasar" />
                     <field name="categ"/>
-                    <button string="Ver Calidad" class="btn btn-succes" name="%(action_mrp_quality_analisys)d" type="action"/>
                 </tree>
             </field>
         </record>
