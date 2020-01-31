@@ -20,6 +20,7 @@
               <field name="serial_lot_ids">
                 <tree editable="bottom">
                   <field name="real_weight" />
+                  <field name="display_name" />
                 </tree>
               </field>
             </group>
