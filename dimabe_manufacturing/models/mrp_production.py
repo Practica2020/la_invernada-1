@@ -14,7 +14,7 @@ class MrpProduction(models.Model):
     @api.onchange('product_id')
     def _get_serial(self):
         if self.product_id:
-            if self.product_id in self.stock_lots.product_id:
+            if self.product_id == self.stock_lots.product_id:
                 models._logger.error('Esta')
 
     @api.multi
