@@ -5,12 +5,19 @@ class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
     stock_lots = fields.Many2one(
-        "stock.production.lot", domain='["product_id","=",29]')
+        "stock.production.lot", domain='["stock_proud.product_id","=",29]')
     
     serial_lot_ids = fields.One2many(related="stock_lots.stock_production_lot_serial_ids")
 
 
-    
+    @api.onchange('product_id')
+    def onchange_stock_lot(self):
+        res = {
+            'domain':{
+                'product_id': [('product_id','=',self.product_id)]
+            }
+        }
+        return res
 
     @api.multi
     def calculate_done(self):
