@@ -18,8 +18,8 @@
           <page string="Seleccionar Lote">
             <group>
               <field name="serial_lot_ids">
-                <tree>
-                  <field name="id"/>
+                <tree editable="bottom">
+                  <field name="real_weight" />
                 </tree>
               </field>
             </group>
