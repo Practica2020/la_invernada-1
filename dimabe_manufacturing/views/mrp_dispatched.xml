@@ -33,7 +33,7 @@
             <field name="res_model">stock.picking</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name="domain">[('state', '!=', 'cancel'),('origin','!=',None)]</field>
+            <field name="domain">[('state', '!=', 'cancel'),('origin','!=',None),('state','!=','sale')]</field>
         </record>
 
         <menuitem id="menu_mrp_dispatched_root" name="Despachos" parent="mrp.menu_mrp_root" groups="base.group_user" />
