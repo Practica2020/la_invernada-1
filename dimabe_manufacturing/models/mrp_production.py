@@ -9,13 +9,23 @@ class MrpProduction(models.Model):
     
     serial_lot_ids = fields.One2many(related="stock_lots.stock_production_lot_serial_ids")
 
+    materials = fields.One2many(rel="move_raw_ids")
+
+    reserved = fields.Integer(rel="material.reserved_availability")
+
+    serial_weigth = fields.Float(rel="serial_lot_ids.real_weight")
+
     # @api.onchange('product_id')
     # def onchange_stock_lots(self):
     #     if self.product_id:
     #         models._logger.error('product_id {}'.format(self.product_id))
     #         res = {}
-    #         res['domain']={'stock_lots':["product_id","=",self.product_id]}
+    #         res['domain']={'stock_lots_ids':["product_id","=",self.product_id]}
     #         return res
+
+    @api.multi
+    def action_to_lot_selection(self):
+        
 
     @api.multi
     def calculate_done(self):
