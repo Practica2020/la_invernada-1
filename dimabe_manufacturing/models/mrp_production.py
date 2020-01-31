@@ -9,7 +9,7 @@ class MrpProduction(models.Model):
     
     serial_lot_ids = fields.One2many(related="stock_lots.stock_production_lot_serial_ids")
 
-    materials = fields.One2many(rel="mrp.production.move_raw_ids")
+    materials = fields.One2many(rel="stock.move.move_raw_ids")
 
     reserved = fields.Integer(rel="material.reserved_availability")
 
