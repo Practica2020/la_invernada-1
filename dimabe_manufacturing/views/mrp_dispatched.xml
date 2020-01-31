@@ -16,9 +16,17 @@
                     <field name="charging_mode" string="Modo de Carga" />
                     <field name="client_label" string="Etiqueta Cliente" />
                     <field name="quantity_done" string="Kilos a Envasar" />
-                    <button string="Crear PO" name="return_action" type="object" />
+                    <button string="Crear PO" name="%(action_mrp_production)d" type="action" context="{'default_product_qty':quantity_done}" />
                 </tree>
             </field>
+        </record>
+        <record id="action_mrp_production" model="ir.actions.act_window">
+            <field name="name">Order de Produccion</field>
+            <field name="res_model">mrp.production</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="mrp.mrp_production_form_view"/>
+            <field name="target">new</field>
         </record>
         <record id="action_mrp_dispatched" model="ir.actions.act_window">
             <field name="name">Dispatched</field>
