@@ -19,7 +19,7 @@
             <group>
               <field name="serial_lot_ids">
                 <tree>
-                  <field name="stock_lots"/>
+                  <field name="name"/>
                 </tree>
               </field>
             </group>
