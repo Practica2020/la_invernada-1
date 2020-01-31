@@ -14,7 +14,7 @@ class MrpProduction(models.Model):
         if self.product_id:
             models._logger.error('product_id {}'.format(self.product_id))
             res = {}
-            res['domain']={'stock_lots':['product_id','=',self.product_id.id]}
+            res['domain']={'stock_lots':['product_id','=',self.product_id]}
             models._logger.error('domain {}'.format(res['domain']))
             return res
 
