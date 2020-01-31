@@ -7,14 +7,20 @@ class MrpProduction(models.Model):
     stock_lots = fields.Many2one(
         "stock.production.lot")
 
-    lot_id = fields.Char(rel="stock_lots.name")
-    
     serial_lot_ids = fields.One2many(related="stock_lots.stock_production_lot_serial_ids",compute='_get_serial')
 
     @api.onchange('product_id')
     def _get_serial(self):
         if self.product_id:
-            models._logger.error(self.lot_id)
+                self.serial_lot_ids = self.serial_lot_ids.search(
+                    [('serial_lot_ids.stock_production_lot_id.product_id','=',self.product_id)])
+
+
+    @api.multi
+    def set_stock_move(self):
+        product = self.env['stock.move'].create({'product_id':self.product_id})
+        product_qty = self.env['stock.move'].create({'product_qty':self.product_qty})
+        self.env.cr.commit()
 
     @api.multi
     def calculate_done(self):
