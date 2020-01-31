@@ -9,6 +9,10 @@ class MrpProduction(models.Model):
     
     serial_lot_ids = fields.One2many(related="stock_lots.stock_production_lot_serial_ids")
 
+    @api.multi
+    def stock_lots_reserved(self):
+        if self.product_id:
+            models._logger.error(serial_lot_ids)
 
     @api.multi
     def calculate_done(self):
