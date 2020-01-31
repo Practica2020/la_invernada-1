@@ -21,6 +21,7 @@
                 <tree editable="bottom">
                   <field name="real_weight" />
                   <field name="display_name" />
+                  <field name="stock_production_lot_id"/>
                 </tree>
               </field>
             </group>
