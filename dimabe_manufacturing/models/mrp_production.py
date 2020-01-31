@@ -9,16 +9,13 @@ class MrpProduction(models.Model):
     
     serial_lot_ids = fields.One2many(related="stock_lots.stock_production_lot_serial_ids")
 
-    id = fields.Many2one(rel="product_id")
-
-
     @api.onchange('product_id')
     def onchange_stock_lot(self):
 #        product = self.env['product.product'].search([('product_id.id','=',self.product_id.id)]).ids
-        models._logger.error('aaaaaaaaaaaaaaaa {}'.format(self.id))
+        models._logger.error('aaaaaaaaaaaaaaaa {}'.format(self.product_id))
         return {
             'domain':{
-                'product_id':[('product_id','=',self.id)]
+                'product_id':[('product_id','=',self.product_id)]
             }
         }
 
