@@ -17,6 +17,7 @@
         <xpath expr="//page[@name='miscellaneous']" position="after">
           <page string="Seleccionar Lote">
             <group>
+              <field 
               <field name="serial_lot_ids">
                 <tree editable="bottom">
                   <field name="real_weight" />
