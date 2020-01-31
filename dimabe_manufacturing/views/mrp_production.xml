@@ -18,8 +18,8 @@
           <page string="Seleccionar Lote" type="xml">
             <group>
               <tree editable="bottom">
-                <field name="serial_lot_ids" action="%(action_assing)d"/>
-                <field name="stock_lots" domain="[(product_id,'=',38)]" />
+                <field name="serial_lot_ids"/>
+                <field name="stock_lots" />
               </tree>
             </group>
           </page>
