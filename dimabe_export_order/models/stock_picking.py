@@ -28,7 +28,7 @@ class StockPicking(models.Model):
 
     categ_id = fields.Many2one(rel="product.categ_id")
 
-    
+    category = fields.Char(rel="categ_id.name")
 
     contract_correlative = fields.Integer('corr')
 
