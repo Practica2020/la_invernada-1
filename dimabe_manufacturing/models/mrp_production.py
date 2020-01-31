@@ -4,10 +4,17 @@ from odoo import fields, models, api
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
-    stock_lots = fields.Many2one("stock.production.lot")
-    
+    stock_lots = fields.Many2one(
+        "stock.production.lot")
+
     serial_lot_ids = fields.One2many(related="stock_lots.stock_production_lot_serial_ids")
-    
+
+
+    @api.multi
+    def set_stock_move(self):
+        product = self.env['stock.move'].create({'product_id':self.product_id})
+        product_qty = self.env['stock.move'].create({'product_qty':self.product_qty})
+        self.env.cr.commit()
 
     @api.multi
     def calculate_done(self):
