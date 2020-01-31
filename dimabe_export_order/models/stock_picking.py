@@ -100,8 +100,9 @@ class StockPicking(models.Model):
     @api.multi
     def return_action(self):
         context= {'default_product_id':self.product.id,'default_product_qty':self.quantity_done}
-        product = self.env['stock.picking'].browse(self.product.id)
-        models._logger.error('ERRROROROROROROROROR {}'.format(product.quantity_done))
+        product = self.env['mrp.production'].browse(self.product.id)
+        quantity_done = product
+        models._logger.error('ERRROROROROROROROROR {}'.format(product))
         return {
             "type": "ir.actions.act_window",
             "res_model": "mrp.production",
