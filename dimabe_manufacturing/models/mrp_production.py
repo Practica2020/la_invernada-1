@@ -15,8 +15,7 @@ class MrpProduction(models.Model):
             models._logger.error('product_id {}'.format(self.product_id))
             res = {}
             res['domain']={'stock_lots':["product_id","=",self.product_id]}
-            models._logger.error('domain {}'.format(res['domain']))
-            models._logger.error('domain {}'.format(res.__len__))
+            models._logger.error('domain {}'.format(res['domain'].length()))
             return res
 
     @api.multi
