@@ -332,6 +332,12 @@
                   <span t-field="stock_picking.get_canning_move().product_id.name"/>
                 </td>
               </tr>
+              <tr>
+                <th style="border-right: 1px solid;">PRODUCTO:</th>
+                <td>
+                  <span t-field="stock_picking.get_mp_move().product_id.name"/>
+                </td>
+              </tr>
             </table>
           </div>
 
