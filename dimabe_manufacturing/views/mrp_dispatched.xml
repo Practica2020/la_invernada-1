@@ -17,7 +17,6 @@
                     <field name="charging_mode" string="Modo de Carga" />
                     <field name="client_label" string="Etiqueta Cliente" />
                     <field name="quantity_done" string="Kilos a Envasar" />
-                    <field name="categ"/>
                     <button string="Crear PO" class="btn btn-success" name="return_action" type="object" />
                 </tree>
             </field>
@@ -35,7 +34,7 @@
             <field name="res_model">stock.picking</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name="domain">[('state','!=','cancel'),('origin','!=',None)]</field>
+            <field name="domain">['|',('state','!=','cancel'),('origin','!=',None),[('&',('product_id.route_id'='manual')]]</field>
         </record>
         <menuitem id="menu_mrp_dispatched_root" name="Despachos" parent="mrp.menu_mrp_root" groups="base.group_user" />
         <menuitem id="mrp_dispatched_child" name="Despachos" parent="menu_mrp_dispatched_root" action="action_mrp_dispatched" />
