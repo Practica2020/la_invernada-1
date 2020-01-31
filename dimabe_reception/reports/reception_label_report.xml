@@ -329,7 +329,7 @@
               <tr>
                 <th style="border-right: 1px solid;">TIPO DE ENVASE:</th>
                 <td>
-                  <span t-field="stock_picking.get_canning_move().product_id.name"/>
+                  <span t-field="stock_picking.get_canning_move().product_id.display_name"/>
                 </td>
               </tr>
               <tr>
