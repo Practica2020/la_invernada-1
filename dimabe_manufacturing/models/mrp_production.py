@@ -9,7 +9,6 @@ class MrpProduction(models.Model):
 
     serial_lot_ids = fields.One2many(related="stock_lots.stock_production_lot_serial_ids")
 
-
     @api.multi
     def set_stock_move(self):
         product = self.env['stock.move'].create({'product_id':self.product_id})
