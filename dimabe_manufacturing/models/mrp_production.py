@@ -14,4 +14,3 @@ class MrpProduction(models.Model):
     def button_mark_done(self):
         self.calculate_done()
         return super(MrpProduction, self).button_mark_done()
-
