@@ -107,7 +107,7 @@ class StockPicking(models.Model):
             "view_mode": "form",
             "views": [(False, "form")],
             "view_id ref='mrp.mrp_production_form_view'": '',
-            "target": "new",
+            "target": "current",
             "context": context
         }
 
