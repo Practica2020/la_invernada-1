@@ -335,7 +335,7 @@
               <tr>
                 <th style="border-right: 1px solid;">PRODUCTO:</th>
                 <td>
-                  <span t-field="stock_picking.get_mp_move().product_id.name"/>
+                  <span t-field="stock_picking.get_mp_move().product_id.display_name"/>
                 </td>
               </tr>
             </table>
