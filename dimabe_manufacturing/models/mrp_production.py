@@ -15,7 +15,7 @@ class MrpProduction(models.Model):
     def _get_serial(self):
         if self.product_id:
             if self.product_id == self.stock_lots.product_id:
-                models._logger.error('Esta')
+                models._logger.error(type(self.stock_lots))
 
     @api.multi
     def calculate_done(self):
