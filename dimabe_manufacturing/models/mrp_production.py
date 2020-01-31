@@ -5,7 +5,8 @@ class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
     stock_lots = fields.Many2one("stock.production.lot")
-
+    
+    serial_lot_ids = fields.One2many(rel='stock_lots.stock_production_lots_serial_ids')
 
     @api.multi
     def calculate_done(self):
