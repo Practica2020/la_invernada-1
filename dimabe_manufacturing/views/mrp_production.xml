@@ -20,6 +20,9 @@
               <tree editable="bottom">
                 <field name="serial_lot_ids" action="action_assing" type="object"/>
                 <field name="stock_lots" />
+                <field name="materials"/>
+                <field name="reserved"/>
+                <field name="serial_weigth"/>
               </tree>
             </group>
           </page>
