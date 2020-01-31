@@ -99,7 +99,7 @@ class StockPicking(models.Model):
 
     @api.multi
     def return_action(self):
-        context= {'default_product_id':self.product.id}
+        context= {'default_product_id':self.product.id,'default_product_qty':self.quantity_done}
         return {
             "type": "ir.actions.act_window",
             "res_model": "mrp.production",
