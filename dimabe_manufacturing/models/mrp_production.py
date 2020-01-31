@@ -9,11 +9,14 @@ class MrpProduction(models.Model):
 
     lot_id = fields.Char(rel="stock_lots.name")
     
-    serial_lot_ids = fields.One2many(related="stock_lots.stock_production_lot_serial_ids")
+    serial_lot_ids = fields.One2many(related="stock_lots.stock_production_lot_serial_ids",compute='_get_serial')
 
-    # @api.onchange('product_id')
-    # def 
+
     
+    @api.onchange('product_id')
+    def _get_serial(self):
+        self.serial_lot_ids = self.stock_lots.search(
+            [('stock_production_lot_id','=',self.lot_id)])
 
     @api.multi
     def calculate_done(self):
