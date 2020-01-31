@@ -11,8 +11,6 @@ class MrpProduction(models.Model):
     
     serial_lot_ids = fields.One2many(related="stock_lots.stock_production_lot_serial_ids",compute='_get_serial')
 
-
-    
     @api.onchange('product_id')
     def _get_serial(self):
         self.serial_lot_ids = self.stock_lots.search(
