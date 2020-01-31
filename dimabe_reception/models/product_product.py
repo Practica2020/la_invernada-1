@@ -1,8 +1,18 @@
-from odoo import models, api
+from odoo import models, api, fields
 
 
 class ProductProduct(models.Model):
     _inherit = 'product.product'
+
+    short_name = fields.Char(
+        'Nombre Corto',
+        compute='_compute_short_name'
+    )
+
+    @api.one
+    def _compute_short_name(self):
+        if self.name:
+            self.short_name = self.name[0:25]
 
     @api.model
     def get_variety(self):

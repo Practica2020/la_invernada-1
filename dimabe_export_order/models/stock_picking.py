@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+import logging
 
 
 class StockPicking(models.Model):
@@ -12,6 +13,18 @@ class StockPicking(models.Model):
         'custom.shipment',
         'Embarque'
     )
+
+    required_loading_date = fields.Date(
+        related='shipping_id.required_loading_date')
+
+    variety = fields.Many2many(related="product_id.attribute_value_ids")
+
+    country = fields.Char(related='partner_id.country_id.name')
+
+    quantity_done = fields.Float(
+        related='move_ids_without_package.quantity_done')
+
+    product = fields.Many2one(related="move_ids_without_package.product_id")
 
     contract_correlative = fields.Integer('corr')
 
@@ -84,6 +97,26 @@ class StockPicking(models.Model):
         'Tipo de contenedor'
     )
 
+    @api.multi
+    def return_action(self):
+        context= {'default_product_id':self.product.id,'default_product_uom_qty':self.quantity_done,'default_origin':self.origin}
+        return {
+            "type": "ir.actions.act_window",
+            "res_model": "mrp.production",
+            "view_type": "form",
+            "view_mode": "form",
+            "views": [(False, "form")],
+            "view_id ref='mrp.mrp_production_form_view'": '',
+            "target": "current",
+            "context": context
+        }
+
+    @api.model
+    def _get_product_variety(self):
+        _logger = logging.getLogger(__name__)
+        for item in self.variety:
+            _logger.debug(item)
+
     @api.model
     @api.depends('freight_value', 'safe_value')
     def _compute_total_value(self):
@@ -98,9 +131,9 @@ class StockPicking(models.Model):
         print('')
         # qty_total = 0
         # for line in self.order_line:
-            # qty_total = qty_total + line.product_uom_qty
+        # qty_total = qty_total + line.product_uom_qty
         # if qty_total > 0:
-            # self.value_per_kilogram = self.total_value / qty_total
+        # self.value_per_kilogram = self.total_value / qty_total
 
     @api.model
     @api.depends('agent_id')
@@ -114,19 +147,19 @@ class StockPicking(models.Model):
     def _get_correlative_text(self):
         print('')
         # if self.contract_id:
-            # if self.contract_correlative == 0:
-                # existing = self.contract_id.sale_order_ids.search([('name', '=', self.name)])
-                # if existing:
-                    # self.contract_correlative = existing.contract_correlative
-                # if self.contract_correlative == 0:
-                    # self.contract_correlative = len(self.contract_id.sale_order_ids)
+        # if self.contract_correlative == 0:
+        # existing = self.contract_id.sale_order_ids.search([('name', '=', self.name)])
+        # if existing:
+        # self.contract_correlative = existing.contract_correlative
+        # if self.contract_correlative == 0:
+        # self.contract_correlative = len(self.contract_id.sale_order_ids)
         # else:
-            # self.contract_correlative = 0
+        # self.contract_correlative = 0
         # if self.contract_id.name and self.contract_correlative and self.contract_id.container_number:
-            # self.contract_correlative_view = '{}-{}/{}'.format(
-                # self.contract_id.name,
-                # self.contract_correlative,
-                # self.contract_id.container_number
-            # )
+        # self.contract_correlative_view = '{}-{}/{}'.format(
+        # self.contract_id.name,
+        # self.contract_correlative,
+        # self.contract_id.container_number
+        # )
         # else:
-            # self.contract_correlative_view = ''
+        # self.contract_correlative_view = ''

@@ -7,7 +7,9 @@ class StockPicking(models.Model):
 
     guide_number = fields.Integer('Número de Guía')
 
-    weight_guide = fields.Integer('Kilos Guía')
+    weight_guide = fields.Integer('Kilos Guía',
+                            compute='_compute_weight_guide',
+                            store=True)
 
     gross_weight = fields.Integer('Kilos Brutos')
 
@@ -36,7 +38,7 @@ class StockPicking(models.Model):
         ('mp', 'Materia Prima')
     ],
         default='ins',
-        string='Tipo de Recepción'
+        string='Tipo de recepción'
     )
 
     is_mp_reception = fields.Boolean(
@@ -95,7 +97,7 @@ class StockPicking(models.Model):
 
     reception_alert = fields.Many2one('reception.alert.config')
 
-    harvest = fields.Integer(
+    harvest = fields.Char(
         'Cosecha',
         default=datetime.now().year
     )
@@ -107,6 +109,12 @@ class StockPicking(models.Model):
         if self.is_mp_reception:
             if self.canning_weight:
                 self.net_weight = self.net_weight - self.canning_weight
+    @api.one
+    @api.depends('move_ids_without_package')
+    def _compute_weight_guide(self):
+        if self.is_mp_reception:
+            if self.get_mp_move():
+                self.weight_guide = self.get_mp_move().product_uom_qty
 
     @api.one
     @api.depends('move_ids_without_package')
@@ -135,9 +143,9 @@ class StockPicking(models.Model):
             self.elapsed_time = '00:00:00'
 
     @api.one
-    @api.depends('reception_type_selection')
+    @api.depends('reception_type_selection', 'picking_type_id')
     def _compute_is_mp_reception(self):
-        self.is_mp_reception = self.reception_type_selection == 'mp'
+        self.is_mp_reception = self.reception_type_selection == 'mp' or 'Materia Prima' in self.picking_type_id.warehouse_id.name
 
     @api.one
     @api.depends('production_net_weight', 'tare_weight', 'gross_weight', 'move_ids_without_package')
@@ -208,14 +216,22 @@ class StockPicking(models.Model):
             if stock_picking.is_mp_reception:
                 if not stock_picking.gross_weight:
                     message = 'Debe agregar kg brutos \n'
+                if stock_picking.gross_weight < stock_picking.weight_guide:
+                    message = 'Los kilos de la Guía no pueden ser mayores a los Kilos brutos ingresados'
                 if not stock_picking.tare_weight:
                     message = 'Debe agregar kg tara'
                 if message:
                     raise models.ValidationError(message)
         res = super(StockPicking, self).button_validate()
+        self.sendKgNotify()
         if self.get_mp_move():
-            self.get_mp_move().quantity_done = self.net_weight
-        models._logger.error('rrrrrrrrrrrrrrrrrrrrr {}'.format(self.get_mp_move()))
+            mp_move = self.get_mp_move()
+            mp_move.quantity_done = self.net_weight
+            mp_move.product_uom_qty = self.weight_guide
+            if mp_move.has_serial_generated and self.avg_unitary_weight:
+                self.env['stock.production.lot.serial'].search([('stock_production_lot_id', '=', self.name)]).write({'real_weight': self.avg_unitary_weight})
+
+                    
         return res
 
     @api.model
@@ -239,10 +255,21 @@ class StockPicking(models.Model):
         base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
         return base_url
 
+    def sendKgNotify(self):
+        if self.kg_diff_alert_notification_count == 0:
+            if self.weight_guide > 0 and self.net_weight > 0:
+                alert_config = self.env['reception.alert.config'].search([])
+                if abs(self.weight_guide - self.net_weight) > alert_config.kg_diff_alert:
+                    self.ensure_one()
+                    self.reception_alert = alert_config
+                    template_id = self.env.ref('dimabe_reception.diff_weight_alert_mail_template')
+                    self.message_post_with_template(template_id.id)
+                    self.kg_diff_alert_notification_count += self.kg_diff_alert_notification_count
+
+    
     @api.multi
     def notify_alerts(self):
         alert_config = self.env['reception.alert.config'].search([])
-
         elapsed_datetime = datetime.strptime(self.elapsed_time, '%H:%M:%S')
         if self.hr_alert_notification_count == 0 and elapsed_datetime.hour >= alert_config.hr_alert:
             self.ensure_one()
@@ -250,12 +277,3 @@ class StockPicking(models.Model):
             template_id = self.env.ref('dimabe_reception.truck_not_out_mail_template')
             self.message_post_with_template(template_id.id)
             self.hr_alert_notification_count += 1
-
-        if self.kg_diff_alert_notification_count == 0:
-            if self.weight_guide > 0 and self.net_weight > 0:
-                if abs(self.weight_guide - self.net_weight) > alert_config.kg_diff_alert:
-                    self.ensure_one()
-                    self.reception_alert = alert_config
-                    template_id = self.env.ref('dimabe_reception.diff_weight_alert_mail_template')
-                    self.message_post_with_template(template_id.id)
-                    self.kg_diff_alert_notification_count += self.kg_diff_alert_notification_count

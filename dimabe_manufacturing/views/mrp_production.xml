@@ -6,15 +6,27 @@
       <field name="inherit_id" ref="mrp.mrp_production_form_view" />
       <field name="arch" type="xml">
         <xpath expr="//header" postition="after">
-          <button name="calculate_done"
-                  type="object"
-                  string="Calcular Realizado"
-                  attrs="{'invisible':[('state', '!=', 'progress')]}"
-          />
+          <button name="calculate_done" type="object" string="Calcular Realizado" attrs="{'invisible':[('state', '!=', 'progress')]}" />
         </xpath>
-        <xpath expr="//field[@name='finished_move_line_ids']/tree"
-               postition="inside">
+        <xpath expr="//field[@name='finished_move_line_ids']/tree" postition="inside">
           <field name="count_stock_production_lot_serial" />
+          <field name="product_qty" />
+          <field name="product_uom_id"/>
+          <field name="lot_id"/>
+        </xpath>
+        <xpath expr="//page[@name='miscellaneous']" position="after">
+          <page string="Seleccionar Lote">
+            <group>
+              <field name="serial_lot_ids">
+                <tree editable="bottom">
+                  <field name="real_weight" />
+                  <field name="display_name" string="Nombre" />
+                  <field name="stock_production_lot_id"/>
+                  <button string="Reservar"/>
+                </tree>
+              </field>
+            </group>
+          </page>
         </xpath>
       </field>
     </record>

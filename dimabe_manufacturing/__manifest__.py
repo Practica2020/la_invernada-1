@@ -22,7 +22,8 @@
         'base',
         'dimabe_reception',
         'mrp',
-        'mrp_workorder'
+        'mrp_workorder',
+        'dimabe_export_order'
     ],
 
     # always loaded
@@ -32,9 +33,9 @@
         'views/stock_production_lot_serial.xml',
         'views/stock_production_lot.xml',
         'views/mrp_production.xml',
-        'views/custom_dispatched.xml',
         'reports/lot_serial_label_report.xml',
-        'views/views.xml'
+        'views/views.xml',
+        'views/mrp_dispatched.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
