@@ -6,6 +6,8 @@ class MrpProduction(models.Model):
 
     stock_lots = fields.Many2one(
         "stock.production.lot")
+
+    lot_id = fields.Char(rel="stock_lots.name")
     
     serial_lot_ids = fields.One2many(related="stock_lots.stock_production_lot_serial_ids")
 
