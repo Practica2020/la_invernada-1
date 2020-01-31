@@ -9,8 +9,8 @@ class MrpProduction(models.Model):
     
     serial_lot_ids = fields.One2many(related="stock_lots.stock_production_lot_serial_ids")
 
-    @api.onchange('product_id')
-    def 
+    # @api.onchange('product_id')
+    # def 
     
 
     @api.multi
