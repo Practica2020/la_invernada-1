@@ -14,7 +14,7 @@ class MrpProduction(models.Model):
     @api.onchange('product_id')
     def _get_serial(self):
         if self.product_id:
-            models._logger.error(stock_lots)
+            models._logger.error(self.stock_lots)
         
 
     @api.multi
