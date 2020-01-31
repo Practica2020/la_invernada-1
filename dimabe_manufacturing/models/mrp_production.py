@@ -12,7 +12,7 @@ class MrpProduction(models.Model):
 
     @api.onchange('product_id')
     def onchange_stock_lot(self):
-        product = self.env['stock.production.lot'].search([('product_id','=',self.product_id.id)]).ids
+        product = self.env['stock.production.lot'].search([('product_id.id','=',self.product_id.id)]).ids
         models._logger.error('aaaaaaaaaaaaaaaa {}'.format(product))
         return {
             'domain':{
