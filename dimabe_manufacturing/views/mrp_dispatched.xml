@@ -3,6 +3,7 @@
         <record id="view_mrp_dispatched_tree" model="ir.ui.view">
             <field name="name">Despachos</field>
             <field name="model">stock.picking</field>
+            <field name="domain"></field>
             <field name="arch" type="xml">
                 <tree string="Dispatched">
                     <field name="required_loading_date" string="Fecha de Carga" />
@@ -16,6 +17,7 @@
                     <field name="charging_mode" string="Modo de Carga" />
                     <field name="client_label" string="Etiqueta Cliente" />
                     <field name="quantity_done" string="Kilos a Envasar" />
+                    <field name="categ"/>
                     <button string="Crear PO" class="btn btn-success" name="return_action" type="object"/>
                     <button string="Ver Calidad" class="btn btn-succes" name="%(action_mrp_quality_analisys)d" type="action"/>
                 </tree>
@@ -34,7 +36,7 @@
             <field name="res_model">stock.picking</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name="domain">['|',('state', '!=', 'cancel'),('origin','!=',None)]</field>
+            <field name="domain">['|',[('state', '!=', 'cancel'),('origin','!=',None)],'&',('')]</field>
         </record>
         <record id="action_mrp_quality_analisys" model="ir.action.act_window">
             <field name="name">Dispatched</field>

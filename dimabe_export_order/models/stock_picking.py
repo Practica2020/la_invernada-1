@@ -26,6 +26,8 @@ class StockPicking(models.Model):
 
     product = fields.Many2one(related="move_ids_without_package.product_id")
 
+    categ = fields.Many2many(rel="product_id.route_ids")
+
     contract_correlative = fields.Integer('corr')
 
     contract_correlative_view = fields.Char(
