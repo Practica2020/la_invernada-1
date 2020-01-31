@@ -5,7 +5,7 @@ class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
     stock_lots = fields.Many2one(
-        "stock.production.lot", domain='["product_id.id","=","product_id.id"]')
+        "stock.production.lot")
     
     serial_lot_ids = fields.One2many(related="stock_lots.stock_production_lot_serial_ids")
 
