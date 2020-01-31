@@ -11,7 +11,9 @@ class MrpProduction(models.Model):
 
     @api.onchange('product_id')
     def onchange_stock_lots(self):
-        models._logger.error('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa {}'.format(self.product_id.id) )
+        if self.product_id:
+            models._logger.error(
+                'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa {}'.format(self.product_id.id))
 
     @api.multi
     def calculate_done(self):
