@@ -23,9 +23,6 @@ class MrpProduction(models.Model):
     #         res['domain']={'stock_lots_ids':["product_id","=",self.product_id]}
     #         return res
 
-    @api.multi
-    def action_to_lot_selection(self):
-        
 
     @api.multi
     def calculate_done(self):
