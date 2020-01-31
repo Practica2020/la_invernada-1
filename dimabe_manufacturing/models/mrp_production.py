@@ -12,7 +12,7 @@ class MrpProduction(models.Model):
     @api.onchange('product_id')
     def stock_lots_reserved(self):
         if self.product_id:
-            models._logger.error(self.serial_lot_ids.real_weigth)
+            models._logger.error(self.serial_lot_ids.name)
 
     @api.multi
     def calculate_done(self):
