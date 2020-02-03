@@ -3,6 +3,7 @@
         <record id="view_mrp_dispatched_tree" model="ir.ui.view">
             <field name="name">Despachos</field>
             <field name="model">stock.picking</field>
+             <field name="priority">20</field>
             <field name="domain"></field>
             <field name="arch" type="xml">
                 <tree string="Dispatched">
@@ -36,7 +37,15 @@
             <field name="view_mode">tree,form</field>
             <field name="domain">[('state','!=','cancel'),('origin','!=',None)]</field>
         </record>
-        <menuitem id="menu_mrp_dispatched_root" name="Despachos" parent="mrp.menu_mrp_root" groups="base.group_user" />
-        <menuitem id="mrp_dispatched_child" name="Despachos" parent="menu_mrp_dispatched_root" action="action_mrp_dispatched" />
+        <menuitem id="menu_mrp_dispatched_root"
+                  name="Despachos"
+                  parent="mrp.menu_mrp_root"
+                  groups="base.group_user"
+        />
+        <menuitem id="mrp_dispatched_child"
+                  name="Despachos"
+                  parent="menu_mrp_dispatched_root"
+                  action="action_mrp_dispatched"
+        />
     </data>
 </odoo>
