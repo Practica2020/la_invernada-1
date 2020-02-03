@@ -132,6 +132,12 @@
                   </td>
                 </tr>
               </table>
+              <t t-if="not move_line.lot_id.stock_production_lot_serial_ids[-1].serial_number == serial.serial_number">
+                <p style="page-break-after:always;"> </p>
+              </t>
+              <t t-else="">
+                <p style="page-break-after:avoid;"> </p>
+              </t>
             </div>
           </t>
         </t>
