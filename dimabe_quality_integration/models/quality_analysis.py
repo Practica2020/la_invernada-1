@@ -27,6 +27,11 @@ class QualityAnalysis(models.Model):
         'Análisis Calibre'
     )
 
+    # max_caliber = fields.Char(
+    #     'Mayor % Calibre',
+    #     compute='_compute_max_caliber'
+    # )
+
     external_damage_analysis_ids = fields.One2many(
         'external.damage.analysis',
         'quality_analysis_id',
@@ -78,6 +83,11 @@ class QualityAnalysis(models.Model):
     analysis_images = fields.Binary('Imágenes')
 
     category = fields.Char('Categoría')
+
+    # @api.model
+    # @api.depends('caliber_ids')
+    # def _compute_max_caliber(self):
+    #     self.caliber_ids.filtered(lambda a: a.percent )
 
     @api.model
     def create(self, values_list):
