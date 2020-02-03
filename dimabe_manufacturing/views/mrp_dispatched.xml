@@ -45,7 +45,7 @@
         <menuitem id="mrp_dispatched_child"
                   name="Despachos"
                   parent="menu_mrp_dispatched_root"
-                  action="view_mrp_dispatched_tree"
+                  action="action_mrp_dispatched"
         />
     </data>
 </odoo>
