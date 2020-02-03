@@ -136,7 +136,7 @@
                 <span>entró</span>
                 <p style="page-break-after:always;"> </p>
               </t>
-              <t t-else>
+              <t t-else="">
                 <span>else</span>
               </t>
             </div>
