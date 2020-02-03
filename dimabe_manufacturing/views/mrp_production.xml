@@ -8,7 +8,7 @@
         <xpath expr="//header" postition="after">
           <button name="calculate_done" type="object" string="Calcular Realizado" attrs="{'invisible':[('state', '!=', 'progress')]}" />
         </xpath>
-        <field name="product_qty" position="after">
+        <field name="product_qty" position="before">
           <field name="picking_ids" />
         </field>
         <xpath expr="//field[@name='finished_move_line_ids']/tree" postition="inside">
