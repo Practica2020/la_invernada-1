@@ -6,6 +6,7 @@ class StockPicking(models.Model):
 
     @api.multi
     def return_action(self):
+        models._logger.error('AAAAAAAAAAAA {}'.format(self.quantity_done))
         context = {
             'default_product_id': self.product.id,
             'default_product_uom_qty': self.quantity_done,
