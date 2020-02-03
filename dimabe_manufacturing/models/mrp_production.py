@@ -15,8 +15,8 @@ class MrpProduction(models.Model):
 
     @api.multi
     def set_stock_move(self):
-        product = self.env['stock.move'].create({'product_id':self.product_id})
-        product_qty = self.env['stock.move'].create({'product_qty':self.product_qty})
+        product = self.env['stock.move'].create({'product_id': self.product_id})
+        product_qty = self.env['stock.move'].create({'product_qty': self.product_qty})
         self.env.cr.commit()
 
     @api.multi
