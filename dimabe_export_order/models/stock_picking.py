@@ -100,6 +100,7 @@ class StockPicking(models.Model):
     @api.multi
     def return_action(self):
         context= {'default_product_id':self.product.id,'default_product_uom_qty':self.quantity_done,'default_origin':self.name}
+        models._logger.error('category'.format(self.product.categ_id.name))
         return {
             "type": "ir.actions.act_window",
             "res_model": "mrp.production",

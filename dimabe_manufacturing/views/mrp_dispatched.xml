@@ -3,6 +3,7 @@
         <record id="view_mrp_dispatched_tree" model="ir.ui.view">
             <field name="name">Despachos</field>
             <field name="model">stock.picking</field>
+            <field name="domain"></field>
             <field name="arch" type="xml">
                 <tree string="Dispatched">
                     <field name="required_loading_date" string="Fecha de Carga" />
@@ -10,14 +11,13 @@
                     <field name="country" string="Pais" />
                     <field name="variety" widget="many2many_tags" string="Atributos" />
                     <field name="origin" string="Documento Origen" />
-                    <field name="product"/>
+                    <field name="product" string="Producto"/>
                     <field name="state" string="Estado" />
                     <field name="shipping_number" string="Embarque" />
                     <field name="charging_mode" string="Modo de Carga" />
                     <field name="client_label" string="Etiqueta Cliente" />
-                    <field name="quantity_done" string="Kilos a Envasar" />
-                    <button string="Crear PO" class="btn btn-success" name="return_action" type="object"/>
-                    <button string="Ver Calidad" class="btn btn-succes" name="%(action_mrp_quality_analisys)d" type="action"/>
+                    <field name="quantity_done" string="Kgs" />
+                    <button string="Crear PO" class="btn btn-success" name="return_action" type="object" />
                 </tree>
             </field>
         </record>
@@ -34,14 +34,7 @@
             <field name="res_model">stock.picking</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name="domain">['|',('state', '!=', 'cancel'),('origin','!=',None)]</field>
-        </record>
-        <record id="action_mrp_quality_analisys" model="ir.action.act_window">
-            <field name="name">Dispatched</field>
-            <field name="res_model">quality.analysis</field>
-            <field name="view_type">form</field>
-            <field name="view_id" ref="dimabe_quality_integration.quality_analysis_tree_view"/>
-            <field name="view_mode">tree,form</field>
+            <field name="domain">[('state','!=','cancel'),('origin','!=',None)]</field>
         </record>
         <menuitem id="menu_mrp_dispatched_root" name="Despachos" parent="mrp.menu_mrp_root" groups="base.group_user" />
         <menuitem id="mrp_dispatched_child" name="Despachos" parent="menu_mrp_dispatched_root" action="action_mrp_dispatched" />
