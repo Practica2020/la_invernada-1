@@ -22,7 +22,7 @@ class StockPicking(models.Model):
     country = fields.Char(related='partner_id.country_id.name')
 
     quantity_done = fields.Float(
-        related='move_ids_without_package.quantity_done')
+        related='move_ids_without_package.product_uom_qty')
 
     product = fields.Many2one(related="move_ids_without_package.product_id")
 
@@ -96,20 +96,6 @@ class StockPicking(models.Model):
         'custom.container.type',
         'Tipo de contenedor'
     )
-
-    @api.multi
-    def return_action(self):
-        context= {'default_product_id':self.product.id,'default_product_uom_qty':self.quantity_done,'default_origin':self.origin}
-        return {
-            "type": "ir.actions.act_window",
-            "res_model": "mrp.production",
-            "view_type": "form",
-            "view_mode": "form",
-            "views": [(False, "form")],
-            "view_id ref='mrp.mrp_production_form_view'": '',
-            "target": "current",
-            "context": context
-        }
 
     @api.model
     def _get_product_variety(self):
