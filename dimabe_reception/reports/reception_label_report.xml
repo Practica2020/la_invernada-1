@@ -120,7 +120,7 @@
                   <td colspan="2">
                     <h3 style="text-align: center !important;">
                       N° SERIE:
-                      <span t-field="serial.serial_number"/>
+                      <span t-field="serial.serial_number"/> / <span t-field="move_line.lot_id.stock_production_lot_serial_ids[-1].serial_number" />
                     </h3>
                   </td>
                 </tr>
@@ -132,6 +132,7 @@
                   </td>
                 </tr>
               </table>
+              
               <t t-if="move_line.lot_id.stock_production_lot_serial_ids[-1].serial_number != serial.serial_number">
                 <p style="page-break-after:always;"> </p>
               </t>
