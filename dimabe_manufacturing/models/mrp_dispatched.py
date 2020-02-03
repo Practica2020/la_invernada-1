@@ -1,6 +1,7 @@
-from odoo import fields,models
+from odoo import fields, models
 
-class MrpDispatched(models.Models):
+
+class MrpDispatched(models.Model):
     _name = 'mrp.dispatched'
     _inherit = 'stock.picking'
 

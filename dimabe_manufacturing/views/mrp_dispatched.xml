@@ -4,7 +4,6 @@
             <field name="name">Despachos</field>
             <field name="model">stock.picking</field>
              <field name="priority">20</field>
-            <field name="domain"></field>
             <field name="arch" type="xml">
                 <tree string="Dispatched">
                     <field name="required_loading_date" string="Fecha de Carga" />
