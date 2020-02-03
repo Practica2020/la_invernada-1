@@ -132,7 +132,9 @@
                   </td>
                 </tr>
               </table>
-              <p style="page-break-after:always;"> </p>
+              <t t-if="move_line.lot_id.stock_production_lot_serial_ids[-1].serial_number != serial.serial_number">
+                <p style="page-break-after:always;"> </p>
+              </t>
             </div>
           </t>
         </t>
