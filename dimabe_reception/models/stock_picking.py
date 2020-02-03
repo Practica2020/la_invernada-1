@@ -127,10 +127,9 @@ class StockPicking(models.Model):
     @api.onchange('gross_weight')
     def on_change_gross_weight(self):
         message = ''
-        if not self.weight_guide:
-            message += 'debe agregar kilos guía \n'
         if self.gross_weight < self.weight_guide:
             message += 'Los kilos brutos deben ser mayor a los kilos de la guía'
+            self.gross_weight = 0
         if message:
             raise models.ValidationError(message)
     @api.one
