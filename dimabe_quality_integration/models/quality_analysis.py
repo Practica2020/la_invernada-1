@@ -365,7 +365,7 @@ class QualityAnalysis(models.Model):
     )
 
     color_analysis_7 = fields.Float(
-        'AMARIILA',
+        'AMARILLA',
         compute='_compute_color_analysis_7'
     )
 
@@ -406,7 +406,7 @@ class QualityAnalysis(models.Model):
     @api.multi
     def _compute_color_analysis_7(self):
         for item in self:
-            item.color_analysis_7 = item.get_color('AMARIILA').percent
+            item.color_analysis_7 = item.get_color('AMARILLA').percent
 
     form_analysis_ids = fields.One2many(
         'form.analysis',
