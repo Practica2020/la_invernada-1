@@ -28,7 +28,7 @@
   <record id="quality_analysis_tree_view" model="ir.ui.view">
     <field name="name">Listado de Calidad</field>
     <field name="model">quality.analysis</field>
-    <field name="domain">[('lot_name', '!=', '')]</field>
+    <field name="domain">[('lot_name', '=', 'WH/IN/00053')]</field>
     <field name="arch" type="xml">
       <tree delete="false" edit="false" create="false">
         <field name="lot_name"/>
