@@ -7,10 +7,13 @@ class MrpProduction(models.Model):
     stock_lots = fields.Many2one(
         "stock.production.lot")
 
-    related_picking_id = fields.Integer('id de picking relacionado')
-
     product_lot = fields.Many2one(
         rel="stock_lots.product_id"
+    )
+
+    requested_qty = fields.Float(
+        'Cantidad Solicitada',
+        compute='_compute_requested_qty'
     )
 
     serial_lot_ids = fields.One2many(related="stock_lots.stock_production_lot_serial_ids")
@@ -31,3 +34,8 @@ class MrpProduction(models.Model):
     def button_mark_done(self):
         self.calculate_done()
         return super(MrpProduction, self).button_mark_done()
+
+    @api.model
+    def _compute_requested_qty(self):
+        if self.picking_ids:
+            self.requested_qty = self.picking_ids[0].quantity_done
