@@ -3,12 +3,6 @@ from odoo.http import request
 import werkzeug
 
 
-def to_tuple_list(data):
-    return [
-        (0, 0, reg) for reg in data
-    ]
-
-
 def process_child(data, field):
     if field in data and len(data[field]) > 0:
         data[field] = to_tuple_list(data[field])
@@ -18,11 +12,6 @@ def to_tuple_list(data):
     return [
         (0, 0, reg) for reg in data
     ]
-
-
-def process_child(data, field):
-    if field in data and len(data[field]) > 0:
-        data[field] = to_tuple_list(data[field])
 
 
 class QualityAnalysis(http.Controller):
