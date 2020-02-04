@@ -7,6 +7,8 @@ class MrpProduction(models.Model):
     stock_lots = fields.Many2one(
         "stock.production.lot")
 
+    related_picking_id = fields.Integer('id de picking relacionado')
+
     product_lot = fields.Many2one(
         rel="stock_lots.product_id"
     )
