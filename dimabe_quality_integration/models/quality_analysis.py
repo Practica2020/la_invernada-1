@@ -212,6 +212,80 @@ class QualityAnalysis(models.Model):
         'Análisis Daños Internos'
     )
 
+    internal_damage_analysis_1 = fields.Float(
+        'RESECA GRAVE',
+        compute='_compute_internal_damage_analysis_1'
+    )
+
+    internal_damage_analysis_2 = fields.Float(
+        'DAÑO INSECTO',
+        compute='_compute_internal_damage_analysis_2'
+    )
+
+    internal_damage_analysis_3 = fields.Float(
+        'RESECA LEVE',
+        compute='_compute_internal_damage_analysis_3'
+    )
+
+    internal_damage_analysis_4 = fields.Float(
+        'HONGO ACTIVO NSC',
+        compute='_compute_internal_damage_analysis_4'
+    )
+
+    internal_damage_analysis_5 = fields.Float(
+        'HONGO INACTIVO NSC',
+        compute='_compute_internal_damage_analysis_5'
+    )
+
+    internal_damage_analysis_6 = fields.Float(
+        'PULPA NARANJA',
+        compute='_compute_internal_damage_analysis_6'
+    )
+
+    internal_damage_analysis_7 = fields.Float(
+        'RANCIDEZ',
+        compute='_compute_internal_damage_analysis_7'
+    )
+
+    @api.model
+    def get_internal_damage(self, name):
+        return self.internal_damage_analysis_ids.filtered(lambda a: a.name == name)
+
+    @api.multi
+    def _compute_internal_damage_analysis_1(self):
+        for item in self:
+            item.internal_damage_analysis_1 = item.get_internal_damage('RESECA GRAVE')
+
+    @api.multi
+    def _compute_internal_damage_analysis_2(self):
+        for item in self:
+            item.internal_damage_analysis_2 = item.get_internal_damage('DAÑO INSECTO')
+
+    @api.multi
+    def _compute_internal_damage_analysis_3(self):
+        for item in self:
+            item.internal_damage_analysis_3 = item.get_internal_damage('RESECA LEVE')
+
+    @api.multi
+    def _compute_internal_damage_analysis_4(self):
+        for item in self:
+            item.internal_damage_analysis_4 = item.get_internal_damage('HONGO ACTIVO NSC')
+
+    @api.multi
+    def _compute_internal_damage_analysis_5(self):
+        for item in self:
+            item.internal_damage_analysis_5 = item.get_internal_damage('HONGO INACTIVO NSC')
+
+    @api.multi
+    def _compute_internal_damage_analysis_6(self):
+        for item in self:
+            item.internal_damage_analysis_6 = item.get_internal_damage('PULPA NARANJA')
+
+    @api.multi
+    def _compute_internal_damage_analysis_7(self):
+        for item in self:
+            item.internal_damage_analysis_7 = item.get_internal_damage('RANCIDEZ')
+
     humidity_analysis_id = fields.Many2one('humidity.analysis', 'Análisis de Humedad')
 
     humidity_percent = fields.Float(
