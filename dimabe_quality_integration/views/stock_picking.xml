@@ -10,13 +10,6 @@
             <group>
               <group>
                 <field name="stock_move_line_lot_ids">
-                  <tree>
-                    <field name="reference" />
-                    <field name="product_id" />
-                    <field name="lot_quality_analysis_id"
-                           widget="many2onebutton"
-                    />
-                  </tree>
                 </field>
               </group>
             </group>
