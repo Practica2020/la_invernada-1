@@ -38,6 +38,11 @@
         <field name="caliber_4" />
         <field name="caliber_5" />
         <field name="caliber_6" />
+        <field name="caliber_7" />
+        <field name="caliber_8" />
+        <field name="caliber_9" />
+        <field name="caliber_10" />
+        <field name="caliber_11" />
         <field name="external_damage_analysis_1" />
         <field name="external_damage_analysis_2" />
         <field name="external_damage_analysis_3" />
