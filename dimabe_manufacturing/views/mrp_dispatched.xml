@@ -7,7 +7,8 @@
             <field name="arch" type="xml">
                 <tree string="Dispatched">
                     <field name="name" />
-                    <field name="picking_type_code"/>
+                    <field name="backorder_id"/>
+                    <field name="backorder_ids"/>
                     <field name="required_loading_date" string="Fecha de Carga" />
                     <field name="partner_id" string="Cliente" />
                     <field name="country" string="Pais" />
