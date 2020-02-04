@@ -464,6 +464,40 @@ class QualityAnalysis(models.Model):
         'Análisis Impureza'
     )
 
+    impurity_analysis_1 = fields.Float(
+        'SHELL',
+        compute='_compute_impurity_analysis_1'
+    )
+
+    impurity_analysis_2 = fields.Float(
+        'SEPTUM',
+        compute='_compute_impurity_analysis_2'
+    )
+
+    impurity_analysis_3 = fields.Float(
+        'FOREIGN MATERIAL',
+        compute='_compute_impurity_analysis_3'
+    )
+
+    @api.model
+    def get_impurity(self, name):
+        return self.impurity_analysis_ids.filtered(lambda a: a.name == name)
+
+    @api.multi
+    def _compute_impurity_analysis_1(self):
+        for item in self:
+            item.impurity_analysis_1 = item.get_impurity('SHELL').percent
+
+    @api.multi
+    def _compute_impurity_analysis_2(self):
+        for item in self:
+            item.impurity_analysis_2 = item.get_impurity('SEPTUM').percent
+
+    @api.multi
+    def _compute_impurity_analysis_3(self):
+        for item in self:
+            item.impurity_analysis_3 = item.get_impurity('FOREIGN MATERIAL').percent
+
     analysis_observations = fields.Text('Observaciones')
 
     category = fields.Char('Categoría')

@@ -71,7 +71,9 @@
         <field name="form_analysis_2" />
         <field name="form_analysis_3" />
         <field name="form_analysis_4" />
-        <field name="impurity_analysis_ids" />
+        <field name="impurity_analysis_1" />
+        <field name="impurity_analysis_2" />
+        <field name="impurity_analysis_3" />
         <field name="analysis_observations" />
         <field name="category" />
       </tree>
