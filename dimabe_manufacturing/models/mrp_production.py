@@ -6,9 +6,7 @@ class MrpProduction(models.Model):
 
     stock_lots = fields.Many2one("stock.production.lot")
 
-    product_lot = fields.Many2one(
-        rel="stock_lots.product_id"
-    )
+    product_lot = fields.Many2one(rel="stock_lots.product_id")
 
     requested_qty = fields.Float('Cantidad Solicitada')
 
@@ -16,12 +14,14 @@ class MrpProduction(models.Model):
 
     potential_lot_ids = fields.One2many(
         'stock.production.lot',
-        compute='_compute_potential_lot_ids'
+        compute='_compute_potential_lot_ids',
+        string='Posibles Lotes'
     )
 
     @api.multi
     def _compute_potential_lot_ids(self):
         for item in self:
+            models._logger.error(item.env['stock.production.lot'].search([]))
             item.potential_lot_ids = item.env['stock.production.lot'].search([
 
             ])
