@@ -54,6 +54,8 @@ class QualityAnalysis(http.Controller):
 
         quality_analysis = request.env['quality.analysis'].create(data)
         if quality_analysis:
+            if lot.quality_analysis_id:
+                lot.quality_analysis_id.unlink()
             lot.update({
                 'quality_analysis_id': quality_analysis.id
             })
