@@ -414,6 +414,50 @@ class QualityAnalysis(models.Model):
         'Análisis Forma'
     )
 
+    form_analysis_1 = fields.Float(
+        'HALVES 7/8',
+        compute='_compute_form_analysis_1'
+    )
+
+    form_analysis_2 = fields.Float(
+        'QUARTERS',
+        compute='_compute_form_analysis_2'
+    )
+
+    form_analysis_3 = fields.Float(
+        'PIECES',
+        compute='_compute_form_analysis_3'
+    )
+
+    form_analysis_4 = fields.Float(
+        'HALVES 3/4',
+        compute='_compute_form_analysis_4'
+    )
+
+    @api.model
+    def get_form(self, name):
+        return self.form_analysis_ids.filtered(lambda a: a.name == name)
+
+    @api.multi
+    def _compute_form_analysis_1(self):
+        for item in self:
+            item.form_analysis_1 = item.get_form('HALVES 7/8').percent
+
+    @api.multi
+    def _compute_form_analysis_2(self):
+        for item in self:
+            item.form_analysis_2 = item.get_form('QUARTERS').percent
+
+    @api.multi
+    def _compute_form_analysis_3(self):
+        for item in self:
+            item.form_analysis_3 = item.get_form('PIECES').percent
+
+    @api.multi
+    def _compute_form_analysis_4(self):
+        for item in self:
+            item.form_analysis_4 = item.get_form('HALVES 3/4').percent
+
     impurity_analysis_ids = fields.One2many(
         'impurity.analysis',
         'quality_analysis_id',

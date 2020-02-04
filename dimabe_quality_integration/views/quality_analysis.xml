@@ -67,7 +67,10 @@
         <field name="color_analysis_5" />
         <field name="color_analysis_6" />
         <field name="color_analysis_7" />
-        <field name="form_analysis_ids" />
+        <field name="form_analysis_1" />
+        <field name="form_analysis_2" />
+        <field name="form_analysis_3" />
+        <field name="form_analysis_4" />
         <field name="impurity_analysis_ids" />
         <field name="analysis_observations" />
         <field name="category" />
