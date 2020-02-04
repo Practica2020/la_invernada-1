@@ -13,7 +13,7 @@ class StockPicking(models.Model):
             'default_origin': self.name,
             'default_product_qty': self.quantity_done,
             'default_related_picking_id': self.id,
-            'default_picking_ids': [(6, 0, self.id)]
+            'default_picking_ids': [(6, 0, [self.id])]
         }
 
         return {
