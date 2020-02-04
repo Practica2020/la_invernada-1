@@ -36,7 +36,9 @@
             <field name="res_model">stock.picking</field>
             <field name="view_id" ref="view_mrp_dispatched_tree" />
             <field name="view_mode">tree</field>
-            <field name="domain">[('state','!=','cancel'),('origin','!=',None)]</field>
+            <field name="domain">
+                [('state','!=','cancel'),('origin','!=',None),('picking_type_code', '=', 'outgoing')]
+            </field>
         </record>
         <menuitem id="menu_mrp_dispatched_root"
                   name="Despachos"
