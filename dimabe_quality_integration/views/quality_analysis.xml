@@ -52,7 +52,7 @@
     <field name="name">Listado de Calidad</field>
     <field name="res_model">quality.analysis</field>
     <field name="view_mode">tree,form</field>
-    <filter name="domain">[('lot_name', '=', 'WH/IN/00053')]</filter>
+    <filter domain="[('lot_name', '=', 'WH/IN/00053')]" />
   </record>
 
   <menuitem id="quality_analysis_tree_menu"
