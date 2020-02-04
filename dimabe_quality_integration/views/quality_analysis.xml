@@ -29,7 +29,9 @@
     <field name="name">Listado de Calidad</field>
     <field name="model">quality.analysis</field>
     <field name="arch" type="xml">
-      <tree delete="false" edit="false" create="false">
+      <tree delete="false" edit="false" create="false"
+            domain="[('lot_name', 'not', '')]"
+      >
         <field name="lot_name"/>
         <field name="pre_caliber"/>
         <field name="caliber_1" />
@@ -49,7 +51,7 @@
   </record>
 
   <record id="dimabe_quality_integration.quality_analysis_action" model="ir.actions.act_window">
-    <field name="name">Acción de Calidad</field>
+    <field name="name">Listado de Calidad</field>
     <field name="res_model">quality.analysis</field>
     <field name="view_mode">tree,form</field>
   </record>
