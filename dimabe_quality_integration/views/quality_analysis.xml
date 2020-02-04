@@ -60,7 +60,13 @@
         <field name="humidity_tolerance" />
         <field name="performance_analysis_1" />
         <field name="performance_analysis_2" />
-        <field name="color_analysis_ids" />
+        <field name="color_analysis_1" />
+        <field name="color_analysis_2" />
+        <field name="color_analysis_3" />
+        <field name="color_analysis_4" />
+        <field name="color_analysis_5" />
+        <field name="color_analysis_6" />
+        <field name="color_analysis_7" />
         <field name="form_analysis_ids" />
         <field name="impurity_analysis_ids" />
         <field name="analysis_observations" />

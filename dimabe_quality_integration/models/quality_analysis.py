@@ -334,6 +334,80 @@ class QualityAnalysis(models.Model):
         'Análisis Color'
     )
 
+    color_analysis_1 = fields.Float(
+        'EXTRA LIGHT',
+        compute='_compute_color_analysis_1'
+    )
+
+    color_analysis_2 = fields.Float(
+        'EXTRA LIGHT FANCY',
+        compute='_compute_color_analysis_2'
+    )
+
+    color_analysis_3 = fields.Float(
+        'EXTRA LIGHT STANDAR',
+        compute='_compute_color_analysis_3'
+    )
+
+    color_analysis_4 = fields.Float(
+        'LIGHT',
+        compute='_compute_color_analysis_4'
+    )
+
+    color_analysis_5 = fields.Float(
+        'LIGHT AMBER',
+        compute='_compute_color_analysis_5'
+    )
+
+    color_analysis_6 = fields.Float(
+        'AMBER',
+        compute='_compute_color_analysis_6'
+    )
+
+    color_analysis_7 = fields.Float(
+        'AMARIILA',
+        compute='_compute_color_analysis_7'
+    )
+
+    @api.model
+    def get_color(self, name):
+        return self.color_analysis_ids.filtered(lambda a: a.name == name)
+
+    @api.multi
+    def _compute_color_analysis_1(self):
+        for item in self:
+            item.color_analysis_1 = item.get_color('EXTRA LIGHT').percent
+
+    @api.multi
+    def _compute_color_analysis_2(self):
+        for item in self:
+            item.color_analysis_2 = item.get_color('EXTRA LIGHT FANCY').percent
+
+    @api.multi
+    def _compute_color_analysis_3(self):
+        for item in self:
+            item.color_analysis_3 = item.get_color('EXTRA LIGHT STANDAR').percent
+
+    @api.multi
+    def _compute_color_analysis_4(self):
+        for item in self:
+            item.color_analysis_4 = item.get_color('LIGHT').percent
+
+    @api.multi
+    def _compute_color_analysis_5(self):
+        for item in self:
+            item.color_analysis_5 = item.get_color('LIGHT AMBER').percent
+
+    @api.multi
+    def _compute_color_analysis_6(self):
+        for item in self:
+            item.color_analysis_6 = item.get_color('AMBER').percent
+
+    @api.multi
+    def _compute_color_analysis_7(self):
+        for item in self:
+            item.color_analysis_7 = item.get_color('AMARIILA').percent
+
     form_analysis_ids = fields.One2many(
         'form.analysis',
         'quality_analysis_id',
