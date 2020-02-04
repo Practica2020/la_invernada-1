@@ -6,6 +6,7 @@
              <field name="priority">20</field>
             <field name="arch" type="xml">
                 <tree string="Dispatched">
+                    <field name="name" />
                     <field name="required_loading_date" string="Fecha de Carga" />
                     <field name="partner_id" string="Cliente" />
                     <field name="country" string="Pais" />
