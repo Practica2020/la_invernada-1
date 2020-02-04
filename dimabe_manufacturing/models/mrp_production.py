@@ -4,8 +4,7 @@ from odoo import fields, models, api
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
-    stock_lots = fields.Many2one(
-        "stock.production.lot")
+    stock_lots = fields.Many2one("stock.production.lot")
 
     product_lot = fields.Many2one(
         rel="stock_lots.product_id"
@@ -14,6 +13,18 @@ class MrpProduction(models.Model):
     requested_qty = fields.Float('Cantidad Solicitada')
 
     serial_lot_ids = fields.One2many(related="stock_lots.stock_production_lot_serial_ids")
+
+    potential_lot_ids = fields.One2many(
+        'stock.production.lot',
+        compute='_compute_potential_lot_ids'
+    )
+
+    @api.multi
+    def _compute_potential_lot_ids(self):
+        for item in self:
+            item.potential_lot_ids = item.env['stock.production.lot'].search([
+
+            ])
 
     @api.multi
     def set_stock_move(self):

@@ -24,7 +24,7 @@
           <page string="Seleccionar Lote">
             <group>
               <field name="stock_lots" invisible="1"/>
-              <field name="serial_lot_ids">
+              <field name="potential_lot_ids">
                 <tree editable="bottom">
                   <field name="real_weight" />
                   <field name="display_name" string="Nombre" />
