@@ -289,7 +289,9 @@ class QualityAnalysis(models.Model):
     humidity_analysis_id = fields.Many2one('humidity.analysis', 'Análisis de Humedad')
 
     humidity_percent = fields.Float(
-        related='humidity_analysis_id.percent'
+        related='humidity_analysis_id.percent',
+        string='% Humedad'
+
     )
 
     humidity_tolerance = fields.Float(
