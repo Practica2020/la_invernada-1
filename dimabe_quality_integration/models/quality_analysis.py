@@ -304,6 +304,30 @@ class QualityAnalysis(models.Model):
         'Análisis Rendimiento'
     )
 
+    performance_analysis_1 = fields.Float(
+        'Rendimiento Partido Total',
+        compute='_compute_performance_analysis_1'
+    )
+
+    performance_analysis_2 = fields.Float(
+        'Rendimiento Partido Exportable',
+        compute='_compute_performance_analysis_2'
+    )
+
+    @api.model
+    def get_performance(self, name):
+        return self.performance_analysis_ids.filtered(lambda a: a.name == name)
+
+    @api.multi
+    def _compute_performance_analysis_1(self):
+        for item in self:
+            item.performance_analysis_1 = item.get_performance('Rendimiento Partido Total')
+
+    @api.multi
+    def _compute_performance_analysis_2(self):
+        for item in self:
+            item.performance_analysis_2 = item.get_performance('Rendimiento Partido Exportable')
+
     color_analysis_ids = fields.One2many(
         'color.analysis',
         'quality_analysis_id',

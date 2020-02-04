@@ -57,7 +57,6 @@
         <field name="internal_damage_analysis_6" />
         <field name="internal_damage_analysis_7" />
         <field name="humidity_percent" />
-        <field name="humidity_percent" />
         <field name="humidity_tolerance" />
         <field name="performance_analysis_ids" />
         <field name="color_analysis_ids" />
