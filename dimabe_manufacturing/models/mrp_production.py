@@ -22,7 +22,7 @@ class MrpProduction(models.Model):
     def _compute_potential_lot_ids(self):
         for item in self:
             item.potential_lot_ids = [
-                (6, 0, item.env['stock.production.lot'].search([]))
+                (6, 0, item.env['stock.production.lot'].search([]).mapped('id'))
             ]
             models._logger.error(item.potential_lot_ids)
 
