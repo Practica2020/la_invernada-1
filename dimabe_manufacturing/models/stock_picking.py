@@ -13,7 +13,7 @@ class StockPicking(models.Model):
             'default_origin': self.name,
             'default_procurement_group_id': self.env['procurement.group'].search([
                 ('name', '=', self.origin)
-            ]),
+            ])[0],
             'default_requested_qty': self.quantity_done
         }
 
