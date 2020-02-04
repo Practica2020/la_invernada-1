@@ -76,6 +76,7 @@
         <field name="impurity_analysis_3" />
         <field name="analysis_observations" />
         <field name="category" />
+        <field name="potential_client_id" />
       </tree>
     </field>
   </record>
