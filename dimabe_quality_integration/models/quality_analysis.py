@@ -31,26 +31,26 @@ class QualityAnalysis(models.Model):
         '26-28',
         compute='_compute_caliber_1'
     )
-    # caliber_2 = fields.Float(
-    #     '28-30',
-    #     compute='_compute_caliber_2'
-    # )
-    # caliber_3 = fields.Float(
-    #     '30-32',
-    #     compute='_compute_caliber_3'
-    # )
-    # caliber_4 = fields.Float(
-    #     '32-34',
-    #     compute='_compute_caliber_4'
-    # )
-    # caliber_5 = fields.Float(
-    #     '34-36',
-    #     compute='_compute_caliber_5'
-    # )
-    # caliber_6 = fields.Float(
-    #     '36+',
-    #     compute='_compute_caliber_6'
-    # )
+    caliber_2 = fields.Float(
+        '28-30',
+        compute='_compute_caliber_2'
+    )
+    caliber_3 = fields.Float(
+        '30-32',
+        compute='_compute_caliber_3'
+    )
+    caliber_4 = fields.Float(
+        '32-34',
+        compute='_compute_caliber_4'
+    )
+    caliber_5 = fields.Float(
+        '34-36',
+        compute='_compute_caliber_5'
+    )
+    caliber_6 = fields.Float(
+        '36+',
+        compute='_compute_caliber_6'
+    )
 
     @api.model
     def get_caliber(self, name):
@@ -60,6 +60,31 @@ class QualityAnalysis(models.Model):
     def _compute_caliber_1(self):
         for item in self:
             item.caliber_1 = item.get_caliber('26 (mm) - 28 (mm)').percent
+
+    @api.multi
+    def _compute_caliber_2(self):
+        for item in self:
+            item.caliber_2 = item.get_caliber('28 (mm) - 30 (mm)').percent
+
+    @api.multi
+    def _compute_caliber_3(self):
+        for item in self:
+            item.caliber_3 = item.get_caliber('30 (mm) - 32 (mm)').percent
+
+    @api.multi
+    def _compute_caliber_4(self):
+        for item in self:
+            item.caliber_4 = item.get_caliber('32 (mm) - 34 (mm)').percent
+
+    @api.multi
+    def _compute_caliber_5(self):
+        for item in self:
+            item.caliber_5 = item.get_caliber('34 (mm) - 36 (mm)').percent
+
+    @api.multi
+    def _compute_caliber_6(self):
+        for item in self:
+            item.caliber_6 = item.get_caliber('> 36 (mm)').percent
 
     external_damage_analysis_ids = fields.One2many(
         'external.damage.analysis',
