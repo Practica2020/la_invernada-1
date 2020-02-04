@@ -92,6 +92,60 @@ class QualityAnalysis(models.Model):
         'Análisis Daños Externos'
     )
 
+    external_damage_analysis_1 = fields.Float(
+        'MANCHA GRAVE',
+        compute='_compute_external_damage_analysis_1'
+    )
+
+    external_damage_analysis_2 = fields.Float(
+        'CASCO ABIERTO',
+        compute='_compute_external_damage_analysis_2'
+    )
+
+    external_damage_analysis_3 = fields.Float(
+        'CÁSCARA IMPERFECTA',
+        compute='_compute_external_damage_analysis_3'
+    )
+
+    external_damage_analysis_4 = fields.Float(
+        'NUEZ PARTIDA',
+        compute='_compute_external_damage_analysis_4'
+    )
+
+    external_damage_analysis_5 = fields.Float(
+        'NUEZ TRIZADA',
+        compute='_compute_external_damage_analysis_5'
+    )
+
+    @api.model
+    def get_external_damage(self, name):
+        return self.external_damage_analysis_ids.filtered(lambda a: a.name == name)
+
+    @api.multi
+    def _compute_external_damage_analysis_1(self):
+        for item in self:
+            item.external_damage_analysis_1 = item.get_external_damage('MANCHA GRAVE').percent
+
+    @api.multi
+    def _compute_external_damage_analysis_2(self):
+        for item in self:
+            item.external_damage_analysis_2 = item.get_external_damage('CASCO ABIERTO').percent
+
+    @api.multi
+    def _compute_external_damage_analysis_3(self):
+        for item in self:
+            item.external_damage_analysis_3 = item.get_external_damage('CÁSCARA IMPERFECTA').percent
+
+    @api.multi
+    def _compute_external_damage_analysis_4(self):
+        for item in self:
+            item.external_damage_analysis_4 = item.get_external_damage('NUEZ PARTIDA').percent
+
+    @api.multi
+    def _compute_external_damage_analysis_5(self):
+        for item in self:
+            item.external_damage_analysis_5 = item.get_external_damage('NUEZ TRIZADA').percent
+
     internal_damage_analysis_ids = fields.One2many(
         'internal.damage.analysis',
         'quality_analysis_id',

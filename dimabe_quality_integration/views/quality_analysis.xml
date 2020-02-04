@@ -38,7 +38,11 @@
         <field name="caliber_4" />
         <field name="caliber_5" />
         <field name="caliber_6" />
-        <field name="external_damage_analysis_ids" />
+        <field name="external_damage_analysis_1" />
+        <field name="external_damage_analysis_2" />
+        <field name="external_damage_analysis_3" />
+        <field name="external_damage_analysis_4" />
+        <field name="external_damage_analysis_5" />
         <field name="internal_damage_analysis_ids" />
         <field name="humidity_analysis_id" />
         <field name="humidity_percent" />
