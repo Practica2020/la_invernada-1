@@ -11,8 +11,8 @@ class StockPicking(models.Model):
             'default_product_id': self.product.id,
             'default_product_uom_qty': self.quantity_done,
             'default_origin': self.name,
-            'product_qty': self.quantity_done,
-            'related_picking_id': self.id
+            'default_product_qty': self.quantity_done,
+            'default_related_picking_id': self.id
         }
 
         return {
