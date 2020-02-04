@@ -98,23 +98,53 @@ class QualityAnalysis(models.Model):
     )
 
     external_damage_analysis_2 = fields.Float(
-        'CASCO ABIERTO',
+        'MEZCLA VARIEDAD',
         compute='_compute_external_damage_analysis_2'
     )
 
     external_damage_analysis_3 = fields.Float(
-        'CÁSCARA IMPERFECTA',
+        'CASCO ABIERTO',
         compute='_compute_external_damage_analysis_3'
     )
 
     external_damage_analysis_4 = fields.Float(
-        'NUEZ PARTIDA',
+        'CÁSCARA IMPERFECTA',
         compute='_compute_external_damage_analysis_4'
     )
 
     external_damage_analysis_5 = fields.Float(
-        'NUEZ TRIZADA',
+        'NUEZ PARTIDA',
         compute='_compute_external_damage_analysis_5'
+    )
+
+    external_damage_analysis_6 = fields.Float(
+        'NUEZ TRIZADA',
+        compute='_compute_external_damage_analysis_6'
+    )
+
+    external_damage_analysis_7 = fields.Float(
+        'PELÓN ADERIDO',
+        compute='_compute_external_damage_analysis_7'
+    )
+
+    external_damage_analysis_8 = fields.Float(
+        'HONGO ACTIVO NCC',
+        compute='_compute_external_damage_analysis_8'
+    )
+
+    external_damage_analysis_9 = fields.Float(
+        'HONGO INACTIVO NCC',
+        compute='_compute_external_damage_analysis_9'
+    )
+
+    external_damage_analysis_10 = fields.Float(
+        'MANCHA LEVE',
+        compute='_compute_external_damage_analysis_10'
+    )
+
+    external_damage_analysis_11 = fields.Float(
+        'TIERRA',
+        compute='_compute_external_damage_analysis_11'
     )
 
     @api.model
@@ -129,22 +159,52 @@ class QualityAnalysis(models.Model):
     @api.multi
     def _compute_external_damage_analysis_2(self):
         for item in self:
-            item.external_damage_analysis_2 = item.get_external_damage('CASCO ABIERTO').percent
+            item.external_damage_analysis_2 = item.get_external_damage('MEZCLA VARIEDAD').percent
 
     @api.multi
     def _compute_external_damage_analysis_3(self):
         for item in self:
-            item.external_damage_analysis_3 = item.get_external_damage('CÁSCARA IMPERFECTA').percent
+            item.external_damage_analysis_3 = item.get_external_damage('CASCO ABIERTO').percent
 
     @api.multi
     def _compute_external_damage_analysis_4(self):
         for item in self:
-            item.external_damage_analysis_4 = item.get_external_damage('NUEZ PARTIDA').percent
+            item.external_damage_analysis_4 = item.get_external_damage('CÁSCARA IMPERFECTA').percent
 
     @api.multi
     def _compute_external_damage_analysis_5(self):
         for item in self:
-            item.external_damage_analysis_5 = item.get_external_damage('NUEZ TRIZADA').percent
+            item.external_damage_analysis_5 = item.get_external_damage('NUEZ PARTIDA').percent
+
+    @api.multi
+    def _compute_external_damage_analysis_6(self):
+        for item in self:
+            item.external_damage_analysis_6 = item.get_external_damage('NUEZ TRIZADA').percent
+
+    @api.multi
+    def _compute_external_damage_analysis_7(self):
+        for item in self:
+            item.external_damage_analysis_7 = item.get_external_damage('PELÓN ADERIDO').percent
+
+    @api.multi
+    def _compute_external_damage_analysis_8(self):
+        for item in self:
+            item.external_damage_analysis_8 = item.get_external_damage('HONGO ACTIVO NCC').percent
+
+    @api.multi
+    def _compute_external_damage_analysis_9(self):
+        for item in self:
+            item.external_damage_analysis_9 = item.get_external_damage('HONGO INACTIVO NCC').percent
+
+    @api.multi
+    def _compute_external_damage_analysis_10(self):
+        for item in self:
+            item.external_damage_analysis_10 = item.get_external_damage('MANCHA LEVE').percent
+
+    @api.multi
+    def _compute_external_damage_analysis_11(self):
+        for item in self:
+            item.external_damage_analysis_11 = item.get_external_damage('TIERRA').percent
 
     internal_damage_analysis_ids = fields.One2many(
         'internal.damage.analysis',
