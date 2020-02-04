@@ -42,3 +42,16 @@ class MrpProduction(models.Model):
     def button_mark_done(self):
         self.calculate_done()
         return super(MrpProduction, self).button_mark_done()
+
+    @api.model
+    def create(self, values_list):
+        res = super(MrpProduction, self).create(values_list)
+
+        stock_picking = res.picking_ids.filtered(lambda a: a.name == self.origin)
+
+        if stock_picking:
+            stock_picking.update({
+                'has_mrp_production': True
+            })
+
+        return res

@@ -4,17 +4,7 @@ from odoo import models, api, fields
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
-    has_mrp_production = fields.Boolean(
-        'tiene orden de producción',
-        compute='_compute_has_mrp_production'
-    )
-
-    @api.multi
-    def _compute_has_mrp_production(self):
-        for item in self:
-            item.has_mrp_production = len(item.env['mrp.production'].search([
-                ('origin', '=', item.name)
-            ])) == 1
+    has_mrp_production = fields.Boolean('tiene orden de producción')
 
     @api.multi
     def return_action(self):
