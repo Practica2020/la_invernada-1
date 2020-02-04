@@ -321,12 +321,12 @@ class QualityAnalysis(models.Model):
     @api.multi
     def _compute_performance_analysis_1(self):
         for item in self:
-            item.performance_analysis_1 = item.get_performance('Rendimiento Partido Total')
+            item.performance_analysis_1 = item.get_performance('Rendimiento Partido Total').percent
 
     @api.multi
     def _compute_performance_analysis_2(self):
         for item in self:
-            item.performance_analysis_2 = item.get_performance('Rendimiento Partido Exportable')
+            item.performance_analysis_2 = item.get_performance('Rendimiento Partido Exportable').percent
 
     color_analysis_ids = fields.One2many(
         'color.analysis',
