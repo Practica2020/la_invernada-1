@@ -59,7 +59,7 @@ class QualityAnalysis(models.Model):
     @api.multi
     def _compute_caliber_1(self):
         for item in self:
-            item.caliber_1 = self.get_caliber('26 (mm) - 28 (mm)').percent
+            item.caliber_1 = item.get_caliber('26 (mm) - 28 (mm)').percent
 
     external_damage_analysis_ids = fields.One2many(
         'external.damage.analysis',
