@@ -32,7 +32,7 @@
       <tree delete="false" edit="false" create="false">
         <field name="lot_name"/>
         <field name="pre_caliber"/>
-        <field name="caliber_ids" />
+        <field name="caliber_1" />
         <field name="external_damage_analysis_ids" />
         <field name="internal_damage_analysis_ids" />
         <field name="humidity_analysis_id" />
@@ -43,7 +43,6 @@
         <field name="form_analysis_ids" />
         <field name="impurity_analysis_ids" />
         <field name="analysis_observations" />
-        <field name="analysis_images" />
         <field name="category" />
       </tree>
     </field>

@@ -27,6 +27,39 @@ class QualityAnalysis(models.Model):
         'Análisis Calibre'
     )
 
+    caliber_1 = fields.Float(
+        '26-28',
+        compute='_compute_caliber_1'
+    )
+    # caliber_2 = fields.Float(
+    #     '28-30',
+    #     compute='_compute_caliber_2'
+    # )
+    # caliber_3 = fields.Float(
+    #     '30-32',
+    #     compute='_compute_caliber_3'
+    # )
+    # caliber_4 = fields.Float(
+    #     '32-34',
+    #     compute='_compute_caliber_4'
+    # )
+    # caliber_5 = fields.Float(
+    #     '34-36',
+    #     compute='_compute_caliber_5'
+    # )
+    # caliber_6 = fields.Float(
+    #     '36+',
+    #     compute='_compute_caliber_6'
+    # )
+
+    @api.model
+    def get_caliber(self, name):
+        return self.caliber_ids.filtered(lambda a: a.name == name)
+
+    @api.model
+    def _compute_caliber_1(self):
+        self.caliber_1 = self.get_caliber('26 (mm) - 28 (mm)').percent
+
     external_damage_analysis_ids = fields.One2many(
         'external.damage.analysis',
         'quality_analysis_id',
@@ -74,8 +107,6 @@ class QualityAnalysis(models.Model):
     )
 
     analysis_observations = fields.Text('Observaciones')
-
-    analysis_images = fields.Binary('Imágenes')
 
     category = fields.Char('Categoría')
 
