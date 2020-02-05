@@ -54,5 +54,5 @@ class StockProductionLot(models.Model):
             params = self.env.context['params']
             if 'id' in params and 'model' in params and params['model'] == 'mrp.production':
                 mrp_production = self.env['mrp.production'].search([('id', '=', params['id'])])
-                models._logger.error(mrp_production)
+                models._logger.error('{} {}'.format(mrp_production, self.qty_to_reserve))
 
