@@ -55,6 +55,6 @@ class MrpProduction(models.Model):
                 'has_mrp_production': True
             })
 
-        models._logger.error('{} {}'.format(stock_picking, res))
+        models._logger.error('{} {}'.format(stock_picking, res.procurement_group_id.id))
 
         return res
