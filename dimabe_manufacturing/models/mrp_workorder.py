@@ -13,8 +13,12 @@ class MrpWorkorder(models.Model):
     def create(self, values_list):
         res = super(MrpWorkorder, self).create(values_list)
 
+        name = self.env['ir.sequence'].next_by_code('mrp.workorder')
+
+        models._logger.error('{} aaaaaaaaaaaaaaaaa'.format(name))
+
         final_lot = self.env['stock.production.lot'].create({
-            'name': self.env['ir.sequence'].next_by_code('mrp.workorder'),
+            'name': name,
             'product_id': res.product_id.id
         })
 
