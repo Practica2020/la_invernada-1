@@ -24,7 +24,9 @@
           <page string="Seleccionar Lote">
             <group>
               <field name="stock_lots" invisible="1"/>
-              <field name="potential_lot_ids">
+              <field name="potential_lot_ids"
+                     domain="[('available_quantity', '>', 0)]"
+              >
                 <tree editable="bottom">
                   <field name="name" />
                   <field name="product_id" />
