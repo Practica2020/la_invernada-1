@@ -46,5 +46,7 @@ class StockProductionLot(models.Model):
 
     @api.multi
     def reserve_stock(self):
-        models._logger.error(self.env.context)
+        if 'params' in self.env.context:
+            params = self.env.context['params']
+            models._logger.error(params)
 
