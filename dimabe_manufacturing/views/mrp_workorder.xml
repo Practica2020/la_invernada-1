@@ -63,6 +63,7 @@
               </field>
             </group>
             <group attrs="{'invisible':[('state', '=', 'done')]}">
+              <field name="material_product_ids"/>
               <h2>Otras Salidas</h2>
               <field name="active_move_line_ids"
                      readonly="1"
