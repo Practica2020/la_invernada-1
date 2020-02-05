@@ -24,7 +24,6 @@ class MrpProduction(models.Model):
             item.potential_lot_ids = [
                 (6, 0, item.env['stock.production.lot'].search([]).mapped('id'))
             ]
-            models._logger.error(item.potential_lot_ids)
 
     @api.multi
     def set_stock_move(self):
@@ -53,5 +52,7 @@ class MrpProduction(models.Model):
             stock_picking.update({
                 'has_mrp_production': True
             })
+
+        models._logger.error(stock_picking.has_mrp_production)
 
         return res
