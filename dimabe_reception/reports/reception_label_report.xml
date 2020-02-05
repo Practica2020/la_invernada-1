@@ -178,7 +178,7 @@
             <th><span t-field="o.date_done" /></th>
           </tr>
         </table>
-      <table style="width:100% !important; border:1px solid;margin-top:15px">
+      <table style="width:100% !important; border:1px solid;float:left;margin-top:15px">
         <tr>
           <th>Lote</th>
           <th>Serie</th>
