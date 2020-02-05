@@ -64,16 +64,16 @@
       <t t-foreach="docs" t-as="o">
         <t t-foreach="o.move_ids_without_package" t-as="move_line">
           <table>
-            <tr style="background-color: gray: height: ">
-              <th style="padding:20px">
+            <tr style="background-color: lightgray;">
+              <th style="padding:20px;height: 170px;">
                 <span t-field="move_line.product_id.display_name" /> <br/>
                  Fecha de Recepción: <span t-field="o.date_done" />
               </th>
             </tr>
             <tr style="text-align:center">
               <td style="margin-top:30px">
-                <img
-                  t-att-src="'%s/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % (o.get_full_url(), 'Code128',o.name,450, 41)"
+                <img style="margin-top: 30px;"
+                  t-att-src="'%s/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % (o.get_full_url(), 'Code128',o.name,450, 82)"
                 />
               </td>
             </tr>
@@ -539,7 +539,7 @@
   <report id="action_report_reception_supplies_label_template"
           string="Etiquetas de insumo"
           model="stock.picking"
-          report_type="qweb-html"
+          report_type="qweb-pdf"
           name="dimabe_reception.report_reception_supplies_label_template"
           paperformat="paper_format_10_x_7"
   />
