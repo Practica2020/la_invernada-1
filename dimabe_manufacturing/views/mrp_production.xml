@@ -28,6 +28,7 @@
                 <tree editable="bottom">
                   <field name="name" />
                   <field name="product_id" />
+                  <field name="quant_ids" />
                   <button string="Reservar"/>
                 </tree>
               </field>
