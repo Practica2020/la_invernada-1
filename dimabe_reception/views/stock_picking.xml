@@ -51,7 +51,7 @@
                  attrs="{'invisible':[('is_mp_reception', '=', False)]}"
           />
         </field>
-        <xpath expr="//page[@name='note']" position="after" attrs="{'invisible':[('picking_type_code', 'in', ['outgoing', 'incoming'])]}">
+        <xpath expr="//page[@name='note']" position="after" attrs="{'invisible':['|',('picking_type_code', '==', 'outgoing'), ('picking_type_code', '==', 'incoming')]}">
           <page string="Transportista" name="carrier_page">
             <group name="carrier_page" position="inside">
               <field name="carrier_id"/>
