@@ -21,6 +21,8 @@ class StockProductionLot(models.Model):
         store=True
     )
 
+    qty_to_reserve = fields.Float('Cantidad a Reservar')
+
     @api.multi
     @api.depends('quant_ids')
     def _compute_available_quantity(self):
@@ -46,6 +48,8 @@ class StockProductionLot(models.Model):
 
     @api.multi
     def reserve_stock(self):
+        if not self.qty_to_reserve > 0:
+            models.ValidationError('debe agregar la cantidad a reservar')
         if 'params' in self.env.context:
             params = self.env.context['params']
             if 'id' in params and 'model' in params and params['model'] == 'mrp.production':
