@@ -22,7 +22,9 @@ class MrpProduction(models.Model):
     def _compute_potential_lot_ids(self):
         for item in self:
             item.potential_lot_ids = [
-                (6, 0, item.env['stock.production.lot'].search([]).mapped('id'))
+                (6, 0, item.env['stock.production.lot'].search([
+                    ('product_id', 'in', [item.product_id] + item.move_raw_ids.mapped('product_id')),
+                ]).mapped('id'))
             ]
 
     @api.multi
@@ -54,7 +56,5 @@ class MrpProduction(models.Model):
             stock_picking.update({
                 'has_mrp_production': True
             })
-
-        models._logger.error('{} {}'.format(stock_picking, res.origin))
 
         return res
