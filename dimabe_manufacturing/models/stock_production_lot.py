@@ -24,7 +24,6 @@ class StockProductionLot(models.Model):
     def _compute_available_quantity(self):
         for item in self:
             quant_id = item.quant_ids.filtered(lambda a: a.location_id.name == 'Stock')
-            models._logger.error(quant_id.balance)
             item.available_quantity = quant_id.balance
 
     @api.multi

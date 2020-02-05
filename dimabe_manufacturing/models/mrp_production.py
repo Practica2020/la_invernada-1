@@ -21,6 +21,10 @@ class MrpProduction(models.Model):
     @api.multi
     def _compute_potential_lot_ids(self):
         for item in self:
+            models._logger.error(item.env['stock.production.lot'].search([
+                    ('product_id', 'in', [item.product_id.id] + list(item.move_raw_ids.mapped('product_id.id'))),
+                    ('available_quantity', '>', 0)
+                ]).mapped('id'))
             item.potential_lot_ids = [
                 (6, 0, item.env['stock.production.lot'].search([
                     ('product_id', 'in', [item.product_id.id] + list(item.move_raw_ids.mapped('product_id.id'))),
