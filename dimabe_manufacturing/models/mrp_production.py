@@ -63,7 +63,3 @@ class MrpProduction(models.Model):
             })
 
         return res
-
-    @api.model
-    def reserve_stock(self):
-        models.ValidationError('lal')
