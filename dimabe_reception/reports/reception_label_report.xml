@@ -65,21 +65,19 @@
         <t t-foreach="o.move_ids_without_package" t-as="move_line">
           <table>
             <tr style="background-color: lightgray;">
-              <th style="padding:20px;height: 170px;">
+              <th style="padding:10px;">
                 <span t-field="move_line.product_id.display_name" /> <br/>
                  Fecha de Recepción: <span t-field="o.date_done" />
               </th>
             </tr>
             <tr style="text-align:center">
-              <td style="margin-top:30px">
-                <img style="margin-top: 30px;"
+              <td>
+                <img style="margin-top: 5px;"
                   t-att-src="'%s/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % (o.get_full_url(), 'Code128',o.name,450, 82)"
                 />
-              </td>
-            </tr>
-            <tr style="text-align:center">
-              <td>
-                <span t-field="o.name" />
+                <div>
+                    <span t-field="o.name" />
+                </div>
               </td>
             </tr>
           </table>
