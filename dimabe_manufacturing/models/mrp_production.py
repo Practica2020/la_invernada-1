@@ -53,6 +53,6 @@ class MrpProduction(models.Model):
                 'has_mrp_production': True
             })
 
-        models._logger.error('{} {}'.format(stock_picking, res.picking_ids))
+        models._logger.error('{} {}'.format(stock_picking, res))
 
         return res
