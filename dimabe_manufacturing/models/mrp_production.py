@@ -47,7 +47,7 @@ class MrpProduction(models.Model):
         res = super(MrpProduction, self).create(values_list)
 
         stock_picking = self.env['stock.picking'].search([
-            ('group_id', '=', res.procurement_group_id.id)
+            ('name', '=', res.origin)
         ])
 
         if stock_picking:
@@ -55,6 +55,6 @@ class MrpProduction(models.Model):
                 'has_mrp_production': True
             })
 
-        models._logger.error('{} {}'.format(stock_picking, res.procurement_group_id.id))
+        models._logger.error('{} {}'.format(stock_picking, res.origin))
 
         return res
