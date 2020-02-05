@@ -64,7 +64,7 @@
       <t t-foreach="docs" t-as="o">
         <t t-foreach="o.move_ids_without_package" t-as="move_line">
           <table>
-            <tr style="background-color: gray">
+            <tr style="background-color: gray; padding:10px">
               <th>
                 <span t-field="move_line.product_id.display_name" /> <br/>
                  Fecha de Recepción: <span t-field="o.date_done" />
