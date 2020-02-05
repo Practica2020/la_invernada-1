@@ -46,5 +46,5 @@ class StockProductionLot(models.Model):
 
     @api.model
     def reserve_stock(self):
-        models.ValidationError('AAAAA {}'.format(self.parent_id))
+        models.ValidationError('AAAAA {}'.format(self))
 
