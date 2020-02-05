@@ -46,7 +46,9 @@ class MrpProduction(models.Model):
     def create(self, values_list):
         res = super(MrpProduction, self).create(values_list)
 
-        stock_picking = res.picking_ids.filtered(lambda a: a.name == self.origin)
+        stock_picking = self.env['stock.picking'].search([
+            ('group_id', '=', res.procurement_group_id.id)
+        ])
 
         if stock_picking:
             stock_picking.update({
