@@ -48,6 +48,7 @@ class StockProductionLot(models.Model):
 
     @api.multi
     def reserve_stock(self):
+        models._logger.error(self.qty_to_reserve)
         if not self.qty_to_reserve > 0:
             raise models.ValidationError('debe agregar la cantidad a reservar')
         if 'params' in self.env.context:
