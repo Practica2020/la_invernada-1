@@ -28,7 +28,7 @@
                 <tree editable="bottom">
                   <field name="name" />
                   <field name="product_id" />
-                  <field name="quant_ids" />
+                  <field name="quant_ids" widget="many2onebutton" />
                   <button string="Reservar"/>
                 </tree>
               </field>
