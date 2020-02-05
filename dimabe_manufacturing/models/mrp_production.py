@@ -24,6 +24,7 @@ class MrpProduction(models.Model):
             item.potential_lot_ids = [
                 (6, 0, item.env['stock.production.lot'].search([
                     ('product_id', 'in', [item.product_id.id] + list(item.move_raw_ids.mapped('product_id.id'))),
+                    ('available_quantity', '>', 0)
                 ]).mapped('id'))
             ]
 
