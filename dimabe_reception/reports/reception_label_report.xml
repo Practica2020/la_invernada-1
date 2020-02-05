@@ -182,7 +182,7 @@
         <t t-foreach="move_line.lot_id.stock_production_lot_serial_ids" t-as="serial">
               <tr>
                 <td>
-                  <span t-field="serial.name" />
+                  <span t-field="o.name" />
                 </td>
                 <td>
                   <span t-field="serial.serial_number"/>
