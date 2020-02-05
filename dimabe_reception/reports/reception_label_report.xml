@@ -65,8 +65,8 @@
         <t t-foreach="o.move_ids_without_package" t-as="move_line">
           <table style="margin: 0">
             <tr style="background-color: lightgray;">
-              <th style="padding:25px;">
-                <span t-field="move_line.product_id.display_name" /> <br/>
+              <th style="padding:25px;text-align:right !important;">
+                <span t-field="move_line.product_id.display_name" /> <br/><br/>
                  Fecha de Recepción: <span t-field="o.date_done" />
               </th>
             </tr>
