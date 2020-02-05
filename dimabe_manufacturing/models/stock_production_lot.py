@@ -46,5 +46,5 @@ class StockProductionLot(models.Model):
 
     @api.multi
     def reserve_stock(self):
-        raise models.ValidationError('AAAAA')
+        raise models.ValidationError(self)
 
