@@ -52,7 +52,7 @@
           />
         </field>
         <xpath expr="//page[@name='note']" position="after">
-          <page string="Transportista" name="carrier_page" attrs="{'invisible':['&',('picking_type_code', '!=', 'outgoing'), ('picking_type_code', '!=', 'incoming')]}">
+          <page string="Transportista" name="carrier_page" attrs="{'invisible':['|',('picking_type_code', '==', 'outgoing'), ('picking_type_code', '==', 'incoming')]}">
             <group name="carrier_page" position="inside">
               <field name="carrier_id"/>
               <field name="carrier_rut"/>
