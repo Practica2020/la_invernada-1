@@ -65,10 +65,7 @@
             <group attrs="{'invisible':[('state', '=', 'done')]}">
               <field name="material_product_ids"/>
               <h2>Otras Salidas</h2>
-              <field name="active_move_line_ids"
-                     readonly="1"
-                     domain="[('done_wo','=',False),('product_id','=', 1394)]"
-              >
+              <field name="active_move_line_ids" readonly="1">
                 <tree readonly="1">
                   <field name="product_id"/>
                   <field name="lot_id" widget="many2onebutton" />
