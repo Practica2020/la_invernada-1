@@ -15,7 +15,6 @@ class MrpProduction(models.Model):
     potential_lot_ids = fields.One2many(
         'stock.production.lot',
         compute='_compute_potential_lot_ids',
-        reverse='_reverse_potential_lot_ids',
         string='Posibles Lotes'
     )
 
@@ -28,10 +27,6 @@ class MrpProduction(models.Model):
                     ('available_quantity', '>', 0)
                 ]).mapped('id'))
             ]
-
-    @api.multi
-    def _reverse_potential_lot_ids(self):
-        return self.env['stock.production.lot'].write(self.potential_lot_ids)
 
     @api.multi
     def set_stock_move(self):
