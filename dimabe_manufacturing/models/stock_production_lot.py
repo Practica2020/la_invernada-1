@@ -44,7 +44,7 @@ class StockProductionLot(models.Model):
                 serial.serial_number = item.name + tmp[-3:]
             return res
 
-    @api.model
+    @api.multi
     def reserve_stock(self):
         models.ValidationError('AAAAA')
 
