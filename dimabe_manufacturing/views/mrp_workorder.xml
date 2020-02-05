@@ -67,6 +67,7 @@
               <h2>Otras Salidas</h2>
               <field name="active_move_line_ids"
                      readonly="1"
+                     domain="[('product_id','not in', list(material_product_ids.mapped('id')))]"
               >
                 <tree readonly="1">
                   <field name="product_id"/>
