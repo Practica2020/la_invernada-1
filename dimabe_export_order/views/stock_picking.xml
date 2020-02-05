@@ -9,15 +9,15 @@
         <field name="backorder_id" position="after">
           <field name="picking_type_code" invisible="1"/>
           <field name="consignee_id"
-                 attrs="{'invisible':[('picking_type_code', '=', 'incoming')]}"
+                 attrs="{'invisible':[('picking_type_code', '!=', 'output')]}"
           />
           <field name="notify_ids"
-                 attrs="{'invisible':[('picking_type_code', '=', 'incoming')]}"
+                 attrs="{'invisible':[('picking_type_code', '!=', 'output')]}"
           />
         </field>
         <xpath expr="//page[@name='extra']" position="after">
           <page string="COMEX" id="export_data"
-                attrs="{'invisible':[('picking_type_code', '=', 'incoming')]}"
+                attrs="{'invisible':[('picking_type_code', '!=', 'output')]}"
           >
             <group name="export_data"
                    position="inside"
