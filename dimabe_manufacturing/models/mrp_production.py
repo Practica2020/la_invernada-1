@@ -6,11 +6,17 @@ class MrpProduction(models.Model):
 
     stock_lots = fields.Many2one("stock.production.lot")
 
-    product_lot = fields.Many2one(rel="stock_lots.product_id")
+    product_lot = fields.Many2one(
+        'product.product',
+        related="stock_lots.product_id"
+    )
 
     requested_qty = fields.Float('Cantidad Solicitada')
 
-    serial_lot_ids = fields.One2many(related="stock_lots.stock_production_lot_serial_ids")
+    serial_lot_ids = fields.One2many(
+        'stock.production.lot.serial',
+        related="stock_lots.stock_production_lot_serial_ids"
+    )
 
     potential_lot_ids = fields.One2many(
         'potential.lot',

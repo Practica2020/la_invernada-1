@@ -32,10 +32,12 @@ class StockProductionLot(models.Model):
         for item in self:
             item.stock_quant_balance = item.quant_ids.filtered(lambda a: a.location_id.name == 'Stock').balance
 
-    @api.multi
-    @api.depends('stock_quant_balance')
+    # @api.multi
+    # @api.depends('stock_quant_balance')
+    @api.onchange('stock_quant_balance')
     def _compute_available_quantity(self):
         for item in self:
+            raise models.ValidationError(item)
             quant_id = item.quant_ids.filtered(lambda a: a.location_id.name == 'Stock')
             item.available_quantity = quant_id.balance
 
