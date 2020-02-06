@@ -23,8 +23,18 @@ class StockProductionLot(models.Model):
 
     qty_to_reserve = fields.Float('Cantidad a Reservar')
 
+    stock_quant = fields.Many2one(
+        'stock.quant',
+        compute='_compute_stock_quant'
+    )
+
     @api.multi
-    @api.depends('quant_ids')
+    def _compute_stock_quant(self):
+        for item in self:
+            item.stock_quant = item.quant_ids.filtered(lambda a: a.location_id.name == 'Stock')
+
+    @api.multi
+    @api.depends('stock_quant')
     def _compute_available_quantity(self):
         for item in self:
             quant_id = item.quant_ids.filtered(lambda a: a.location_id.name == 'Stock')
