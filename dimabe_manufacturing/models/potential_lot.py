@@ -32,10 +32,6 @@ class PotentialLot(models.Model):
 
         stock_move = self.mrp_production_id.move_raw_ids.filtered(lambda a: a.product_id == self.lot_product_id)
 
-        raise models.ValidationError(self.stock_production_lot_id.quant_ids.filtered(
-            lambda a: a.location_id.name == 'Stock'
-        ).location_id.id)
-
         stock_move.update({
             'active_move_line_ids': [
                 (0, 0, {
