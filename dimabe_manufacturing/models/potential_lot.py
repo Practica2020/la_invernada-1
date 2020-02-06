@@ -32,6 +32,10 @@ class PotentialLot(models.Model):
 
         stock_move = self.mrp_production_id.move_raw_ids.filtered(lambda a: a.product_id == self.lot_product_id)
 
+        models.ValidationError(self.stock_production_lot_id.quant_ids.filtered(
+            lambda a: a.location_id.name == 'Stock'
+        ).id)
+
         stock_move.update({
             'active_move_line_ids': [
                 (0, 0, {
@@ -54,7 +58,6 @@ class PotentialLot(models.Model):
 
     @api.multi
     def unreserved_stock(self):
-
         stock_move = self.mrp_production_id.move_raw_ids.filtered(lambda a: a.product_id == self.lot_product_id)
 
         stock_move.update({
@@ -62,4 +65,3 @@ class PotentialLot(models.Model):
         })
 
         self.is_reserved = False
-
