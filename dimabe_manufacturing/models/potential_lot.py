@@ -29,6 +29,8 @@ class PotentialLot(models.Model):
             raise models.ValidationError('debe agregar la cantidad a reservar')
         if 'params' in self.env.context:
             params = self.env.context['params']
+            models._logger.error('AAAAAAAAAAAAAAAAAAAAAA params')
             if 'id' in params and 'model' in params and params['model'] == 'mrp.production':
+                models._logger.error('BBBBBBBBBBBBBBbb')
                 mrp_production = self.env['mrp.production'].search([('id', '=', params['id'])])
                 models._logger.error('{} {}'.format(mrp_production, self.qty_to_reserve))
