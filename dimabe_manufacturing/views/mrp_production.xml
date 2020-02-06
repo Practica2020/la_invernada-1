@@ -28,7 +28,7 @@
                 <tree editable="bottom" edit="true" delete="false" create="false">
                   <field name="stock_production_lot_id" readonly="1" widget="many2onebutton" />
                   <field name="lot_product_id" readonly="1" />
-                  <field name="lot_available_quantity" readonly="1"/>
+                  <field name="lot_available_quantity" readonly="1" force_save="1"/>
                   <field name="is_reserved" invisible="1"/>
                   <field name="mrp_production_state" invisible="1"/>
                   <field name="stock_quant_balance" />
