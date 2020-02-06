@@ -17,6 +17,11 @@ class PotentialLot(models.Model):
         related='stock_production_lot_id.available_quantity'
     )
 
+    stock_quant_balance = fields.Many2one(
+        'stock.quant',
+        related='stock_production_lot_id.stock_quant_balance'
+    )
+
     stock_production_lot_id = fields.Many2one('stock.production.lot', 'lote potencial')
 
     mrp_production_id = fields.Many2one('mrp.production', 'Producción')
