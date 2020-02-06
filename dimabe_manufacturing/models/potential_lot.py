@@ -29,6 +29,7 @@ class PotentialLot(models.Model):
             raise models.ValidationError('debe agregar la cantidad a reservar')
         if 'default_procurement_group_id' in self.env.context:
             procurement_group_id = self.env.context['default_procurement_group_id']
+            models._logger.error(procurement_group_id)
             mrp_production = self.env['mrp.production'].search([
                 ('procurement_group_id', '=', procurement_group_id)
             ])
