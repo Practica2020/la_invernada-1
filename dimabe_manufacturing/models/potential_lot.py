@@ -49,7 +49,7 @@ class PotentialLot(models.Model):
 
             production_quant = item.get_production_quant()
 
-            stock_quant.update({
+            stock_quant.sudo().update({
                 'reserved_quantity': stock_quant.reserved_quantity + item.qty_to_reserve
             })
 
@@ -78,7 +78,7 @@ class PotentialLot(models.Model):
             )
 
             stock_quant = item.get_stock_quant()
-            stock_quant.update({
+            stock_quant.sudo().update({
                 'reserved_quantity': stock_quant.reserved_quantity - item.qty_to_reserve
             })
 
