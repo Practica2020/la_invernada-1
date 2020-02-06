@@ -33,15 +33,15 @@
                   <button string="Reservar"
                           name="reserve_stock"
                           type="object"
-                          attrs="{'invisible':[('is_reserved', '=', True)]}"
+                          attrs="{'invisible':['|',('is_reserved', '=', True),('state','=','done')]}"
                   />
                   <button string="Quitar Reserva"
                           name="unreserved_stock"
                           type="object"
-                          attrs="{'invisible':[('is_reserved', '=', False)]}"
+                          attrs="{'invisible':['|',('is_reserved', '=', False),('state', '=', 'done')]}"
                   />
                   <field name="qty_to_reserve"
-                         attrs="{'readonly':[('is_reserved', '=', True)]}"
+                         attrs="{'readonly':['|',('is_reserved', '=', True),('state','=',''done)]}"
                   />
                 </tree>
               </field>
