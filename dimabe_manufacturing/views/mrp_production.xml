@@ -29,6 +29,7 @@
                   <field name="stock_production_lot_id" readonly="1" widget="many2onebutton" />
                   <field name="lot_product_id" readonly="1" />
                   <field name="lot_available_quantity" readonly="1"/>
+                  <field name="is_reserved" invisible="1"/>
                   <button string="Reservar"
                           name="reserve_stock"
                           type="object"
