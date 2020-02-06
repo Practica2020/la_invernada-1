@@ -57,6 +57,7 @@ class MrpProduction(models.Model):
             'potential_lot_ids': regs})
 
         models._logger.error(regs)
+        models._logger.error(self.get_potential_lot_ids())
 
         raise models.ValidationError('lala')
 
