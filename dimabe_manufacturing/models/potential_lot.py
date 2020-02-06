@@ -35,6 +35,7 @@ class PotentialLot(models.Model):
         stock_move.update({
             'active_move_line_ids': [
                 (0, 0, {
+                    'product_id': self.lot_product_id.id,
                     'lot_id': self.stock_production_lot_id.id,
                     'product_uom_qty': stock_move.reserved_availability + self.qty_to_reserve,
                     'product_uom_id': stock_move.product_uom.id,
