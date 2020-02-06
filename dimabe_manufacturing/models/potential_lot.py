@@ -60,6 +60,7 @@ class PotentialLot(models.Model):
         move_line = stock_move.active_move_line_ids.filtered(lambda a: a.lot_id.id == self.stock_production_lot_id.id)
 
         if move_line:
+            raise models.ValidationError(move_line.product_uom_qty)
             move_line[0].unlink()
 
         self.is_reserved = False
