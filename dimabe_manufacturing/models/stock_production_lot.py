@@ -16,7 +16,7 @@ class StockProductionLot(models.Model):
     )
 
     available_quantity = fields.Float(
-        'Saldo Dsiponible',
+        'Saldo Disponible',
         compute='_compute_available_quantity',
         store=True
     )
@@ -33,7 +33,7 @@ class StockProductionLot(models.Model):
             item.stock_quant_balance = item.quant_ids.filtered(lambda a: a.location_id.name == 'Stock').balance
 
     @api.multi
-    @api.depends('stock_quant_balance')
+    @api.depends('_compute_stock_quant_balance')
     def _compute_available_quantity(self):
         for item in self:
             quant_id = item.quant_ids.filtered(lambda a: a.location_id.name == 'Stock')
