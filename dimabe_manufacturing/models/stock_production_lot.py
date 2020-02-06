@@ -45,14 +45,3 @@ class StockProductionLot(models.Model):
                 tmp = '00{}'.format(counter)
                 serial.serial_number = item.name + tmp[-3:]
             return res
-
-    @api.multi
-    def reserve_stock(self):
-        if not self.qty_to_reserve > 0:
-            raise models.ValidationError('debe agregar la cantidad a reservar')
-        if 'params' in self.env.context:
-            params = self.env.context['params']
-            if 'id' in params and 'model' in params and params['model'] == 'mrp.production':
-                mrp_production = self.env['mrp.production'].search([('id', '=', params['id'])])
-                models._logger.error('{} {}'.format(mrp_production, self.qty_to_reserve))
-
