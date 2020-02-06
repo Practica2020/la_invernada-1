@@ -21,6 +21,11 @@ class PotentialLot(models.Model):
 
     mrp_production_id = fields.Many2one('mrp.production', 'Producción')
 
+    mrp_production_state = fields.Selection(
+        string='estado',
+        related='mrp.production_id.state'
+    )
+
     qty_to_reserve = fields.Float('Cantidad a Reservar')
 
     is_reserved = fields.Boolean('Reservado')

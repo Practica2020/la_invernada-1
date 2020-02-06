@@ -30,19 +30,19 @@
                   <field name="lot_product_id" readonly="1" />
                   <field name="lot_available_quantity" readonly="1"/>
                   <field name="is_reserved" invisible="1"/>
-                  <field name="mrp_production_id" invisible="1"/>
+                  <field name="mrp_production_state" invisible="1"/>
                   <button string="Reservar"
                           name="reserve_stock"
                           type="object"
-                          attrs="{'invisible':['|',('is_reserved', '=', True),('mrp_production_id.state','=','done')]}"
+                          attrs="{'invisible':['|',('is_reserved', '=', True),('mrp_production_state','=','done')]}"
                   />
                   <button string="Quitar Reserva"
                           name="unreserved_stock"
                           type="object"
-                          attrs="{'invisible':['|',('is_reserved', '=', False),('mrp_production_id.state', '=', 'done')]}"
+                          attrs="{'invisible':['|',('is_reserved', '=', False),('mrp_production_state', '=', 'done')]}"
                   />
                   <field name="qty_to_reserve"
-                         attrs="{'readonly':['|',('is_reserved', '=', True),('mrp_production_id.state','=','done')]}"
+                         attrs="{'readonly':['|',('is_reserved', '=', True),('mrp_production_state','=','done')]}"
                   />
                 </tree>
               </field>
