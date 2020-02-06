@@ -30,6 +30,7 @@ class StockProductionLot(models.Model):
     @api.multi
     def _compute_stock_quant_balance(self):
         for item in self:
+            raise models.ValidationError(item.quant_ids.filtered(lambda a: a.location_id.name == 'Stock').balance)
             item.stock_quant = item.quant_ids.filtered(lambda a: a.location_id.name == 'Stock').balance
 
     @api.multi
