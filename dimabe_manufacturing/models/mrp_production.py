@@ -19,11 +19,14 @@ class MrpProduction(models.Model):
 
     @api.model
     def get_potential_lot_ids(self):
-        return self.env['stock.production.lot'].search([
+        return [{
+            'stock_production_lot_id': lot.id,
+            'mrp_production_id': self.id
+        } for lot in self.env['stock.production.lot'].search([
             ('product_id', 'in', [self.product_id.id] + list(self.move_raw_ids.mapped('product_id.id'))),
             ('name', 'not in', list(self.potential_lot_ids.mapped('stock_production_lot_id.id'))),
             ('available_quantity', '>', 0)
-        ])
+        ])]
 
     @api.multi
     def set_stock_move(self):
