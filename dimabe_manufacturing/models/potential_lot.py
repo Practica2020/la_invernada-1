@@ -27,6 +27,7 @@ class PotentialLot(models.Model):
     def reserve_stock(self):
         if not self.qty_to_reserve > 0:
             raise models.ValidationError('debe agregar la cantidad a reservar')
+        models._logger.error(self.env.context)
         if 'default_procurement_group_id' in self.env.context:
             procurement_group_id = self.env.context['default_procurement_group_id']
             models._logger.error(procurement_group_id)
