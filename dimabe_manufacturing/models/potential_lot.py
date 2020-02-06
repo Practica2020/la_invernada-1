@@ -44,10 +44,10 @@ class PotentialLot(models.Model):
                     'product_uom_id': stock_move.product_uom.id,
                     'location_id': self.stock_production_lot_id.quant_ids.filtered(
                         lambda a: a.location_id.name == 'Stock'
-                    ).id,
+                    ).location_id.id,
                     'location_dest_id': self.stock_production_lot_id.quant_ids.filtered(
                         lambda a: a.location_id.name == 'Production'
-                    ).id
+                    ).location_id.id
                 })
 
             ]
