@@ -28,7 +28,7 @@
                 <tree editable="bottom" edit="true" delete="false" create="false">
                   <field name="name" readonly="1" />
                   <field name="lot_product_id" readonly="1" />
-                  <field name="available_quantity" readonly="1"/>
+                  <field name="lot_available_quantity" readonly="1"/>
                   <button string="Reservar" name="reserve_stock" type="object" />
                   <field name="qty_to_reserve"/>
                 </tree>
