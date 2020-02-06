@@ -24,10 +24,10 @@
           <page string="Seleccionar Lote">
             <group>
               <field name="stock_lots" invisible="1"/>
-              <field name="procurement_group_id" />
               <field name="potential_lot_ids" readonly="0">
                 <tree editable="bottom" edit="true" delete="false" create="false">
                   <field name="name" readonly="1" />
+                  <field name="stock_production_lot_id" readonly="1" />
                   <field name="lot_product_id" readonly="1" />
                   <field name="lot_available_quantity" readonly="1"/>
                   <button string="Reservar" name="reserve_stock" type="object" />
