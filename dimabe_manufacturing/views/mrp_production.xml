@@ -41,7 +41,7 @@
                           attrs="{'invisible':['|',('is_reserved', '=', False),('state', '=', 'done')]}"
                   />
                   <field name="qty_to_reserve"
-                         attrs="{'readonly':['|',('is_reserved', '=', True),('state','=',''done)]}"
+                         attrs="{'readonly':['|',('is_reserved', '=', True),('state','=','done')]}"
                   />
                 </tree>
               </field>
