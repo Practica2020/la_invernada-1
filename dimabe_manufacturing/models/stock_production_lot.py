@@ -23,8 +23,7 @@ class StockProductionLot(models.Model):
 
     qty_to_reserve = fields.Float('Cantidad a Reservar')
 
-    stock_quant_balance = fields.Many2one(
-        'stock.quant',
+    stock_quant_balance = fields.Float(
         compute='_compute_stock_quant_balance'
     )
 

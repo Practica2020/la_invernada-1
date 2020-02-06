@@ -17,8 +17,7 @@ class PotentialLot(models.Model):
         related='stock_production_lot_id.available_quantity'
     )
 
-    stock_quant_balance = fields.Many2one(
-        'stock.quant',
+    stock_quant_balance = fields.Float(
         related='stock_production_lot_id.stock_quant_balance'
     )
 
