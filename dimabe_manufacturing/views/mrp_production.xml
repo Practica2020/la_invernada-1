@@ -30,6 +30,7 @@
                   <field name="lot_product_id" readonly="1" />
                   <field name="lot_available_quantity" readonly="1"/>
                   <field name="is_reserved" invisible="1"/>
+                  <field name="mrp_production_id" invisible="1"/>
                   <button string="Reservar"
                           name="reserve_stock"
                           type="object"
