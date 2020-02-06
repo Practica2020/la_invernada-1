@@ -34,7 +34,7 @@ class StockProductionLot(models.Model):
             item.stock_quant = item.quant_ids.filtered(lambda a: a.location_id.name == 'Stock')
 
     @api.multi
-    @api.depends('stock_quant')
+    @api.depends('stock_quant.balance')
     def _compute_available_quantity(self):
         for item in self:
             quant_id = item.quant_ids.filtered(lambda a: a.location_id.name == 'Stock')
