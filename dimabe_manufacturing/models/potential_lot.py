@@ -57,6 +57,9 @@ class PotentialLot(models.Model):
     def unreserved_stock(self):
         stock_move = self.mrp_production_id.move_raw_ids.filtered(lambda a: a.product_id == self.lot_product_id)
 
-        stock_move.active_move_line_ids.filtered(lambda a: a.lot_id.id == self.stock_production_lot_id.id).unlink()
+        move_line = stock_move.active_move_line_ids.filtered(lambda a: a.lot_id.id == self.stock_production_lot_id.id)
+
+        if move_line:
+            move_line[0].unlink()
 
         self.is_reserved = False
