@@ -36,8 +36,12 @@ class PotentialLot(models.Model):
             'active_move_line_ids': [
                 (0, 0, {
                     'lot_id': self.stock_production_lot_id.id,
-                    'product_qty': stock_move.reserved_availability + self.qty_to_reserve,
-                    'product_uom_id': stock_move.product_uom.id
+                    'product_uom_qty': stock_move.reserved_availability + self.qty_to_reserve,
+                    'product_uom_id': stock_move.product_uom.id,
+                    'location_id': self.stock_production_lot_id.quant_ids.filtered(lambda a: a.name == 'Stock').id,
+                    'location_dest_id': self.stock_production_lot_id.quant_ids.filtered(
+                        lambda a: a.name == 'Production'
+                    ).id
                 })
 
             ]
