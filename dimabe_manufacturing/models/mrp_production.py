@@ -14,7 +14,7 @@ class MrpProduction(models.Model):
 
     potential_lot_ids = fields.One2many(
         'potential.lot',
-        string='Posibles Lotes'
+        'mrp_production_id'
     )
 
     @api.model

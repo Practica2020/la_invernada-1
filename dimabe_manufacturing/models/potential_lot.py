@@ -7,7 +7,7 @@ class PotentialLot(models.Model):
 
     name = fields.Char('lote', related='stock_production_lot_id.name')
 
-    lot_product = fields.Many2one(
+    lot_product_id = fields.Many2one(
         'product.product',
         related='stock_production_lot_id.product_id'
     )
