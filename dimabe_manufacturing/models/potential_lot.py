@@ -19,7 +19,7 @@ class PotentialLot(models.Model):
 
     stock_quant = fields.Many2one(
         'stock.quant',
-        related='stock_production_lot.stock_quant'
+        related='stock_production_lot_id.stock_quant'
     )
 
     stock_production_lot_id = fields.Many2one('stock.production.lot', 'lote potencial')
