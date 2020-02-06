@@ -54,13 +54,12 @@ class PotentialLot(models.Model):
         self.is_reserved = True
 
     @api.multi
-    def unreserved_stock(self):
+    def unreserved_stock(self, new_move):
         stock_move = self.mrp_production_id.move_raw_ids.filtered(lambda a: a.product_id == self.lot_product_id)
 
         move_line = stock_move.active_move_line_ids.filtered(lambda a: a.lot_id.id == self.stock_production_lot_id.id)
 
-        if move_line:
-            raise models.ValidationError(stock_move.move_line_ids)
-            move_line[0].unlink()
+        for ml in move_line:
+            ml.write({'move_id': new_move, 'product_uom_qty': 0})
 
         self.is_reserved = False
