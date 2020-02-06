@@ -59,6 +59,8 @@ class PotentialLot(models.Model):
 
         move_line = stock_move.active_move_line_ids.filtered(lambda a: a.lot_id == self.stock_production_lot_id.id)
 
-        raise models.ValidationError('{} {}'.format(stock_move.active_move_line_ids.lot_id, self.stock_production_lot_id))
+        raise models.ValidationError('{} {} {}'.format(
+            stock_move.active_move_line_ids.lot_id, self.stock_production_lot_id, move_line
+        ))
 
         self.is_reserved = False
