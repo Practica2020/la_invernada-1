@@ -32,7 +32,7 @@ class PotentialLot(models.Model):
 
         stock_move = self.mrp_production_id.move_raw_ids.filtered(lambda a: a.product_id == self.lot_product_id)
 
-        models.ValidationError(self.stock_production_lot_id.quant_ids.filtered(
+        raise models.ValidationError(self.stock_production_lot_id.quant_ids.filtered(
             lambda a: a.location_id.name == 'Stock'
         ).id)
 
