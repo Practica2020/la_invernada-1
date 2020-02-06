@@ -29,7 +29,16 @@
                   <field name="stock_production_lot_id" readonly="1" widget="many2onebutton" />
                   <field name="lot_product_id" readonly="1" />
                   <field name="lot_available_quantity" readonly="1"/>
-                  <button string="Reservar" name="reserve_stock" type="object" />
+                  <button string="Reservar"
+                          name="reserve_stock"
+                          type="object"
+                          attrs="{'invisible':[('is_reserved', 'is', False)]}"
+                  />
+                  <button string="Quitar Reserva"
+                          name="unreserved_stock"
+                          type="object"
+                          attrs="{'invisible':[('is_reserved', 'is', True)]}"
+                  />
                   <field name="qty_to_reserve"/>
                 </tree>
               </field>

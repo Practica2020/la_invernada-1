@@ -23,6 +23,8 @@ class PotentialLot(models.Model):
 
     qty_to_reserve = fields.Float('Cantidad a Reservar')
 
+    is_reserved = fields.Boolean('Reservado')
+
     @api.multi
     def reserve_stock(self):
         if not self.qty_to_reserve > 0:
@@ -32,5 +34,14 @@ class PotentialLot(models.Model):
 
         stock_move.reserved_availability += self.qty_to_reserve
 
+        self.is_reserved = True
 
-        models._logger.error('{} {}'.format(self.mrp_production_id, self.qty_to_reserve))
+    @api.multi
+    def unreserved_stock(self):
+
+        stock_move = self.mrp_production_id.move_raw_ids.filtered(lambda a: a.product_id == self.lot_product_id)
+
+        stock_move.reserved_availability -= self.qty_to_reserve
+
+        self.is_reserved = False
+
