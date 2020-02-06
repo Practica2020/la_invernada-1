@@ -58,7 +58,7 @@ class MrpProduction(models.Model):
 
         models._logger.error(regs)
 
-        models.ValidationError('lala')
+        raise models.ValidationError('lala')
 
         stock_picking = self.env['stock.picking'].search([
             ('name', '=', res.origin)
