@@ -23,7 +23,7 @@ class PotentialLot(models.Model):
 
     mrp_production_state = fields.Selection(
         string='estado',
-        related='mrp.production_id.state'
+        related='mrp_production_id.state'
     )
 
     qty_to_reserve = fields.Float('Cantidad a Reservar')
