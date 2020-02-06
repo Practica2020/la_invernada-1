@@ -24,6 +24,7 @@
           <page string="Seleccionar Lote">
             <group>
               <field name="stock_lots" invisible="1"/>
+              <field name="procurement_group_id" />
               <field name="potential_lot_ids" readonly="0">
                 <tree editable="bottom" edit="true" delete="false" create="false">
                   <field name="name" readonly="1" />
