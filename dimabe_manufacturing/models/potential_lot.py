@@ -33,7 +33,14 @@ class PotentialLot(models.Model):
         stock_move = self.mrp_production_id.move_raw_ids.filtered(lambda a: a.product_id == self.lot_product_id)
 
         stock_move.update({
-            'reserved_availability': stock_move.reserved_availability + self.qty_to_reserve
+            'active_move_line_ids': [
+                (0, 0, {
+                    'lot_id': self.stock_production_lot_id.id,
+                    'product_qty': stock_move.reserved_availability + self.qty_to_reserve
+                })
+
+            ]
+
         })
 
         self.is_reserved = True
