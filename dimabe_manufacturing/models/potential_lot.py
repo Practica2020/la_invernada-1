@@ -25,41 +25,64 @@ class PotentialLot(models.Model):
 
     is_reserved = fields.Boolean('Reservado')
 
+    @api.model
+    def get_stock_quant(self):
+        return self.stock_production_lot_id.quant_ids.filtered(
+            lambda a: a.location_id.name == 'Stock'
+        )
+
+    @api.model
+    def get_production_quant(self):
+        return self.stock_production_lot_id.quant_ids.filtered(
+            lambda a: a.location_id.name == 'Production'
+        )
+
     @api.multi
     def reserve_stock(self):
-        if not self.qty_to_reserve > 0:
-            raise models.ValidationError('debe agregar la cantidad a reservar')
+        for item in self:
+            if not item.qty_to_reserve > 0:
+                raise models.ValidationError('debe agregar la cantidad a reservar')
 
-        stock_move = self.mrp_production_id.move_raw_ids.filtered(lambda a: a.product_id == self.lot_product_id)
+            stock_move = item.mrp_production_id.move_raw_ids.filtered(lambda a: a.product_id == item.lot_product_id)
 
-        stock_move.update({
-            'active_move_line_ids': [
-                (0, 0, {
-                    'product_id': self.lot_product_id.id,
-                    'lot_id': self.stock_production_lot_id.id,
-                    'product_uom_qty': stock_move.reserved_availability + self.qty_to_reserve,
-                    'product_uom_id': stock_move.product_uom.id,
-                    'location_id': self.stock_production_lot_id.quant_ids.filtered(
-                        lambda a: a.location_id.name == 'Stock'
-                    ).location_id.id,
-                    'location_dest_id': self.stock_production_lot_id.quant_ids.filtered(
-                        lambda a: a.location_id.name == 'Production'
-                    ).location_id.id
-                })
+            stock_quant = item.get_stock_quant()
 
-            ]
+            production_quant = item.get_production_quant()
 
-        })
+            stock_quant.update({
+                'reserved_quantity': stock_quant.reserved_quantity + item.qty_to_reserve
+            })
 
-        self.is_reserved = True
+            stock_move.update({
+                'active_move_line_ids': [
+                    (0, 0, {
+                        'product_id': item.lot_product_id.id,
+                        'lot_id': item.stock_production_lot_id.id,
+                        'product_uom_qty': stock_move.reserved_availability + item.qty_to_reserve,
+                        'product_uom_id': stock_move.product_uom.id,
+                        'location_id': stock_quant.location_id.id,
+                        'location_dest_id': production_quant.location_id.id
+                    })
+                ]
+            })
+
+            item.is_reserved = True
 
     @api.multi
     def unreserved_stock(self):
-        stock_move = self.mrp_production_id.move_raw_ids.filtered(lambda a: a.product_id == self.lot_product_id)
+        for item in self:
+            stock_move = item.mrp_production_id.move_raw_ids.filtered(lambda a: a.product_id == item.lot_product_id)
 
-        move_line = stock_move.active_move_line_ids.filtered(lambda a: a.lot_id.id == self.stock_production_lot_id.id)
+            move_line = stock_move.active_move_line_ids.filtered(
+                lambda a: a.lot_id.id == item.stock_production_lot_id.id
+            )
 
-        for ml in move_line:
-            ml.write({'move_id': None, 'product_uom_qty': 0})
+            stock_quant = item.get_stock_quant()
+            stock_quant.update({
+                'reserved_quantity': stock_quant.reserved_quantity - item.qty_to_reserve
+            })
 
-        self.is_reserved = False
+            for ml in move_line:
+                ml.write({'move_id': None, 'product_uom_qty': 0})
+
+            item.is_reserved = False
