@@ -41,6 +41,7 @@
     <field name="name">Nueva solicitud de presupuesto</field>
     <field name="model_id" ref="dimabe_purchase_process.model_purchase_requisition"/>
     <field name="email_from">info@lainvernada.com</field>
+    <field name="email_to">${object.partner_id.id}</field>
     <field name="subject">Nueva solicitud de presupuesto - La Invernada</field>
     <field name="body_html">
       <![CDATA[
