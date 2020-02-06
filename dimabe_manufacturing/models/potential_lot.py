@@ -34,7 +34,7 @@ class PotentialLot(models.Model):
 
         raise models.ValidationError(self.stock_production_lot_id.quant_ids.filtered(
             lambda a: a.location_id.name == 'Stock'
-        ).id)
+        ).location_id.id)
 
         stock_move.update({
             'active_move_line_ids': [
