@@ -39,14 +39,14 @@
 
 <record id="new_requisition_mail_for_supplier_template" model="mail.template">
   <field name="name">Nueva solicitud de presupuesto</field>
-  <field name="model_id" ref="dimabe_purchase_process.model_purchase_requisition"/>
-  <field name="email_from">info@lainvernada.com</field>
+  <field name="model_id" ref="dimabe_purchase_process.dimabe_purchase_process.model_purchase_order"/>
+  <field name="email_from">${object.sudo().create_uid.email_formatted | safe}</field>
   <field name="email_to">${object.partner_id.id}</field>
   <field name="subject">Nueva solicitud de presupuesto - La Invernada</field>
   <field name="body_html">
     <![CDATA[
         <p>Estimados,<br/><br/>
-        Adjunto solicitu de presupuesto {object.name}.
+          Adjunto solicitud de presupuesto ${object.name}.
         <br/>
         Si tiene alguna duda por favor comunicarlo al correo adquisiciones@lainvernada.com
         </p>
