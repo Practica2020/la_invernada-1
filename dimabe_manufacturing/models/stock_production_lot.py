@@ -32,12 +32,10 @@ class StockProductionLot(models.Model):
         for item in self:
             item.stock_quant_balance = item.quant_ids.filtered(lambda a: a.location_id.name == 'Stock').balance
 
-    @api.multi
-    @api.depends('_compute_stock_quant_balance')
+    @api.depends('stock_quant_balance')
     def _compute_available_quantity(self):
         for item in self:
-            quant_id = item.quant_ids.filtered(lambda a: a.location_id.name == 'Stock')
-            item.available_quantity = quant_id.balance
+            item.available_quantity = item.stock_quant_balance
 
     @api.multi
     def _compute_total_serial(self):
