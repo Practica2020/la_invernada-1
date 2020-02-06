@@ -33,12 +33,12 @@
                   <button string="Reservar"
                           name="reserve_stock"
                           type="object"
-                          attrs="{'invisible':[('is_reserved', 'is', False)]}"
+                          attrs="{'invisible':[('is_reserved', '=', False)]}"
                   />
                   <button string="Quitar Reserva"
                           name="unreserved_stock"
                           type="object"
-                          attrs="{'invisible':[('is_reserved', 'is', True)]}"
+                          attrs="{'invisible':[('is_reserved', '=', True)]}"
                   />
                   <field name="qty_to_reserve"/>
                 </tree>
