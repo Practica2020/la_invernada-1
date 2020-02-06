@@ -65,4 +65,4 @@ class MrpProduction(models.Model):
                 'has_mrp_production': True
             })
 
-        return res.with_context(mrp_prodution_id=res.id)
+        return res
