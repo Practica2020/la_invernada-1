@@ -21,6 +21,8 @@ class StockProductionLot(models.Model):
         store=True
     )
 
+
+
     qty_to_reserve = fields.Float('Cantidad a Reservar')
 
     stock_quant_balance = fields.Float(
