@@ -19,6 +19,8 @@ class PotentialLot(models.Model):
 
     stock_production_lot_id = fields.Many2one('stock.production.lot', 'lote potencial')
 
+    mrp_production_id = fields.Many2one('mrp.production', 'Producción')
+
     qty_to_reserve = fields.Float('Cantidad a Reservar')
 
     @api.multi

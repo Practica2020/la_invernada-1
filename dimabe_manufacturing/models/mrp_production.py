@@ -13,20 +13,17 @@ class MrpProduction(models.Model):
     serial_lot_ids = fields.One2many(related="stock_lots.stock_production_lot_serial_ids")
 
     potential_lot_ids = fields.One2many(
-        'stock.production.lot',
-        compute='_compute_potential_lot_ids',
+        'potential.lot',
         string='Posibles Lotes'
     )
 
-    @api.multi
-    def _compute_potential_lot_ids(self):
-        for item in self:
-            item.potential_lot_ids = [
-                (6, 0, item.env['stock.production.lot'].search([
-                    ('product_id', 'in', [item.product_id.id] + list(item.move_raw_ids.mapped('product_id.id'))),
-                    ('available_quantity', '>', 0)
-                ]).mapped('id'))
-            ]
+    @api.model
+    def get_potential_lot_ids(self):
+        return self.env['stock.production.lot'].search([
+            ('product_id', 'in', [self.product_id.id] + list(self.move_raw_ids.mapped('product_id.id'))),
+            ('name', 'not in', list(self.potential_lot_ids.mapper('stock_production_lot_id.id'))),
+            ('available_quantity', '>', 0)
+        ])
 
     @api.multi
     def set_stock_move(self):
@@ -48,6 +45,8 @@ class MrpProduction(models.Model):
     @api.model
     def create(self, values_list):
         res = super(MrpProduction, self).create(values_list)
+
+        res.potential_lot_ids = self.get_potential_lot_ids()
 
         stock_picking = self.env['stock.picking'].search([
             ('name', '=', res.origin)
