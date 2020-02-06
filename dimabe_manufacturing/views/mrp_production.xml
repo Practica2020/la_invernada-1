@@ -40,7 +40,9 @@
                           type="object"
                           attrs="{'invisible':[('is_reserved', '=', False)]}"
                   />
-                  <field name="qty_to_reserve"/>
+                  <field name="qty_to_reserve"
+                         attrs="{'readonly':[('is_reserved', '=', True)]}"
+                  />
                 </tree>
               </field>
             </group>
