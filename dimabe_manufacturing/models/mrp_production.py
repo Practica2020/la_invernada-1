@@ -50,14 +50,14 @@ class MrpProduction(models.Model):
         res = super(MrpProduction, self).create(values_list)
 
         regs = [
-            (0, 0, potential_lot) for potential_lot in self.get_potential_lot_ids()
+            (0, 0, potential_lot) for potential_lot in res.get_potential_lot_ids()
         ]
 
         res.update({
             'potential_lot_ids': regs})
 
         models._logger.error(regs)
-        models._logger.error(self.get_potential_lot_ids())
+        models._logger.error(res.get_potential_lot_ids())
 
         raise models.ValidationError('lala')
 
