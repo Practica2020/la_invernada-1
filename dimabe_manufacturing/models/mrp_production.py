@@ -94,7 +94,7 @@ class MrpProduction(models.Model):
             quantity = order.product_uom_id._compute_quantity(order.product_qty,
                                                           order.bom_id.product_uom_id) / order.bom_id.product_qty
             boms, lines = order.bom_id.explode(order.product_id, quantity, picking_type=order.bom_id.picking_type_id)
-            raise models.ValidationError('{} {} {}'.format(quantity,boms, lines))
+            raise models.ValidationError('{} --- {}'.format(boms, lines))
 
         for stock_move in self.move_raw_ids:
             stock_move.product_uom_qty = stock_move.reserved_availability
