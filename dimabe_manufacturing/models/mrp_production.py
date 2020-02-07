@@ -77,7 +77,7 @@ class MrpProduction(models.Model):
     def button_plan(self):
 
         for stock_move in self.move_raw_ids:
-            stock_move.product_uom_qty = stock_move.reserved_avalaibility
+            stock_move.product_uom_qty = stock_move.reserved_availability
             if stock_move.product_uom_qty == 0:
                 stock_move.unlink()
 
