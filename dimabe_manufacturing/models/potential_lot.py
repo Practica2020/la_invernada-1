@@ -64,14 +64,10 @@ class PotentialLot(models.Model):
                     ('display_name', 'like', 'Virtual Locations')
                 ])
 
-                item.update({
-                    'stock_quant_ids': [
-                        (0, 0, {
-                            'lot_id': item.stock_production_lot_id.id,
-                            'location_id': virtual_location_production_id.id,
-                            'product_id': item.lot_product_id.id
-                        })
-                    ]
+                item.env['stock.quant'].create({
+                    'lot_id': item.stock_production_lot_id.id,
+                    'location_id': virtual_location_production_id.id,
+                    'product_id': item.lot_product_id.id
                 })
 
             stock_quant.sudo().update({
