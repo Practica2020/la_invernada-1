@@ -101,4 +101,4 @@ class MrpProduction(models.Model):
 
         workorder_id = self.env['mrp.workorder']
 
-        raise models.ValidationError(workorder_id)
+        raise models.ValidationError(self.workorder_ids)
