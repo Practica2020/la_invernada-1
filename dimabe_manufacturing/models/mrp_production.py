@@ -89,10 +89,12 @@ class MrpProduction(models.Model):
             raise models.ValidationError('la cantidad a consumir no puede ser menor a la cantidad a producir')
 
         orders_to_plan = self.filtered(lambda order: order.routing_id and order.state == 'confirmed')
+        a = []
         for order in orders_to_plan:
             quantity = order.product_uom_id._compute_quantity(order.product_qty,
                                                           order.bom_id.product_uom_id) / order.bom_id.product_qty
-            raise models.ValidationError(quantity)
+            a.append(quantity)
+        raise models.ValidationError(a)
 
         for stock_move in self.move_raw_ids:
             stock_move.product_uom_qty = stock_move.reserved_availability
