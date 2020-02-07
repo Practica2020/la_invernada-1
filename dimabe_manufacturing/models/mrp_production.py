@@ -27,10 +27,14 @@ class MrpProduction(models.Model):
     def get_potential_lot_ids(self):
         potential_lot_ids = []
 
-        for pl in self.env['stock.production.lot'].search([
+        res = self.env['stock.production.lot'].search([
             ('product_id', 'in', list(self.move_raw_ids.mapped('product_id.id'))),
             ('name', 'not in', list(self.potential_lot_ids.mapped('stock_production_lot_id.id')))
-        ]):
+        ])
+
+        raise models.ValidationError(res)
+
+        for pl in res:
             raise models.ValidationError(pl.stock_quant_balance)
             if pl.stock_quant_balance > 0:
                 pl.lot_available_quantity = pl.stock_quant_balance
