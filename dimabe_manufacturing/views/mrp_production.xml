@@ -5,7 +5,7 @@
       <field name="model">mrp.production</field>
       <field name="inherit_id" ref="mrp.mrp_production_form_view" />
       <field name="arch" type="xml">
-        <xpath expr="//header" postition="inside">
+        <xpath expr="//header" postition="after">
           <button name="calculate_done" type="object"
                   string="Calcular Realizado"
                   attrs="{'invisible':[('state', '!=', 'progress')]}"
