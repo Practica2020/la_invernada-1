@@ -73,3 +73,14 @@ class MrpProduction(models.Model):
             })
 
         return res
+
+    def button_plan(self):
+
+        for stock_move in self.move_raw_ids:
+            stock_move.product_uom_qty = stock_move.reserver_avalaibility
+            if stock_move.product_uom_qty == 0:
+                stock_move.unlink()
+
+        raise models.ValidationError(self.move_raw_ids)
+
+        return super(MrpProduction, self).button_plan()
