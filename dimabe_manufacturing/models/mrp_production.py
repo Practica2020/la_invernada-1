@@ -33,10 +33,11 @@ class MrpProduction(models.Model):
         ])
 
         for pl in res:
-            raise models.ValidationError(pl.stock_quant_balance)
             if pl.stock_quant_balance > 0:
                 pl.lot_available_quantity = pl.stock_quant_balance
                 potential_lot_ids.append(pl)
+
+        raise models.ValidationError(potential_lot_ids)
 
         return [{
             'stock_production_lot_id': lot.id,
