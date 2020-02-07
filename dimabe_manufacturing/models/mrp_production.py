@@ -32,7 +32,6 @@ class MrpProduction(models.Model):
         } for lot in self.env['stock.production.lot'].search([
             ('product_id', 'in', list(self.move_raw_ids.mapped('product_id.id'))),
             ('name', 'not in', list(self.potential_lot_ids.mapped('stock_production_lot_id.id'))),
-            #('available_quantity', '>', 0)
         ])]
 
     @api.multi
@@ -56,8 +55,15 @@ class MrpProduction(models.Model):
     def create(self, values_list):
         res = super(MrpProduction, self).create(values_list)
 
+        potential_lot_ids = []
+
+        for pl in res.get_potential_lot_ids():
+            if pl.stock_quant_balance > 0:
+                pl.lot_available_quantity = pl.stock_quant_balance
+                potential_lot_ids.append(pl)
+
         regs = [
-            (0, 0, potential_lot) for potential_lot in res.get_potential_lot_ids()
+            (0, 0, potential_lot) for potential_lot in potential_lot_ids
         ]
 
         res.update({
