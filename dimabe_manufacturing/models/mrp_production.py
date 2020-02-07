@@ -84,7 +84,7 @@ class MrpProduction(models.Model):
                 })
 
         raise models.ValidationError(self.move_raw_ids.filtered(
-            lambda a: a.raw_material_production_id == 10
+            lambda a: a.raw_material_production_id.id == 10
         ))
 
         return super(MrpProduction, self).button_plan()
