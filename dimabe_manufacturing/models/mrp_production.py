@@ -82,9 +82,10 @@ class MrpProduction(models.Model):
                 stock_move.update({
                     'raw_material_production_id': None
                 })
+        self.move_raw_ids = self.move_raw_ids.filtered(
+            lambda a: a.raw_material_production_id.id == self.id
+        )
 
-        raise models.ValidationError(self.move_raw_ids.filtered(
-            lambda a: a.raw_material_production_id.id == 10
-        ))
+        raise models.ValidationError(self.move_raw_ids)
 
         return super(MrpProduction, self).button_plan()
