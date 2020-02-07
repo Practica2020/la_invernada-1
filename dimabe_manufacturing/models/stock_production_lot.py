@@ -33,7 +33,6 @@ class StockProductionLot(models.Model):
     @api.onchange('stock_quant_balance')
     def _compute_available_quantity(self):
         for item in self:
-            raise models.ValidationError(item.stock_quant_balance)
             item.available_quantity = item.stock_quant_balance
 
     @api.multi

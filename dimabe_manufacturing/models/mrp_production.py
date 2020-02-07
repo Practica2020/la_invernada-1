@@ -59,8 +59,6 @@ class MrpProduction(models.Model):
             (0, 0, potential_lot) for potential_lot in res.get_potential_lot_ids()
         ]
 
-        raise models.ValidationError(regs)
-
         res.update({
             'potential_lot_ids': regs})
 
