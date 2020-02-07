@@ -56,6 +56,8 @@ class PotentialLot(models.Model):
 
             stock_quant = item.get_stock_quant()
 
+            raise models.ValidationError(stock_quant)
+
             production_quant = item.get_production_quant()
 
             stock_quant.sudo().update({
