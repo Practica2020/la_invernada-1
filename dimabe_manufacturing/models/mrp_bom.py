@@ -5,8 +5,11 @@ class MrpBom(models.Model):
     _inherit = 'mrp.bom'
 
     def explode(self, product, quantity, picking_type=False):
-        a, b = super(MrpBom, self).explode(product, quantity, picking_type=picking_type)
+        bom, lines = super(MrpBom, self).explode(product, quantity, picking_type=picking_type)
 
-        raise models.ValidationError('{} ---- {}'.format(a, b))
+        for line in lines:
 
-        return res
+
+        raise models.ValidationError('{} ---- {}'.format(product, lines))
+
+        return bom, lines
