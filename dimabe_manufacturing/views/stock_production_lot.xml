@@ -1,19 +1,4 @@
 <odoo>
-    <record id="stock_move_line_tree" model="ir.ui.view">
-      <field name="name">arbol linea</field>
-      <field name="model">stock.move.line</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="lot_id" />
-          <field name="lot_produced_id" />
-          <field name="product_qty" />
-          <field name="qty_done" />
-          <field name="location_id" />
-          <field name="location_dest_id" />
-        </tree>
-      </field>
-    </record>
-
     <record id="view_production_lot_form_simple_inherit" model="ir.ui.view">
       <field name="name">Pesajes de Lote</field>
       <field name="model">stock.production.lot</field>
