@@ -59,7 +59,7 @@ class PotentialLot(models.Model):
             production_quant = item.get_production_quant()
 
             if not production_quant:
-                dest_id = item.mrp_production_id.picking_type_id.warehouse_id.sam_loc_id
+                dest_id = item.mrp_production_id.picking_type_id.warehouse_id.pbm_loc_id
                 raise models.ValidationError(dest_id)
                 item.env['stock.quant'].create({
                     'lot_id': '',
