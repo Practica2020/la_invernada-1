@@ -69,8 +69,7 @@ class PotentialLot(models.Model):
                         (0, 0, {
                             'lot_id': item.stock_production_lot_id.id,
                             'location_id': virtual_location_production_id.id,
-                            'product_id': item.lot_product_id.id,
-                            'quantity': 0
+                            'product_id': item.lot_product_id.id
                         })
                     ]
                 })
