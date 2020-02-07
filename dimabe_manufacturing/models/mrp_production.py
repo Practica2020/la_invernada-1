@@ -109,6 +109,4 @@ class MrpProduction(models.Model):
                     'qty_done': stock_move.product_uom_qty
                 })
 
-        raise models.ValidationError(self.workorder_ids.active_move_line_ids.mapped('qty_done'))
-
         return res
