@@ -1,4 +1,5 @@
 from odoo import fields, models, api
+import json
 
 
 class MrpProduction(models.Model):
@@ -103,6 +104,8 @@ class MrpProduction(models.Model):
             workorder_move_line = self.workorder_ids.active_move_line_ids.filtered(
                 lambda a: a.product_id.id == stock_move.product_id.id
             )
+
+            models._logger.error(json.dumps(self.workorder_ids))
 
             raise models.ValidationError(self.workorder_ids.check_ids.mapped('move_line_id').mapped('qty_done'))
 
