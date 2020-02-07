@@ -16,9 +16,7 @@ class StockProductionLot(models.Model):
     )
 
     available_quantity = fields.Float(
-        'Saldo Disponible',
-        compute='_compute_available_quantity',
-        store=True
+        'Saldo Disponible'
     )
 
     qty_to_reserve = fields.Float('Cantidad a Reservar')
@@ -32,7 +30,7 @@ class StockProductionLot(models.Model):
         for item in self:
             item.stock_quant_balance = item.quant_ids.filtered(lambda a: a.location_id.name == 'Stock').balance
 
-    @api.depends('stock_quant_balance')
+    @api.onchange('stock_quant_balance')
     def _compute_available_quantity(self):
         for item in self:
             raise models.ValidationError(item.stock_quant_balance)
