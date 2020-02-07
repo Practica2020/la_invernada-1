@@ -6,6 +6,7 @@
       <field name="inherit_id" ref="stock.view_production_lot_form_simple"/>
       <field name="arch" type="xml">
         <group name="main_group" position="inside">
+          <field name="available_quantity" />
           <field name="quant_ids">
             <tree>
               <field name="product_id" />
