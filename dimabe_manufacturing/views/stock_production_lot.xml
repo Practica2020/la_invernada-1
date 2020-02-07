@@ -2,7 +2,7 @@
     <record id="stock_move_line_tree" model="ir.ui.view">
       <field name="name">arbol linea</field>
       <field name="model">stock.move.line</field>
-      <field name="arch" widget="xml">
+      <field name="arch" type="xml">
         <tree>
           <field name="lot_id" />
           <field name="lot_produced_id" />
