@@ -11,7 +11,10 @@
                   attrs="{'invisible':[('state', '!=', 'progress')]}"
           />
           <button name="action_assign" position="attributes" >
-            <attribute name="invisible">0</attribute>
+            <attribute name="invisible">1</attribute>
+          </button>
+          <button name="button_unreserve" position="attributes">
+            <attribute name="invisible">1</attribute>
           </button>
 
 
@@ -36,7 +39,6 @@
                   <field name="lot_available_quantity" readonly="1" force_save="1"/>
                   <field name="is_reserved" invisible="1"/>
                   <field name="mrp_production_state" invisible="1"/>
-                  <field name="stock_quant_balance" />
                   <button string="Reservar"
                           name="reserve_stock"
                           type="object"
