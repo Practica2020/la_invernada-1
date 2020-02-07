@@ -8,7 +8,7 @@ class MrpBom(models.Model):
         bom, lines = super(MrpBom, self).explode(product, quantity, picking_type=picking_type)
 
         for line in lines:
-
+            print()
 
         raise models.ValidationError('{} ---- {}'.format(product, lines))
 
