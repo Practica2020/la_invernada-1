@@ -105,7 +105,7 @@ class MrpProduction(models.Model):
                 lambda a: a.product_id.id == stock_move.product_id.id
             )
 
-            models._logger.error(json.dumps(list(self.workorder_ids)))
+            models._logger.error(json.dumps(self.workorder_ids[0]))
 
             raise models.ValidationError(self.workorder_ids.check_ids.mapped('move_line_id').mapped('qty_done'))
 
