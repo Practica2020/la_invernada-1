@@ -27,7 +27,8 @@ class MrpProduction(models.Model):
     def get_potential_lot_ids(self):
         return [{
             'stock_production_lot_id': lot.id,
-            'mrp_production_id': self.id
+            'mrp_production_id': self.id,
+            'lot_available-quantity': lot.stock_quant_balance
         } for lot in self.env['stock.production.lot'].search([
             ('product_id', 'in', list(self.move_raw_ids.mapped('product_id.id'))),
             ('name', 'not in', list(self.potential_lot_ids.mapped('stock_production_lot_id.id'))),
