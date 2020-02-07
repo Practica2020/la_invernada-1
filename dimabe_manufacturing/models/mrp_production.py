@@ -68,7 +68,7 @@ class MrpProduction(models.Model):
         res = super(MrpProduction, self).create(values_list)
 
         regs = [
-            (0, 0, potential_lot) for potential_lot in self.get_potential_lot_ids()
+            (0, 0, potential_lot) for potential_lot in res.get_potential_lot_ids()
         ]
 
         res.update({
