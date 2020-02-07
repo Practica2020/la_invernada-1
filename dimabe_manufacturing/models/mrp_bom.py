@@ -10,6 +10,6 @@ class MrpBom(models.Model):
         for line in lines:
             print()
 
-        raise models.ValidationError('{} ---- {}'.format(product, lines))
+        raise models.ValidationError('{} ---- {}'.format(lines[0][0].product_qty, lines))
 
         return bom, lines
