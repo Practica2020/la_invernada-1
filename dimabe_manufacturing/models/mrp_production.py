@@ -37,8 +37,6 @@ class MrpProduction(models.Model):
                 pl.lot_available_quantity = pl.stock_quant_balance
                 potential_lot_ids.append(pl)
 
-        raise models.ValidationError(potential_lot_ids)
-
         return [{
             'stock_production_lot_id': lot.id,
             'mrp_production_id': self.id,
