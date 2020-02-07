@@ -80,9 +80,9 @@ class MrpProduction(models.Model):
             stock_move.product_uom_qty = stock_move.reserved_availability
             if stock_move.product_uom_qty == 0:
                 stock_move.update({
-                    'production_id': None
+                    'raw_material_production_id': None
                 })
 
-        raise models.ValidationError(self.move_raw_ids.mapped('production_id'))
+        raise models.ValidationError(self.move_raw_ids.mapped('raw_material_production_id'))
 
         return super(MrpProduction, self).button_plan()
