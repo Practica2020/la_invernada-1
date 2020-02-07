@@ -56,9 +56,18 @@ class PotentialLot(models.Model):
 
             stock_quant = item.get_stock_quant()
 
-            raise models.ValidationError(stock_quant)
-
             production_quant = item.get_production_quant()
+
+            if not production_quant:
+                dest_id = item.mrp_production_id.picking_type_id.warehouse_id.sam_loc_id
+                raise models.ValidationError(dest_id)
+                item.env['stock.quant'].create({
+                    'lot_id': '',
+                    'location_id': '',
+                    'product_id': '',
+                    'quantity': '',
+                    'reserved_quantity': ''
+                })
 
             stock_quant.sudo().update({
                 'reserved_quantity': stock_quant.reserved_quantity + item.qty_to_reserve
