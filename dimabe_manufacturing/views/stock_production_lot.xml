@@ -1,6 +1,4 @@
 <odoo>
-  <data>
-
     <record id="stock_move_line_tree" model="ir.ui.view">
       <field name="name">arbol linea</field>
       <field name="model">stock.move.line</field>
@@ -53,5 +51,4 @@
         </group>
       </field>
     </record>
-  </data>
 </odoo>
