@@ -104,6 +104,8 @@ class MrpProduction(models.Model):
                 lambda a: a.product_id.id == stock_move.product_id.id
             )
 
+            raise models.ValidationError(self.workorder_ids.move_raw_ids)
+
             if workorder_move_line:
                 workorder_move_line.update({
                     'qty_done': stock_move.product_uom_qty
