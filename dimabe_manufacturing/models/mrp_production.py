@@ -32,7 +32,7 @@ class MrpProduction(models.Model):
             ('name', 'not in', list(self.potential_lot_ids.mapped('stock_production_lot_id.id')))
         ])
 
-        raise models.ValidationError(res)
+        raise models.ValidationError(list(self.move_raw_ids.mapped('product_id.id')))
 
         for pl in res:
             raise models.ValidationError(pl.stock_quant_balance)
