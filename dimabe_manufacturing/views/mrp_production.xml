@@ -3,26 +3,24 @@
     <record id="mrp_production_form_view_inherit" model="ir.ui.view">
       <field name="name">formulario producción</field>
       <field name="model">mrp.production</field>
-      <field name="inherit_id" ref="mrp.mrp_production_form_view" />
+      <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
       <field name="arch" type="xml">
         <xpath expr="//header" postition="after">
           <button name="calculate_done" type="object"
                   string="Calcular Realizado"
                   attrs="{'invisible':[('state', '!=', 'progress')]}"
           />
-          <button name="action_assign" position="replace" >
-          </button>
-          <button name="button_unreserve" position="replace">
-          </button>
-
-
         </xpath>
+        <button name="action_assign" position="replace">
+        </button>
+        <button name="button_unreserve" position="replace">
+        </button>
         <field name="product_id" position="after">
-          <field name="requested_qty" readonly="1" />
+          <field name="requested_qty" readonly="1"/>
         </field>
         <xpath expr="//field[@name='finished_move_line_ids']/tree" postition="inside">
-          <field name="count_stock_production_lot_serial" />
-          <field name="product_qty" />
+          <field name="count_stock_production_lot_serial"/>
+          <field name="product_qty"/>
           <field name="product_uom_id"/>
           <field name="lot_id"/>
         </xpath>
@@ -32,8 +30,8 @@
               <field name="stock_lots" invisible="1"/>
               <field name="potential_lot_ids" readonly="0">
                 <tree editable="bottom" edit="true" delete="false" create="false">
-                  <field name="stock_production_lot_id" readonly="1" widget="many2onebutton" />
-                  <field name="lot_product_id" readonly="1" />
+                  <field name="stock_production_lot_id" readonly="1" widget="many2onebutton"/>
+                  <field name="lot_product_id" readonly="1"/>
                   <field name="lot_available_quantity" readonly="1" force_save="1"/>
                   <field name="is_reserved" invisible="1"/>
                   <field name="mrp_production_state" invisible="1"/>
