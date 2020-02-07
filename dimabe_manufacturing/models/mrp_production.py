@@ -99,6 +99,16 @@ class MrpProduction(models.Model):
 
         res = super(MrpProduction, self).button_plan()
 
+        for stock_move in self.move_raw_ids:
+            workorder_move_line = self.workorder_ids.active_move_line_ids.filtered(
+                lambda a: a.product_id.id == stock_move.product_id.id
+            )
+
+            if workorder_move_line:
+                workorder_move_line.update({
+                    'qty_done': stock_move.product_uom_qty
+                })
+
         raise models.ValidationError(self.workorder_ids.active_move_line_ids.mapped('qty_done'))
 
         return res
