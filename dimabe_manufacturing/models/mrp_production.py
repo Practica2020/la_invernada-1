@@ -99,6 +99,6 @@ class MrpProduction(models.Model):
 
         res = super(MrpProduction, self).button_plan()
 
-        # raise models.ValidationError(self.workorder_ids)
+        raise models.ValidationError(self.workorder_ids.active_move_line_ids)
 
         return res
