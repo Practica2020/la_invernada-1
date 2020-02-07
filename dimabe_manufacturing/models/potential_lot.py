@@ -59,14 +59,21 @@ class PotentialLot(models.Model):
             production_quant = item.get_production_quant()
 
             if not production_quant:
-                dest_id = item.mrp_production_id.picking_type_id.warehouse_id.lot_stock_id
-                raise models.ValidationError(dest_id)
-                item.env['stock.quant'].create({
-                    'lot_id': '',
-                    'location_id': '',
-                    'product_id': '',
-                    'quantity': '',
-                    'reserved_quantity': ''
+                virtual_location_production_id = item.env['stock.location'].search([
+                    ('usage', '=', 'production'),
+                    ('display_name', 'like', 'Virtual Locations')
+                ])
+
+                item.update({
+                    'stock_quant_ids': [
+                        (0, 0, {
+                            'lot_id': item.stock_production_lot_id.id,
+                            'location_id': virtual_location_production_id.id,
+                            'product_id': item.lot_product_id.id,
+                            'quantity': 0,
+                            'reserved_quantity': 0
+                        })
+                    ]
                 })
 
             stock_quant.sudo().update({
