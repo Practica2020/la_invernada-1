@@ -99,6 +99,6 @@ class MrpProduction(models.Model):
 
         res = super(MrpProduction, self).button_plan()
 
-        workorder_id = self.env['mrp.workorder']
+        # raise models.ValidationError(self.workorder_ids)
 
-        raise models.ValidationError(self.workorder_ids)
+        return res
