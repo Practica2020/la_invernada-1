@@ -31,7 +31,7 @@ class MrpProduction(models.Model):
         } for lot in self.env['stock.production.lot'].search([
             ('product_id', 'in', list(self.move_raw_ids.mapped('product_id.id'))),
             ('name', 'not in', list(self.potential_lot_ids.mapped('stock_production_lot_id.id'))),
-            ('available_quantity', '>', 0)
+            #('available_quantity', '>', 0)
         ])]
 
     @api.multi
