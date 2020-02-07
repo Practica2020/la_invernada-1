@@ -83,6 +83,6 @@ class MrpProduction(models.Model):
                     'production_id': None
                 })
 
-        raise models.ValidationError(self.move_raw_ids)
+        raise models.ValidationError(self.move_raw_ids.mapped('production_id'))
 
         return super(MrpProduction, self).button_plan()
