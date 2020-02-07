@@ -31,6 +31,7 @@ class MrpProduction(models.Model):
             ('product_id', 'in', list(self.move_raw_ids.mapped('product_id.id'))),
             ('name', 'not in', list(self.potential_lot_ids.mapped('stock_production_lot_id.id')))
         ]):
+            raise models.ValidationError(pl.stock_quant_balance)
             if pl.stock_quant_balance > 0:
                 pl.lot_available_quantity = pl.stock_quant_balance
                 potential_lot_ids.append(pl)
