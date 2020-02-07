@@ -64,7 +64,7 @@ class PotentialLot(models.Model):
                     ('display_name', 'like', 'Virtual Locations')
                 ])
 
-                item.env['stock.quant'].create({
+                item.env['stock.quant'].sudo().create({
                     'lot_id': item.stock_production_lot_id.id,
                     'location_id': virtual_location_production_id.id,
                     'product_id': item.lot_product_id.id
