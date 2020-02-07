@@ -96,4 +96,4 @@ class MrpProduction(models.Model):
 
         res = super(MrpProduction, self).button_plan()
 
-        models.ValidationError(res)
+        raise models.ValidationError(res)
