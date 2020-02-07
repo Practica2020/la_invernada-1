@@ -79,7 +79,9 @@ class MrpProduction(models.Model):
         for stock_move in self.move_raw_ids:
             stock_move.product_uom_qty = stock_move.reserved_availability
             if stock_move.product_uom_qty == 0:
-                stock_move.unlink()
+                stock_move.update({
+                    'production_id': None
+                })
 
         raise models.ValidationError(self.move_raw_ids)
 
