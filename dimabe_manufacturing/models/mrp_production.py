@@ -88,14 +88,6 @@ class MrpProduction(models.Model):
         if sum(self.move_raw_ids.filtered(lambda a: a.is_mp).mapped('reserved_availability')) < self.product_qty:
             raise models.ValidationError('la cantidad a consumir no puede ser menor a la cantidad a producir')
 
-        orders_to_plan = self.filtered(lambda order: order.routing_id and order.state == 'confirmed')
-
-        for order in orders_to_plan:
-            quantity = order.product_uom_id._compute_quantity(order.product_qty,
-                                                          order.bom_id.product_uom_id) / order.bom_id.product_qty
-            boms, lines = order.bom_id.explode(order.product_id, quantity, picking_type=order.bom_id.picking_type_id)
-            raise models.ValidationError('{} --- {}'.format(boms, lines))
-
         for stock_move in self.move_raw_ids:
             stock_move.product_uom_qty = stock_move.reserved_availability
             if stock_move.product_uom_qty == 0:
