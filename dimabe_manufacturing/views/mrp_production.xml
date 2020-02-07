@@ -10,11 +10,9 @@
                   string="Calcular Realizado"
                   attrs="{'invisible':[('state', '!=', 'progress')]}"
           />
-          <button name="action_assign" position="attributes" >
-            <attribute name="invisible">1</attribute>
+          <button name="action_assign" position="replace" >
           </button>
-          <button name="button_unreserve" position="attributes">
-            <attribute name="invisible">1</attribute>
+          <button name="button_unreserve" position="replace">
           </button>
 
 
