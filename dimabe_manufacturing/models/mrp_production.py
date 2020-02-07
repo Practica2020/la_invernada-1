@@ -84,6 +84,9 @@ class MrpProduction(models.Model):
 
     def button_plan(self):
 
+        if sum(self.move_raw_ids.filtered(lambda a: a.is_mp).mapped('reserved_availability')) < self.product_qty:
+            raise models.ValidationError('la cantidad a consumir no puede ser menor a la cantidad a producir')
+
         for stock_move in self.move_raw_ids:
             stock_move.product_uom_qty = stock_move.reserved_availability
             if stock_move.product_uom_qty == 0:
