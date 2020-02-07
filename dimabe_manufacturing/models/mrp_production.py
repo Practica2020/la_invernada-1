@@ -40,7 +40,7 @@ class MrpProduction(models.Model):
         return [{
             'stock_production_lot_id': lot.id,
             'mrp_production_id': self.id,
-            'lot_available-quantity': lot.stock_quant_balance
+            'lot_available_quantity': lot.stock_quant_balance
         } for lot in potential_lot_ids]
 
     @api.multi
@@ -94,4 +94,6 @@ class MrpProduction(models.Model):
             lambda a: a.raw_material_production_id.id == self.id
         )
 
-        return super(MrpProduction, self).button_plan()
+        res = super(MrpProduction, self).button_plan()
+
+        models.ValidationError(res)
