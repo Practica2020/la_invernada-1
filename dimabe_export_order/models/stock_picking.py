@@ -99,10 +99,6 @@ class StockPicking(models.Model):
 
     picture = fields.Many2many("ir.attachment")
 
-    @api.multi
-    def generate_report(self):
-        models._logger.error(self.picture.data)
-
     @api.model
     def _get_product_variety(self):
         _logger = logging.getLogger(__name__)
