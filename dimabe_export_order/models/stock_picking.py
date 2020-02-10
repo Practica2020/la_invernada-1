@@ -99,9 +99,11 @@ class StockPicking(models.Model):
 
     picture = fields.Many2many("ir.attachment")
 
+    ext = fields.Many2one("picture.mimetype")
+
     @api.multi
     def generate_report(self):
-        models._logger.error(self.picture.mimetype)
+        models._logger.error(self.ext)
 
     @api.model
     def _get_product_variety(self):
