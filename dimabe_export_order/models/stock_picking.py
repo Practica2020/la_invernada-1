@@ -105,7 +105,8 @@ class StockPicking(models.Model):
     def generate_data(self):
         test = list(self.picture.mapped("local_url"))
         for item in test:
-            models._logger.error(item)
+            return self.env.ref('dimabe_export_order.action_dispatched_report')\
+            .report_action(self)
 
     @api.model
     def _get_product_variety(self):
