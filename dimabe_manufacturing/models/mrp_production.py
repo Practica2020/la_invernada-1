@@ -31,7 +31,8 @@ class MrpProduction(models.Model):
 
     @api.onchange('client_search_id')
     def onchange_client_search_id(self):
-        self._origin.get_potential_lot_ids()
+        for production in self:
+            production.get_potential_lot_ids()
 
     @api.model
     def get_potential_lot_ids(self):
@@ -41,8 +42,6 @@ class MrpProduction(models.Model):
             ('product_id', 'in', list(self.move_raw_ids.mapped('product_id.id'))),
             ('name', 'not in', list(self.potential_lot_ids.mapped('stock_production_lot_id.id')))
         ]
-
-        raise models.ValidationError(self.client_search_id)
 
         if self.client_search_id:
 
