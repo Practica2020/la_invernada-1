@@ -103,8 +103,9 @@ class StockPicking(models.Model):
 
     @api.multi
     def generate_data(self):
-        for a in self.env['ir.attachment']:
-            models._logger.error(a.datas_fname)
+        test = list(self.picture.raw.mapped("datas_fname"))
+        for item in test:
+            models._logger.error(item)
 
     @api.model
     def _get_product_variety(self):
