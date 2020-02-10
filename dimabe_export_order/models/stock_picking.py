@@ -97,7 +97,9 @@ class StockPicking(models.Model):
         'Tipo de contenedor'
     )
 
-    picture = fields.Binary('Subir Archivo')
+    picture_name = fields.Char(string='.jpg')
+
+    picture = fields.Binary(string="Subir archivo")
 
     @api.model
     def _get_product_variety(self):
