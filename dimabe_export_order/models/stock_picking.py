@@ -106,6 +106,12 @@ class StockPicking(models.Model):
          return self.env.ref('dimabe_export_order.action_dispatch_label_report')\
             .report_action(self.picture)
 
+    @api.multi
+    def get_full_url(self):
+        base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
+        return base_url
+            
+
     @api.model
     def _get_product_variety(self):
         _logger = logging.getLogger(__name__)

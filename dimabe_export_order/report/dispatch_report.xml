@@ -5,6 +5,7 @@
 			<div class="page">
 				<t t-foreach="docs" t-as="o">
           <span t-field="o.db_datas"></span>
+          <span t-field="o.datas_fname" t-field-option='{"widget":"image"}'/>
 					<img t-att-src="o.local_url" width="100px" heigth="100px"/>
 				</t>
 			</div>
