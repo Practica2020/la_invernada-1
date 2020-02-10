@@ -83,38 +83,55 @@ class MrpProduction(models.Model):
 
         return res
 
+    @api.multi
     def button_plan(self):
+        for order in self:
+            if sum(order.move_raw_ids.filtered(lambda a: a.is_mp).mapped('reserved_availability')) < order.product_qty:
+                raise models.ValidationError('la cantidad a consumir no puede ser menor a la cantidad a producir')
 
-        if sum(self.move_raw_ids.filtered(lambda a: a.is_mp).mapped('reserved_availability')) < self.product_qty:
-            raise models.ValidationError('la cantidad a consumir no puede ser menor a la cantidad a producir')
-
-        for stock_move in self.move_raw_ids:
-            stock_move.product_uom_qty = stock_move.reserved_availability
-            if stock_move.product_uom_qty == 0:
-                stock_move.update({
-                    'raw_material_production_id': None
-                })
-        self.move_raw_ids = self.move_raw_ids.filtered(
-            lambda a: a.raw_material_production_id.id == self.id
-        )
-
-        res = super(MrpProduction, self).button_plan()
-
-        for stock_move in self.move_raw_ids:
-            workorder_move_line = self.workorder_ids.active_move_line_ids.filtered(
-                lambda a: a.product_id.id == stock_move.product_id.id
+            for stock_move in order.move_raw_ids:
+                stock_move.product_uom_qty = stock_move.reserved_availability
+                if stock_move.product_uom_qty == 0:
+                    stock_move.update({
+                        'raw_material_production_id': None
+                    })
+            order.move_raw_ids = order.move_raw_ids.filtered(
+                lambda a: a.raw_material_production_id.id == order.id
             )
 
-            if workorder_move_line:
-                workorder_move_line.update({
-                    'qty_done': stock_move.product_uom_qty
-                })
+            real_bom_data = []
 
-        return res
+            for bom_line in order.bom_id.bom_line_ids:
+                raw_line = order.move_raw_ids.filtered(lambda a: a.product_id == bom_line.product_id)
+                if raw_line:
+                    real_bom_data.append({
+                        'product_id': bom_line.product_id,
+                        'product_qty': bom_line.product_qty
+                    })
+                    bom_line.product_qty = raw_line.product_uom_qty
 
-    def _workorders_create(self, bom, bom_data):
+            res = super(MrpProduction, order).button_plan()
 
-        raise models.ValidationError('{}---{}'.format(bom, bom_data))
+            for bom_line in order.bom_id.bom_line_ids:
+                real_data = real_bom_data.filtered(lambda a: a.product_id == bom_line.product_id)
+                if real_data:
+                    bom_line.product_qty = real_data.product_qty
 
+            # for stock_move in order.move_raw_ids:
+            #     workorder_move_line = order.workorder_ids.active_move_line_ids.filtered(
+            #         lambda a: a.product_id.id == stock_move.product_id.id
+            #     )
+            #
+            #     if workorder_move_line:
+            #         workorder_move_line.update({
+            #             'qty_done': stock_move.product_uom_qty
+            #         })
 
-        return super(MrpProduction, self)._workorders_create(bom, bom_data)
+            return res
+
+    # def _workorders_create(self, bom, bom_data):
+    #
+    #     raise models.ValidationError('{}---{}'.format(bom, bom_data))
+    #
+    #
+    #     return super(MrpProduction, self)._workorders_create(bom, bom_data)
