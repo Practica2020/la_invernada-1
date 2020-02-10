@@ -97,8 +97,7 @@ class StockPicking(models.Model):
         'Tipo de contenedor'
     )
 
-    picture = fields.Many2many(comodel_name="ir.attachment",relation="custom_report")
-
+    picture = fields.Many2many(comodel_name="custom_report")
     @api.model
     def _get_product_variety(self):
         _logger = logging.getLogger(__name__)
