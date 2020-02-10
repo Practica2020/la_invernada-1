@@ -8,7 +8,7 @@
           <table>
             <tr>
               <td>
-                <img t-att-src="o"/>
+                <img t-att-src="o.local_url"/>
               </td>
             </tr>
           </table>
