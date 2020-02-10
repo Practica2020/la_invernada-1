@@ -68,7 +68,7 @@
               <group string="Informe" style="width=100%">
                 <group>
                   <field name="picture" widget="many2many_binary" domain="[('datas_fname','=','image/jpeg')]"/>
-                  <button string="Crear Reporte" name="generate_data" type="object"/>
+                  <button string="Crear Reporte" name="generate_data" class="btn btn-success" type="object"/>
                 </group>
               </group>
             </group>
