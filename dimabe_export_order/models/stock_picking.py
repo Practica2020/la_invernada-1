@@ -103,7 +103,7 @@ class StockPicking(models.Model):
 
     @api.multi
     def generate_data(self):
-        test = list(self.picture.mapped("local_url"))
+        test = list(self.picture.mapped())
         for item in test:
             models._logger.error(item)
 
