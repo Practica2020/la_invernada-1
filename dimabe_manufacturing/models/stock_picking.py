@@ -1,17 +1,26 @@
-from odoo import fields, models, api
+from odoo import models, api, fields
 
 
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
+    has_mrp_production = fields.Boolean('tiene orden de producción')
+
     @api.multi
     def return_action(self):
-        models._logger.error('AAAAAAAAAAAA {}'.format(self.quantity_done))
+        procurement_group = self.env['procurement.group'].search([
+            ('name', '=', self.origin)
+        ])
+
+        if procurement_group:
+            procurement_group = procurement_group[0]
+
         context = {
             'default_product_id': self.product.id,
             'default_product_uom_qty': self.quantity_done,
             'default_origin': self.name,
-            'product_qty': self.quantity_done
+            'default_procurement_group_id': procurement_group.id,
+            'default_requested_qty': self.quantity_done
         }
 
         return {

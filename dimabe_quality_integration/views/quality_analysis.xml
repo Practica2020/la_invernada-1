@@ -29,28 +29,62 @@
     <field name="name">Listado de Calidad</field>
     <field name="model">quality.analysis</field>
     <field name="arch" type="xml">
-      <tree delete="false" edit="false" create="false">
-        <field name="lot_name"/>
-        <field name="pre_caliber"/>
-        <field name="caliber_ids" />
-        <field name="external_damage_analysis_ids" />
-        <field name="internal_damage_analysis_ids" />
-        <field name="humidity_analysis_id" />
-        <field name="humidity_percent" />
-        <field name="humidity_tolerance" />
-        <field name="performance_analysis_ids" />
-        <field name="color_analysis_ids" />
-        <field name="form_analysis_ids" />
-        <field name="impurity_analysis_ids" />
-        <field name="analysis_observations" />
-        <field name="analysis_images" />
-        <field name="category" />
+      <tree delete="false" editable="bottom" create="false">
+        <field name="lot_name" readonly="1"/>
+        <field name="pre_caliber" readonly="1"/>
+        <field name="caliber_1" readonly="1" />
+        <field name="caliber_2" readonly="1" />
+        <field name="caliber_3"  readonly="1"/>
+        <field name="caliber_4" readonly="1"/>
+        <field name="caliber_5" readonly="1"/>
+        <field name="caliber_6" readonly="1"/>
+        <field name="external_damage_analysis_1" readonly="1"/>
+        <field name="external_damage_analysis_2" readonly="1"/>
+        <field name="external_damage_analysis_3" readonly="1"/>
+        <field name="external_damage_analysis_4" readonly="1"/>
+        <field name="external_damage_analysis_5" readonly="1"/>
+        <field name="external_damage_analysis_6" readonly="1"/>
+        <field name="external_damage_analysis_7" readonly="1"/>
+        <field name="external_damage_analysis_8" readonly="1"/>
+        <field name="external_damage_analysis_9" readonly="1"/>
+        <field name="external_damage_analysis_10" readonly="1"/>
+        <field name="external_damage_analysis_11" readonly="1"/>
+        <field name="internal_damage_analysis_1" readonly="1"/>
+        <field name="internal_damage_analysis_2" readonly="1"/>
+        <field name="internal_damage_analysis_3" readonly="1"/>
+        <field name="internal_damage_analysis_4" readonly="1"/>
+        <field name="internal_damage_analysis_5" readonly="1"/>
+        <field name="internal_damage_analysis_6" readonly="1"/>
+        <field name="internal_damage_analysis_7" readonly="1"/>
+        <field name="humidity_percent" readonly="1"/>
+        <field name="humidity_tolerance" readonly="1"/>
+        <field name="performance_analysis_1" readonly="1"/>
+        <field name="performance_analysis_2" readonly="1"/>
+        <field name="color_analysis_1" readonly="1"/>
+        <field name="color_analysis_2" readonly="1"/>
+        <field name="color_analysis_3" readonly="1"/>
+        <field name="color_analysis_4" readonly="1"/>
+        <field name="color_analysis_5" readonly="1"/>
+        <field name="color_analysis_6" readonly="1"/>
+        <field name="color_analysis_7" readonly="1"/>
+        <field name="form_analysis_1" readonly="1"/>
+        <field name="form_analysis_2" readonly="1"/>
+        <field name="form_analysis_3" readonly="1"/>
+        <field name="form_analysis_4" readonly="1"/>
+        <field name="impurity_analysis_1" readonly="1"/>
+        <field name="impurity_analysis_2" readonly="1"/>
+        <field name="impurity_analysis_3" readonly="1"/>
+        <field name="analysis_observations" readonly="1"/>
+        <field name="category" readonly="1"/>
+        <field name="potential_client_id"
+               domain="[('customer', '=', True)]"
+        />
       </tree>
     </field>
   </record>
 
   <record id="dimabe_quality_integration.quality_analysis_action" model="ir.actions.act_window">
-    <field name="name">Acción de Calidad</field>
+    <field name="name">Listado de Calidad</field>
     <field name="res_model">quality.analysis</field>
     <field name="view_mode">tree,form</field>
   </record>
@@ -58,7 +92,7 @@
   <menuitem id="quality_analysis_tree_menu"
             action="dimabe_quality_integration.quality_analysis_action"
             name="Listado de Calidad"
-            parent="stock.menu_stock_inventory_control"
+            parent="mrp.mrp_planning_menu_root"
   />
 
 </odoo>

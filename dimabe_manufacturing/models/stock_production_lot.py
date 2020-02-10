@@ -15,6 +15,26 @@ class StockProductionLot(models.Model):
         compute='_compute_total_serial'
     )
 
+    available_quantity = fields.Float(
+        'Saldo Disponible'
+    )
+
+    qty_to_reserve = fields.Float('Cantidad a Reservar')
+
+    stock_quant_balance = fields.Float(
+        compute='_compute_stock_quant_balance'
+    )
+
+    @api.multi
+    def _compute_stock_quant_balance(self):
+        for item in self:
+            item.stock_quant_balance = item.quant_ids.filtered(lambda a: a.location_id.name == 'Stock').balance
+
+    @api.onchange('stock_quant_balance')
+    def _compute_available_quantity(self):
+        for item in self:
+            item.available_quantity = item.stock_quant_balance
+
     @api.multi
     def _compute_total_serial(self):
         for item in self:

@@ -22,6 +22,7 @@
     # any module necessary for this one to work correctly
     'depends': [
         'base',
+        'mrp',
         'stock',
         'dimabe_jwt_token',
         'dimabe_reception'
