@@ -100,39 +100,30 @@ class MrpProduction(models.Model):
                 lambda a: a.raw_material_production_id.id == order.id
             )
 
-            real_bom_data = []
-            real_product_qty = order.bom_id.product_qty
+            # real_bom_data = []
+            # real_product_qty = order.bom_id.product_qty
+            #
+            # order.bom_id.product_qty = order.product_uom_id._compute_quantity(order.product_qty,
+            #                                                                    order.bom_id.product_uom_id)
+            #
+            # for bom_line in order.bom_id.bom_line_ids:
+            #     raw_line = order.move_raw_ids.filtered(lambda a: a.product_id == bom_line.product_id)
+            #     if raw_line:
+            #         real_bom_data.append({
+            #             'product_id': bom_line.product_id,
+            #             'product_qty': bom_line.product_qty
+            #         })
+            #         bom_line.product_qty = raw_line.product_uom_qty
 
-            order.bom_id.product_qty = order.product_uom_id._compute_quantity(order.product_qty,
-                                                                               order.bom_id.product_uom_id)
 
-            for bom_line in order.bom_id.bom_line_ids:
-                raw_line = order.move_raw_ids.filtered(lambda a: a.product_id == bom_line.product_id)
-                if raw_line:
-                    real_bom_data.append({
-                        'product_id': bom_line.product_id,
-                        'product_qty': bom_line.product_qty
-                    })
-                    bom_line.product_qty = raw_line.product_uom_qty
-
-            # orders_to_plan = self.filtered(lambda order: order.routing_id and order.state == 'confirmed')
-            # for order in orders_to_plan:
-            #     quantity = order.product_uom_id._compute_quantity(order.product_qty,
-            #                                                       order.bom_id.product_uom_id) / order.bom_id.product_qty
-            #     boms, lines = order.bom_id.explode(order.product_id, quantity,
-            #                                        picking_type=order.bom_id.picking_type_id)
-            #     raise models.ValidationError('{} {} --- {}'.format(
-            #         boms[0][0].bom_line_ids.mapped('product_qty'),
-            #         lines, boms[0][0].routing_id.operation_ids.mapped('batch_size'))
-            #     )
 
             res = super(MrpProduction, order).button_plan()
 
-            for rd in real_bom_data:
-                bl = order.bom_id.bom_line_ids.filtered(lambda a: a.product_id == rd['product_id'])
-                if bl:
-                    bl.product_qty = rd['product_qty']
-
-            order.bom_id.product_qty = real_product_qty
+            # for rd in real_bom_data:
+            #     bl = order.bom_id.bom_line_ids.filtered(lambda a: a.product_id == rd['product_id'])
+            #     if bl:
+            #         bl.product_qty = rd['product_qty']
+            #
+            # order.bom_id.product_qty = real_product_qty
 
             return res
