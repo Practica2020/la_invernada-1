@@ -88,9 +88,6 @@ class MrpProduction(models.Model):
 
     @api.model
     def create(self, values_list):
-        models._logger.error(values_list)
-        raise models.ValidationError('procurement_group_id' in values_list)
-
         res = super(MrpProduction, self).create(values_list)
 
         regs = [
