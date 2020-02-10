@@ -31,8 +31,8 @@ class MrpProduction(models.Model):
 
     @api.onchange('client_search_id')
     def onchange_client_search_id(self):
-        raise models.ValidationError(self)
-
+        for production in self:
+            production.get_potential_lot_ids()
 
     @api.model
     def get_potential_lot_ids(self):
