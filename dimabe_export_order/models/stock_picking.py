@@ -103,7 +103,9 @@ class StockPicking(models.Model):
 
     @api.multi
     def generate_data(self):
-        models._logger.error(len(self.picture)) 
+        file = fields.Char(related="picture[2].datas_fname") 
+        for i in range(len(self.picture)):
+            models._logger.error(file)
 
     @api.model
     def _get_product_variety(self):
