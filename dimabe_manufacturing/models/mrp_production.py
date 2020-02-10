@@ -1,5 +1,4 @@
 from odoo import fields, models, api
-import json
 
 
 class MrpProduction(models.Model):
@@ -114,8 +113,6 @@ class MrpProduction(models.Model):
             #             'product_qty': bom_line.product_qty
             #         })
             #         bom_line.product_qty = raw_line.product_uom_qty
-
-
 
             res = super(MrpProduction, order).button_plan()
 
