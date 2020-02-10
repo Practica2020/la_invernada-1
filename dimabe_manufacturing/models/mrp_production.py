@@ -91,6 +91,7 @@ class MrpProduction(models.Model):
 
             for stock_move in order.move_raw_ids:
                 stock_move.product_uom_qty = stock_move.reserved_availability
+                stock_move.unit_factor = 1
                 if stock_move.product_uom_qty == 0:
                     stock_move.update({
                         'raw_material_production_id': None
