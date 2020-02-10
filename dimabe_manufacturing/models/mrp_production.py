@@ -85,6 +85,14 @@ class MrpProduction(models.Model):
 
     @api.multi
     def button_plan(self):
+        orders_to_plan = self.filtered(lambda order: order.routing_id and order.state == 'confirmed')
+        for order in orders_to_plan:
+            quantity = order.product_uom_id._compute_quantity(order.product_qty,
+                                                              order.bom_id.product_uom_id) / order.bom_id.product_qty
+            raise models.ValidationError('{} {} {}'.format(order.product_uom_id._compute_quantity(order.product_qty,
+                                                              order.bom_id.product_uom_id),
+                                                           order.bom_id.product_qty,
+                                                           quantity))
         for order in self:
             if sum(order.move_raw_ids.filtered(lambda a: a.is_mp).mapped('reserved_availability')) < order.product_qty:
                 raise models.ValidationError('la cantidad a consumir no puede ser menor a la cantidad a producir')
@@ -113,7 +121,7 @@ class MrpProduction(models.Model):
             res = super(MrpProduction, order).button_plan()
 
             for rd in real_bom_data:
-                bl = order.bom_id.bom_line_ids.filtered(lambda a: a.product_id == bom_line.product_id)
+                bl = order.bom_id.bom_line_ids.filtered(lambda a: a.product_id == rd['product_id'])
                 if bl:
                     bl.product_qty = rd['product_qty']
 
