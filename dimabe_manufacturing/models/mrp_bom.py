@@ -10,6 +10,6 @@ class MrpBom(models.Model):
         for line in lines:
             print()
 
-        # raise models.ValidationError('{} ---- {}'.format(bom, lines))
+        raise models.ValidationError('{} ---- {}'.format(bom, lines))
 
         return bom, lines
