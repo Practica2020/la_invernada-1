@@ -6,4 +6,4 @@ class CustomReport(models.Model):
     _inherit = 'ir.attachment'
 
     file = fields.Binary("Attachment")
-    file_name = fields.Char("File Name",related="custom.report.data_fname")
+    file_name = fields.Char("File Name")
