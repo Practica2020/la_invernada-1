@@ -97,7 +97,7 @@ class StockPicking(models.Model):
         'Tipo de contenedor'
     )
 
-    picture = fields.Many2many("ir.attachment")
+    picture = fields.Many2many("custom_report")
 
     file = fields.Char(rel="picture.file_name")
 
