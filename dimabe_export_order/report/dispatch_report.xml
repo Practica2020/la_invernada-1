@@ -1,26 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <template id="report_dispatch">
-    <t t-call="web.html_container">
-      <div class="page">
-        <t t-foreach="docs" t-as="o">
-          <table>
-            <tr>
-              <td>
-                <img t-att-src="o.local_url"/>
-              </td>
-            </tr>
-          </table>
-        </t>
-      </div>
-    </t>
-  </template>
-  <report
-    id="action_dispatch_label_report"
-    string="Informe despacho"
-    model="ir.attachment"
-    report_type="qweb-pdf"
-    name="dimabe_export_order.report_dispatch"
-  />
+	<template id="report_dispatch">
+		<t t-call="web.html_container">
+			<div class="page">
+				<t t-foreach="docs" t-as="o">
+					<img t-att-src="o.local_url" width="100px" heigth="100px"/>
+				</t>
+			</div>
+		</t>
+	</template>
+	<report id="action_dispatch_label_report" string="Informe despacho" model="ir.attachment" report_type="qweb-pdf" name="dimabe_export_order.report_dispatch" />
 </odoo>
