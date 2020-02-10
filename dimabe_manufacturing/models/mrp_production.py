@@ -112,10 +112,10 @@ class MrpProduction(models.Model):
 
             res = super(MrpProduction, order).button_plan()
 
-            for bom_line in order.bom_id.bom_line_ids:
-                real_data = real_bom_data.filtered(lambda a: a.product_id == bom_line.product_id)
-                if real_data:
-                    bom_line.product_qty = real_data.product_qty
+            for rd in real_bom_data:
+                bl = order.bom_id.bom_line_ids.filtered(lambda a: a.product_id == bom_line.product_id)
+                if bl:
+                    bl.product_qty = rd['product_qty']
 
             # for stock_move in order.move_raw_ids:
             #     workorder_move_line = order.workorder_ids.active_move_line_ids.filtered(
