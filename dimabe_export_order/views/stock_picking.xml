@@ -68,6 +68,7 @@
               <group string="Informe" style="width=100%">
                 <group>
                   <field name="picture" widget="many2many_binary"/>
+                  <field name="picture" widget="many2many_kanban"/>
                 </group>
               </group>
             </group>
