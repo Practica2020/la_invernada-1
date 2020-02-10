@@ -49,7 +49,10 @@ class MrpProduction(models.Model):
                 ('potential_client_id', 'in', self.picking_ids.mapped('partner_id').mapped('id'))
             ]).mapped('stock_production_lot_ids')
 
-            raise models.ValidationError(client_lot_ids)
+            raise models.ValidationError('{} - {}'.format(
+                client_lot_ids,
+                self.picking_ids.mapped('partner_id').mapped('id')
+            ))
 
             domain += ('name', 'in', client_lot_ids)
 
