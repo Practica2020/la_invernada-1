@@ -114,22 +114,22 @@ class MrpProduction(models.Model):
                     })
                     bom_line.product_qty = raw_line.product_uom_qty
 
-            orders_to_plan = self.filtered(lambda order: order.routing_id and order.state == 'confirmed')
-            for order in orders_to_plan:
-                quantity = order.product_uom_id._compute_quantity(order.product_qty,
-                                                                  order.bom_id.product_uom_id) / order.bom_id.product_qty
-                boms, lines = order.bom_id.explode(order.product_id, quantity,
-                                                   picking_type=order.bom_id.picking_type_id)
-                raise models.ValidationError('{} {}'.format(boms[0][0].bom_line_ids.mapped('product_qty'), lines))
+            # orders_to_plan = self.filtered(lambda order: order.routing_id and order.state == 'confirmed')
+            # for order in orders_to_plan:
+            #     quantity = order.product_uom_id._compute_quantity(order.product_qty,
+            #                                                       order.bom_id.product_uom_id) / order.bom_id.product_qty
+            #     boms, lines = order.bom_id.explode(order.product_id, quantity,
+            #                                        picking_type=order.bom_id.picking_type_id)
+            #     raise models.ValidationError('{} {}'.format(boms[0][0].bom_line_ids.mapped('product_qty'), lines))
 
             res = super(MrpProduction, order).button_plan()
 
-            for rd in real_bom_data:
-                bl = order.bom_id.bom_line_ids.filtered(lambda a: a.product_id == rd['product_id'])
-                if bl:
-                    bl.product_qty = rd['product_qty']
-
-            order.bom_id.product_qty = real_product_qty
+            # for rd in real_bom_data:
+            #     bl = order.bom_id.bom_line_ids.filtered(lambda a: a.product_id == rd['product_id'])
+            #     if bl:
+            #         bl.product_qty = rd['product_qty']
+            #
+            # order.bom_id.product_qty = real_product_qty
 
             # for stock_move in order.move_raw_ids:
             #     workorder_move_line = order.workorder_ids.active_move_line_ids.filtered(
