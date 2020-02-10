@@ -67,9 +67,7 @@
             <group name="dispatch_report" position="inside">
               <group string="Informe" style="width=100%">
                 <group>
-                  <field name="picture_name" invisible="1"/>
-                  <field name="picture" widget="image" filename="picture_name">
-                  </field>
+                  <field name="picture"/>
                 </group>
               </group>
             </group>
