@@ -67,7 +67,7 @@
             <group name="dispatch_report" position="inside">
               <group string="Informe" style="width=100%">
                 <group>
-                  <field name="picture_ext"/>
+                  <field name="picture.mimetype"/>
                   <field name="picture" widget="many2many_binary"/>
                 </group>
               </group>
