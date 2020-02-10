@@ -129,9 +129,9 @@ class MrpProduction(models.Model):
 
             return res
 
-    # def _workorders_create(self, bom, bom_data):
-    #
-    #     raise models.ValidationError('{}---{}'.format(bom, bom_data))
-    #
-    #
-    #     return super(MrpProduction, self)._workorders_create(bom, bom_data)
+    def _workorders_create(self, bom, bom_data):
+
+        raise models.ValidationError('{}---{}'.format(bom, bom_data))
+
+
+        return super(MrpProduction, self)._workorders_create(bom, bom_data)
