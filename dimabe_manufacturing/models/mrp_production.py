@@ -50,7 +50,7 @@ class MrpProduction(models.Model):
             ]).mapped('stock_production_lot_ids')
 
             domain += [('name', 'in', list(client_lot_ids) if client_lot_ids else [])]
-
+            models._logger.error(domain)
             raise models.ValidationError(domain)
 
 
