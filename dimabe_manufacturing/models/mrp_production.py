@@ -49,7 +49,7 @@ class MrpProduction(models.Model):
                 ('potential_client_id', '=', self.client_search_id.id)
             ]).mapped('stock_production_lot_ids')
 
-            domain += ('name', 'in', list(client_lot_ids) if client_lot_ids else [])
+            domain += [('name', 'in', list(client_lot_ids) if client_lot_ids else [])]
 
 
 
