@@ -51,6 +51,8 @@ class MrpProduction(models.Model):
 
             domain += [('name', 'in', list(client_lot_ids) if client_lot_ids else [])]
 
+            raise models.ValidationError(domain)
+
 
 
         res = self.env['stock.production.lot'].search(domain)
