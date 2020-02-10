@@ -49,11 +49,13 @@ class MrpProduction(models.Model):
                 ('potential_client_id', '=', self.client_search_id.id)
             ]).mapped('stock_production_lot_ids')
 
-            domain += ('name', 'in', client_lot_ids if client_lot_ids else [])
+            domain += ('name', 'in', list(client_lot_ids) if client_lot_ids else [])
 
-            raise models.ValidationError(domain)
+
 
         res = self.env['stock.production.lot'].search(domain)
+
+        raise models.ValidationError(res)
 
         for pl in res:
             if pl.stock_quant_balance > 0:
