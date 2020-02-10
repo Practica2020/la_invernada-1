@@ -43,7 +43,7 @@
         'views/stock_picking.xml',
         'views/sale_order.xml',
         'views/views.xml',
-        'report/dispatched_report'
+        'report/dispatch_report'
     ],
     # only loaded in demonstration mode
     'demo': [
