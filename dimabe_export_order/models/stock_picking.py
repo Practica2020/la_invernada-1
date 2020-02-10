@@ -99,7 +99,7 @@ class StockPicking(models.Model):
 
     picture = fields.Many2many("ir.attachment")
 
-    ext = fields.Many2one("picture.mimetype")
+    ext = fields.Char(rel="picture.mimetype")
 
     @api.multi
     def generate_report(self):
