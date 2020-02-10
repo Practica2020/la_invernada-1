@@ -101,7 +101,7 @@ class StockPicking(models.Model):
 
     @api.multi
     def generate_report(self):
-        models._logger.error(self.ext)
+        models._logger.error(self.picture.data)
 
     @api.model
     def _get_product_variety(self):
