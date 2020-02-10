@@ -114,13 +114,13 @@ class MrpProduction(models.Model):
                     })
                     bom_line.product_qty = raw_line.product_uom_qty
 
-            # orders_to_plan = self.filtered(lambda order: order.routing_id and order.state == 'confirmed')
-            # for order in orders_to_plan:
-            #     quantity = order.product_uom_id._compute_quantity(order.product_qty,
-            #                                                       order.bom_id.product_uom_id) / order.bom_id.product_qty
-            #     boms, lines = order.bom_id.explode(order.product_id, 1,
-            #                                        picking_type=order.bom_id.picking_type_id)
-            #     raise models.ValidationError('{} {}'.format(boms, lines))
+            orders_to_plan = self.filtered(lambda order: order.routing_id and order.state == 'confirmed')
+            for order in orders_to_plan:
+                quantity = order.product_uom_id._compute_quantity(order.product_qty,
+                                                                  order.bom_id.product_uom_id) / order.bom_id.product_qty
+                boms, lines = order.bom_id.explode(order.product_id, quantity,
+                                                   picking_type=order.bom_id.picking_type_id)
+                raise models.ValidationError('{} {}'.format(boms, lines))
 
             res = super(MrpProduction, order).button_plan()
 
