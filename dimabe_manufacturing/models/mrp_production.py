@@ -47,7 +47,7 @@ class MrpProduction(models.Model):
 
             client_lot_ids = self.env['quality.analysis'].search([
                 ('potential_client_id', '=', self.client_search_id.id)
-            ]).mapped('stock_production_lot_ids.id')
+            ]).mapped('stock_production_lot_ids.name')
 
             domain += [('name', 'in', list(client_lot_ids) if client_lot_ids else [])]
             models._logger.error(domain)
