@@ -99,7 +99,7 @@ class StockPicking(models.Model):
 
     picture = fields.Many2many("ir.attachment")
 
-    file = fields.Char(rel="picture.file")
+    file = fields.Char(rel="ir.attachment.file")
 
     @api.multi
     def generate_data(self):
