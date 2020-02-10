@@ -120,7 +120,7 @@ class MrpProduction(models.Model):
                                                                   order.bom_id.product_uom_id) / order.bom_id.product_qty
                 boms, lines = order.bom_id.explode(order.product_id, quantity,
                                                    picking_type=order.bom_id.picking_type_id)
-                raise models.ValidationError('{} {}'.format(boms, lines))
+                raise models.ValidationError('{} {}'.format(boms[0].bom_line_ids.mapped('product_qty'), lines))
 
             res = super(MrpProduction, order).button_plan()
 
