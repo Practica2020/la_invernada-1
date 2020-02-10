@@ -38,8 +38,6 @@ class MrpProduction(models.Model):
             ('name', 'not in', list(self.potential_lot_ids.mapped('stock_production_lot_id.id')))
         ]
 
-        raise models.ValidationError(self.procurement_group_id.name)
-
         if self.client_search_id:
 
             client_lot_ids = self.env['quality.analysis'].search([
@@ -82,6 +80,9 @@ class MrpProduction(models.Model):
 
     @api.model
     def create(self, values_list):
+
+        raise models.ValidationError(values_list['procurement_group_id'])
+
         res = super(MrpProduction, self).create(values_list)
 
         regs = [
