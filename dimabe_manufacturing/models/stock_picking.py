@@ -15,8 +15,6 @@ class StockPicking(models.Model):
         if procurement_group:
             procurement_group = procurement_group[0]
 
-        raise models.ValidationError(procurement_group.name)
-
         context = {
             'default_product_id': self.product.id,
             'default_product_uom_qty': self.quantity_done,
