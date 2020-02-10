@@ -29,6 +29,11 @@ class MrpProduction(models.Model):
         'mrp_production_id'
     )
 
+    @api.onchange('client_search_id')
+    def onchange_client_search_id(self):
+        raise models.ValidationError(self)
+
+
     @api.model
     def get_potential_lot_ids(self):
         potential_lot_ids = []
