@@ -103,11 +103,10 @@ class StockPicking(models.Model):
 
     @api.multi
     def generate_data(self):
-        model = self.env.context.get('active_model')
-        files = self.env[model].browse(self.env.context.get('active_id'))
-        return {
-            'files':files
-        }
+        test = list(self.picture.mapped("local_url"))
+        for item in test:
+            return self.env.ref('action_stock_production_lot_serial_label_report')\
+            .report_action(self)
 
     @api.model
     def _get_product_variety(self):
