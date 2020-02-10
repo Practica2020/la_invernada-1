@@ -38,7 +38,7 @@ class MrpProduction(models.Model):
             ('name', 'not in', list(self.potential_lot_ids.mapped('stock_production_lot_id.id')))
         ]
 
-        raise models.ValidationError(self.procurement_group_id.sale_id)
+        raise models.ValidationError(self.picking_ids)
 
         if self.client_search_id:
 
