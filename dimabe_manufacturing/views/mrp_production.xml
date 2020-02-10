@@ -24,7 +24,7 @@
           <field name="product_uom_id"/>
           <field name="lot_id"/>
         </xpath>
-<!--         <xpath expr="//page[@name='miscellaneous']" position="after">
+        <xpath expr="//page[@name='miscellaneous']" position="after">
           <page string="Seleccionar Lote">
             <group>
               <field name="stock_lots" invisible="1"/>
@@ -52,7 +52,7 @@
               </field>
             </group>
           </page>
-        </xpath> -->
+        </xpath>
       </field>
     </record>
   </data>
