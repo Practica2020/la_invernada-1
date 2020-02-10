@@ -46,7 +46,7 @@ class MrpProduction(models.Model):
         if self.client_search_id:
 
             client_lot_ids = self.env['quality.analysis'].search([
-                ('potential_client_id', 'in', self.picking_ids.mapped('partner_id').mapped('id'))
+                ('potential_client_id', 'in', self.client_search_id)
             ]).mapped('stock_production_lot_ids')
 
             raise models.ValidationError('{} - {}'.format(
