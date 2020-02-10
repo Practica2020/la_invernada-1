@@ -149,11 +149,4 @@ class MrpProduction(models.Model):
 
     def _workorders_create(self, bom, bom_data):
 
-        raise models.ValidationError('{}___{}___{}'.format(
-            bom.bom_line_ids.mapped('product_qty'),
-            bom_data,
-            self.move_raw_ids.mapped('unit_factor')
-        ))
-
-
         return super(MrpProduction, self)._workorders_create(bom, bom_data)
