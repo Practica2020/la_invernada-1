@@ -114,10 +114,9 @@ class MrpProduction(models.Model):
             for order in orders_to_plan:
                 quantity = order.product_uom_id._compute_quantity(order.product_qty,
                                                                   order.bom_id.product_uom_id) / order.bom_id.product_qty
-                raise models.ValidationError('{} {} {}'.format(order.product_uom_id._compute_quantity(order.product_qty,
-                                                                                                      order.bom_id.product_uom_id),
-                                                               order.bom_id.product_qty,
-                                                               quantity))
+                boms, lines = order.bom_id.explode(order.product_id, quantity,
+                                                   picking_type=order.bom_id.picking_type_id)
+                raise models.ValidationError('{} {}'.format(boms, lines))
 
             res = super(MrpProduction, order).button_plan()
 
