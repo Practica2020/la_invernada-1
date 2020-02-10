@@ -28,6 +28,7 @@
         <xpath expr="//page[@name='miscellaneous']" position="after">
           <page string="Seleccionar Lote">
             <group>
+              <field name="client_search_id" />
               <field name="stock_lots" invisible="1"/>
               <field name="potential_lot_ids" readonly="0">
                 <tree editable="bottom" edit="true" delete="false" create="false">
