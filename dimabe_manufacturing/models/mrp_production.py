@@ -38,13 +38,13 @@ class MrpProduction(models.Model):
             ('name', 'not in', list(self.potential_lot_ids.mapped('stock_production_lot_id.id')))
         ]
 
-        raise models.ValidationError(self.picking_ids.mapped('partner_id').id)
-
         if self.client_search_id:
 
             client_lot_ids = self.env['quality.analysis'].search([
-                ('potential_client_id', '=', self.picking_ids.partner_id)
+                ('potential_client_id', '=', self.picking_ids.mapped('partner_id').id)
             ]).mapped('stock_production_lot_ids')
+
+            raise models.ValidationError(client_lot_ids)
 
             domain += ('name', 'in', client_lot_ids)
 
