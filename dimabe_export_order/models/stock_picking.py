@@ -99,7 +99,7 @@ class StockPicking(models.Model):
 
     picture = fields.Many2many("ir.attachment")
 
-    
+    picture_ext = fields.Char(rel="picture.mimetype")
 
     @api.model
     def _get_product_variety(self):
