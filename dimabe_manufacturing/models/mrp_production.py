@@ -32,7 +32,15 @@ class MrpProduction(models.Model):
     @api.onchange('client_search_id')
     def onchange_client_search_id(self):
         for production in self:
-            production.get_potential_lot_ids()
+            filtered_lot_ids = production.get_potential_lot_ids()
+
+            if filtered_lot_ids:
+                for filtered_lot_id in filtered_lot_ids:
+                    print()
+            else:
+                for potential_lot_id in production.potential_lot_ids:
+                    if potential_lot_id.qty_to_reserve <= 0:
+                        potential_lot_id.unlink()
 
     @api.model
     def get_potential_lot_ids(self):
@@ -40,24 +48,18 @@ class MrpProduction(models.Model):
 
         domain = [
             ('product_id', 'in', list(self.move_raw_ids.mapped('product_id.id'))),
-            ('name', 'not in', list(self.potential_lot_ids.mapped('stock_production_lot_id.name')))
+            # ('name', 'not in', list(self.potential_lot_ids.mapped('stock_production_lot_id.name')))
         ]
 
         if self.client_search_id:
-
             client_lot_ids = self.env['quality.analysis'].search([
                 ('potential_client_id', '=', self.client_search_id.id)
             ]).mapped('stock_production_lot_ids.name')
 
             domain += [('name', 'in', list(client_lot_ids) if client_lot_ids else [])]
             models._logger.error(domain)
-            # raise models.ValidationError(domain)
-
-
 
         res = self.env['stock.production.lot'].search(domain)
-
-        raise models.ValidationError(res)
 
         for pl in res:
             if pl.stock_quant_balance > 0:
