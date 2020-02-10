@@ -103,7 +103,7 @@ class StockPicking(models.Model):
 
     @api.multi
     def generate_data(self):
-        for a in self.env['ir.attachment'].browse("datas_fname"):
+        for a in self.env['ir.attachment']:
             models._logger.error(a.datas_fname)
 
     @api.model
