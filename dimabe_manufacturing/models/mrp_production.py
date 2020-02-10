@@ -91,7 +91,7 @@ class MrpProduction(models.Model):
 
             for stock_move in order.move_raw_ids:
                 stock_move.product_uom_qty = stock_move.reserved_availability
-                stock_move.unit_factor = 1
+                stock_move.unit_factor = stock_move.product_uom_qty / order.product_qty
                 if stock_move.product_uom_qty == 0:
                     stock_move.update({
                         'raw_material_production_id': None
@@ -135,18 +135,4 @@ class MrpProduction(models.Model):
 
             order.bom_id.product_qty = real_product_qty
 
-            # for stock_move in order.move_raw_ids:
-            #     workorder_move_line = order.workorder_ids.active_move_line_ids.filtered(
-            #         lambda a: a.product_id.id == stock_move.product_id.id
-            #     )
-            #
-            #     if workorder_move_line:
-            #         workorder_move_line.update({
-            #             'qty_done': stock_move.product_uom_qty
-            #         })
-
             return res
-
-    def _workorders_create(self, bom, bom_data):
-
-        return super(MrpProduction, self)._workorders_create(bom, bom_data)
