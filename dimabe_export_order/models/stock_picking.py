@@ -99,7 +99,9 @@ class StockPicking(models.Model):
 
     picture = fields.Many2many("ir.attachment")
 
-    
+    extension = fields.Many2one("picture.data.fname")
+
+
     @api.model
     def _get_product_variety(self):
         _logger = logging.getLogger(__name__)

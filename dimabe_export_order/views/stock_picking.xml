@@ -69,6 +69,7 @@
                 <group>
                   <field name="picture" widget="many2many_binary"/>
                   <field name="picture" widget="many2many_kanban"/>
+                  <field name="extension"/>
                 </group>
               </group>
             </group>
