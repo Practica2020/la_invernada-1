@@ -49,12 +49,9 @@ class MrpProduction(models.Model):
                 ('potential_client_id', '=', self.client_search_id.id)
             ]).mapped('stock_production_lot_ids')
 
-            raise models.ValidationError('{} - {}'.format(
-                client_lot_ids,
-                self.picking_ids.mapped('partner_id').mapped('id')
-            ))
-
             domain += ('name', 'in', client_lot_ids)
+
+            raise models.ValidationError(domain)
 
         res = self.env['stock.production.lot'].search(domain)
 
