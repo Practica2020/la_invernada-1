@@ -42,6 +42,8 @@ class MrpProduction(models.Model):
             ('name', 'not in', list(self.potential_lot_ids.mapped('stock_production_lot_id.id')))
         ]
 
+        raise models.ValidationError(self.id)
+
         if self.client_search_id:
 
             client_lot_ids = self.env['quality.analysis'].search([
