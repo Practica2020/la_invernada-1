@@ -99,12 +99,11 @@ class StockPicking(models.Model):
 
     picture = fields.Many2many("ir.attachment")
 
-    file = fields.Char(related="picture.local_url")
+    file = fields.Char(related="picture[2].datas_fname")
 
     @api.multi
     def generate_data(self):
-        file = fields.Char(related="picture[2].datas_fname") 
-        models._logger.error(file)
+        models._logger.error(self.file)
 
     @api.model
     def _get_product_variety(self):
