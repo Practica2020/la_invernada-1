@@ -20,7 +20,7 @@
     id="action_dispatch_label_report"
     string="Informe despacho"
     model="ir.attachment"
-    report_type="qweb-pdf"
+    report_type="qweb-html"
     name="dimabe_export_order.report_dispatch"
   />
 </odoo>
