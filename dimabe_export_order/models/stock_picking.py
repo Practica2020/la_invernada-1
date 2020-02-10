@@ -105,8 +105,7 @@ class StockPicking(models.Model):
     def generate_data(self):
         test = list(self.picture.mapped("local_url"))
         for item in test:
-            return self.env.ref('action_stock_production_lot_serial_label_report')\
-            .report_action(self)
+            models._logger.error(item)
 
     @api.model
     def _get_product_variety(self):
