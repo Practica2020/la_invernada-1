@@ -102,10 +102,9 @@ class StockPicking(models.Model):
     file = fields.Char(related="picture.datas_fname")
 
     @api.multi
-    def generate_data(self):
-        test = list(self.picture.mapped())
-        for item in test:
-            models._logger.error(item)
+    def generate_report(self):
+         return self.env.ref('dimabe_export_order.action_dispatch_label_report')\
+            .report_action(self.picture)
 
     @api.model
     def _get_product_variety(self):
