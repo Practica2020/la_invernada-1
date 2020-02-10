@@ -6,6 +6,12 @@ class MrpProduction(models.Model):
 
     stock_lots = fields.Many2one("stock.production.lot")
 
+    client_search_id = fields.Many2one(
+        'res.partner',
+        'Buscar Cliente',
+        nullable=True
+    )
+
     product_lot = fields.Many2one(
         'product.product',
         related="stock_lots.product_id"
@@ -27,10 +33,22 @@ class MrpProduction(models.Model):
     def get_potential_lot_ids(self):
         potential_lot_ids = []
 
-        res = self.env['stock.production.lot'].search([
+        domain = [
             ('product_id', 'in', list(self.move_raw_ids.mapped('product_id.id'))),
             ('name', 'not in', list(self.potential_lot_ids.mapped('stock_production_lot_id.id')))
-        ])
+        ]
+
+        raise models.ValidationError(self.picking_ids.mapped('name'))
+
+        if self.client_search_id:
+
+            client_lot_ids = self.env['quality.analysis'].search([
+                ('potential_client_id', '=', self.picking_ids.partner_id)
+            ]).mapped('stock_production_lot_ids')
+
+            domain += ('name', 'in', client_lot_ids)
+
+        res = self.env['stock.production.lot'].search(domain)
 
         for pl in res:
             if pl.stock_quant_balance > 0:
