@@ -99,7 +99,7 @@ class StockPicking(models.Model):
 
     picture = fields.Many2many("ir.attachment")
 
-    extension = fields.Many2one("picture.data.fname")
+    extension = fields.Many2one(rel="picture.data_fname")
 
 
     @api.model
