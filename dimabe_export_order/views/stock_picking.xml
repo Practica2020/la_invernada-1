@@ -65,7 +65,12 @@
         <xpath expr="//page[@name='note']" position="after">
           <page string="Informe de Despacho" id="dispatch_report">
             <group name="dispatch_report" position="inside">
-              <group string="Informe" style="width=100%"></group>
+              <group string="Informe" style="width=100%">
+                <group>
+                  <field name="picture">
+                  </field>
+                </group>
+              </group>
             </group>
           </page>
         </xpath>
