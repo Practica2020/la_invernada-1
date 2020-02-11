@@ -61,10 +61,8 @@ class MrpProduction(models.Model):
     @api.model
     def get_potential_lot_ids(self):
         potential_lot_ids = []
-
-        domain = [
-            ('product_id', 'in', list(self.move_raw_ids.mapped('product_id.id')))
-        ]
+        domain = []
+        product_ids = list(self.move_raw_ids.mapped('product_id.id'))
 
         if self.client_search_id:
             client_lot_ids = self.env['quality.analysis'].search([
@@ -72,7 +70,9 @@ class MrpProduction(models.Model):
             ]).mapped('stock_production_lot_ids')
 
             domain += [('name', 'in', list(client_lot_ids.mapped('name')) if client_lot_ids else [])]
-            # domain += [('')]
+            product_ids = product_ids - client_lot_ids.mapped('product_id.id')
+
+        domain += [('product_id', 'in', product_ids)]
 
         res = self.env['stock.production.lot'].search(domain)
 
