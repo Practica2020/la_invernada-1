@@ -34,13 +34,19 @@ class MrpProduction(models.Model):
         for production in self:
             filtered_lot_ids = production.get_potential_lot_ids()
 
-            to_unlink = production.potential_lot_ids.filtered(lambda a: a.qty_to_reserve <= 0)
+            to_unlink = [
+                (2, to_unlink_id.id) for to_unlink_id in production.potential_lot_ids.filtered(
+                    lambda a: a.qty_to_reserve <= 0
+                )]
 
-            to_unlink = [(2, to_unlink_id.id) for to_unlink_id in to_unlink]
+            production.update({
+                'potential_lot_ids': to_unlink
+            })
 
-            to_keep = production.potential_lot_ids.filtered(lambda a: a.qty_to_reserve > 0)
-
-            to_keep = [(4, to_keep_id.id) for to_keep_id in to_keep]
+            to_keep = [
+                (4, to_keep_id.id) for to_keep_id in production.potential_lot_ids.filtered(
+                    lambda a: a.qty_to_reserve > 0
+                )]
 
             to_add = []
 
@@ -48,11 +54,10 @@ class MrpProduction(models.Model):
                 if not production.potential_lot_ids.filtered(
                         lambda a: a.stock_production_lot_id.id == filtered_lot_id['stock_production_lot_id']
                 ):
-                    to_add.append(filtered_lot_id)
-            to_add = [(0, 0, potential_lot) for potential_lot in to_add]
+                    to_add.append((0, 0, filtered_lot_id))
 
             production.update({
-                'potential_lot_ids': to_add + to_keep + to_unlink
+                'potential_lot_ids': to_add + to_keep
             })
 
             raise models.ValidationError(production.potential_lot_ids)
