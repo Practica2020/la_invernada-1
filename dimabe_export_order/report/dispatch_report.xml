@@ -6,7 +6,7 @@
 				<table>
 					<tr>
 						<td>
-							<img t-att-src="o.datas"/>
+							<img t-att-src="'%s/o.datas.fname' % (o.get_full_url())"/>
 						</td>
 					</tr>
 					<tr>
