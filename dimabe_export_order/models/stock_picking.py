@@ -108,9 +108,9 @@ class StockPicking(models.Model):
 
     @api.multi
     def get_full_url(self):
+        self.ensure_one()
         base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
         return base_url
-            
 
     @api.model
     def _get_product_variety(self):
