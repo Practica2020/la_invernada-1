@@ -20,6 +20,7 @@ class StockPicking(models.Model):
             'default_product_uom_qty': self.quantity_done,
             'default_origin': self.name,
             'default_procurement_group_id': procurement_group.id,
+            'default_client_search_id': self.partner_id.id,
             'default_requested_qty': self.quantity_done
         }
 

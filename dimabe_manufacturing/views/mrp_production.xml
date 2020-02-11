@@ -17,6 +17,7 @@
         </button>
         <field name="product_id" position="after">
           <field name="requested_qty" readonly="1"/>
+          <field name="procurement_group_id" readonly="1" force_save="1" />
         </field>
         <xpath expr="//field[@name='finished_move_line_ids']/tree" postition="inside">
           <field name="count_stock_production_lot_serial"/>
@@ -27,6 +28,7 @@
         <xpath expr="//page[@name='miscellaneous']" position="after">
           <page string="Seleccionar Lote">
             <group>
+              <field name="client_search_id" />
               <field name="stock_lots" invisible="1"/>
               <field name="potential_lot_ids" readonly="0">
                 <tree editable="bottom" edit="true" delete="false" create="false">
