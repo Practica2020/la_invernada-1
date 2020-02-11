@@ -61,7 +61,7 @@ class MrpProduction(models.Model):
     @api.model
     def get_potential_lot_ids(self):
         potential_lot_ids = []
-        domain = []
+        domain = ['|'] if self.client_search_id else []
         product_ids = list(self.move_raw_ids.mapped('product_id.id'))
 
         if self.client_search_id:
@@ -70,7 +70,7 @@ class MrpProduction(models.Model):
             ]).mapped('stock_production_lot_ids')
 
             domain += [('name', 'in', list(client_lot_ids.mapped('name')) if client_lot_ids else [])]
-            product_ids = product_ids - client_lot_ids.mapped('product_id.id')
+            product_ids = [product_id if product_ids not in list(client_lot_ids.mapped('product_id.id')) else None for product_id in product_ids]
 
         domain += [('product_id', 'in', product_ids)]
 
