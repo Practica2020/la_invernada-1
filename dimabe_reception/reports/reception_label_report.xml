@@ -420,7 +420,7 @@
   <report id="action_reception_weighing_ticket_report"
           string="Ticket De Pesaje"
           model="stock.picking"
-          report_type="qweb-pdf"
+          report_type="qweb-html"
           name="dimabe_reception.report_weighing_ticket"
   />
 
