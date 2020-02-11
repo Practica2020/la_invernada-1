@@ -11,7 +11,7 @@
 					</tr>
 					<tr>
 						<td>
-							<span t-field="o.datas_fname"></span>
+							<span t-field="o.mimetype"></span>
 						</td>
 					</tr>
 					<tr>
