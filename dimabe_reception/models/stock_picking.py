@@ -144,6 +144,7 @@ class StockPicking(models.Model):
     def _compute_elapsed_time(self):
         if self.truck_in_date:
             if self.date_done:
+                models._logger.error(self.date_done)
                 self.elapsed_time = self._get_hours(self.truck_in_date, self.date_done)
             else:
 
