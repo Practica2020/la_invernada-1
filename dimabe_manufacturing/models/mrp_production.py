@@ -71,6 +71,7 @@ class MrpProduction(models.Model):
 
             domain += [('name', 'in', list(client_lot_ids.mapped('name')) if client_lot_ids else [])]
             product_ids = [product_id if product_ids not in list(client_lot_ids.mapped('product_id.id')) else None for product_id in product_ids]
+            raise models.ValidationError(product_ids)
 
         domain += [('product_id', 'in', product_ids)]
 
