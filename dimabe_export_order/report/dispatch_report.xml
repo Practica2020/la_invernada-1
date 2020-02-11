@@ -6,32 +6,7 @@
 				<table>
 					<tr>
 						<td>
-							<img t-if="o.datas_fname" t-att-src="'data:o.mimetype;base64,%s' % to_text(o.datas)"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span t-field="o.mimetype"></span>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span t-field="o.description"></span>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span t-field="o.display_name"></span>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span t-field="o.local_url"></span>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span t-field="o.res_name"></span>
+							<img t-if="o.datas_fname" t-att-src="'data:o.mimetype;base64,%s' % to_text(o.datas)" />
 						</td>
 					</tr>
 				</table>
