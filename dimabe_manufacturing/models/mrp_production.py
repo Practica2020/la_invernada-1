@@ -36,16 +36,11 @@ class MrpProduction(models.Model):
 
             to_unlink = production.potential_lot_ids.filtered(lambda a: a.qty_to_reserve <= 0)
 
-            to_unlink = [(2, to_unlink_id) for to_unlink_id in to_unlink]
+            to_unlink = [(2, to_unlink_id.id) for to_unlink_id in to_unlink]
 
             to_keep = production.potential_lot_ids.filtered(lambda a: a.qty_to_reserve > 0)
 
             to_keep = [(4, to_keep_id.id) for to_keep_id in to_keep]
-
-            raise models.ValidationError('{} {}'.format(
-                to_unlink,
-                to_keep
-            ))
 
             to_add = []
 
@@ -54,9 +49,10 @@ class MrpProduction(models.Model):
                         lambda a: a.stock_production_lot_id.id == filtered_lot_id['stock_production_lot_id']
                 ):
                     to_add.append(filtered_lot_id)
+            to_add = [(0, 0, potential_lot) for potential_lot in to_add]
 
             production.update({
-                'potential_lot_ids': [(0, 0, potential_lot) for potential_lot in to_add]
+                'potential_lot_ids': to_add + to_keep + to_unlink
             })
 
             raise models.ValidationError(production.potential_lot_ids)
