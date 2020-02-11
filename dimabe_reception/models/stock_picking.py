@@ -232,8 +232,8 @@ class StockPicking(models.Model):
                     message = 'Los kilos de la Guía no pueden ser mayores a los Kilos brutos ingresados'
                 if not stock_picking.tare_weight:
                     message = 'Debe agregar kg tara'
-                if not stock_picking.quality_weight:
-                    message = 'Los kilos de calidad aún no han sido registrados en el sistema, no es posible cerrar el ciclo de recepción'
+#                if not stock_picking.quality_weight:
+#                    message = 'Los kilos de calidad aún no han sido registrados en el sistema, no es posible cerrar el ciclo de recepción'
                 if message:
                     raise models.ValidationError(message)
         res = super(StockPicking, self).button_validate()
