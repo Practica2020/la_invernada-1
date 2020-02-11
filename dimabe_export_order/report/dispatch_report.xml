@@ -6,7 +6,7 @@
 				<table>
 					<tr>
 						<td>
-							<img t-if="o.datas_fname" t-att-src="'data:o.mimetype;base64,%s' % to_text(o.local_url)"/>
+							<img t-if="o.datas_fname" t-att-src="'data:o.mimetype;base64,%s' % to_text(o.datas)"/>
 						</td>
 					</tr>
 					<tr>
