@@ -23,7 +23,8 @@
         'dimabe_reception',
         'mrp',
         'mrp_workorder',
-        'dimabe_export_order'
+        'dimabe_export_order',
+        'dimabe_quality_integration'
     ],
 
     # always loaded
