@@ -60,8 +60,6 @@ class MrpProduction(models.Model):
                 'potential_lot_ids': to_add + to_keep
             })
 
-            raise models.ValidationError(production.potential_lot_ids)
-
     @api.model
     def get_potential_lot_ids(self):
         potential_lot_ids = []
