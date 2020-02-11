@@ -34,12 +34,12 @@ class MrpProduction(models.Model):
         for production in self:
             filtered_lot_ids = production.get_potential_lot_ids()
 
-            production.potential_lot_ids.filtered(lambda a: a.qty_to_reserve <= 0).unlink()
+            to_unlink = production.potential_lot_ids.filtered(lambda a: a.qty_to_reserve <= 0)
 
             to_keep = production.potential_lot_ids.filtered(lambda a: a.qty_to_reserve > 0)
 
             raise models.ValidationError('{} {}'.format(
-                production.potential_lot_ids,
+                to_unlink,
                 to_keep
             ))
 
