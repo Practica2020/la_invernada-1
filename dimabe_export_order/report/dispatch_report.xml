@@ -6,7 +6,7 @@
 				<table>
 					<tr>
 						<td>
-							<span t-field="o.datas"></span>
+							<img t-att-src="o.datas"/>
 						</td>
 					</tr>
 					<tr>
