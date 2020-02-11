@@ -33,7 +33,7 @@
             <![CDATA[
                 <p>Estimado,</p>
                 <p>
-                se informa diferencia de kg mayor a ${object.reception_alert.kg_diff_alert}
+                se informa diferencia de kg
                 </p>
                 <table>
                     <tr>
