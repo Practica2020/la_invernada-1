@@ -34,6 +34,10 @@ class MrpProduction(models.Model):
         for production in self:
             filtered_lot_ids = production.get_potential_lot_ids()
 
+            raise models.ValidationError('{} {}'.format(
+                type(filtered_lot_ids), type(production.potential_lot_ids)
+            ))
+
             if filtered_lot_ids:
                 production.potential_lot_ids = filtered_lot_ids + production.potential_lot_ids
 
