@@ -46,7 +46,7 @@ class MrpProduction(models.Model):
                 ):
                     to_add.append(filtered_lot_id)
             production.potential_lot_ids += [
-                (0, 0, potential_lot) for potential_lot in filtered_lot_ids
+                (0, 0, potential_lot) for potential_lot in to_add
             ]
             raise models.ValidationError(production.potential_lot_ids)
 
