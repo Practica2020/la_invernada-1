@@ -2,13 +2,40 @@
 <odoo>
 	<template id="report_dispatch">
 		<t t-call="web.html_container">
-			<div class="page">
-				<t t-foreach="docs" t-as="o">
-          <span t-field="o.db_datas"></span>
-          <img t-attf-src="data:image/*;base64,{{o.datas_fname}}"/>
-					<img t-att-src="o.local_url" width="100px" heigth="100px"/>
-				</t>
-			</div>
+			<t t-foreach="docs" t-as="o">
+				<table>
+					<tr>
+						<td>
+							<span t-field="o.datas"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span t-field="o.datas_fname"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span t-field="o.description"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span t-field="o.display_name"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span t-field="o.local_url"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span t-field="o.res_name"></span>
+						</td>
+					</tr>
+				</table>
+			</t>
 		</t>
 	</template>
 	<report id="action_dispatch_label_report" string="Informe despacho" model="ir.attachment" report_type="qweb-pdf" name="dimabe_export_order.report_dispatch" />
