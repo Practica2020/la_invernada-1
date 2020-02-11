@@ -9,4 +9,3 @@ from . import stock_picking
 from . import stock_quant
 from . import stock_location
 from . import potential_lot
-from . import mrp_bom

@@ -122,7 +122,16 @@ class StockPicking(models.Model):
         canning = self.get_canning_move()
         if len(canning) == 1 and canning.product_id.weight:
             self.canning_weight = canning.product_uom_qty * canning.product_id.weight
-
+    
+    @api.model
+    @api.onchange('gross_weight')
+    def on_change_gross_weight(self):
+        message = ''
+        if self.gross_weight < self.weight_guide:
+            message += 'Los kilos brutos deben ser mayor a los kilos de la guía'
+            self.gross_weight = 0
+        if message:
+            raise models.ValidationError(message)
     @api.one
     @api.depends('tare_weight', 'gross_weight', 'move_ids_without_package', )
     def _compute_production_net_weight(self):
@@ -222,6 +231,8 @@ class StockPicking(models.Model):
                     message = 'Los kilos de la Guía no pueden ser mayores a los Kilos brutos ingresados'
                 if not stock_picking.tare_weight:
                     message = 'Debe agregar kg tara'
+                if not stock_picking.quality_weight:
+                    message = 'Los kilos de calidad aún no han sido registrados en el sistema, no es posible cerrar el ciclo de recepción'
                 if message:
                     raise models.ValidationError(message)
         res = super(StockPicking, self).button_validate()

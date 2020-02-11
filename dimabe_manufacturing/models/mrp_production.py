@@ -1,11 +1,16 @@
 from odoo import fields, models, api
-import json
 
 
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
     stock_lots = fields.Many2one("stock.production.lot")
+
+    client_search_id = fields.Many2one(
+        'res.partner',
+        'Buscar Cliente',
+        nullable=True
+    )
 
     product_lot = fields.Many2one(
         'product.product',
@@ -24,14 +29,51 @@ class MrpProduction(models.Model):
         'mrp_production_id'
     )
 
+    @api.onchange('client_search_id')
+    def onchange_client_search_id(self):
+        for production in self:
+            filtered_lot_ids = production.get_potential_lot_ids()
+
+            production.update({
+                'potential_lot_ids': [
+                (2, to_unlink_id.id) for to_unlink_id in production.potential_lot_ids.filtered(
+                    lambda a: a.qty_to_reserve <= 0
+                )]
+            })
+
+            to_keep = [
+                (4, to_keep_id.id) for to_keep_id in production.potential_lot_ids.filtered(
+                    lambda a: a.qty_to_reserve > 0
+                )]
+
+            to_add = []
+
+            for filtered_lot_id in filtered_lot_ids:
+                if not production.potential_lot_ids.filtered(
+                        lambda a: a.stock_production_lot_id.id == filtered_lot_id['stock_production_lot_id']
+                ):
+                    to_add.append((0, 0, filtered_lot_id))
+
+            production.update({
+                'potential_lot_ids': to_add + to_keep
+            })
+
     @api.model
     def get_potential_lot_ids(self):
         potential_lot_ids = []
 
-        res = self.env['stock.production.lot'].search([
-            ('product_id', 'in', list(self.move_raw_ids.mapped('product_id.id'))),
-            ('name', 'not in', list(self.potential_lot_ids.mapped('stock_production_lot_id.id')))
-        ])
+        domain = [
+            ('product_id', 'in', list(self.move_raw_ids.mapped('product_id.id')))
+        ]
+
+        if self.client_search_id:
+            client_lot_ids = self.env['quality.analysis'].search([
+                ('potential_client_id', '=', self.client_search_id.id)
+            ]).mapped('stock_production_lot_ids.name')
+
+            domain += [('name', 'in', list(client_lot_ids) if client_lot_ids else [])]
+
+        res = self.env['stock.production.lot'].search(domain)
 
         for pl in res:
             if pl.stock_quant_balance > 0:
@@ -86,11 +128,12 @@ class MrpProduction(models.Model):
     @api.multi
     def button_plan(self):
         for order in self:
-            if sum(order.move_raw_ids.filtered(lambda a: a.is_mp).mapped('reserved_availability')) < order.product_qty:
-                raise models.ValidationError('la cantidad a consumir no puede ser menor a la cantidad a producir')
+            # if sum(order.move_raw_ids.filtered(lambda a: a.is_mp).mapped('reserved_availability')) < order.product_qty:
+            #     raise models.ValidationError('la cantidad a consumir no puede ser menor a la cantidad a producir')
 
             for stock_move in order.move_raw_ids:
                 stock_move.product_uom_qty = stock_move.reserved_availability
+                stock_move.unit_factor = stock_move.product_uom_qty / order.product_qty
                 if stock_move.product_uom_qty == 0:
                     stock_move.update({
                         'raw_material_production_id': None
@@ -99,39 +142,28 @@ class MrpProduction(models.Model):
                 lambda a: a.raw_material_production_id.id == order.id
             )
 
-            real_bom_data = []
-
-            for bom_line in order.bom_id.bom_line_ids:
-                raw_line = order.move_raw_ids.filtered(lambda a: a.product_id == bom_line.product_id)
-                if raw_line:
-                    real_bom_data.append({
-                        'product_id': bom_line.product_id,
-                        'product_qty': bom_line.product_qty
-                    })
-                    bom_line.product_qty = raw_line.product_uom_qty
+            # real_bom_data = []
+            # real_product_qty = order.bom_id.product_qty
+            #
+            # order.bom_id.product_qty = order.product_uom_id._compute_quantity(order.product_qty,
+            #                                                                    order.bom_id.product_uom_id)
+            #
+            # for bom_line in order.bom_id.bom_line_ids:
+            #     raw_line = order.move_raw_ids.filtered(lambda a: a.product_id == bom_line.product_id)
+            #     if raw_line:
+            #         real_bom_data.append({
+            #             'product_id': bom_line.product_id,
+            #             'product_qty': bom_line.product_qty
+            #         })
+            #         bom_line.product_qty = raw_line.product_uom_qty
 
             res = super(MrpProduction, order).button_plan()
 
-            for bom_line in order.bom_id.bom_line_ids:
-                real_data = real_bom_data.filtered(lambda a: a.product_id == bom_line.product_id)
-                if real_data:
-                    bom_line.product_qty = real_data.product_qty
-
-            # for stock_move in order.move_raw_ids:
-            #     workorder_move_line = order.workorder_ids.active_move_line_ids.filtered(
-            #         lambda a: a.product_id.id == stock_move.product_id.id
-            #     )
+            # for rd in real_bom_data:
+            #     bl = order.bom_id.bom_line_ids.filtered(lambda a: a.product_id == rd['product_id'])
+            #     if bl:
+            #         bl.product_qty = rd['product_qty']
             #
-            #     if workorder_move_line:
-            #         workorder_move_line.update({
-            #             'qty_done': stock_move.product_uom_qty
-            #         })
+            # order.bom_id.product_qty = real_product_qty
 
             return res
-
-    # def _workorders_create(self, bom, bom_data):
-    #
-    #     raise models.ValidationError('{}---{}'.format(bom.bom_line_ids.mapped('product_qty'), bom_data))
-    #
-    #
-    #     return super(MrpProduction, self)._workorders_create(bom, bom_data)
