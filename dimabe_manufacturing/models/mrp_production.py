@@ -39,9 +39,8 @@ class MrpProduction(models.Model):
             to_add = []
 
             for filtered_lot_id in filtered_lot_ids:
-                raise models.ValidationError(filtered_lot_id['stock_production_lot_id'])
                 if not production.potential_lot_ids.filtered(
-                        lambda a: a.stock_production_lot_id.id == filtered_lot_id.stock_production_lot_id
+                        lambda a: a.stock_production_lot_id.id == filtered_lot_id['stock_production_lot_id']
                 ):
                     to_add.append(filtered_lot_id)
             production.update({
