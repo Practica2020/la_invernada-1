@@ -36,6 +36,8 @@ class MrpProduction(models.Model):
 
             to_keep = production.potential_lot_ids.filtered(lambda a: a.qty_to_reserve > 0)
 
+            raise models.ValidationError(to_keep)
+
             to_add = []
 
             for filtered_lot_id in filtered_lot_ids:
