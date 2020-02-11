@@ -61,19 +61,17 @@ class MrpProduction(models.Model):
     @api.model
     def get_potential_lot_ids(self):
         potential_lot_ids = []
-        domain = ['|'] if self.client_search_id else []
-        product_ids = list(self.move_raw_ids.mapped('product_id.id'))
+
+        domain = [
+            ('product_id', 'in', list(self.move_raw_ids.mapped('product_id.id')))
+        ]
 
         if self.client_search_id:
             client_lot_ids = self.env['quality.analysis'].search([
                 ('potential_client_id', '=', self.client_search_id.id)
-            ]).mapped('stock_production_lot_ids')
+            ]).mapped('stock_production_lot_ids.name')
 
-            domain += [('name', 'in', list(client_lot_ids.mapped('name')) if client_lot_ids else [])]
-            product_ids = [product_id if product_ids not in list(client_lot_ids.mapped('product_id.id')) else None for product_id in product_ids]
-            raise models.ValidationError(product_ids)
-
-        domain += [('product_id', 'in', product_ids)]
+            domain += [('name', 'in', list(client_lot_ids) if client_lot_ids else [])]
 
         res = self.env['stock.production.lot'].search(domain)
 
