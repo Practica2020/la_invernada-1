@@ -34,22 +34,21 @@ class MrpProduction(models.Model):
         for production in self:
             filtered_lot_ids = production.get_potential_lot_ids()
 
-            regs = [
-                (0, 0, potential_lot) for potential_lot in filtered_lot_ids
-            ]
-
-            raise models.ValidationError('{} {}'.format(
-                regs, production.potential_lot_ids
-            ))
-
-            if filtered_lot_ids:
-                production.potential_lot_ids = filtered_lot_ids + production.potential_lot_ids
-
             for potential_lot_id in production.potential_lot_ids:
                 if potential_lot_id.qty_to_reserve <= 0 or potential_lot_id not in filtered_lot_ids:
                     potential_lot_id.unlink()
 
-            raise models.ValidationError(filtered_lot_ids)
+            to_add = []
+
+            for filtered_lot_id in filtered_lot_ids:
+                if not production.potential_lot_ids.filtered(
+                        lambda a: a.stock_production_lot_id.id == filtered_lot_id.stock_production_lot_id
+                ):
+                    to_add.append(filtered_lot_id)
+            production.potential_lot_ids += [
+                (0, 0, potential_lot) for potential_lot in filtered_lot_ids
+            ]
+            raise models.ValidationError(production.potential_lot_ids)
 
     @api.model
     def get_potential_lot_ids(self):
