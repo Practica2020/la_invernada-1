@@ -36,8 +36,8 @@ class MrpProduction(models.Model):
 
             to_unlink = production.potential_lot_ids.filtered(lambda a: a.qty_to_reserve <= 0)
 
-            if to_unlink:
-                to_unlink.unlink()
+            for to_unlink_id in to_unlink:
+                to_unlink_id.unlink()
 
             to_keep = production.potential_lot_ids.filtered(lambda a: a.qty_to_reserve > 0)
 
