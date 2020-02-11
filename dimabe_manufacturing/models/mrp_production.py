@@ -34,9 +34,7 @@ class MrpProduction(models.Model):
         for production in self:
             filtered_lot_ids = production.get_potential_lot_ids()
 
-            for potential_lot_id in production.potential_lot_ids:
-                if potential_lot_id.qty_to_reserve <= 0 or potential_lot_id not in filtered_lot_ids:
-                    potential_lot_id.unlink()
+            to_keep = production.potential_lot_ids.filtered(lambda a: a.qty_to_reserve > 0)
 
             to_add = []
 
@@ -47,8 +45,8 @@ class MrpProduction(models.Model):
                     to_add.append(filtered_lot_id)
             production.update({
                 'potential_lot_ids': [
-                    (0, 0, potential_lot) for potential_lot in to_add
-                ]
+                                         (0, 0, potential_lot) for potential_lot in to_add
+                                     ] + [(4, to_keep_id.id) for to_keep_id in to_keep]
             })
 
             raise models.ValidationError(production.potential_lot_ids)
@@ -68,7 +66,6 @@ class MrpProduction(models.Model):
             ]).mapped('stock_production_lot_ids.name')
 
             domain += [('name', 'in', list(client_lot_ids) if client_lot_ids else [])]
-            models._logger.error(domain)
 
         res = self.env['stock.production.lot'].search(domain)
 
