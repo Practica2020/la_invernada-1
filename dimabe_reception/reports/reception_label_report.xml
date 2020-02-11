@@ -254,7 +254,7 @@
               </th>
               <th>HORA:
                 <t t-if="stock_picking.truck_in_date">
-                  <span t-esc="context_timestamp(stock_picking.truck_in_date).strftime('%H:%M')"/>
+                  <span t-esc="context_timestamp(stock_picking.date_done).strftime('%H:%M')"/>
                 </t>
               </th>
               <th>N° GUÍA:
