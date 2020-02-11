@@ -127,6 +127,14 @@ class MrpProduction(models.Model):
         return res
 
     @api.multi
+    def write(self, values):
+
+        models._logger.error(values)
+        raise models.ValidationError(values)
+
+        return super(MrpProduction, self).write(values)
+
+    @api.multi
     def button_plan(self):
         for order in self:
             # if sum(order.move_raw_ids.filtered(lambda a: a.is_mp).mapped('reserved_availability')) < order.product_qty:
