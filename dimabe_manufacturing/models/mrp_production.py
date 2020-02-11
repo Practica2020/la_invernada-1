@@ -26,7 +26,8 @@ class MrpProduction(models.Model):
 
     potential_lot_ids = fields.One2many(
         'potential.lot',
-        'mrp_production_id'
+        'mrp_production_id',
+        'Posibles Lotes'
     )
 
     @api.onchange('client_search_id')
