@@ -34,19 +34,14 @@ class MrpProduction(models.Model):
         for production in self:
             filtered_lot_ids = production.get_potential_lot_ids()
 
+            if filtered_lot_ids:
+                production.potential_lot_ids = filtered_lot_ids + production.potential_lot_ids
+
             for potential_lot_id in production.potential_lot_ids:
-                if filtered_lot_ids and \
-                        not filtered_lot_ids.filtered(
-                            lambda a: a.stock_production_lot_id.id == potential_lot_id.stock_production_lot_id.id
-                        ):
+                if potential_lot_id.qty_to_reserve <= 0 or potential_lot_id not in filtered_lot_ids:
                     potential_lot_id.unlink()
-                elif potential_lot_id.qty_to_reserve <= 0:
-                    potential_lot_id.unlink()
-
-
 
             raise models.ValidationError(filtered_lot_ids)
-
 
     @api.model
     def get_potential_lot_ids(self):
@@ -78,13 +73,11 @@ class MrpProduction(models.Model):
             'lot_available_quantity': lot.stock_quant_balance
         } for lot in potential_lot_ids]
 
-
     @api.multi
     def set_stock_move(self):
         product = self.env['stock.move'].create({'product_id': self.product_id})
         product_qty = self.env['stock.move'].create({'product_qty': self.product_qty})
         self.env.cr.commit()
-
 
     @api.multi
     def calculate_done(self):
@@ -92,12 +85,10 @@ class MrpProduction(models.Model):
             for line_id in item.finished_move_line_ids:
                 line_id.qty_done = line_id.lot_id.total_serial
 
-
     @api.multi
     def button_mark_done(self):
         self.calculate_done()
         return super(MrpProduction, self).button_mark_done()
-
 
     @api.model
     def create(self, values_list):
@@ -120,7 +111,6 @@ class MrpProduction(models.Model):
             })
 
         return res
-
 
     @api.multi
     def button_plan(self):
