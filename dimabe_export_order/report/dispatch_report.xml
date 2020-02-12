@@ -28,9 +28,27 @@
                         <div style="width:50%;float:left;">
                             <table style="text-align:left;border:1px solid;width:100%;">
                                 <tr>
-                                    <th style="border-right:1px solid;">Numero Embarque</th>
+                                    <th style="border-right:1px solid;">NUMERO EMBARQUE</th>
                                     <td>
                                         <span t-field="dis.shipping_number"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="border-right:1px solid;">GUIA DESPACHO</th>
+                                    <td>
+                                        <span t-field="dis.id"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="border-right:1px solid;">NUMERO CONTENEDOR</th>
+                                    <td>
+                                        <span t-field="dis.container_number"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="border-right:1px solid;">NOMBRE CHOFER</th>
+                                    <td>
+                                        <span t-field="dis.carrier_id"></span>
                                     </td>
                                 </tr>
                             </table>
