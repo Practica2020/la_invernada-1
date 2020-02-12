@@ -37,6 +37,10 @@
 							<th>Numero de Contenedor</th>
 							<th><span t-field="dispatch.container_number"></span></th>
 						</tr>
+						<tr>
+							<th>Nombre de Transportista</th>
+							<th><span t-field="dispatch.carrier_id"></span></th>
+						</tr>
 					</table> 
 				</div>
 			</t>
