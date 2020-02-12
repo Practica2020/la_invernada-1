@@ -59,8 +59,8 @@ class MrpProduction(models.Model):
                         production.potential_lot_ids.mapped('stock_production_lot_id'),
                         filtered_lot_id['stock_production_lot_id']))
 
-                    tmp_id = self.env['potential.lot'].create(filtered_lot_id)
-                    to_add.append((4, tmp_id.id))
+                    # tmp_id = self.env['potential.lot'].create(filtered_lot_id)
+                    # to_add.append((4, tmp_id.id))
 
             production.update({
                 'potential_lot_ids': to_add + to_keep
