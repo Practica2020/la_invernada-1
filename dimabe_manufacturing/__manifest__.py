@@ -37,7 +37,8 @@
         'reports/lot_serial_label_report.xml',
         'views/views.xml',
         'views/mrp_dispatched.xml',
-        'views/mrp_workcenter.xml'
+        'views/mrp_workcenter.xml',
+        'views/quality_analysis.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
