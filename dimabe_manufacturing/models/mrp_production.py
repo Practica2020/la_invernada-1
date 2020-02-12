@@ -68,17 +68,17 @@ class MrpProduction(models.Model):
             # ('product_id', 'in', list(self.move_raw_ids.mapped('product_id.id')))
         ]
 
+        res = []
+
         if self.client_search_id:
             client_lot_ids = self.env['quality.analysis'].search([
                 ('potential_client_id', '=', self.client_search_id.id),
                 ('potential_workcenter_id.id', 'in', list(self.routing_id.operation_ids.mapped('workcenter_id.id')))
             ]).mapped('stock_production_lot_ids.name')
 
-            models._logger.error(list(self.routing_id.operation_ids.mapped('workcenter_id.id')))
-
             domain += [('name', 'in', list(client_lot_ids) if client_lot_ids else [])]
 
-        res = self.env['stock.production.lot'].search(domain)
+            res = self.env['stock.production.lot'].search(domain)
 
         for pl in res:
             if pl.stock_quant_balance > 0:
