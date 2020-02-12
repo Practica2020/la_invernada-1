@@ -11,7 +11,7 @@
 		<t t-call="web.html_container">
 			<t t-foreach="docs" t-as="dispatch">
 				<div class="page">
-					<table class="table report_border table-hover table-striped">
+					<table style="width:100% !important; border:1px solid; text-align:center;margin-bottom:25px;">
 						<tr>
 							<th style="padding:10px">
 								Informe de Despacho
@@ -24,7 +24,7 @@
 						</th>
 						</tr>
 					</table>
-					<table style="border:1px solid; !important;text-align:center;">
+					<table class="table report_border table-hover table-striped">
 						<tr>
 							<td style="font-weight:bold;">Numero de Embarque:</td>
 							<td><span t-field="dispatch.shipping_number"></span></td>
