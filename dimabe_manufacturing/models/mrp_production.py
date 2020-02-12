@@ -81,7 +81,7 @@ class MrpProduction(models.Model):
 
         # for pl in res:
         #     if pl.balance > 0:
-        #         pl.lot_available_quantity = pl.balance
+        #         pl.lot_balance = pl.balance
         #         potential_lot_ids.append(pl)
 
         return [{

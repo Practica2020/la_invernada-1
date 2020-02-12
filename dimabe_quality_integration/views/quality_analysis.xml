@@ -29,6 +29,9 @@
     <field name="name">Listado de Calidad</field>
     <field name="model">quality.analysis</field>
     <field name="arch" type="xml">
+      <search string="with_stock">
+        <filter string="Con Stock" name="with_stock" domain="[('lot_balance','>',0)]" ></filter>
+      </search>
       <tree delete="false" editable="bottom" create="false">
         <field name="lot_name" readonly="1"/>
         <field name="lot_balance" />
