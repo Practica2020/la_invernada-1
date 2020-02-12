@@ -77,14 +77,31 @@
                         </div>
                     </div>
                     <br/>
-					<div style="width:100%;position:relative;">
-						<table style="width:100% !important; border:1px solid;">
-							<th>PESO CON CARGA</th>
-							<td>
-								<span t-field="dis.gross_weight"></span>
-							</td>
-						</table>
-					</div>
+                    <div style="width:100%;position:relative;">
+                        <table style="width:100% !important; border:1px solid;">
+							<tr>
+								<th style="text-align:center;">PESAJES</th>
+							</tr>
+                            <tr>
+                                <th>PESO CON CARGA</th>
+                                <td>
+                                    <span t-field="dis.gross_weight"></span>
+                                </td>
+                            </tr>
+							<tr>
+                                <th>PESO SIN CARGA</th>
+                                <td>
+                                    <span t-field="dis.tare_weight"></span>
+                                </td>
+                            </tr>
+							<tr>
+                                <th>PESO NETO</th>
+                                <td>
+                                    <span t-field="dis.net_weight"></span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </t>
         </t>
