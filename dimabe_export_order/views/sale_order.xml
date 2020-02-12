@@ -1,4 +1,4 @@
-ews<odoo>
+<odoo>
     <data>
         <record id="view_order_form_inherit" model="ir.ui.view">
             <field name="name">formulario de ordenes</field>
