@@ -19,9 +19,10 @@ class QualityAnalysis(models.Model):
         store=True
     )
 
-    @api.model
+    @api.multi
     def get_lot_balance(self):
-        return self.quant_ids.filtered(lambda a: a.location_id.name == 'Stock').balance
+        for item in self:
+            return item.quant_ids.filtered(lambda a: a.location_id.name == 'Stock').balance
 
     lot_name = fields.Char(
         compute='_compute_lot_name'
