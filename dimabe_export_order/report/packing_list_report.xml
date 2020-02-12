@@ -39,7 +39,7 @@
                     </table>
                 </div>
                 <div style="width:100%;position:relative;">
-                    <table style="width:40%;float:left;border:1px solid;">
+                    <table style="width:40%;float:right;border:1px solid;">
                         <tr>
                             <th style="border-right:1px solid;">SHIPPER/PROVEEDOR</th>
                             <td style="text-align:left">LA INVERNADA EXPORT SPA</td>
