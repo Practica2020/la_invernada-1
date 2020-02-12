@@ -142,9 +142,16 @@ class MrpProduction(models.Model):
             #     raise models.ValidationError('la cantidad a consumir no puede ser menor a la cantidad a producir')
 
             for stock_move in order.move_raw_ids:
-                stock_move.product_uom_qty = stock_move.reserved_availability
+                if stock_move.reserved_availability > 0:
+                    stock_move.product_uom_qty = stock_move.reserved_availability
+
+                if stock_move.product_uom_qty % 1 > 0 and stock_move.product_uom.category_id.measure_type == 'unit':
+                    stock_move.product_uom_qty = stock_move.product_uom_qty + 1 - stock_move.product_uom_qty % 1
+
+                raise models.ValidationError(stock_move.product_uom_qty)
+
                 stock_move.unit_factor = stock_move.product_uom_qty / order.product_qty
-                if stock_move.product_uom_qty == 0:
+                if stock_move.product_uom_qty == 0 and not stock_move.product_id.categ_id.reserve_ignore:
                     stock_move.update({
                         'raw_material_production_id': None
                     })
