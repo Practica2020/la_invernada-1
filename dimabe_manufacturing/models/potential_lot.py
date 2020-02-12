@@ -12,11 +12,7 @@ class PotentialLot(models.Model):
         related='stock_production_lot_id.product_id'
     )
 
-    lot_available_quantity = fields.Float(
-        'Saldo Disponible'
-    )
-
-    stock_quant_balance = fields.Float(
+    lot_balance = fields.Float(
         related='stock_production_lot_id.balance'
     )
 
@@ -78,7 +74,6 @@ class PotentialLot(models.Model):
             })
 
             item.is_reserved = True
-            item.lot_available_quantity = item.stock_quant_balance
 
     @api.multi
     def unreserved_stock(self):
@@ -100,4 +95,3 @@ class PotentialLot(models.Model):
                 ml.write({'move_id': None, 'product_uom_qty': 0})
 
             item.is_reserved = False
-            item.lot_available_quantity = item.stock_quant_balance
