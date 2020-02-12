@@ -130,6 +130,7 @@ class MrpProduction(models.Model):
     def write(self, values):
 
         models._logger.error(values)
+
         raise models.ValidationError(values)
 
         return super(MrpProduction, self).write(values)
