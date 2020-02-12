@@ -58,7 +58,7 @@ class PotentialLot(models.Model):
 
             virtual_location_production_id = item.env['stock.location'].search([
                 ('usage', '=', 'production'),
-                ('display_name', 'like', 'Virtual Locations')
+                ('location_id.name', 'like', 'Virtual Locations')
             ])
 
             stock_quant.sudo().update({
