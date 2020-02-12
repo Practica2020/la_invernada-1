@@ -26,20 +26,20 @@
                         </tr>
                         <tr>
                             <th style="border-right:1px solid;">ADDRESS/DIRECCION</th>
-                            <td style="text-align:left">Valle Hermoso Camino San Miguel Parcela 2</td>
-                        </tr>
-                        <tr>
-                            <th style="border-right:1px solid;"></th>
-                            <td style="text-align:left">Paine - Chile</td>
+                            <td style="text-align:left">
+                                <span t-field="res_company.street"></span>
+                            </td>
                         </tr>
                         <tr>
                             <th style="border-right:1px solid;">PHONE/TELEFONO</th>
-                            <td style="text-align:left">56227603340</td>
+                            <td style="text-align:left">
+                                <span t-field="res_company.phone"></span>
+                            </td>
                         </tr>
                     </table>
                 </div>
                 <div style="width:100%;position:relative;">
-                    <table style="width:50%;float:left;border:1px solid;">
+                    <table style="width:40%;float:left;border:1px solid;">
                         <tr>
                             <th style="border-right:1px solid;">SHIPPER/PROVEEDOR</th>
                             <td style="text-align:left">LA INVERNADA EXPORT SPA</td>
@@ -60,7 +60,7 @@
                 </div>
                 <br/>
                 <div style="width:100%;position:relative;">
-                    <table style="width:50%;float:left;border:1px solid;">
+                    <table style="width:40%;float:left;border:1px solid;">
                         <tr>
                             <th style="border-right:1px solid;">VESSEL/NAVE</th>
                             <td style="text-align:left">NORDIC BEIJING 933W</td>
