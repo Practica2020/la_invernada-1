@@ -228,11 +228,11 @@ class StockPicking(models.Model):
                 if not stock_picking.gross_weight:
                     message = 'Debe agregar kg brutos \n'
                 if stock_picking.gross_weight < stock_picking.weight_guide:
-                    message = 'Los kilos de la Guía no pueden ser mayores a los Kilos brutos ingresados'
+                    message += 'Los kilos de la Guía no pueden ser mayores a los Kilos brutos ingresados \n'
                 if not stock_picking.tare_weight:
-                    message = 'Debe agregar kg tara'
+                    message += 'Debe agregar kg tara \n'
                 if not stock_picking.quality_weight:
-                    message = 'Los kilos de calidad aún no han sido registrados en el sistema, no es posible cerrar el ciclo de recepción'
+                    message += 'Los kilos de calidad aún no han sido registrados en el sistema, no es posible cerrar el ciclo de recepción'
                 if message:
                     raise models.ValidationError(message)
         res = super(StockPicking, self).button_validate()
@@ -244,7 +244,6 @@ class StockPicking(models.Model):
             if mp_move.has_serial_generated and self.avg_unitary_weight:
                 self.env['stock.production.lot.serial'].search([('stock_production_lot_id', '=', self.name)]).write({'real_weight': self.avg_unitary_weight})
 
-                    
         return res
 
     @api.model
