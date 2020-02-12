@@ -29,7 +29,7 @@
 
 	<record id="paper_format_letter_horizontal" model="report.paperformat">
 		<field name="name">Carta Horizontal</field>
-		<field name="default" eval="false"/>
+
 		<field name="format">Letter</field>
 		<field name="orientation">Landscape</field>
 	</record>
