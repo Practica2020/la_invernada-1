@@ -41,7 +41,21 @@
 							<td>Nombre de Transportista</td>
 							<td><span t-field="dispatch.carrier_id"></span></td>
 						</tr>
-					</table> 
+					</table>
+					<table>
+						<tr>
+							<td>Patente Camion:</td>
+							<td><span t-field="dispatch.carrier_truck_patent"></span></td>
+						</tr>
+						<tr>
+							<td>Patente Carro:</td>
+							<td><span t-field="dispatch.carrier_cart_patent"></span></td>
+						</tr>
+						<tr>
+							<td>Run Chofer:</td>
+							<td><span t-field="dispatch.carrier_rut"></span></td>
+						</tr>
+					</table>
 				</div>
 			</t>
 		</t>
