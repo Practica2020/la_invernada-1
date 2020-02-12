@@ -11,7 +11,7 @@
 		<t t-call="web.html_container">
 			<t t-foreach="docs" t-as="dispatch">
 				<div class="page">
-					<table style="width:100% !important; border:1px solid; text-align:center;margin-bottom:25px;">
+					<table class="table report_border table-hover table-striped">
 						<tr>
 							<th style="padding:10px">
 								Informe de Despacho
