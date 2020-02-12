@@ -37,9 +37,9 @@ class MrpProduction(models.Model):
 
             production.update({
                 'potential_lot_ids': [
-                (2, to_unlink_id.id) for to_unlink_id in production.potential_lot_ids.filtered(
-                    lambda a: a.qty_to_reserve <= 0
-                )]
+                    (2, to_unlink_id.id) for to_unlink_id in production.potential_lot_ids.filtered(
+                        lambda a: a.qty_to_reserve <= 0
+                    )]
             })
 
             to_keep = [
@@ -131,7 +131,7 @@ class MrpProduction(models.Model):
 
         models._logger.error(values)
 
-        # raise models.ValidationError(values)
+        raise models.ValidationError(values)
 
         return super(MrpProduction, self).write(values)
 
