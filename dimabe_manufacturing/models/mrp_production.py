@@ -55,10 +55,10 @@ class MrpProduction(models.Model):
                 ):
                     to_add.append((0, 0, filtered_lot_id))
 
-            models._logger.error(to_add)
             production.update({
                 'potential_lot_ids': to_add + to_keep
             })
+            models._logger.error(production.potential_lot_ids)
 
     @api.model
     def get_potential_lot_ids(self):
