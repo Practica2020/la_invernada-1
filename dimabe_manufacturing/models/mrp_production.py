@@ -65,7 +65,7 @@ class MrpProduction(models.Model):
         potential_lot_ids = []
 
         domain = [
-            ('product_id', 'in', list(self.move_raw_ids.mapped('product_id.id')))
+            # ('product_id', 'in', list(self.move_raw_ids.mapped('product_id.id')))
         ]
 
         if self.client_search_id:
@@ -73,6 +73,8 @@ class MrpProduction(models.Model):
                 ('potential_client_id', '=', self.client_search_id.id),
                 ('potential_workcenter_id.id', 'in', list(self.routing_id.operation_ids.mapped('id')))
             ]).mapped('stock_production_lot_ids.name')
+
+            models._logger.error(list(self.routing_id.operation_ids.mapped('id')))
 
             domain += [('name', 'in', list(client_lot_ids) if client_lot_ids else [])]
 
