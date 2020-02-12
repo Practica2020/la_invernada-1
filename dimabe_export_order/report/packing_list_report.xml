@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <template id="packing_list_report">
+        <t t-call="web.html_container">
+            <img t-att-src="'data:image/png;base64,%s' % to_text(res_company)"/>
+        </t>
+    </template>
+    <report id="action_packing_list_report" string="Packing List" model="stock.picking" report_type="qweb-pdf"
+            name="dimabe_export_order.packing_list_report" menu="True"
+    />
+</odoo>
