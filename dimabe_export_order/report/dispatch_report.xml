@@ -25,9 +25,17 @@
 					<br/>
 					<div class="row mt32 mb32">
 						<div class="col-lg-4">
-							<table class="table table-bordered">
-								<th>Numero de Embarque</th>
-								<th><span t-field="dis.shipping_number"></span></th>
+							<table border="1">
+								<tr><th>Numero de Embarque:</th>
+								<th><span t-field="dis.shipping_number"></span></th></tr>
+								<tr>
+									<th>Guia de Despacho:</th>
+									<th><span t-field="dis.id"></span></th>
+								</tr>
+								<tr>
+									<th>Numero Contenedor:</th>
+									<th><span t-field="dis.container_number"></span></th>
+								</tr>
 							</table>
 						</div>
 					</div>
