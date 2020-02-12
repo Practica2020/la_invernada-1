@@ -53,10 +53,12 @@ class MrpProduction(models.Model):
                 if not production.potential_lot_ids.filtered(
                         lambda a: a.stock_production_lot_id.id == filtered_lot_id['stock_production_lot_id']
                 ):
+                    models._logger.error('{} {}'.format(
+                        production.potential_lot_ids.mapped('stock_production_lot_id'),
+                        filtered_lot_id['stock_production_lot_id']))
+
                     tmp_id = self.env['potential.lot'].create(filtered_lot_id)
                     to_add.append((4, tmp_id.id))
-
-            models._logger.error('{} {}'.format(to_add, to_keep))
 
             production.update({
                 'potential_lot_ids': to_add + to_keep
