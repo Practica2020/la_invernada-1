@@ -1,4 +1,4 @@
-from odoo import api, models, fields
+from odoo import fields, models, api
 
 
 class StockQuant(models.Model):
@@ -15,3 +15,10 @@ class StockQuant(models.Model):
     def _compute_balance(self):
         for item in self:
             item.balance = item.quantity - item.reserved_quantity
+
+    @api.onchange('balance')
+    def onchange_balance(self):
+        for item in self:
+            if item.lot_id:
+                item.lot_id.stock_quant_balance = item.balance
+
