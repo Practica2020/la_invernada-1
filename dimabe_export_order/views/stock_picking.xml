@@ -63,11 +63,10 @@
           </page>
         </xpath>
         <xpath expr="//page[@name='note']" position="after">
-          <page string="Informe de Despacho" id="dispatch_report">
+          <page string="Informe de Despacho" id="dispatch_report" attrs="{'invisible':[('picking_type_code', '!=', 'outgoing')]}">
             <group name="dispatch_report" position="inside">
               <group string="Informe" style="width=100%">
                 <group>
-                  <field eval="2" name="priority"/>
                   <field name="picture" widget="many2many_binary" domain="[('datas_fname','=','image/jpeg')]"/>
                   <button string="Crear Reporte" name="generate_report" type="object"/>
                 </group>
