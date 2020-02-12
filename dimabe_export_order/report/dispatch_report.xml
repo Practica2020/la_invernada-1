@@ -12,7 +12,8 @@
 			<t t-foreach="docs" t-as="o" style="margin:0px;">
 				<div class="page" style="margin:0px;">
 					<table style="width:100% !important; border:1px solid; text-align:center;">
-						<th style="padding:10px">
+						<tr>
+							<th style="padding:10px">
 							Informe de Despacho
 						</th>
 						<th>
@@ -21,6 +22,7 @@
 								style="width:200px !important;"
 							/>
 						</th>
+						</tr>
 					</table>
 				</div>
 			</t>
@@ -29,7 +31,6 @@
 
 	<record id="paper_format_letter_horizontal" model="report.paperformat">
 		<field name="name">Carta Horizontal</field>
-
 		<field name="format">Letter</field>
 		<field name="orientation">Landscape</field>
 	</record>
