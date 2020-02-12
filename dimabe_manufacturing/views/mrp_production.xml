@@ -11,9 +11,6 @@
                   attrs="{'invisible':[('state', '!=', 'progress')]}"
           />
         </xpath>
-        <button name="button_plan" position="attributes">
-          <attibute name="invisible">[('id','=',False)]</attibute>
-        </button>
         <button name="action_assign" position="replace">
         </button>
         <button name="button_unreserve" position="replace">

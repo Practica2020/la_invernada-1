@@ -137,6 +137,7 @@ class MrpProduction(models.Model):
 
     @api.multi
     def button_plan(self):
+        raise models.ValidationError(self.id)
         for order in self:
             # if sum(order.move_raw_ids.filtered(lambda a: a.is_mp).mapped('reserved_availability')) < order.product_qty:
             #     raise models.ValidationError('la cantidad a consumir no puede ser menor a la cantidad a producir')
