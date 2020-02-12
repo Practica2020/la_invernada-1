@@ -27,10 +27,13 @@
 		</t>
 	</template>
 
-	<record id="paper_format_letter_horizontal">
+	<record id="paper_format_letter_horizontal" model="report.paperformat">
 		<field name="name">Carta Horizontal</field>
+		<field name="default" eval="false"/>
+		<field name="format">Letter</field>
 		<field name="orientation">Landscape</field>
 	</record>
+
 	<report id="action_dispatch_guide_report" string="Guia de despacho" model="stock.picking" report_type="qweb-pdf" name="dimabe_export_order.report_dispatch_guide" menu="True" paperformat="paper_format_letter_horizontal"/>
 	<report id="action_dispatch_label_report" string="Informe despacho" model="ir.attachment" report_type="qweb-pdf" name="dimabe_export_order.report_truck_dispatch" />
 </odoo>
