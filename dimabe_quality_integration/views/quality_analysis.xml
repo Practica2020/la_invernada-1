@@ -76,9 +76,6 @@
         <field name="impurity_analysis_3" readonly="1"/>
         <field name="analysis_observations" readonly="1"/>
         <field name="category" readonly="1"/>
-        <field name="potential_client_id"
-               domain="[('customer', '=', True)]"
-        />
       </tree>
     </field>
   </record>

@@ -7,8 +7,6 @@ class QualityAnalysis(models.Model):
         clase que almacena los datos de calidad del sistema dimabe
     """
 
-    potential_client_id = fields.Many2one('res.partner', 'Posible Cliente')
-
     stock_production_lot_ids = fields.One2many(
         'stock.production.lot',
         'quality_analysis_id',
