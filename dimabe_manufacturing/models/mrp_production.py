@@ -131,8 +131,6 @@ class MrpProduction(models.Model):
 
         models._logger.error(values)
 
-        raise models.ValidationError(values)
-
         return super(MrpProduction, self).write(values)
 
     @api.multi
