@@ -38,7 +38,8 @@
         'views/views.xml',
         'views/mrp_dispatched.xml',
         'views/mrp_workcenter.xml',
-        'views/quality_analysis.xml'
+        'views/quality_analysis.xml',
+        'views/product_category.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
