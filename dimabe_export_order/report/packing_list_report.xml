@@ -10,7 +10,7 @@
                 />
                 <div>
                     <table border="1">
-                        <tr style="text-align:center;">
+                        <tr colspan="2" style="text-align:center;">
                             PACKING LIST N°
                         </tr>
                     </table>
