@@ -80,7 +80,8 @@
                     <div style="width:100%;position:relative;">
                         <table style="width:100% !important; border:1px solid;">
                             <tr style="text-align:center;" >
-                                <td style="text-align:center;" colspan="2">PESAJES</td>
+                                <th style="text-align:center;" colspan="2">PESAJES</th>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th>PESO CON CARGA</th>
