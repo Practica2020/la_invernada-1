@@ -18,6 +18,7 @@ class StockQuant(models.Model):
 
     @api.onchange('balance')
     def onchange_balance(self):
+        raise models.ValidationError('lal')
         for item in self:
             if item.lot_id and item.location_id.name == 'Stock':
                 item.lot_id.stock_quant_balance = item.balance
