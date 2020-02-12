@@ -117,13 +117,6 @@ class MrpProduction(models.Model):
     def create(self, values_list):
         res = super(MrpProduction, self).create(values_list)
 
-        regs = [
-            (0, 0, potential_lot) for potential_lot in res.get_potential_lot_ids()
-        ]
-
-        res.update({
-            'potential_lot_ids': regs})
-
         stock_picking = self.env['stock.picking'].search([
             ('name', '=', res.origin)
         ])
