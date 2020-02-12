@@ -32,6 +32,6 @@ class StockQuant(models.Model):
     @api.model
     def set_balance_on_lot(self):
         if self.lot_id and self.location_id.name == 'Stock':
-            self.lot_id.stock_quant_balance = self.balance
+            self.lot_id.balance = self.balance
 
 

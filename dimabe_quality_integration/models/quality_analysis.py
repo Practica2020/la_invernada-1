@@ -15,14 +15,9 @@ class QualityAnalysis(models.Model):
 
     lot_balance = fields.Float(
         'Stock Disponible',
-        related='stock_production_lot_ids.stock_quant_balance',
+        related='stock_production_lot_ids.balance',
         store=True
     )
-
-    # @api.multi
-    # def get_lot_balance(self):
-    #     for item in self:
-    #         return item.stock_production_lot_ids.quant_ids.filtered(lambda a: a.location_id.name == 'Stock').balance
 
     lot_name = fields.Char(
         compute='_compute_lot_name'
