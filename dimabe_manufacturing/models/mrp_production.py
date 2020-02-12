@@ -138,10 +138,15 @@ class MrpProduction(models.Model):
     @api.multi
     def button_plan(self):
         for order in self:
-            if sum(order.move_raw_ids.filtered(
-                    lambda a: not a.product_id.categ_id.reserve_ignore).mapped('reserved_availability')
-                   ) < order.product_qty:
-                raise models.ValidationError('la cantidad a consumir no puede ser menor a la cantidad a producir')
+            total_reserved = sum(order.move_raw_ids.filtered(
+                lambda a: not a.product_id.categ_id.reserve_ignore).mapped('reserved_availability')
+                                 )
+            if total_reserved < order.product_qty:
+                raise models.ValidationError(
+                    'la cantidad a consumir ({}) no puede ser menor a la cantidad a producir ({})'.format(
+                        total_reserved, order.product_qty
+                    )
+                )
 
             for stock_move in order.move_raw_ids:
                 if not stock_move.product_id.categ_id.reserve_ignore:
@@ -152,7 +157,8 @@ class MrpProduction(models.Model):
 
                 stock_move.unit_factor = stock_move.product_uom_qty / order.product_qty
                 if stock_move.product_uom_qty == 0 and not stock_move.product_id.categ_id.reserve_ignore:
-                    models._logger.error('{} {}'.format(stock_move.product_id.categ_id.name,stock_move.product_id.categ_id.reserve_ignore))
+                    models._logger.error('{} {}'.format(stock_move.product_id.categ_id.name,
+                                                        stock_move.product_id.categ_id.reserve_ignore))
                     stock_move.update({
                         'raw_material_production_id': None
                     })
