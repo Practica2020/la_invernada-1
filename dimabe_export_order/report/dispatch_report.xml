@@ -36,7 +36,7 @@
                                 <tr>
                                     <th style="border-right:1px solid;">GUIA DESPACHO</th>
                                     <td>
-                                        <span t-field="dis.id"></span>
+                                        <span t-field="dis.guide_number"></span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -53,30 +53,38 @@
                                 </tr>
                             </table>
                         </div>
-						<div style="width:50%;float:left" cellspacing="0">
-							<table style="text-align:left;border:1px solid;width:100%;margin-left:15%;">
-								<tr>
-									<th style="border-right:1px solid;">PATENTE CAMION</th>
-									<td style="text-right !important">
-										<span t-field="dis.carrier_truck_patent"></span>
-									</td>
-								</tr>
-								<tr>
-									<th style="border-right:1px solid;">PATENTE CARRO</th>
-									<td style="text-right !important">
-										<span t-field="dis.carrier_cart_patent"></span>
-									</td>
-								</tr>
-								<tr>
-									<th style="border-right:1px solid;">RUN CHOFER</th>
-									<td style="text-right !important">
-										<span t-field="dis.carrier_rut"></span>
-									</td>
-								</tr>
-							</table>
-						</div>
+                        <div style="width:50%;float:left" cellspacing="0">
+                            <table style="text-align:left;border:1px solid;width:85%;margin-left:15%;">
+                                <tr>
+                                    <th style="border-right:1px solid;">PATENTE CAMION</th>
+                                    <td style="text-right !important">
+                                        <span t-field="dis.carrier_truck_patent"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="border-right:1px solid;">PATENTE CARRO</th>
+                                    <td style="text-right !important">
+                                        <span t-field="dis.carrier_cart_patent"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="border-right:1px solid;">RUN CHOFER</th>
+                                    <td style="text-right !important">
+                                        <span t-field="dis.carrier_rut"></span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
-
+                    <br/>
+					<div style="width:100%;position:relative;">
+						<table style="width:100% !important; border:1px solid;">
+							<th>PESO CON CARGA</th>
+							<td>
+								<span t-field="dis.gross_weight"></span>
+							</td>
+						</table>
+					</div>
                 </div>
             </t>
         </t>
