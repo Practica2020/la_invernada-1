@@ -1,5 +1,5 @@
 <odoo>
-  <record id="quality_analysis_tree_view_inherit" model="ir.ui.model">
+  <record id="quality_analysis_tree_view_inherit" model="ir.ui.view">
     <field name="name">Listado de Calidad</field>
     <field name="moddel">quality.analysis</field>
     <field name="inherit_id" ref="dimabe_quality_integration.quality_analysis_tree_view" />
