@@ -79,8 +79,8 @@
                     <br/>
                     <div style="width:100%;position:relative;">
                         <table style="width:100% !important; border:1px solid;">
-                            <tr style="text-align:center;" colspan="2">
-                                <td style="text-align:center;">PESAJES</td>
+                            <tr style="text-align:center;" >
+                                <td style="text-align:center;" colspan="2">PESAJES</td>
                             </tr>
                             <tr>
                                 <th>PESO CON CARGA</th>
