@@ -86,14 +86,14 @@ class MrpProduction(models.Model):
             res = self.env['stock.production.lot'].search(domain)
 
         for pl in res:
-            if pl.stock_quant_balance > 0:
-                pl.lot_available_quantity = pl.stock_quant_balance
+            if pl.balance > 0:
+                pl.lot_available_quantity = pl.balance
                 potential_lot_ids.append(pl)
 
         return [{
             'stock_production_lot_id': lot.id,
             'mrp_production_id': self.id,
-            'lot_available_quantity': lot.stock_quant_balance
+            'lot_available_quantity': lot.balance
         } for lot in potential_lot_ids]
 
     @api.multi
