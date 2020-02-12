@@ -50,12 +50,13 @@ class MrpProduction(models.Model):
             to_add = []
 
             for filtered_lot_id in filtered_lot_ids:
-
                 if not production.potential_lot_ids.filtered(
                         lambda a: a.stock_production_lot_id.id == filtered_lot_id['stock_production_lot_id']
                 ):
                     to_add.append(filtered_lot_id)
+
             to_add_processed = []
+
             for new_add in to_add:
                 tmp_id = self.env['potential.lot'].create(new_add)
                 to_add_processed.append((4, tmp_id.id))
@@ -133,13 +134,6 @@ class MrpProduction(models.Model):
             })
 
         return res
-
-    @api.multi
-    def write(self, values):
-
-        models._logger.error(values)
-
-        return super(MrpProduction, self).write(values)
 
     @api.multi
     def button_plan(self):

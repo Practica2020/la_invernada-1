@@ -50,6 +50,7 @@ class PotentialLot(models.Model):
         for item in self:
             if not item.qty_to_reserve > 0:
                 raise models.ValidationError('debe agregar la cantidad a reservar')
+            models._logger.error(item.qty_to_reserve)
 
             stock_move = item.mrp_production_id.move_raw_ids.filtered(lambda a: a.product_id == item.lot_product_id)
 
