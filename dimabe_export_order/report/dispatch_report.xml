@@ -9,54 +9,28 @@
 	</template>
 	<template id="report_dispatch_guide">
 		<t t-call="web.html_container">
-			<t t-foreach="docs" t-as="dispatch">
+			<t t-foreach="docs" t-as="dis">
 				<div class="page">
-					<table style="width:100% !important; border:1px solid; text-align:center;margin-bottom:25px;">
-						<tr>
-							<th style="padding:10px">
-								Informe de Despacho
+					<table style="width:100% !important; border:1px solid; text-align:center;">
+						<tr style="padding:10px;">
+							<th>REGISTRO ORDEN DE DESPACHO</th>
+							<th>
+								<img
+									t-att-src="'data:image/png;base64%s' % to_text(res_company.logo)"
+									style="width:200px !important;"
+								/>
 							</th>
-						<th>
-							<img
-								t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)"
-								style="width:200px !important;"
-							/>
-						</th>
-						</tr>
-					</table>
-					<table class="table report_border table-hover table-bordered table-striped">
-						<tr>
-							<td style="font-weight:bold;">Numero de Embarque:</td>
-							<td><span t-field="dispatch.shipping_number"></span></td>
-						</tr>
-						<tr>
-							<td style="font-weight:bold;">Guia de Despacho</td>
-							<td><span t-field="dispatch.id"></span></td>
-						</tr>
-						<tr>
-							<td style="font-weight:bold;">Numero de Contenedor</td>
-							<td><span t-field="dispatch.container_number"></span></td>
-						</tr>
-						<tr>
-							<td style="font-weight:bold;">Nombre de Transportista</td>
-							<td><span t-field="dispatch.carrier_id"></span></td>
 						</tr>
 					</table>
 					<br/>
-					<table style="border:1px solid; !important;text-align:center;">
-						<tr>
-							<td style="font-weight:bold;">Patente Camion:</td>
-							<td><span t-field="dispatch.carrier_truck_patent"></span></td>
-						</tr>
-						<tr>
-							<td style="font-weight:bold;">Patente Carro:</td>
-							<td><span t-field="dispatch.carrier_cart_patent"></span></td>
-						</tr>
-						<tr>
-							<td style="font-weight:bold;">Run Chofer:</td>
-							<td><span t-field="dispatch.carrier_rut"></span></td>
-						</tr>
-					</table>
+					<div class="row mt32 mb32">
+						<div class="col-lg-4">
+							<table class="table table-bordered">
+								<th>Numero de Embarque</th>
+								<th><span t-field="dis.shipping_number"></span></th>
+							</table>
+						</div>
+					</div>
 				</div>
 			</t>
 		</t>
