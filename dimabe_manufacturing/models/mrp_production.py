@@ -71,10 +71,10 @@ class MrpProduction(models.Model):
         if self.client_search_id:
             client_lot_ids = self.env['quality.analysis'].search([
                 ('potential_client_id', '=', self.client_search_id.id),
-                ('potential_workcenter_id.id', 'in', list(self.routing_id.operation_ids.mapped('id')))
+                ('potential_workcenter_id.id', 'in', list(self.routing_id.operation_ids.mapped('workcenter_id.id')))
             ]).mapped('stock_production_lot_ids.name')
 
-            models._logger.error(list(self.routing_id.operation_ids.mapped('id')))
+            models._logger.error(list(self.routing_id.operation_ids.mapped('workcenter_id.id')))
 
             domain += [('name', 'in', list(client_lot_ids) if client_lot_ids else [])]
 
