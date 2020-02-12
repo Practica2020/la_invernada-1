@@ -53,7 +53,30 @@
                                 </tr>
                             </table>
                         </div>
+						<div style="width:50%;float:left" cellspacing="0">
+							<table style="text-align:left;border:1px solid;width:85%;margin-left:15%;">
+								<tr>
+									<th style="border-right:1px solid;">PATENTE CAMION</th>
+									<td style="text-right !important">
+										<span t-field="dis.carrier_truck_patent"></span>
+									</td>
+								</tr>
+								<tr>
+									<th style="border-right:1px solid;">PATENTE CARRO</th>
+									<td style="text-right !important">
+										<span t-field="dis.carrier_cart_patent"></span>
+									</td>
+								</tr>
+								<tr>
+									<th style="border-right:1px solid;">RUN CHOFER</th>
+									<td style="text-right !important">
+										<span t-field="dis.carrier_rut"></span>
+									</td>
+								</tr>
+							</table>
+						</div>
                     </div>
+
                 </div>
             </t>
         </t>
