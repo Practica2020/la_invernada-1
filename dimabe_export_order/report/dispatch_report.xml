@@ -43,7 +43,7 @@
 						</tr>
 					</table>
 					<br/>
-					<table style="width:50%; border:1px solid; !important;text-align:center;">
+					<table style="width:50%; border:1px solid; !important;text-align:center;display:inline-block;">
 						<tr>
 							<td style="font-weight:bold;">Patente Camion:</td>
 							<td><span t-field="dispatch.carrier_truck_patent"></span></td>
