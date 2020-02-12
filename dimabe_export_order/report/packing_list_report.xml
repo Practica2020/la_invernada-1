@@ -21,7 +21,7 @@
                         <tr>
                             <th style="border-right:1px solid;">SHIPPER/PROVEEDOR</th>
                             <td style="text-align:left">
-                                <span t-field="res.company.name"></span>
+                                <span t-field="res_company.name"></span>
                             </td>
                         </tr>
                         <tr>
