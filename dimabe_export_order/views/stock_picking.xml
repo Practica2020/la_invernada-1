@@ -63,7 +63,7 @@
           </page>
         </xpath>
         <xpath expr="//page[@name='note']" position="after">
-          <page string="Informe de Despacho" id="dispatch_report" attrs="{'invisible':[('picking_type_code', '!=', 'outgoing')]}">
+          <page string="Despacho" id="dispatch_report" attrs="{'invisible':[('picking_type_code', '!=', 'outgoing')]}">
             <group name="dispatch_report" position="inside">
               <group string="Informe" style="width=100%">
                 <group>
