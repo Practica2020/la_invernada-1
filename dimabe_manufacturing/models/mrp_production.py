@@ -67,14 +67,8 @@ class MrpProduction(models.Model):
 
     @api.model
     def get_potential_lot_ids(self):
-        potential_lot_ids = []
-
-        domain = [
-            # ('product_id', 'in', list(self.move_raw_ids.mapped('product_id.id')))
-        ]
-
+        domain = [('lot_balance', '>', 0)]
         res = []
-
         if self.client_search_id:
             client_lot_ids = self.env['quality.analysis'].search([
                 ('potential_client_id', '=', self.client_search_id.id),
@@ -85,16 +79,15 @@ class MrpProduction(models.Model):
 
             res = self.env['stock.production.lot'].search(domain)
 
-        for pl in res:
-            if pl.balance > 0:
-                pl.lot_available_quantity = pl.balance
-                potential_lot_ids.append(pl)
+        # for pl in res:
+        #     if pl.balance > 0:
+        #         pl.lot_available_quantity = pl.balance
+        #         potential_lot_ids.append(pl)
 
         return [{
             'stock_production_lot_id': lot.id,
-            'mrp_production_id': self.id,
-            'lot_available_quantity': lot.balance
-        } for lot in potential_lot_ids]
+            'mrp_production_id': self.id
+        } for lot in res]
 
     @api.multi
     def set_stock_move(self):
