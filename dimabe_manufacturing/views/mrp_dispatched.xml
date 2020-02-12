@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <tree string="Dispatched">
                     <field name="name" />
-                    <field name="has_mrp_production" />
+                    <field name="has_mrp_production" invisible="1" />
                     <field name="required_loading_date" string="Fecha de Carga" />
                     <field name="partner_id" string="Cliente" />
                     <field name="country" string="Pais" />
@@ -37,7 +37,7 @@
             <field name="view_id" ref="view_mrp_dispatched_tree" />
             <field name="view_mode">tree,form</field>
             <field name="domain">
-                [('state','!=','cancel'),('origin','!=',None),('picking_type_code','=','outgoing'),('has_mrp_production','!=',True)]
+                [('state','!=','cancel'),('state','!=','done'),('origin','!=',None),('picking_type_code','=','outgoing'),('has_mrp_production','!=',True)]
             </field>
         </record>
         <menuitem id="menu_mrp_dispatched_root"
