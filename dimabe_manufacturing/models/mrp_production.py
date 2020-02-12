@@ -133,7 +133,7 @@ class MrpProduction(models.Model):
 
         raise models.ValidationError(values)
 
-        return super(MrpProduction, self).write(values)
+        # return super(MrpProduction, self).write(values)
 
     @api.multi
     def button_plan(self):
