@@ -31,6 +31,7 @@
     <field name="arch" type="xml">
       <tree delete="false" editable="bottom" create="false">
         <field name="lot_name" readonly="1"/>
+        <field name="stock_quant_balance" />
         <field name="pre_caliber" readonly="1"/>
         <field name="caliber_1" readonly="1" />
         <field name="caliber_2" readonly="1" />
