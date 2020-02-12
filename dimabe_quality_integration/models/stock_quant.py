@@ -16,10 +16,22 @@ class StockQuant(models.Model):
         for item in self:
             item.balance = item.quantity - item.reserved_quantity
 
-    @api.onchange('balance')
-    def onchange_balance(self):
-        raise models.ValidationError('lal')
+    @api.model
+    def create(self, vals_list):
+        res = super(StockQuant, self).create(vals_list)
+        res.set_balance_on_lot()
+        return res
+
+    @api.multi
+    def write(self, vals):
+        res = super(StockQuant, self).write(vals)
         for item in self:
-            if item.lot_id and item.location_id.name == 'Stock':
-                item.lot_id.stock_quant_balance = item.balance
+            item.set_balance_on_lot()
+        return res
+
+    @api.model
+    def set_balance_on_lot(self):
+        if self.lot_id and self.location_id.name == 'Stock':
+            self.lot_id.stock_quant_balance = self.balance
+
 
