@@ -24,7 +24,7 @@
 						</th>
 						</tr>
 					</table>
-					<table class="table report_border table-hover table-striped">
+					<table class="table report_border table-hover table-bordered table-striped">
 						<tr>
 							<td style="font-weight:bold;">Numero de Embarque:</td>
 							<td><span t-field="dispatch.shipping_number"></span></td>
