@@ -84,19 +84,19 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <th>PESO CON CARGA</th>
+                                <th style="text-align:left;">PESO CON CARGA</th>
                                 <td>
                                     <span t-field="dis.gross_weight"></span>
                                 </td>
                             </tr>
                             <tr>
-                                <th>PESO SIN CARGA</th>
+                                <th style="text-align:left;">PESO SIN CARGA</th>
                                 <td>
                                     <span t-field="dis.tare_weight"></span>
                                 </td>
                             </tr>
                             <tr>
-                                <th>PESO NETO</th>
+                                <th style="text-align:left;">PESO NETO</th>
                                 <td>
                                     <span t-field="dis.net_weight"></span>
                                 </td>
