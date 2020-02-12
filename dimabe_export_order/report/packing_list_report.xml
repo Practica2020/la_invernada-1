@@ -8,6 +8,28 @@
                         t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)"
                         style="width:200px !important;"
                 />
+                <div>
+                    <table>
+                        <tr>
+                            PACKING LIST N°
+                        </tr>
+                    </table>
+
+                    <table>
+                       <tr>
+                           <th>SHIPPER/PROVEEDOR</th>
+                           <td></td>
+                       </tr>
+                        <tr>
+                            <th>ADDRESS/DIRECCION</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>PHONE/TELEFONO</th>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
             </t>
         </t>
 
