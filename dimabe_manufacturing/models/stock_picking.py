@@ -19,7 +19,7 @@ class StockPicking(models.Model):
     country_id = fields.Char(related='partner_id.country_id.name')
 
     quantity_done = fields.Float(
-        related='product.product_uom_qty')
+        related='product_id.product_uom_qty')
 
     product_id = fields.Many2one(related="sale_id.order_line.product_id")
 
