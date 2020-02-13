@@ -16,7 +16,8 @@ class MrpWorkorder(models.Model):
 
     byproduct_move_line_ids = fields.One2many(
         'stock.move.line',
-        compute='_compute_byproduct_move_line_ids'
+        compute='_compute_byproduct_move_line_ids',
+        string='subproductos'
     )
 
     @api.multi
