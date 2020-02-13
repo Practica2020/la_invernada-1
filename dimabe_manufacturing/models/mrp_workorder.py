@@ -33,10 +33,6 @@ class MrpWorkorder(models.Model):
 
         res.final_lot_id = final_lot.id
 
-        for move_line in res.active_move_line_ids:
-            move_line.update({
-                'is_raw': True
-            })
         return res
 
     @api.multi
@@ -46,7 +42,11 @@ class MrpWorkorder(models.Model):
 
             if item.active_move_line_ids and\
                     not item.active_move_line_ids.filtered(lambda a: a.is_raw):
-                raise models.ValidationError(item.active_move_line_ids)
+                for move_line in item.active_move_line_ids:
+                    move_line.update({
+                        'is_raw': True
+                    })
+                # raise models.ValidationError(item.active_move_line_ids)
 
         res = super(MrpWorkorder, self).write(vals)
 
