@@ -67,7 +67,12 @@ class MrpProduction(models.Model):
 
     @api.model
     def get_potential_lot_ids(self):
-        domain = [('balance', '>', 0)]
+        domain = [
+            ('balance', '>', 0),
+            ('product_id.id', 'in', list(self.move_raw_ids.filtered(
+                lambda a: not a.product_id.categ_id.reserve_ignore
+            ).mapped('product_id.id'))),
+        ]
         res = []
         if self.client_search_id:
             client_lot_ids = self.env['quality.analysis'].search([
