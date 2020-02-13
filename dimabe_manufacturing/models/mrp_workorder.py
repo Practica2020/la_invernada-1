@@ -37,6 +37,7 @@ class MrpWorkorder(models.Model):
             move_line.update({
                 'is_raw': True
             })
+        raise models.ValidationError(res.active_move_line_ids.mapped('is_raw'))
 
         return res
 
