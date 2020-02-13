@@ -58,6 +58,7 @@ class PurchaseOrder(models.Model):
         res = super(PurchaseOrder, self).button_confirm()
         template_id = self.env.ref('dimabe_purchase_process.po_confirmed_mail_template')
         for order in self:
+            models._logger.error(order)
             order.message_post_with_template(template_id.id)
         return res
 
