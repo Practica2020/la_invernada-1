@@ -44,7 +44,9 @@ class MrpWorkorder(models.Model):
 
         for item in self:
 
-            raise models.ValidationError(item.active_move_line_ids)
+            if item.active_move_line_ids and\
+                    not item.active_move_line_ids.filtered(lambda a: a.is_raw):
+                raise models.ValidationError(item.active_move_line_ids)
 
         res = super(MrpWorkorder, self).write(vals)
 
