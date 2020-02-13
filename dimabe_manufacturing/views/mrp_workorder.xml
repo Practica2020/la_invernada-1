@@ -3,7 +3,7 @@
     <record id="seq_stock_production_lot" model="ir.sequence">
       <field name="name">mrp workorder</field>
       <field name="code">mrp.workorder</field>
-      <field name="prefix">PRD</field>
+      <field name="prefix">2019</field>
       <field name="padding">5</field>
 <!--      <field name="number_next">60100</field>-->
       <field name="company_id" eval="False"/>
