@@ -18,10 +18,9 @@ class StockPicking(models.Model):
 
     country_id = fields.Char(related='partner_id.country_id.name')
 
-    product_uom_qty = fields.Float(
-        related='product.product_uom_qty')
-
     product_id = fields.Many2one(related="sale_id.order_line.product_id")
+
+    quantity_requested = fields.Float(related='sale_id.order_line.product_uom_qty')
 
     @api.multi
     def return_action(self):
@@ -33,12 +32,12 @@ class StockPicking(models.Model):
             procurement_group = procurement_group[0]
 
         context = {
-            'default_product_id': self.product.id,
-            'default_product_uom_qty': self.quantity_done,
+            'default_product_id': self.product_id.id,
+            'default_product_uom_qty': self.quantity_requested,
             'default_origin': self.name,
             'default_procurement_group_id': procurement_group.id,
             'default_client_search_id': self.partner_id.id,
-            'default_requested_qty': self.quantity_done
+            'default_requested_qty': self.quantity_requested
         }
 
         return {
