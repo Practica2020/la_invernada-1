@@ -37,7 +37,16 @@ class MrpWorkorder(models.Model):
             move_line.update({
                 'is_raw': True
             })
-        raise models.ValidationError(res.active_move_line_ids)
+        return res
+
+    @api.multi
+    def write(self, vals):
+
+        for item in self:
+
+            raise models.ValidationError(item.active_move_line_ids)
+
+        res = super(MrpWorkorder, self).write(vals)
 
         return res
 
