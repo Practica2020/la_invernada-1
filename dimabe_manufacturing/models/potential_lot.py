@@ -12,12 +12,8 @@ class PotentialLot(models.Model):
         related='stock_production_lot_id.product_id'
     )
 
-    lot_available_quantity = fields.Float(
-        'Saldo Disponible'
-    )
-
-    stock_quant_balance = fields.Float(
-        related='stock_production_lot_id.stock_quant_balance'
+    lot_balance = fields.Float(
+        related='stock_production_lot_id.balance'
     )
 
     stock_production_lot_id = fields.Many2one('stock.production.lot', 'lote potencial')
@@ -57,7 +53,7 @@ class PotentialLot(models.Model):
 
             virtual_location_production_id = item.env['stock.location'].search([
                 ('usage', '=', 'production'),
-                ('display_name', 'like', 'Virtual Locations')
+                ('location_id.name', 'like', 'Virtual Locations')
             ])
 
             stock_quant.sudo().update({
@@ -69,7 +65,7 @@ class PotentialLot(models.Model):
                     (0, 0, {
                         'product_id': item.lot_product_id.id,
                         'lot_id': item.stock_production_lot_id.id,
-                        'product_uom_qty': stock_move.reserved_availability + item.qty_to_reserve,
+                        'product_uom_qty': item.qty_to_reserve,
                         'product_uom_id': stock_move.product_uom.id,
                         'location_id': stock_quant.location_id.id,
                         'location_dest_id': virtual_location_production_id.id
@@ -78,7 +74,6 @@ class PotentialLot(models.Model):
             })
 
             item.is_reserved = True
-            item.lot_available_quantity = item.stock_quant_balance
 
     @api.multi
     def unreserved_stock(self):
@@ -100,4 +95,3 @@ class PotentialLot(models.Model):
                 ml.write({'move_id': None, 'product_uom_qty': 0})
 
             item.is_reserved = False
-            item.lot_available_quantity = item.stock_quant_balance

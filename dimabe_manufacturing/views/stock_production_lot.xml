@@ -1,39 +1,26 @@
 <odoo>
-    <record id="view_production_lot_form_simple_inherit" model="ir.ui.view">
-      <field name="name">Pesajes de Lote</field>
-      <field name="model">stock.production.lot</field>
-      <field name="inherit_id" ref="stock.view_production_lot_form_simple"/>
-      <field name="arch" type="xml">
-        <group name="main_group" position="inside">
-          <field name="available_quantity" />
-<!--          <field name="quant_ids">-->
-<!--            <tree>-->
-<!--              <field name="product_id" />-->
-<!--              <field name="location_id" />-->
-<!--              <field name="lot_id" />-->
-<!--              <field name="reserved_quantity" />-->
-<!--              <field name="quantity" />-->
-<!--              <field name="balance" />-->
-<!--              <field name="product_uom_id" />-->
-<!--              <field name="company_id" />-->
-<!--            </tree>-->
-<!--          </field>-->
-          <field name="stock_production_lot_serial_ids">
-            <tree editable="bottom">
-              <field name="stock_production_lot_id" readonly="1"/>
-              <field name="display_weight"/>
-              <field name="serial_number" readonly="1"/>
-              <field name="production_id"
-                     readonly="1"
-                     widget="many2onebutton"
-              />
-              <button name="print_serial_label"
-                      type="object" string="Imprimir"
-                      attrs="{'invisible':['|',('serial_number', '=', False), ('production_id', '=', False)]}"
-              />
-            </tree>
-          </field>
-        </group>
-      </field>
-    </record>
+  <record id="view_production_lot_form_simple_inherit" model="ir.ui.view">
+    <field name="name">Pesajes de Lote</field>
+    <field name="model">stock.production.lot</field>
+    <field name="inherit_id" ref="stock.view_production_lot_form_simple"/>
+    <field name="arch" type="xml">
+      <group name="main_group" position="inside">
+        <field name="stock_production_lot_serial_ids">
+          <tree editable="bottom">
+            <field name="stock_production_lot_id" readonly="1"/>
+            <field name="display_weight"/>
+            <field name="serial_number" readonly="1"/>
+            <field name="production_id"
+                   readonly="1"
+                   widget="many2onebutton"
+            />
+            <button name="print_serial_label"
+                    type="object" string="Imprimir"
+                    attrs="{'invisible':['|',('serial_number', '=', False), ('production_id', '=', False)]}"
+            />
+          </tree>
+        </field>
+      </group>
+    </field>
+  </record>
 </odoo>

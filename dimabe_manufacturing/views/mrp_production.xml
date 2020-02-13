@@ -28,13 +28,13 @@
         <xpath expr="//page[@name='miscellaneous']" position="after">
           <page string="Seleccionar Lote">
             <group>
-              <field name="client_search_id" />
+              <field name="client_search_id" attrs="{'invisible':[('state','=','done')]}" />
               <field name="stock_lots" invisible="1"/>
-              <field name="potential_lot_ids" readonly="0">
+              <field name="potential_lot_ids" readonly="0" string="">
                 <tree editable="bottom" edit="true" delete="false" create="false">
                   <field name="stock_production_lot_id" readonly="1" widget="many2onebutton"/>
                   <field name="lot_product_id" readonly="1"/>
-                  <field name="lot_available_quantity" readonly="1" force_save="1"/>
+                  <field name="lot_balance" readonly="1" force_save="1"/>
                   <field name="is_reserved" invisible="1"/>
                   <field name="mrp_production_state" invisible="1"/>
                   <button string="Reservar"
