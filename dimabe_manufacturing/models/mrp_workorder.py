@@ -27,7 +27,8 @@ class MrpWorkorder(models.Model):
 
         final_lot = self.env['stock.production.lot'].create({
             'name': name,
-            'product_id': res.product_id.id
+            'product_id': res.product_id.id,
+            'is_prd_lot': True
         })
 
         res.final_lot_id = final_lot.id
@@ -42,7 +43,8 @@ class MrpWorkorder(models.Model):
                 if not check.lot_id:
                     lot_tmp = self.env['stock.production.lot'].create({
                         'name': self.env['ir.sequence'].next_by_code('mrp.workorder'),
-                        'product_id': check.component_id.id
+                        'product_id': check.component_id.id,
+                        'is_prd_lot': True
                     })
                     check.lot_id = lot_tmp.id
                 if check.quality_state == 'none':

@@ -6,6 +6,8 @@
     <field name="arch" type="xml">
       <group name="main_group" position="inside">
         <field name="balance" />
+        <field name="is_prd_lot" />
+
         <field name="stock_production_lot_serial_ids">
           <tree editable="bottom">
             <field name="stock_production_lot_id" readonly="1"/>

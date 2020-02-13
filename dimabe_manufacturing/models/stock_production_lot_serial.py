@@ -13,7 +13,8 @@ class StockProductionLotSerial(models.Model):
     def create(self, values_list):
         res = super(StockProductionLotSerial, self).create(values_list)
         stock_move_line = self.env['stock.move.line'].search([
-            ('lot_id', '=', res.stock_production_lot_id.id)
+            ('lot_id', '=', res.stock_production_lot_id.id),
+            ('is_prd_lot', '=', True)
         ])
         if stock_move_line.move_id.production_id:
             res.production_id = stock_move_line.move_id.production_id[0].id
