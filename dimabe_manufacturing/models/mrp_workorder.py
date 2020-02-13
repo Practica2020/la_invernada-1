@@ -14,6 +14,12 @@ class MrpWorkorder(models.Model):
         compute='_compute_material_product_ids'
     )
 
+    byproduct_move_line_ids = fields.One2many(
+        'stock.move.line',
+        related='active_move_line_ids',
+        domain=[('is_raw', '=', False)]
+    )
+
     @api.multi
     def _compute_material_product_ids(self):
         for item in self:
