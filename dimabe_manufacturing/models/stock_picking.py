@@ -6,6 +6,23 @@ class StockPicking(models.Model):
 
     has_mrp_production = fields.Boolean('tiene orden de producción')
 
+    shipping_id = fields.Many2one(
+        'custom.shipment',
+        'Embarque'
+    )
+
+    required_loading_date = fields.Date(
+        related='shipping_id.required_loading_date')
+
+    variety = fields.Many2many(related="product_id.attribute_value_ids")
+
+    country_id = fields.Char(related='partner_id.country_id.name')
+
+    product_uom_qty = fields.Float(
+        related='product.product_uom_qty')
+
+    product_id = fields.Many2one(related="sale_id.order_line.product_id")
+
     @api.multi
     def return_action(self):
         procurement_group = self.env['procurement.group'].search([

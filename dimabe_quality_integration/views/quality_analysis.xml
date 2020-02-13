@@ -31,10 +31,11 @@
     <field name="arch" type="xml">
       <tree delete="false" editable="bottom" create="false">
         <field name="lot_name" readonly="1"/>
+        <field name="lot_balance" />
         <field name="pre_caliber" readonly="1"/>
         <field name="caliber_1" readonly="1" />
         <field name="caliber_2" readonly="1" />
-        <field name="caliber_3"  readonly="1"/>
+        <field name="caliber_3" readonly="1"/>
         <field name="caliber_4" readonly="1"/>
         <field name="caliber_5" readonly="1"/>
         <field name="caliber_6" readonly="1"/>
@@ -76,9 +77,6 @@
         <field name="impurity_analysis_3" readonly="1"/>
         <field name="analysis_observations" readonly="1"/>
         <field name="category" readonly="1"/>
-        <field name="potential_client_id"
-               domain="[('customer', '=', True)]"
-        />
       </tree>
     </field>
   </record>

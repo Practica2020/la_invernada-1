@@ -26,7 +26,8 @@ class MrpProduction(models.Model):
 
     potential_lot_ids = fields.One2many(
         'potential.lot',
-        'mrp_production_id'
+        'mrp_production_id',
+        'Posibles Lotes'
     )
 
     @api.onchange('client_search_id')
@@ -36,9 +37,9 @@ class MrpProduction(models.Model):
 
             production.update({
                 'potential_lot_ids': [
-                (2, to_unlink_id.id) for to_unlink_id in production.potential_lot_ids.filtered(
-                    lambda a: a.qty_to_reserve <= 0
-                )]
+                    (2, to_unlink_id.id) for to_unlink_id in production.potential_lot_ids.filtered(
+                        lambda a: a.qty_to_reserve <= 0
+                    )]
             })
 
             to_keep = [
@@ -52,39 +53,41 @@ class MrpProduction(models.Model):
                 if not production.potential_lot_ids.filtered(
                         lambda a: a.stock_production_lot_id.id == filtered_lot_id['stock_production_lot_id']
                 ):
-                    to_add.append((0, 0, filtered_lot_id))
+                    to_add.append(filtered_lot_id)
+
+            to_add_processed = []
+
+            for new_add in to_add:
+                tmp_id = self.env['potential.lot'].create(new_add)
+                to_add_processed.append((4, tmp_id.id))
 
             production.update({
-                'potential_lot_ids': to_add + to_keep
+                'potential_lot_ids': to_add_processed + to_keep
             })
 
     @api.model
     def get_potential_lot_ids(self):
-        potential_lot_ids = []
-
-        domain = [
-            ('product_id', 'in', list(self.move_raw_ids.mapped('product_id.id')))
-        ]
-
+        domain = [('lot_balance', '>', 0)]
+        res = []
         if self.client_search_id:
             client_lot_ids = self.env['quality.analysis'].search([
-                ('potential_client_id', '=', self.client_search_id.id)
+                ('potential_client_id', '=', self.client_search_id.id),
+                ('potential_workcenter_id.id', 'in', list(self.routing_id.operation_ids.mapped('workcenter_id.id')))
             ]).mapped('stock_production_lot_ids.name')
 
             domain += [('name', 'in', list(client_lot_ids) if client_lot_ids else [])]
 
-        res = self.env['stock.production.lot'].search(domain)
+            res = self.env['stock.production.lot'].search(domain)
 
-        for pl in res:
-            if pl.stock_quant_balance > 0:
-                pl.lot_available_quantity = pl.stock_quant_balance
-                potential_lot_ids.append(pl)
+        # for pl in res:
+        #     if pl.balance > 0:
+        #         pl.lot_balance = pl.balance
+        #         potential_lot_ids.append(pl)
 
         return [{
             'stock_production_lot_id': lot.id,
-            'mrp_production_id': self.id,
-            'lot_available_quantity': lot.stock_quant_balance
-        } for lot in potential_lot_ids]
+            'mrp_production_id': self.id
+        } for lot in res]
 
     @api.multi
     def set_stock_move(self):
@@ -107,13 +110,6 @@ class MrpProduction(models.Model):
     def create(self, values_list):
         res = super(MrpProduction, self).create(values_list)
 
-        regs = [
-            (0, 0, potential_lot) for potential_lot in res.get_potential_lot_ids()
-        ]
-
-        res.update({
-            'potential_lot_ids': regs})
-
         stock_picking = self.env['stock.picking'].search([
             ('name', '=', res.origin)
         ])
@@ -128,13 +124,27 @@ class MrpProduction(models.Model):
     @api.multi
     def button_plan(self):
         for order in self:
-            # if sum(order.move_raw_ids.filtered(lambda a: a.is_mp).mapped('reserved_availability')) < order.product_qty:
-            #     raise models.ValidationError('la cantidad a consumir no puede ser menor a la cantidad a producir')
+            total_reserved = sum(order.move_raw_ids.filtered(
+                lambda a: not a.product_id.categ_id.reserve_ignore).mapped('reserved_availability')
+                                 )
+            if total_reserved < order.product_qty:
+                raise models.ValidationError(
+                    'la cantidad a consumir ({}) no puede ser menor a la cantidad a producir ({})'.format(
+                        total_reserved, order.product_qty
+                    )
+                )
 
             for stock_move in order.move_raw_ids:
-                stock_move.product_uom_qty = stock_move.reserved_availability
+                if not stock_move.product_id.categ_id.reserve_ignore:
+                    stock_move.product_uom_qty = stock_move.reserved_availability
+
+                if stock_move.product_uom_qty % 1 > 0 and stock_move.product_uom.category_id.measure_type == 'unit':
+                    stock_move.product_uom_qty = stock_move.product_uom_qty + 1 - stock_move.product_uom_qty % 1
+
                 stock_move.unit_factor = stock_move.product_uom_qty / order.product_qty
-                if stock_move.product_uom_qty == 0:
+                if stock_move.product_uom_qty == 0 and not stock_move.product_id.categ_id.reserve_ignore:
+                    models._logger.error('{} {}'.format(stock_move.product_id.categ_id.name,
+                                                        stock_move.product_id.categ_id.reserve_ignore))
                     stock_move.update({
                         'raw_material_production_id': None
                     })
