@@ -33,6 +33,9 @@ class MrpWorkorder(models.Model):
 
         res.final_lot_id = final_lot.id
 
+        for move_line in res.active_move_line_ids:
+            move_line.is_raw = True
+
         return res
 
     def open_tablet_view(self):
