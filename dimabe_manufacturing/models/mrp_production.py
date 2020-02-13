@@ -82,9 +82,9 @@ class MrpProduction(models.Model):
 
             domain += [('name', 'in', list(client_lot_ids) if client_lot_ids else [])]
 
-            models._logger.error(domain)
+        models._logger.error(domain)
 
-            res = self.env['stock.production.lot'].search(domain)
+        res = self.env['stock.production.lot'].search(domain)
 
         return [{
             'stock_production_lot_id': lot.id,
