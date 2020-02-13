@@ -6,9 +6,9 @@
     <field name="arch" type="xml">
       <group name="main_group" position="inside">
         <field name="balance" readonly="1" />
-        <field name="is_prd_lot" invisible="0" />
+        <field name="is_prd_lot" invisible="1" />
 
-        <field name="stock_production_lot_serial_ids" attrs="{'invisible':[('is_prd_lot','=',True)]}">
+        <field name="stock_production_lot_serial_ids" attrs="{'invisible':[('is_prd_lot','=',False)]}">
           <tree editable="bottom">
             <field name="stock_production_lot_id" readonly="1"/>
             <field name="display_weight"/>
