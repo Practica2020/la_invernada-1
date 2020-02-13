@@ -84,6 +84,8 @@ class PurchaseOrder(models.Model):
         email_list = [
             usr.partner_id.email for usr in user_group.users if usr.partner_id.email
         ]
+        models._logger.error(user_group)
+        models._logger.error(email_list)
         return ','.join(email_list)
 
     @api.model
