@@ -45,11 +45,12 @@ class PurchaseOrder(models.Model):
     def action_rfq_send(self):
         for item in self:
             if not item.boss_approval_id:
+                models._logger.error("3333333333333333333333333333333333 {}".format(item))
                 item.update({
                     'boss_approval_id': self.env.user.id,
                     'boss_approval_date': fields.datetime.now()
                 })
-                models._logger.error(item)
+
         res = super(PurchaseOrder, self).action_rfq_send()
         return res
 
@@ -58,7 +59,6 @@ class PurchaseOrder(models.Model):
         res = super(PurchaseOrder, self).button_confirm()
         template_id = self.env.ref('dimabe_purchase_process.po_confirmed_mail_template')
         for order in self:
-            models._logger.error(order)
             order.message_post_with_template(template_id.id)
         return res
 
@@ -67,7 +67,6 @@ class PurchaseOrder(models.Model):
 
         approve_message = self.message_ids.filtered(lambda x: x.subtype_id.name == 'SdP aprobada')
         if approve_message:
-            models._logger()
             approve_message = approve_message[0]
             return '{} {}'.format(approve_message.author_id.name, approve_message.date)
         return ''
