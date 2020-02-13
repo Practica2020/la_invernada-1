@@ -44,13 +44,16 @@ class PurchaseOrder(models.Model):
     @api.multi
     def action_rfq_send(self):
         for item in self:
+            models._logger.error(item)
             if not item.boss_approval_id:
+                models._logger.error(item)
                 item.update({
                     'boss_approval_id': self.env.user.id,
                     'boss_approval_date': fields.datetime.now()
                 })
+                models._logger.error(item)
         res = super(PurchaseOrder, self).action_rfq_send()
-
+            models._logger.error(res)
         return res
 
     @api.multi
