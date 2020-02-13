@@ -18,7 +18,7 @@
                     <field name="shipping_number" string="Embarque" />
                     <field name="charging_mode" string="Modo de Carga" />
                     <field name="client_label" string="Etiqueta Cliente" />
-                    <field name="quantity_done" string="Kgs" />
+                    <field name="quantity_requested" string="Kgs" />
                     <field name="sale_id" />
                     <button string="Crear PO" class="btn btn-success" name="return_action" type="object" />
                 </tree>
