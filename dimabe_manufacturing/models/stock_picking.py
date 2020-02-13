@@ -20,7 +20,13 @@ class StockPicking(models.Model):
 
     product_id = fields.Many2one(related="sale_id.order_line.product_id")
 
-    quantity_done = fields.Float(related='product_id')
+    quantity_done = fields.Float(compute='_compute_quantity_done')
+
+    @api.multi
+    def _compute_quantity_done(self):
+        for item in self:
+            if item.product_id and len(item.product_id) == 1:
+                item.quantity_done = item.product_id.product_uom_qty
 
     @api.multi
     def return_action(self):
