@@ -23,7 +23,7 @@
                 <field name="consumed" />
                 <button string="reservar"
                         name="reserve_serial"
-                        attrs="{'invisible':[('reserved_to_production_id', '=', True)]}"
+                        attrs="{'invisible':[('reserved_to_production_id', '>', 0)]}"
                         type="object"
                 />
                 <button string="quitar reservar"
