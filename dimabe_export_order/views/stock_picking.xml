@@ -64,15 +64,10 @@
         </xpath>
         <xpath expr="//page[@name='note']" position="after">
           <page string="Despacho" id="dispatch_report" attrs="{'invisible':[('origin', '=', None)]}">
-            <group name="dispatch_" position="inside">
-              <group string="Informe" style="width=100%">
-                <group>
-                  <field name="picture" widget="many2many_binary" domain="[('datas_fname','=','image/jpeg')]"/>
-                  <button string="Crear Reporte" name="generate_report" type="object"/>
-                </group>
-              </group>
-            </group>
+            <page string="Datos"></page>
+            <page string="Fotos"></page>
           </page>
+
         </xpath>
       </field>
     </record>
