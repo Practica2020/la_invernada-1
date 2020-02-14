@@ -36,7 +36,7 @@ class MrpProduction(models.Model):
         'Posibles Lotes'
     )
 
-    @api.onchange('client_search_id')
+    @api.onchange('client_search_id', 'product_search_id')
     def onchange_client_search_id(self):
         for production in self:
             filtered_lot_ids = production.get_potential_lot_ids()
