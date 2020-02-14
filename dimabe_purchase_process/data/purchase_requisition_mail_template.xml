@@ -37,11 +37,6 @@
             ${(object.company_id.name)}
         ]]>
             </field>
-            <xpath xpres="//div[@class='header']">
-                <![CDATA[
-            <p>Test</p>
-            ]]>
-            </xpath>
         </record>
 
         <record id="new_requisition_mail_for_supplier_template" model="mail.template">
