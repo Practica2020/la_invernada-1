@@ -20,17 +20,7 @@ class StockProductionLotSerial(models.Model):
         nullable=True
     )
 
-    consumed = fields.Boolean(
-        'Consumido',
-        computed='_compute_consumed',
-        store=True
-    )
-
-    @api.multi
-    @api.depends('reserved_to_production_id')
-    def _compute_consumed(self):
-        for item in self:
-            item.consumed = item.reserved_to_production_id
+    consumed = fields.Boolean('Consumido')
 
     @api.model
     def create(self, values_list):
@@ -63,14 +53,17 @@ class StockProductionLotSerial(models.Model):
     @api.multi
     def reserve_serial(self):
         if 'params' in self.env.context and 'id'in self.env.context['params']:
-            models._logger.error(self.env.context['params']['id'])
             production_id = self.env.context['params']['id']
             for item in self:
                 item.update({
                     'reserved_to_production_id': production_id
                 })
+                item.consumed = True
 
     @api.multi
     def unreserved_serial(self):
-        if 'params' in self.env.context and 'id' in self.env.context['params']:
-            models._logger.error(self.env.context['params']['id'])
+        for item in self:
+            item.update({
+                'reserved_to_production_id': None
+            })
+            item.consumed = False
