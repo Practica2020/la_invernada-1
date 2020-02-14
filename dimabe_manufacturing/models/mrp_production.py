@@ -16,7 +16,7 @@ class MrpProduction(models.Model):
         'product.product',
         'Buscar Producto',
         nullable=True,
-        domain=[('product_id', 'in', lambda b: list(b.move_raw_ids.filtered(
+        domain=[('id', 'in', lambda b: list(b.move_raw_ids.filtered(
                 lambda a: not a.product_id.categ_id.reserve_ignore
             ).mapped('product_id.id')))]
     )
