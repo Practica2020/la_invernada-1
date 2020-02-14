@@ -18,7 +18,6 @@
             <field name="serial_number" readonly="1"/>
             <field name="production_id"
                    readonly="1"
-                   attrs="{'invisible':[('belongs_to_prd_lot', '=', False)]}"
                    widget="many2onebutton"
             />
             <button name="print_serial_label"
