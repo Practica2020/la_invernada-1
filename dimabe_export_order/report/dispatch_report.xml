@@ -14,7 +14,7 @@
                                     <td><span t-field="dispatch.name"></span></td>
                                 </tr>
                                 <tr>
-                                    <td><span t-field="dispatch.street"></span><br/><span t-field="dispatch.street"></span><span t-field="dispatch.country_id"></span></td>
+                                    <td><span t-field="dispatch.street"></span><br/><span t-field="dispatch.street"></span><span t-field="dispatch.country"></span></td>
                                 </tr>
                                 <tr>
                                     <td>Test</td>
