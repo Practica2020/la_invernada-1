@@ -9,6 +9,11 @@ class StockProductionLotSerial(models.Model):
         'Productión'
     )
 
+    belongs_to_prd_lot = fields.Boolean(
+        'pertenece a lote productivo',
+        related='stock_production_lot_id.is_prd_lot'
+    )
+
     @api.model
     def create(self, values_list):
         res = super(StockProductionLotSerial, self).create(values_list)

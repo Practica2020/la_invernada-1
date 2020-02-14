@@ -12,7 +12,7 @@
           <tree editable="bottom">
             <field name="stock_production_lot_id" readonly="1"/>
             <field name="display_weight"
-                   attrs="{'readonly':[('stock_production_lot_id.is_prd_lot', '=', False)]}"
+                   attrs="{'readonly':[('belongs_to_prd_lot', '=', False)]}"
             />
             <field name="serial_number" readonly="1"/>
             <field name="production_id"
