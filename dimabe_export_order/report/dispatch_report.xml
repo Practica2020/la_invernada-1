@@ -40,7 +40,7 @@
         </t>
     </template>
 
-    <record id="paper_format_letter_without_margin_top">
+    <record id="paper_format_letter_without_margin_top" model="report.paperformat">
         <field name="name">Carta</field>
         <field name="format">Letter</field>
         <field name="orientation">Portrait</field>
