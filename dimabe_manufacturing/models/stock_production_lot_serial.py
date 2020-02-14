@@ -62,8 +62,10 @@ class StockProductionLotSerial(models.Model):
 
     @api.multi
     def reserve_serial(self):
-        models._logger.error(self.env.context)
+        if 'params' in self.env.context and 'id'in self.env.context['params']:
+            models._logger.error(self.env.context['params']['id'])
 
     @api.multi
     def unreserved_serial(self):
-        models._logger.error(self.env.context)
+        if 'params' in self.env.context and 'id' in self.env.context['params']:
+            models._logger.error(self.env.context['params']['id'])
