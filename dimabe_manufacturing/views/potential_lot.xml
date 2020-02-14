@@ -19,7 +19,14 @@
           <group>
             <field name="potential_serial_ids">
               <tree>
-                <button string="reservar" name="reserve_serial"/>
+                <button string="reservar"
+                        name="reserve_serial"
+                        attrs="{'invisible':[('reserved_to_production_id', '=', False)]}"
+                />
+                <button string="quitar reservar"
+                        name="unreserved_serial"
+                        attrs="{'invisible':[('reserved_to_production_id', '=', True)]}"
+                />
                 <field name="serial_number"/>
                 <field name="display_weight"/>
               </tree>
