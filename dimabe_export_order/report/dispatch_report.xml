@@ -3,7 +3,7 @@
     <template id="report_dispatch_guide">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="dispatch">
-                <img t-att-src="'data:image/png;base64%s' % to_text(res_company.logo)" width="175px" height="85"/>
+                <img t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)" width="175px" height="85"/>
             </t>
         </t>
     </template>
