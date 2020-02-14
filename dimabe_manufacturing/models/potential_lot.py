@@ -18,6 +18,12 @@ class PotentialLot(models.Model):
 
     stock_production_lot_id = fields.Many2one('stock.production.lot', 'lote potencial')
 
+    potential_serial_ids = fields.One2many(
+        'stock.production.lot.serial',
+        related='stock_production_lot_id.stock_production_lot_serial_ids',
+        domain=[('consumed', '=', False)]
+    )
+
     mrp_production_id = fields.Many2one('mrp.production', 'Producción')
 
     mrp_production_state = fields.Selection(

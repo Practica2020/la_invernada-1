@@ -14,6 +14,24 @@ class StockProductionLotSerial(models.Model):
         related='stock_production_lot_id.is_prd_lot'
     )
 
+    reserved_to_production_id = fields.Many2one(
+        'mrp.production',
+        'Para Producción',
+        nullable=True
+    )
+
+    consumed = fields.Boolean(
+        'Consumido',
+        computed='_compute_consumed',
+        store=True
+    )
+
+    @api.multi
+    @api.depends('reserved_to_production_id')
+    def _compute_consumed(self):
+        for item in self:
+            item.consumed = item.reserved_to_production_id
+
     @api.model
     def create(self, values_list):
         res = super(StockProductionLotSerial, self).create(values_list)

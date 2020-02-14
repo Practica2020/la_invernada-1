@@ -54,6 +54,7 @@
                   <field name="lot_balance" readonly="1" force_save="1"/>
                   <field name="is_reserved" invisible="1"/>
                   <field name="mrp_production_state" invisible="1"/>
+                  <field name="potential_serial_ids" />
                   <button string="Reservar"
                           name="reserve_stock"
                           type="object"
