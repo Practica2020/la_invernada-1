@@ -22,11 +22,11 @@
                 <field name="reserved_to_production_id" invisible="1" />
                 <button string="reservar"
                         name="reserve_serial"
-                        attrs="{'invisible':[('reserved_to_production_id', '=', False)]}"
+                        attrs="{'invisible':[('reserved_to_production_id', '=', True)]}"
                 />
                 <button string="quitar reservar"
                         name="unreserved_serial"
-                        attrs="{'invisible':[('reserved_to_production_id', '=', True)]}"
+                        attrs="{'invisible':[('reserved_to_production_id', '=', False)]}"
                 />
                 <field name="serial_number"/>
                 <field name="display_weight"/>
