@@ -19,7 +19,7 @@
           <attribute name="attrs">{'readonly':[('delivery_count','>', 0)]}</attribute>
         </field>
 
-        <field name="procurement_group_id" position="after">
+        <field name="product_tmpl_id" position="after">
           <field name="bom_id" position="replace">
             <field name="bom_id" />
           </field>
