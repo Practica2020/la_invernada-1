@@ -97,13 +97,23 @@ class StockPicking(models.Model):
         'Tipo de contenedor'
     )
 
+    net_weight_dispatch = fields.Integer("Kilos Netos")
+
+    gross_weight_dispatch = fields.Integer("Kilos Brutos")
+
+    tare_container_weight_dispatch = fields.Integer("Tara Contenedor")
+
+    note_dispatched = fields.Text("Nota")
+
+    sell_invernada = fields.Char("Sello de Invernada")
+
     picture = fields.Many2many("ir.attachment")
 
     file = fields.Char(related="picture.datas_fname")
 
     @api.multi
     def generate_report(self):
-         return self.env.ref('dimabe_export_order.action_dispatch_label_report')\
+        return self.env.ref('dimabe_export_order.action_dispatch_label_report') \
             .report_action(self.picture)
 
     @api.multi

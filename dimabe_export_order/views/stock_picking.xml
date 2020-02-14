@@ -64,11 +64,11 @@
         </xpath>
         <xpath expr="//page[@name='note']" position="after">
           <page string="Despacho" name="dispatch">
+            <field name="net_weight_dispatch"/>
+            <field name="gross_weight_dispatch"/>
+            <field name="tare_container_weight_dispatch"/>
+            <field name="note_dispatched"/>
           </page>
-        </xpath>
-        <xpath expr="//page[@name='dispatch']" position="inside">
-          <page string="Datos"></page>
-          <page string="Fotos"></page>
         </xpath>
       </field>
     </record>
