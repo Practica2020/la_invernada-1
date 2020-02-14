@@ -12,16 +12,14 @@
                                         style="width:200px !important;"
                                 />
                             </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
                             <td>
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <strong>
-                                                <span t-field="res_company.name" style="text-transform: uppercase;;"></span>
-                                            </strong>
-                                        </td>
-                                    </tr>
-                                </table>
+                                <strong>
+                                    <span t-field="res_company.name" style="text-transform: uppercase;;"></span>
+                                </strong>
                             </td>
                         </tr>
                     </table>
