@@ -40,16 +40,22 @@
         </t>
     </template>
 
-    <record id="paper_format_letter_without_margin_top" model="report.paperformat">
-        <field name="name">Carta</field>
-        <field name="format">Letter</field>
-        <field name="orientation">Portrait</field>
-        <field name="margin_top">0</field>
-        <field name="margin_bottom">25</field>
-        <field name="margin_left">7</field>
-        <field name="margin_right">7</field>
-        <field name="header_spacing">0</field>
-    </record>
+      <record id="paper_format_letter_without_margin_top"
+          model="report.paperformat">
+    <field name="name">Carta Sin Margen Arriba</field>
+    <field name="default" eval="False"/>
+    <field name="format">Letter</field>
+    <field name="page_height">71</field>
+    <field name="page_width">100</field>
+    <field name="orientation">Portrait</field>
+    <field name="margin_top">0</field>
+    <field name="margin_bottom">0</field>
+    <field name="margin_left">0</field>
+    <field name="margin_right">0</field>
+    <field name="header_line" eval="False"/>
+    <field name="header_spacing">0</field>
+    <field name="dpi">90</field>
+  </record>
 
     <report id="action_dispatch_guide_report" string="Guia de despacho" model="stock.picking" report_type="qweb-pdf"
             name="dimabe_export_order.report_dispatch_guide" menu="True"
