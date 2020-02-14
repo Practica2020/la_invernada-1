@@ -43,14 +43,15 @@
         </xpath>
         <xpath expr="//page[@name='miscellaneous']" position="after">
           <page string="Seleccionar Lote">
-            <group>
+            <group col="12">
               <group>
                 <field name="client_search_id" attrs="{'invisible':[('state','=','done')]}"/>
               </group>
               <group>
                 <field name="product_search_id" attrs="{'invisible':[('state','=','done')]}"/>
               </group>
-              <group col="12">
+            </group>
+            <group col="12">
                 <field name="stock_lots" invisible="1"/>
                 <field name="potential_lot_ids" readonly="0" string="">
                   <tree editable="bottom" edit="true" delete="false" create="false">
@@ -98,8 +99,6 @@
                   </tree>
                 </field>
               </group>
-
-            </group>
           </page>
         </xpath>
       </field>
