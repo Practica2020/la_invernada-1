@@ -23,6 +23,11 @@
                             </th>
                         </tr>
                     </table>
+                    <table style="width:270px;height:125px;border:1px solid;">
+                        <tr>
+                            GUIA DE DESPACHO
+                        </tr>
+                    </table>
                     <br/>
                     <div style="position:relative;width:100%;overflow:hidden">
                         <div style="width:50%;float:left;">
