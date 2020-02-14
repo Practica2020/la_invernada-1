@@ -1,42 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <template id="report_dispatch_guide">
+    <template>
         <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="dispatch">
-                <table>
-                    <tr>
-                        <td>
-                            <img t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)" width="300px"
-                                 height="200px"/>
-                        </td>
-                        <td>
-                            <table>
-                                <tr>
-                                    <td>
-                                        <span t-field="res_company.name"></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span t-field="res_company.street"></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Test</td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </t>
-        </t>
-    </template>
-    <template id="report_truck_dispatch">
-        <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="o">
-                <img t-if="o.datas" t-att-src="'data:o.mimetype;base64,%s' % to_text(o.datas)" width="250px"
-                     height="250px"/>
-            </t>
+            <div class="page">
+                <t t-foreach="docs" t-as="d">
+                    <table>
+                        <tr>
+                            <td>
+                                <img t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)"/>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <span t-field="res_company.name"
+                                                      style="text-transform:uppercase;"></span>
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </t>
+            </div>
         </t>
     </template>
 
