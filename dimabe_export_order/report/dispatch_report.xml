@@ -11,10 +11,10 @@
                         <td>
                             <table>
                                 <tr>
-                                    <td><span t-field="dispatch.name"></span></td>
+                                    <td><span t-field="res_company.name"></span></td>
                                 </tr>
                                 <tr>
-                                    <td><span t-field="dispatch.street"></span><br/><span t-field="dispatch.street"></span></td>
+                                    <td><span t-field="res_company.street"></span></td>
                                 </tr>
                                 <tr>
                                     <td>Test</td>
