@@ -15,7 +15,10 @@ class MrpProduction(models.Model):
     product_search_id = fields.Many2one(
         'product.product',
         'Buscar Producto',
-        nullable=True
+        nullable=True,
+        domain=[('product_id', 'in', lambda b: list(b.move_raw_ids.filtered(
+                lambda a: not a.product_id.categ_id.reserve_ignore
+            ).mapped('product_id.id')))]
     )
 
     product_lot = fields.Many2one(
