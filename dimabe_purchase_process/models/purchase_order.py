@@ -47,8 +47,7 @@ class PurchaseOrder(models.Model):
             if not item.boss_approval_id:
                 item.update({
                     'boss_approval_id': self.env.user.id,
-                    'boss_approval_date': fields.datetime.now(),
-                    'state': [('purchase sent', 'Orden de Compra Enviada')]
+                    'boss_approval_date': fields.datetime.now()
                 })
 
         res = super(PurchaseOrder, self).action_rfq_send()
