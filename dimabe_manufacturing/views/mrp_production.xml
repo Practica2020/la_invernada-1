@@ -18,18 +18,18 @@
         <field name="product_id" position="attributes">
           <attribute name="attrs">{'readonly':[('delivery_count','>', 0)]}</attribute>
         </field>
-
-        <field name="product_tmpl_id" position="after">
-          <field name="bom_id" position="replace">
-            <field name="bom_id" />
-          </field>
-        </field>
         <field name="product_id" position="after">
           <field name="requested_qty" readonly="1"/>
           <field name="procurement_group_id" readonly="1"
                  force_save="1"
                  string="Pedido de Venta"
           />
+        </field>
+
+        <field name="bom_id" position="replace">
+          <field name="product_tmpl_id" position="after">
+            <field name="bom_id"/>
+          </field>
         </field>
         <field name="origin" position="attributes">
           <attribute name="invisible">1</attribute>
@@ -42,7 +42,7 @@
         <xpath expr="//page[@name='miscellaneous']" position="after">
           <page string="Seleccionar Lote">
             <group>
-              <field name="client_search_id" attrs="{'invisible':[('state','=','done')]}" />
+              <field name="client_search_id" attrs="{'invisible':[('state','=','done')]}"/>
               <field name="stock_lots" invisible="1"/>
               <field name="potential_lot_ids" readonly="0" string="">
                 <tree editable="bottom" edit="true" delete="false" create="false">
