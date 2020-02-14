@@ -23,10 +23,12 @@
                 <button string="reservar"
                         name="reserve_serial"
                         attrs="{'invisible':[('reserved_to_production_id', '=', True)]}"
+                        type="object"
                 />
                 <button string="quitar reservar"
                         name="unreserved_serial"
                         attrs="{'invisible':[('reserved_to_production_id', '=', False)]}"
+                        type="object"
                 />
                 <field name="serial_number"/>
                 <field name="display_weight"/>
