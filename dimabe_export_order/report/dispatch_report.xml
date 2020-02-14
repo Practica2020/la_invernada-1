@@ -17,7 +17,7 @@
                                     <tr>
                                         <td>
                                             <strong>
-                                                <span t-field="res_company.name" style="text_transform:uppercase;"></span>
+                                                <span t-field="res_company.name" style="text-transform: uppercase;;"></span>
                                             </strong>
                                         </td>
                                     </tr>
