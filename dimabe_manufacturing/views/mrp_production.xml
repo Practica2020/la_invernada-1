@@ -25,6 +25,9 @@
                  string="Pedido de Venta"
           />
         </field>
+        <field name="company_id" position="after">
+          <field name="required_date_moving_to_production" />
+        </field>
 
         <field name="bom_id" position="replace"/>
         <field name="product_tmpl_id" position="after">

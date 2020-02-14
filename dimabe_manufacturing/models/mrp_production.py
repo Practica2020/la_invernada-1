@@ -1,4 +1,5 @@
 from odoo import fields, models, api
+from datetime import datetime
 
 
 class MrpProduction(models.Model):
@@ -10,6 +11,11 @@ class MrpProduction(models.Model):
         'res.partner',
         'Buscar Cliente',
         nullable=True
+    )
+
+    required_date_moving_to_production = fields.Datetime(
+        'Fecha Requerida de movimiento a producción',
+        default=datetime.utcnow()
     )
 
     product_search_id = fields.Many2one(
