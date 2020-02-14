@@ -19,7 +19,7 @@
           <group>
             <field name="potential_serial_ids">
               <tree>
-                <button string="reservar"/>
+                <button string="reservar" name="reserve_serial"/>
                 <field name="serial_number"/>
                 <field name="display_weight"/>
               </tree>
