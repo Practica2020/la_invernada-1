@@ -63,7 +63,7 @@
           </page>
         </xpath>
         <xpath expr="//page[@name='note']" position="after">
-          <page string="Despacho" id="dispatch_report">
+          <page string="Despacho">
             <page string="Datos"></page>
             <page string="Fotos"></page>
           </page>
