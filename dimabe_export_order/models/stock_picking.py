@@ -97,15 +97,15 @@ class StockPicking(models.Model):
         'Tipo de contenedor'
     )
 
-    net_weight_dispatch = fields.Integer("Kilos Netos")
+    net_weight_dispatch = fields.Integer(string="Kilos Netos")
 
-    gross_weight_dispatch = fields.Integer("Kilos Brutos")
+    gross_weight_dispatch = fields.Integer(string="Kilos Brutos")
 
-    tare_container_weight_dispatch = fields.Integer("Tara Contenedor")
+    tare_container_weight_dispatch = fields.Integer(string="Tara Contenedor")
 
-    note_dispatched = fields.Text("Nota")
+    note_dispatched = fields.Text(string="Nota")
 
-    sell_invernada = fields.Char("Sello de Invernada")
+    sell_invernada = fields.Char(string="Sello de Invernada")
 
     picture = fields.Many2many("ir.attachment")
 
