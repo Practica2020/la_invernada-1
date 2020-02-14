@@ -14,7 +14,7 @@ class MrpProduction(models.Model):
     )
 
     required_date_moving_to_production = fields.Datetime(
-        'Fecha Requerida de movimiento a producción',
+        'Fecha Requerida de Movimiento a Producción',
         default=datetime.utcnow()
     )
 
