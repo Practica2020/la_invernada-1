@@ -64,6 +64,11 @@ class StockProductionLotSerial(models.Model):
     def reserve_serial(self):
         if 'params' in self.env.context and 'id'in self.env.context['params']:
             models._logger.error(self.env.context['params']['id'])
+            production_id = self.env.context['params']['id']
+            for item in self:
+                item.update({
+                    'reserved_to_production_id': production_id
+                })
 
     @api.multi
     def unreserved_serial(self):
