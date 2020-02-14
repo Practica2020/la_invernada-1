@@ -12,6 +12,12 @@ class MrpProduction(models.Model):
         nullable=True
     )
 
+    product_search_id = fields.Many2one(
+        'product.product',
+        'Buscar Producto',
+        nullable=True
+    )
+
     product_lot = fields.Many2one(
         'product.product',
         related="stock_lots.product_id"
@@ -73,6 +79,8 @@ class MrpProduction(models.Model):
                 lambda a: not a.product_id.categ_id.reserve_ignore
             ).mapped('product_id.id'))),
         ]
+        if self.product_search_id:
+            domain += [('product_id.id', '=', self.product_search_id.id)]
         res = []
         if self.client_search_id:
             client_lot_ids = self.env['quality.analysis'].search([

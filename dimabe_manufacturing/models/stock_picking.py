@@ -18,9 +18,9 @@ class StockPicking(models.Model):
 
     country_id = fields.Char(related='partner_id.country_id.name')
 
-    product_id = fields.Many2one(related="sale_id.order_line.product_id")
+    product_id = fields.Many2one(related="move_ids_without_package.product_id")
 
-    quantity_requested = fields.Float(related='sale_id.order_line.product_uom_qty')
+    quantity_requested = fields.Float(related='move_ids_without_package.product_uom_qty')
 
     @api.multi
     def return_action(self):
