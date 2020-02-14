@@ -42,9 +42,7 @@
           <page string="Seleccionar Lote">
             <group>
               <field name="client_search_id" attrs="{'invisible':[('state','=','done')]}"/>
-              <field name="product_search_id" attrs="{'invisible':[('state','=','done')]}"
-                     domain="[('id','in',potential_lot_ids.mapped(lot_product_id.id))]"
-              />
+
               <field name="stock_lots" invisible="1"/>
               <field name="potential_lot_ids" readonly="0" string="">
                 <tree editable="bottom" edit="true" delete="false" create="false">
@@ -68,6 +66,9 @@
                   />
                 </tree>
               </field>
+               <field name="product_search_id" attrs="{'invisible':[('state','=','done')]}"
+                     domain="[('id','in',potential_lot_ids.mapped(lot_product_id.id))]"
+              />
             </group>
           </page>
         </xpath>
