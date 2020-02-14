@@ -49,7 +49,8 @@ class PurchaseOrder(models.Model):
                 models._logger.error("3333333333333333333333333333333333 {}".format(item))
                 item.update({
                     'boss_approval_id': self.env.user.id,
-                    'boss_approval_date': fields.datetime.now()
+                    'boss_approval_date': fields.datetime.now(),
+                    'state':'purchase sent'
                 })
 
         res = super(PurchaseOrder, self).action_rfq_send()
