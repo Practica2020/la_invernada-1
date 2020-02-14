@@ -6,23 +6,23 @@
                 <table>
                     <tr>
                         <td>
-                            <img t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)" width="175px"
-                                 height="85px"/>
+                            <img t-att-src="'data:image/png;base64,%s' % to_text(res_company.log)"/>
                         </td>
                         <td>
                             <table>
                                 <tr>
-                                    <tr>
-                                        <span t-field="res_company.name">
-                                        </span>
-                                    </tr>
+                                    <td><span t-field="dispatch.name"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><span t-field="dispatch.street"></span><br/><span t-field="dispatch.street"></span><span t-field="dispatch.country_id"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Test</td>
                                 </tr>
                             </table>
                         </td>
                     </tr>
-
                 </table>
-
             </t>
         </t>
     </template>
