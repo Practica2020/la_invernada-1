@@ -5,42 +5,25 @@
             <div class="page">
                 <t t-foreach="docs" t-as="d">
                     <table>
-                        <tr>
-                            <td>
-                                <img
-                                        t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)"
-                                        style="width:200px !important;"
-                                />
-                            </td>
-                        </tr>
+                        <td>
+                            <img t-att-src="'data:image/png;base64,s%' % to_text(res_company.logo) "/>
+                        </td>
                     </table>
-                    <table>
-                        <tr>
-                            <td>
-                                <strong>
-                                    <span t-field="res_company.name" style="text-transform: uppercase;;"></span>
-                                </strong>
-                            </td>
-                        </tr>
-                    </table>
+                    <div style="position: absolute;left:30%;top:10px;width: 300px;height:150px;text-align: center;font-family: Arial, Helvetica, sans-serif;">
+                        <span t-field="res_company.name" style="text-transform: uppercase;font-family: Arial, Helvetica, sans-serif;font-weight: bold">
+                        </span>
+                        <br/>
+
+                    </div>
                 </t>
             </div>
         </t>
     </template>
 
-    <record id="paper_format_carta"
+    <record id="paper_format_letter"
             model="report.paperformat">
-        <field name="name">Carta</field>
-        <field name="default" eval="False"/>
-        <field name="format">Letter</field>
-        <field name="page_height">71</field>
-        <field name="page_width">100</field>
-        <field name="orientation">Portrait</field>
-        <field name="margin_top">10</field>
-        <field name="margin_bottom">0</field>
-        <field name="margin_left">0</field>
-        <field name="margin_right">0</field>
-
+        <field name="name">Letter</field>
+        <field name="format">L</field>
     </record>
 
     <report id="action_dispatch_guide_report" string="Guia de despacho" model="stock.picking" report_type="qweb-pdf"
