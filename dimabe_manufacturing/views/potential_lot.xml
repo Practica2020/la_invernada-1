@@ -19,8 +19,8 @@
           <group>
             <field name="potential_serial_ids">
               <tree>
+                <field name="is_reserved" widget="boolean_toggle"/>
                 <field name="reserved_to_production_id" invisible="0" />
-                <field name="consumed" />
                 <button string="reservar"
                         name="reserve_serial"
                         attrs="{'invisible':[('reserved_to_production_id', '>', 0)]}"

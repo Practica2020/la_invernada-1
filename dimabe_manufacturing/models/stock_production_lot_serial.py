@@ -4,6 +4,8 @@ from odoo import fields, models, api
 class StockProductionLotSerial(models.Model):
     _inherit = 'stock.production.lot.serial'
 
+    is_reserved = fields.Boolean('Resevado')
+
     production_id = fields.Many2one(
         'mrp.production',
         'Productión'
@@ -50,7 +52,15 @@ class StockProductionLotSerial(models.Model):
         base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
         return base_url
 
-    @api.multi
+    @api.onchange('is_reserved')
+    def onchange_is_reserved(self):
+        for item in self:
+            if item.is_reserved:
+                raise models.ValidationError('True')
+            else:
+                raise models.ValidationError('False')
+
+    @api.model
     def reserve_serial(self):
         if 'params' in self.env.context and 'id' in self.env.context['params']:
             production_id = self.env.context['params']['id']
@@ -91,8 +101,6 @@ class StockProductionLotSerial(models.Model):
                         })
                     ]
                 })
-
-
 
         #     item.is_reserved = True
 
