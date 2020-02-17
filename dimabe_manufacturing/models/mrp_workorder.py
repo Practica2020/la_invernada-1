@@ -20,7 +20,7 @@ class MrpWorkorder(models.Model):
         string='subproductos'
     )
 
-    potential_lot_planned_ids = fields.One2many(
+    potential_serial_planned_ids = fields.One2many(
         'stock.production.lot.serial',
         compute='_compute_potential_lot_planned_ids'
     )
@@ -28,10 +28,10 @@ class MrpWorkorder(models.Model):
     @api.multi
     def _compute_potential_lot_planned_ids(self):
         for item in self:
-            item.potential_lot_planned_ids = item.production_id.potential_lot_ids.filtered(
+            item.potential_serial_planned_ids = item.production_id.potential_lot_ids.filtered(
                 lambda a: a.qty_to_reserve > 0
             ).mapped('potential_serial_ids').filtered(
-                lambda b: b.reserved_to_production_id ==item.production_id
+                lambda b: b.reserved_to_production_id == item.production_id
             )
 
     @api.multi
@@ -65,7 +65,7 @@ class MrpWorkorder(models.Model):
 
         for item in self:
 
-            if item.active_move_line_ids and\
+            if item.active_move_line_ids and \
                     not item.active_move_line_ids.filtered(lambda a: a.is_raw):
                 for move_line in item.active_move_line_ids:
                     move_line.update({
@@ -104,8 +104,18 @@ class MrpWorkorder(models.Model):
     def on_barcode_scanned(self, barcode):
 
         qty_done = self.qty_done
-        custom_serial = self.env['stock.production.lot.serial'].search([('serial_number', '=', barcode)])
-        if custom_serial:
+        custom_serial = self.env['stock.production.lot.serial'].search([
+            '|',
+            ('serial_number', '=', barcode),
+            ('stock_production_lot_id.name', '=', barcode)
+        ])
+        if not custom_serial:
+            raise models.ValidationError('no se encontró ningún lote asociado al código ingresado')
+        if not custom_serial.product_id.categ_id.reserve_ignore:
+            if not self.potential_serial_planned_ids.filtered(
+                    lambda a: a.serial_number == barcode
+            ):
+                raise models.ValidationError('el código escaneado no se encuentra dentro de la planificación de esta producción')
             barcode = custom_serial.stock_production_lot_id.name
         super(MrpWorkorder, self).on_barcode_scanned(barcode)
         self.qty_done = qty_done + custom_serial.display_weight
@@ -119,4 +129,3 @@ class MrpWorkorder(models.Model):
             'res_id': self.id,
             'target': 'fullscreen'
         }
-
