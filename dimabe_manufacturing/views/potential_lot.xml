@@ -46,6 +46,6 @@
     <field name="name">Lote Potencial</field>
     <field name="res_model">potential.lot</field>
     <field name="view_mode">tree,form</field>
-    <field name="target">current</field>
+    <field name="target">main</field>
   </record>
 </odoo>
