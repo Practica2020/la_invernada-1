@@ -71,7 +71,7 @@ class StockProductionLotSerial(models.Model):
             self.update({
                 'reserved_to_production_id': production.id
             })
-            raise models.ValidationError('{} {}'.format(self, self.reserved_to_production_id))
+
             stock_move = production.move_raw_ids.filtered(
                 lambda a: a.product_id == self.stock_production_lot_id.product_id
             )
