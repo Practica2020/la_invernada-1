@@ -43,7 +43,7 @@
             <t t-foreach="docs" t-as="o">
                 <img t-att-src="'data:o.mimetype;base64,%s' % to_text(o.datas)" width="210px" height="272px" HSPACE="40"
                      VSPACE="5"/>
-                <span t-esc="res_users"></span>
+                <span t-esc="res_users.name"></span>
             </t>
         </t>
     </template>
