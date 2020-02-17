@@ -121,5 +121,3 @@ class StockProductionLotSerial(models.Model):
                 if ml.qty_done > 0:
                     raise models.ValidationError('este producto ya ha sido consumido')
                 ml.write({'move_id': None, 'product_uom_qty': 0})
-
-                # item.is_reserved = False
