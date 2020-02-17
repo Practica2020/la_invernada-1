@@ -109,9 +109,9 @@ class StockProductionLotSerial(models.Model):
             stock_quant = item.stock_production_lot_id.quant_ids.filtered(
                 lambda a: a.location_id.name == 'Stock'
             )
-            stock_quant.sudo().update({
-                'reserved_quantity': stock_quant.reserved_quantity - item.display_weight
-            })
+            # stock_quant.sudo().update({
+            #     'reserved_quantity': stock_quant.reserved_quantity - item.display_weight
+            # })
 
             for ml in move_line:
                 if ml.qty_done > 0:
