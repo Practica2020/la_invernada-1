@@ -23,8 +23,9 @@
                         <span t-field="res_company.country_id"></span>
                     </div>
                     <div style="position: absolute;left:65%;top:10px;width:300px;height:150px;text-align: center;
-                    font-family: Arial, Helvetica, sans-serif; border:1px solid;">
-                        <span t-field="res_company.invoice_rut"></span>
+                    font-family: Arial, Helvetica, sans-serif; border:2px solid;">
+                        R.U.T<span t-field="res_company.invoice_rut"></span>
+                        <span>GUIA DE DESPACHO ELECTRONICA</span>
 
                     </div>
                 </t>

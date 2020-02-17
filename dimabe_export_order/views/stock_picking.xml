@@ -63,20 +63,8 @@
                     </page>
                 </xpath>
                 <xpath expr="//page[@name='note']" position="after">
-                    <page string="Despacho" id="dispatch_form">
-                      <group name="data_dispatch" position="inside">
-                        <group>
-                          <tree>
-                            <field name="net_weight_dispatch"/>
-                            <field name="gross_weight_dispatch"/>
-                            <field name="tare_container_weight_dispatch"/>
-                            <field name="note_dispatched"/>
-                        </tree>
-                        </group>
-                      </group>
-                      <group name="picture_dispatched">
+                    <page string="Despacho">
 
-                      </group>
                     </page>
                 </xpath>
             </field>

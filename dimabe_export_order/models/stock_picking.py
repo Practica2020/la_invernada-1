@@ -107,26 +107,7 @@ class StockPicking(models.Model):
 
     sell_invernada = fields.Char(string="Sello de Invernada")
 
-    picture = fields.Many2many("ir.attachment")
-
-    file = fields.Char(related="picture.datas_fname")
-
-    @api.multi
-    def generate_report(self):
-        return self.env.ref('dimabe_export_order.action_dispatch_label_report') \
-            .report_action(self.picture)
-
-    @api.multi
-    def get_full_url(self):
-        self.ensure_one()
-        base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
-        return base_url
-
-    @api.model
-    def _get_product_variety(self):
-        _logger = logging.getLogger(__name__)
-        for item in self.variety:
-            _logger.debug(item)
+    guide_number = fields.Char(string="Numero de Guia")
 
     @api.model
     @api.depends('freight_value', 'safe_value')
