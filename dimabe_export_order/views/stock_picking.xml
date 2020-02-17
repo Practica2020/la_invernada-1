@@ -77,7 +77,7 @@
                                 </group>
                             </group>
                             <group string="Fotos de Camion">
-                                <field name="picture" widget="many2many_binary"/>
+                                <!--<field name="picture" widget="many2many_binary"/>-->
                                 <!--<button string="Crear Reporte" name="generate_report" type="object"/>-->
                             </group>
                         </group>
