@@ -61,7 +61,6 @@ class StockProductionLotSerial(models.Model):
                 item.update({
                     'reserved_to_production_id': production.id
                 })
-                # item.consumed = True
 
                 stock_move = production.move_raw_ids.filtered(
                     lambda a: a.product_id == item.stock_production_lot_id.product_id
@@ -80,7 +79,7 @@ class StockProductionLotSerial(models.Model):
                     'reserved_quantity': stock_quant.reserved_quantity + item.display_weight
                 })
 
-                stock_move.update({
+                stock_move.sudo().update({
                     'active_move_line_ids': [
                         (0, 0, {
                             'product_id': item.stock_production_lot_id.product_id.id,
@@ -101,7 +100,7 @@ class StockProductionLotSerial(models.Model):
             item.update({
                 'reserved_to_production_id': None
             })
-            # item.consumed = False
+
             stock_move = item.production_id.move_raw_ids.filtered(
                 lambda a: a.product_id == item.stock_production_lot_id.product_id
             )
