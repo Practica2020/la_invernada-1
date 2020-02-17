@@ -14,20 +14,20 @@
                     </table>
                     <div style="position: absolute;left:30%;top:10px;width:300px;height:150px;text-align: center;
                     font-family: Arial, Helvetica, sans-serif;">
-                        <span t-field="res_company.name"
+                        <span t-esc="res_company.name"
                               style="text-transform: uppercase;font-family: Arial, Helvetica, sans-serif;font-weight: bold">
                         </span>
                         <br/>
-                        <span t-field="res_company.street"></span>
+                        <span t-esc="res_company.street"></span>
                         <br/>
-                        <span t-field="res_company.city"></span>
+                        <span t-esc="res_company.city"></span>
                         <br/>
-                        <span t-field="res_company.country_id"></span>
+                        <span t-esc="res_company.country_id"></span>
                     </div>
                     <div style="position: absolute;left:65%;top:10px;width:300px;height:150px;text-align: center;
                     font-family: Arial, Helvetica, sans-serif; border:2px solid;">
                         R.U.T
-                        <span t-field="res_company.invoice_rut"></span>
+                        <span t-esc="res_company.invoice_rut"></span><br/>
                         <span>GUIA DE DESPACHO ELECTRONICA</span>
 
                     </div>
@@ -43,7 +43,7 @@
                      height="255px" style="margin-top:10px;margin-bottom:10px" HSPACE="10" VSPACE="10"/>
 
             </t>
-                <span t-raw="type(docs)"></span>
+
         </t>
     </template>
 
