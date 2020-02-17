@@ -25,20 +25,6 @@ class MrpWorkorder(models.Model):
         compute='_compute_potential_lot_planned_ids'
     )
 
-    consumed_serial_ids = fields.One2many(
-        'stock.production.lot.serial',
-        compute='_compute_consumed_serial_ids'
-    )
-
-    @api.multi
-    def _compute_consumed_serial_ids(self):
-        for item in self:
-            item.potential_serial_planned_ids = item.production_id.potential_lot_ids.filtered(
-                lambda a: a.qty_to_reserve > 0
-            ).mapped('potential_serial_ids').filtered(
-                lambda b: b.reserved_to_production_id == item.production_id and b.consumed
-            )
-
     @api.multi
     def _compute_potential_lot_planned_ids(self):
         for item in self:

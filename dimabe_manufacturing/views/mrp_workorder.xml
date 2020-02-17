@@ -100,20 +100,13 @@
       <field name="model">mrp.workorder</field>
       <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_tablet"/>
       <field name="arch" type="xml">
-        <field name="finished_product_check_ids" position="after">
+        <field name="worksheet" position="before">
           <field name="potential_serial_planned_ids">
             <tree>
               <field name="stock_production_lot_id"/>
               <field name="serial_number"/>
               <field name="display_weight"/>
               <field name="consumed"/>
-            </tree>
-          </field>
-          <field name="consumed_serial_ids" string="Códigos Procesados">
-            <tree>
-              <field name="stock_production_lot_id"/>
-              <field name="serial_number"/>
-              <field name="display_weight"/>
             </tree>
           </field>
         </field>
