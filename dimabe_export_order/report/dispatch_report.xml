@@ -42,7 +42,7 @@
         <t t-call="web.html_container">
             <div class="page" align="center">
                 <t t-foreach="docs" t-as="o">
-                <img t-att-src="'data:o.mimetype;base64,%s' % to_text(o.datas)" width="192px"
+                <img class="image" t-att-src="'data:o.mimetype;base64,%s' % to_text(o.datas)" width="192px"
                      height="255px"  HSPACE="10" VSPACE="10"/>
                     <span t-esc="o.type"/>
                 <!--<t t-if="docs[2].id == o.id">
