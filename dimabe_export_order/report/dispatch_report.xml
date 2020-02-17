@@ -41,8 +41,9 @@
     <template id="report_truck_dispatch">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                    <img class="image" t-att-src="'data:o.mimetype;base64,%s' % to_text(o.datas)" width="192px"
-                     height="255px"  HSPACE="10" VSPACE="10"/>
+                <img class="image" t-att-src="'data:o.mimetype;base64,%s' % to_text(o.datas)" width="192px"
+                     height="255px" HSPACE="10" VSPACE="10"/>
+                <t></t>
             </t>
         </t>
     </template>
@@ -52,6 +53,8 @@
         <field name="default" eval="False"/>
         <field name="format">Letter</field>
         <field name="orientation">Portrait</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
         <field name="margin_top">5</field>
         <field name="margin_bottom">5</field>
         <field name="margin_left">5</field>
