@@ -41,7 +41,7 @@
     <template id="report_truck_dispatch">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <img t-att-src="'data:o.mimetype;base64,%s' % to_text(o.datas)" width="192px" height="255px" HSPACE="40"
+                <img t-att-src="'data:o.mimetype;base64,%s' % to_text(o.datas)" width="210px" height="272px" HSPACE="40"
                      VSPACE="5"/>
 
             </t>
