@@ -59,7 +59,9 @@ class StockProductionLotSerial(models.Model):
                     'reserved_to_production_id': production_id
                 })
                 # item.consumed = True
-                stock_move = item.production_id.move_raw_ids.filtered(lambda a: a.product_id == item.lot_id.product_id)
+                stock_move = item.production_id.move_raw_ids.filtered(
+                    lambda a: a.product_id == item.stock_production_lot_id.product_id
+                )
 
                 stock_quant = item.lot_id.quant_ids.filtered(
                     lambda a: a.location_id.name == 'Stock'
@@ -77,8 +79,8 @@ class StockProductionLotSerial(models.Model):
                 stock_move.update({
                     'active_move_line_ids': [
                         (0, 0, {
-                            'product_id': item.lot_id.product_id.id,
-                            'lot_id': item.lot_id.id,
+                            'product_id': item.stock_production_lot_id.product_id.id,
+                            'lot_id': item.stock_production_lot_id.id,
                             'product_uom_qty': item.display_weight,
                             'product_uom_id': stock_move.product_uom.id,
                             'location_id': stock_quant.location_id.id,
@@ -96,13 +98,15 @@ class StockProductionLotSerial(models.Model):
                 'reserved_to_production_id': None
             })
             # item.consumed = False
-            stock_move = item.production_id.move_raw_ids.filtered(lambda a: a.product_id == item.lot_id.product_id)
-
-            move_line = stock_move.active_move_line_ids.filtered(
-                lambda a: a.lot_id.id == item.lot_id.id
+            stock_move = item.production_id.move_raw_ids.filtered(
+                lambda a: a.product_id == item.stock_production_lot_id.product_id
             )
 
-            stock_quant = item.lot_id.quant_ids.filtered(
+            move_line = stock_move.active_move_line_ids.filtered(
+                lambda a: a.lot_id.id == item.stock_production_lot_id.id
+            )
+
+            stock_quant = item.stock_production_lot_id.quant_ids.filtered(
                 lambda a: a.location_id.name == 'Stock'
             )
             stock_quant.sudo().update({
