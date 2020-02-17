@@ -42,6 +42,8 @@
                 <img t-if="o.datas" t-att-src="'data:o.mimetype;base64,%s' % to_text(o.datas)" width="192px"
                      height="255px" style="margin-top:10px;margin-bottom:10px" HSPACE="10" VSPACE="10"/>
                 <t t-if="docs[2].id == o.id">br</t>
+                <t t-if="docs[5].id == o.id">br</t>
+                <t t-if="docs[8].id == o.id">br</t>
             </t>
 
         </t>
