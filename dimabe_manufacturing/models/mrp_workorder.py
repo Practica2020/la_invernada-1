@@ -123,7 +123,8 @@ class MrpWorkorder(models.Model):
                 'consumed': True
             })
         super(MrpWorkorder, self).on_barcode_scanned(barcode)
-        # self.qty_done = qty_done + custom_serial.display_weight
+        self.qty_done = qty_done + custom_serial.display_weight
+        self.action_next()
 
     def open_out_form_view(self):
 
