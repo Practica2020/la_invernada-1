@@ -22,13 +22,13 @@
                 <field name="reserved_to_production_id" invisible="0" />
                 <button string="reservar"
                         name="reserve_serial"
-                        attrs="{'invisible':[('reserved_to_production_id', '>', 0)]}"
+                        attrs="{'invisible':['|',('reserved_to_production_id', '>', 0),('consumed','=',True)]}"
                         type="object"
                 />
 
                 <button string="quitar reservar"
                         name="unreserved_serial"
-                        attrs="{'invisible':[('reserved_to_production_id', '=', False)]}"
+                        attrs="{'invisible':['|',('reserved_to_production_id', '=', False),('consumed','=',True)]}"
                         type="object"
                 />
                 <field name="serial_number"/>
