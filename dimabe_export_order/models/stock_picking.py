@@ -109,6 +109,10 @@ class StockPicking(models.Model):
 
     guide_number = fields.Char(string="Numero de Guia")
 
+    sell_sag = fields.Char(string="Sello SAG")
+
+    dus_number = fields.Integer(string="Numero DUS")
+
     picture = fields.Many2many("ir.attachment", string="Fotos Camion")
 
     file = fields.Char(related="picture.datas_fname")
