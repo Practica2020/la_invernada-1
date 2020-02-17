@@ -40,21 +40,12 @@
 
     <template id="report_truck_dispatch">
         <t t-call="web.html_container">
-            <div class="page" style="margin:0;" align="center">
-                <t t-foreach="docs" t-as="o">
-                <img class="image" t-att-src="'data:o.mimetype;base64,%s' % to_text(o.datas)" width="260px"
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <img class="image" t-att-src="'data:o.mimetype;base64,%s' % to_text(o.datas)" width="260px"
                      height="200px"  HSPACE="5" VSPACE="5"/>
-                <t t-if="docs[2].id == o.id">
-                    <br/>
-                </t>
-                <t t-if="docs[5].id == o.id">
-                    <br/>
-                </t>
-                <t t-if="docs[8].id == o.id">
-                    <br/>
                 </t>
             </t>
-            </div>
         </t>
     </template>
 
