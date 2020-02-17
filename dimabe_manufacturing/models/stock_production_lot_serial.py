@@ -107,7 +107,7 @@ class StockProductionLotSerial(models.Model):
                 lambda a: a.product_id == item.stock_production_lot_id.product_id
             )
 
-            raise models.ValidationError(stock_move)
+            raise models.ValidationError(item.production_id)
 
             move_line = stock_move.active_move_line_ids.filtered(
                 lambda a: a.lot_id.id == item.stock_production_lot_id.id
