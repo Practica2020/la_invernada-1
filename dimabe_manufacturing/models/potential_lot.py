@@ -72,6 +72,9 @@ class PotentialLot(models.Model):
             lambda a: a.serial_number == serial_number and a.consumed is False and not a.reserved_to_production_id
         )
 
+        if not item:
+            raise models.ValidationError('la serie {} no se encuentra disponible'.format(serial_number))
+
         item.update({
             'reserved_to_production_id': self.mrp_production_id.id
         })

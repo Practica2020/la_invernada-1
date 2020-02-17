@@ -52,14 +52,14 @@ class StockProductionLotSerial(models.Model):
 
     @api.multi
     def reserve_serial(self):
-        models._logger.error(self.env.context)
-        raise models.ValidationError(self.env.context)
-        # if 'params' in self.env.context and 'id' in self.env.context['params']:
-        #     production_id = self.env.context['params']['id']
-        #     production = self.env['mrp.production'].search([('id', '=', production_id)])
-        #     if not production:
-        #         raise models.ValidationError('No se encontró la orden de producción a la que reservar el producto')
-        #     for item in self:
+
+        if 'params' in self.env.context and 'id' in self.env.context['params']:
+            production_id = self.env.context['params']['id']
+            production = self.env['mrp.production'].search([('id', '=', production_id)])
+            if not production:
+                raise models.ValidationError('No se encontró la orden de producción a la que reservar el producto')
+            for item in self:
+                production.reserve_serial(item.serial_number)
         #         item.update({
         #             'reserved_to_production_id': production.id
         #         })
