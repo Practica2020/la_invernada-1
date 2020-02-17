@@ -47,6 +47,14 @@ class PotentialLot(models.Model):
             lambda a: a.location_id.name == 'Production'
         )
 
+    @api.model
+    def get_total_reserved(self):
+        return sum(
+            self.potential_serial_ids.filtered(
+                lambda a: a.reserved_to_production_id == self.mrp_production_id
+            ).mapped('display_weight')
+        )
+
     @api.multi
     def reserve_stock(self):
         for item in self:
@@ -54,15 +62,22 @@ class PotentialLot(models.Model):
 
             serial_to_reserve.reserve_serial()
 
-            item.qty_to_reserve = sum(
-                item.potential_serial_ids.filtered(
-                    lambda a: a.reserved_to_production_id == item.mrp_production_id
-                ).mapped('display_weight')
-            )
+            item.qty_to_reserve = item.get_total_reserved()
 
             item.is_reserved = True
 
     #     item.is_reserved = True
+
+    @api.multi
+    def confirm_reserve(self):
+        for item in self:
+            item.update({
+                'qty_to_reserve': item.get_total_reserved()
+            })
+        return {
+            'type': 'ir.actions.client',
+            'tag': 'reload',
+        }
 
     @api.multi
     def unreserved_stock(self):
