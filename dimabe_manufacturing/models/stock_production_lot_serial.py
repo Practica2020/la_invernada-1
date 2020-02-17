@@ -59,7 +59,7 @@ class StockProductionLotSerial(models.Model):
                     'reserved_to_production_id': production_id
                 })
                 # item.consumed = True
-                raise models.ValidationError(item.production_id)
+                raise models.ValidationError(production_id)
                 stock_move = item.production_id.move_raw_ids.filtered(
                     lambda a: a.product_id == item.stock_production_lot_id.product_id
                 )
