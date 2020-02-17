@@ -41,7 +41,7 @@ class StockProductionLotSerial(models.Model):
 
     @api.multi
     def print_serial_label(self):
-        return self.env.ref('dimabe_manufacturing.action_stock_production_lot_serial_label_report')\
+        return self.env.ref('dimabe_manufacturing.action_stock_production_lot_serial_label_report') \
             .report_action(self)
 
     @api.multi
@@ -52,13 +52,42 @@ class StockProductionLotSerial(models.Model):
 
     @api.multi
     def reserve_serial(self):
-        if 'params' in self.env.context and 'id'in self.env.context['params']:
+        if 'params' in self.env.context and 'id' in self.env.context['params']:
             production_id = self.env.context['params']['id']
             for item in self:
                 item.update({
                     'reserved_to_production_id': production_id
                 })
                 # item.consumed = True
+                stock_move = item.production_id.move_raw_ids.filtered(lambda a: a.product_id == item.lot_id.product_id)
+
+                stock_quant = item.lot_id.quant_ids.filtered(
+                    lambda a: a.location_id.name == 'Stock'
+                )
+
+                virtual_location_production_id = item.env['stock.location'].search([
+                    ('usage', '=', 'production'),
+                    ('location_id.name', 'like', 'Virtual Locations')
+                ])
+
+                stock_quant.sudo().update({
+                    'reserved_quantity': stock_quant.reserved_quantity + item.display_weight
+                })
+
+                stock_move.update({
+                    'active_move_line_ids': [
+                        (0, 0, {
+                            'product_id': item.lot_id.product_id.id,
+                            'lot_id': item.lot_id.id,
+                            'product_uom_qty': item.display_weight,
+                            'product_uom_id': stock_move.product_uom.id,
+                            'location_id': stock_quant.location_id.id,
+                            'location_dest_id': virtual_location_production_id.id
+                        })
+                    ]
+                })
+        #
+        #     item.is_reserved = True
 
     @api.multi
     def unreserved_serial(self):
@@ -67,3 +96,22 @@ class StockProductionLotSerial(models.Model):
                 'reserved_to_production_id': None
             })
             # item.consumed = False
+            stock_move = item.production_id.move_raw_ids.filtered(lambda a: a.product_id == item.lot_id.product_id)
+
+            move_line = stock_move.active_move_line_ids.filtered(
+                lambda a: a.lot_id.id == item.lot_id.id
+            )
+
+            stock_quant = item.lot_id.quant_ids.filtered(
+                lambda a: a.location_id.name == 'Stock'
+            )
+            stock_quant.sudo().update({
+                'reserved_quantity': stock_quant.reserved_quantity - item.display_weight
+            })
+
+            for ml in move_line:
+                if ml.qty_done > 0:
+                    raise models.ValidationError('este producto ya ha sido consumido')
+                ml.write({'move_id': None, 'product_uom_qty': 0})
+
+            # item.is_reserved = False
