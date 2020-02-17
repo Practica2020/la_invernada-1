@@ -76,6 +76,7 @@
                                     <field name="sell_truck"/>
                                     <field name="guide_number"/>
                                     <field name="sell_sag"/>
+                                    <field name="vgm_weight_dispatch" readonly="1"/>
                                     <field name="container_weight"/>
                                 </group>
                             </group>
