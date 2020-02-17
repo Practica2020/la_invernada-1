@@ -76,7 +76,7 @@
                                     <field name="sell_truck"/>
                                     <field name="guide_number"/>
                                     <field name="sell_sag"/>
-
+                                    <field name="container_weight"/>
                                 </group>
                             </group>
                             <group string="Fotos de Camion">
