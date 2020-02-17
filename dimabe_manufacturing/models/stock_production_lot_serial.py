@@ -54,12 +54,15 @@ class StockProductionLotSerial(models.Model):
     def reserve_serial(self):
         if 'params' in self.env.context and 'id' in self.env.context['params']:
             production_id = self.env.context['params']['id']
+            production = self.env['mrp.production'].search([('id', '=', production_id)])
+            if not production:
+                raise models.ValidationError('No se encontró la orden de producción a la que reservar el producto')
             for item in self:
                 item.update({
-                    'reserved_to_production_id': production_id
+                    'reserved_to_production_id': production.id
                 })
                 # item.consumed = True
-                raise models.ValidationError(production_id)
+                raise models.ValidationError(production)
                 stock_move = item.production_id.move_raw_ids.filtered(
                     lambda a: a.product_id == item.stock_production_lot_id.product_id
                 )
