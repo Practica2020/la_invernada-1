@@ -52,47 +52,49 @@ class StockProductionLotSerial(models.Model):
 
     @api.multi
     def reserve_serial(self):
-        if 'params' in self.env.context and 'id' in self.env.context['params']:
-            production_id = self.env.context['params']['id']
-            production = self.env['mrp.production'].search([('id', '=', production_id)])
-            if not production:
-                raise models.ValidationError('No se encontró la orden de producción a la que reservar el producto')
-            for item in self:
-                item.update({
-                    'reserved_to_production_id': production.id
-                })
-
-                stock_move = production.move_raw_ids.filtered(
-                    lambda a: a.product_id == item.stock_production_lot_id.product_id
-                )
-
-                stock_quant = item.stock_production_lot_id.quant_ids.filtered(
-                    lambda a: a.location_id.name == 'Stock'
-                )
-
-                virtual_location_production_id = item.env['stock.location'].search([
-                    ('usage', '=', 'production'),
-                    ('location_id.name', 'like', 'Virtual Locations')
-                ])
-
-                stock_quant.sudo().update({
-                    'reserved_quantity': stock_quant.reserved_quantity + item.display_weight
-                })
-
-                stock_move.sudo().update({
-                    'active_move_line_ids': [
-                        (0, 0, {
-                            'product_id': item.stock_production_lot_id.product_id.id,
-                            'lot_id': item.stock_production_lot_id.id,
-                            'product_uom_qty': item.display_weight,
-                            'product_uom_id': stock_move.product_uom.id,
-                            'location_id': stock_quant.location_id.id,
-                            'location_dest_id': virtual_location_production_id.id
-                        })
-                    ]
-                })
-
-        #     item.is_reserved = True
+        for item in self:
+            raise models.ValidationError(self)
+        # if 'params' in self.env.context and 'id' in self.env.context['params']:
+        #     production_id = self.env.context['params']['id']
+        #     production = self.env['mrp.production'].search([('id', '=', production_id)])
+        #     if not production:
+        #         raise models.ValidationError('No se encontró la orden de producción a la que reservar el producto')
+        #     for item in self:
+        #         item.update({
+        #             'reserved_to_production_id': production.id
+        #         })
+        #
+        #         stock_move = production.move_raw_ids.filtered(
+        #             lambda a: a.product_id == item.stock_production_lot_id.product_id
+        #         )
+        #
+        #         stock_quant = item.stock_production_lot_id.quant_ids.filtered(
+        #             lambda a: a.location_id.name == 'Stock'
+        #         )
+        #
+        #         virtual_location_production_id = item.env['stock.location'].search([
+        #             ('usage', '=', 'production'),
+        #             ('location_id.name', 'like', 'Virtual Locations')
+        #         ])
+        #
+        #         stock_quant.sudo().update({
+        #             'reserved_quantity': stock_quant.reserved_quantity + item.display_weight
+        #         })
+        #
+        #         stock_move.sudo().update({
+        #             'active_move_line_ids': [
+        #                 (0, 0, {
+        #                     'product_id': item.stock_production_lot_id.product_id.id,
+        #                     'lot_id': item.stock_production_lot_id.id,
+        #                     'product_uom_qty': item.display_weight,
+        #                     'product_uom_id': stock_move.product_uom.id,
+        #                     'location_id': stock_quant.location_id.id,
+        #                     'location_dest_id': virtual_location_production_id.id
+        #                 })
+        #             ]
+        #         })
+        #
+        # #     item.is_reserved = True
 
     @api.multi
     def unreserved_serial(self):
