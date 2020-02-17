@@ -109,6 +109,13 @@ class StockPicking(models.Model):
 
     guide_number = fields.Char(string="Numero de Guia")
 
+    picture = fields.Many2many(rel="ir.attachment")
+
+    @api.multi
+    def generate_report(self):
+        return self.env.ref('dimabe_export_order.action_dispatch_label_report') \
+            .report_action(self.picture)
+
     @api.model
     @api.depends('freight_value', 'safe_value')
     def _compute_total_value(self):
