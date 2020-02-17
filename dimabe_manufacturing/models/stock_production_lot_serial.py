@@ -56,14 +56,15 @@ class StockProductionLotSerial(models.Model):
     def onchange_is_reserved(self):
         for item in self:
             if item.is_reserved:
-                raise models.ValidationError('True')
+                item.reserve_serial()
             else:
-                raise models.ValidationError('False')
+                item.unreserved_serial()
 
     @api.model
     def reserve_serial(self):
         if 'params' in self.env.context and 'id' in self.env.context['params']:
             production_id = self.env.context['params']['id']
+            raise models.ValidationError(production_id)
             production = self.env['mrp.production'].search([('id', '=', production_id)])
             if not production:
                 raise models.ValidationError('No se encontró la orden de producción a la que reservar el producto')
