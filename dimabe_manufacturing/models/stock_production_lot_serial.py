@@ -92,8 +92,10 @@ class StockProductionLotSerial(models.Model):
                         })
                     ]
                 })
-        return {'type': 'ir.actions.act_window_close'}
-
+        return {
+            'type': 'ir.actions.client',
+            'tag': 'reload',
+        }
         #     item.is_reserved = True
 
     @api.multi
