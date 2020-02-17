@@ -34,6 +34,11 @@
                   attrs="{'invisible': [('production_state', '=', 'done')]}"
           />
         </xpath>
+        <xpath expr="//page[1]" position="after">
+          <page string="Lotes Planificados">
+
+          </page>
+        </xpath>
       </field>
     </record>
 
