@@ -105,7 +105,7 @@ class StockPicking(models.Model):
 
     note_dispatched = fields.Text(string="Nota")
 
-    sell_invernada = fields.Char(string="Sello de Invernada")
+    sell_truck = fields.Char(string="Sello de Invernada")
 
     guide_number = fields.Char(string="Numero de Guia")
 
