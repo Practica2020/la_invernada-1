@@ -92,6 +92,7 @@ class StockProductionLotSerial(models.Model):
                         })
                     ]
                 })
+        return {'type': 'ir.actions.act_window_close'}
 
         #     item.is_reserved = True
 
