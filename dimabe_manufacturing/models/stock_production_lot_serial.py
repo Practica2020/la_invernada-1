@@ -80,17 +80,6 @@ class StockProductionLotSerial(models.Model):
                     'reserved_quantity': stock_quant.reserved_quantity + item.display_weight
                 })
 
-                raise models.ValidationError('{} {}'.format(
-                    stock_move, {
-                            'product_id': item.stock_production_lot_id.product_id.id,
-                            'lot_id': item.stock_production_lot_id.id,
-                            'product_uom_qty': item.display_weight,
-                            'product_uom_id': stock_move.product_uom.id,
-                            'location_id': stock_quant.location_id.id,
-                            'location_dest_id': virtual_location_production_id.id
-                        }
-                ))
-
                 stock_move.update({
                     'active_move_line_ids': [
                         (0, 0, {
