@@ -58,7 +58,7 @@ class StockProductionLotSerial(models.Model):
                 item.update({
                     'reserved_to_production_id': production_id
                 })
-                item.consumed = True
+                # item.consumed = True
 
     @api.multi
     def unreserved_serial(self):
@@ -66,4 +66,4 @@ class StockProductionLotSerial(models.Model):
             item.update({
                 'reserved_to_production_id': None
             })
-            item.consumed = False
+            # item.consumed = False
