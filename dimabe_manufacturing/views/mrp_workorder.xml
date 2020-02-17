@@ -100,7 +100,7 @@
       <field name="model">mrp.workorder</field>
       <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_tablet"/>
       <field name="arch" type="xml">
-        <field name="worksheet" position="before">
+        <xpath expr="//div[@class='workorder_pdf']" position="before">
           <field name="potential_serial_planned_ids">
             <tree>
               <field name="stock_production_lot_id"/>
@@ -109,7 +109,7 @@
               <field name="consumed"/>
             </tree>
           </field>
-        </field>
+        </xpath>
       </field>
     </record>
 
