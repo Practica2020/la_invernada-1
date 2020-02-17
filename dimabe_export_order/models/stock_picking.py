@@ -119,6 +119,7 @@ class StockPicking(models.Model):
 
     type_of_dispatch = fields.Selection([('exp', 'Exportacion'), ('nac', 'Nacional')],string="Tipo de Despacho")
 
+
     @api.multi
     def generate_report(self):
         return self.env.ref('dimabe_export_order.action_dispatch_label_report') \
