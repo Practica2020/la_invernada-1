@@ -34,7 +34,7 @@
                   attrs="{'invisible': [('production_state', '=', 'done')]}"
           />
         </xpath>
-        <xpath expr="//page[1]" position="after">
+        <xpath expr="//page[2]" position="after">
           <page string="Lotes Planificados">
 
           </page>
