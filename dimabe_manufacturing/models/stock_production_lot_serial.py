@@ -104,32 +104,32 @@ class StockProductionLotSerial(models.Model):
 
         #     item.is_reserved = True
 
-    @api.multi
+    @api.model
     def unreserved_serial(self):
-        for item in self:
+        # for item in self:
 
-            stock_move = item.reserved_to_production_id.move_raw_ids.filtered(
-                lambda a: a.product_id == item.stock_production_lot_id.product_id
-            )
+        stock_move = self.reserved_to_production_id.move_raw_ids.filtered(
+            lambda a: a.product_id == self.stock_production_lot_id.product_id
+        )
 
-            move_line = stock_move.active_move_line_ids.filtered(
-                lambda a: a.lot_id.id == item.stock_production_lot_id.id
-            )
+        move_line = stock_move.active_move_line_ids.filtered(
+            lambda a: a.lot_id.id == self.stock_production_lot_id.id
+        )
 
-            stock_quant = item.stock_production_lot_id.quant_ids.filtered(
-                lambda a: a.location_id.name == 'Stock'
-            )
-            stock_quant.sudo().update({
-                'reserved_quantity': stock_quant.reserved_quantity - item.display_weight
-            })
+        stock_quant = self.stock_production_lot_id.quant_ids.filtered(
+            lambda a: a.location_id.name == 'Stock'
+        )
+        stock_quant.sudo().update({
+            'reserved_quantity': stock_quant.reserved_quantity - self.display_weight
+        })
 
-            item.update({
-                'reserved_to_production_id': None
-            })
+        self.update({
+            'reserved_to_production_id': None
+        })
 
-            for ml in move_line:
-                if ml.qty_done > 0:
-                    raise models.ValidationError('este producto ya ha sido consumido')
-                ml.write({'move_id': None, 'product_uom_qty': 0})
+        for ml in move_line:
+            if ml.qty_done > 0:
+                raise models.ValidationError('este producto ya ha sido consumido')
+            ml.write({'move_id': None, 'product_uom_qty': 0})
 
             # item.is_reserved = False
