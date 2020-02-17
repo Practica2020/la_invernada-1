@@ -72,8 +72,10 @@ class PotentialLot(models.Model):
     def confirm_reserve(self):
         for item in self:
             item.update({
-                'qty_to_reserve': item.get_total_reserved()
+                'qty_to_reserve': item.get_total_reserved(),
+                'is_reserved': item.qty_to_reserve > 0
             })
+
         return {
             'type': 'ir.actions.client',
             'tag': 'reload',
