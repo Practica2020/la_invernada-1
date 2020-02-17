@@ -30,7 +30,7 @@
                         <span t-esc="res_company.invoice_rut"></span>
                         <br/>
                         <br/>
-                        <span style="text-align:center;">GUIA DE DESPACHO ELECTRONICA</span>
+                        <t t-esc='d.type_of_dispatch'></t>
                         <br/>
                         <br/>
                         <span t-field="d.guide_number"></span>
