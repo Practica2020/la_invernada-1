@@ -18,7 +18,7 @@
         <div>
           <group>
             <field name="potential_serial_ids">
-              <tree>
+              <tree target="main">
                 <field name="reserved_to_production_id" invisible="0"/>
                 <field name="consumed" invisible="1"/>
                 <button string="reservar"
@@ -40,12 +40,5 @@
         </div>
       </form>
     </field>
-  </record>
-
-  <record id="potential_lot_action" model="ir.actions.act_window">
-    <field name="name">Lote Potencial</field>
-    <field name="res_model">potential.lot</field>
-    <field name="view_mode">tree,form</field>
-    <field name="target">main</field>
   </record>
 </odoo>
