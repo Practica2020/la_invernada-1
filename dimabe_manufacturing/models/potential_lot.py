@@ -53,9 +53,13 @@ class PotentialLot(models.Model):
 
             serial_to_reserve = item.potential_serial_ids.filtered(lambda a: not a.reserved_to_production_id)
 
-            item.qty_to_reserve = sum(serial_to_reserve.mapped('display_weight'))
-
             serial_to_reserve.reserve_serial()
+
+            item.qty_to_reserve = sum(
+                item.potential_serial_ids.filtered(
+                    lambda a: a.reserved_to_production_id == item.mrp_production_id
+                ).mapped('display_weight')
+            )
 
             item.is_reserved = True
 
@@ -67,5 +71,7 @@ class PotentialLot(models.Model):
             )
 
             serial_to_reserve.unreserved_serial()
+
+            item.qty_to_reserve = 0
 
             item.is_reserved = False
