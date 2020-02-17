@@ -62,10 +62,10 @@ class StockProductionLotSerial(models.Model):
 
     @api.model
     def reserve_serial(self):
-        raise models.ValidationError('reserve')
         if 'params' in self.env.context and 'id' in self.env.context['params']:
             production_id = self.env.context['params']['id']
             production = self.env['mrp.production'].search([('id', '=', production_id)])
+            raise models.ValidationError('{} {}'.format(self, production))
             if not production:
                 raise models.ValidationError('No se encontró la orden de producción a la que reservar el producto')
             # for item in self:
