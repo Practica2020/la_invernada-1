@@ -103,6 +103,10 @@ class StockPicking(models.Model):
 
     tare_container_weight_dispatch = fields.Integer(string="Tara Contenedor")
 
+    container_weight = fields.Integer(string="Peso Contenedor")
+
+    vgm_weight_dispatch = fields.Integer(string="Peso VGM",compute="get_vgm_weight",store=True)
+
     note_dispatched = fields.Text(string="Nota")
 
     sell_truck = fields.Char(string="Sello de Invernada")
@@ -130,6 +134,11 @@ class StockPicking(models.Model):
         self.ensure_one()
         base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
         return base_url
+
+    @api.one
+    @api.depends('tare_container_weight_dispatch','container_weight')
+    def get_vgm_weight(self):
+        self.vgm_weight_dispatch = self.tare_container_weight_dispatch + self.container_weight
 
     @api.model
     @api.depends('freight_value', 'safe_value')
