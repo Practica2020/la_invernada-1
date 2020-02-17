@@ -41,9 +41,9 @@
             <t t-foreach="docs" t-as="o">
                 <img t-if="o.datas" t-att-src="'data:o.mimetype;base64,%s' % to_text(o.datas)" width="192px"
                      height="255px" style="margin-top:10px;margin-bottom:10px" HSPACE="10" VSPACE="10"/>
-
+                <span t-esc="i++"></span>
             </t>
-            <span t-field="docs[8].id"></span>
+
         </t>
     </template>
 
