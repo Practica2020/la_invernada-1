@@ -50,7 +50,7 @@ class StockProductionLotSerial(models.Model):
         base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
         return base_url
 
-    @api.model
+    @api.multi
     def reserve_serial(self):
         if 'params' in self.env.context and 'id' in self.env.context['params']:
             production_id = self.env.context['params']['id']
@@ -94,7 +94,7 @@ class StockProductionLotSerial(models.Model):
 
         #     item.is_reserved = True
 
-    @api.model
+    @api.multi
     def unreserved_serial(self):
         for item in self:
 
