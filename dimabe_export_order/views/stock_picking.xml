@@ -68,6 +68,7 @@
                         <group name="dispatch_data" position="inside">
                             <group string="Información de Despacho" style="width=100%%">
                                 <group>
+                                    <field name=""
                                     <field name="net_weight_dispatch"/>
                                     <field name="gross_weight_dispatch"/>
                                     <field name="tare_container_weight_dispatch"/>
