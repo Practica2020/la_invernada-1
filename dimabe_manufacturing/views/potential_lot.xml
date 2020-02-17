@@ -26,6 +26,7 @@
                         attrs="{'invisible':[('reserved_to_production_id', '>', 0)]}"
                         type="object"
                 />
+
                 <button string="quitar reservar"
                         name="unreserved_serial"
                         attrs="{'invisible':[('reserved_to_production_id', '=', False)]}"
