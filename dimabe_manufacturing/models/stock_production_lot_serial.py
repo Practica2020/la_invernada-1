@@ -53,14 +53,12 @@ class StockProductionLotSerial(models.Model):
         return base_url
 
     @api.onchange('is_reserved')
-    @api.returns('self')
     def onchange_is_reserved(self):
         for item in self:
             if item.is_reserved:
                 item.reserve_serial()
             else:
                 item.unreserved_serial()
-        return self
 
     @api.model
     def reserve_serial(self):
