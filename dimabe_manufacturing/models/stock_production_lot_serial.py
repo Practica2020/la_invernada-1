@@ -65,14 +65,13 @@ class StockProductionLotSerial(models.Model):
         if 'params' in self.env.context and 'id' in self.env.context['params']:
             production_id = self.env.context['params']['id']
             production = self.env['mrp.production'].search([('id', '=', production_id)])
-            raise models.ValidationError('{} {}'.format(self, production))
             if not production:
                 raise models.ValidationError('No se encontró la orden de producción a la que reservar el producto')
             # for item in self:
             self.update({
                 'reserved_to_production_id': production.id
             })
-
+            raise models.ValidationError('{} {}'.format(self, self.reserved_to_production_id))
             stock_move = production.move_raw_ids.filtered(
                 lambda a: a.product_id == self.stock_production_lot_id.product_id
             )
