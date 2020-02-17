@@ -59,6 +59,7 @@ class StockProductionLotSerial(models.Model):
                     'reserved_to_production_id': production_id
                 })
                 # item.consumed = True
+                raise models.ValidationError(item.production_id)
                 stock_move = item.production_id.move_raw_ids.filtered(
                     lambda a: a.product_id == item.stock_production_lot_id.product_id
                 )
@@ -75,8 +76,6 @@ class StockProductionLotSerial(models.Model):
                 stock_quant.sudo().update({
                     'reserved_quantity': stock_quant.reserved_quantity + item.display_weight
                 })
-
-                raise models.ValidationError(stock_move)
 
                 stock_move.update({
                     'active_move_line_ids': [
