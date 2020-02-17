@@ -64,7 +64,7 @@
                 </xpath>
                 <xpath expr="//page[@name='note']" position="after">
                     <page string="Despacho" id="dispatch_data"
-                        attrs="{'invisible':[('origin','!=','None')]}"
+
                     >
                         <group name="dispatch_data" position="inside">
                             <group string="Información de Despacho" style="width=100%%">
