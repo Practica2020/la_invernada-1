@@ -20,6 +20,20 @@ class MrpWorkorder(models.Model):
         string='subproductos'
     )
 
+    potential_lot_planned_ids = fields.One2many(
+        'stock.production.lot.serial',
+        compute='_compute_potential_lot_planned_ids'
+    )
+
+    @api.multi
+    def _compute_potential_lot_planned_ids(self):
+        for item in self:
+            item.potential_lot_planned_ids = item.production_id.potential_lot_ids.filtered(
+                lambda a: a.qty_to_reserve > 0
+            ).mapped('potential_serial_ids').filtered(
+                lambda b: b.reserved_to_production_id ==item.production_id
+            )
+
     @api.multi
     def _compute_byproduct_move_line_ids(self):
         for item in self:
