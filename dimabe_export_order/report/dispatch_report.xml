@@ -18,13 +18,16 @@
                               style="text-transform: uppercase;font-family: Arial, Helvetica, sans-serif;font-weight: bold">
                         </span>
                         <br/>
-                        <span t-field="res_company.street"></span><br/>
-                        <span t-field="res_company.city"></span><br/>
+                        <span t-field="res_company.street"></span>
+                        <br/>
+                        <span t-field="res_company.city"></span>
+                        <br/>
                         <span t-field="res_company.country_id"></span>
                     </div>
                     <div style="position: absolute;left:65%;top:10px;width:300px;height:150px;text-align: center;
                     font-family: Arial, Helvetica, sans-serif; border:2px solid;">
-                        R.U.T<span t-field="res_company.invoice_rut"></span>
+                        R.U.T
+                        <span t-field="res_company.invoice_rut"></span>
                         <span>GUIA DE DESPACHO ELECTRONICA</span>
 
                     </div>
@@ -36,9 +39,11 @@
     <template id="report_truck_dispatch">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <div class="header">
+                <div class="header" width="0px" height="0px">
+                </div>
+                <div class="page">
                     <img t-if="o.datas" t-att-src="'data:o.mimetype;base64,%s' % to_text(o.datas)" width="250px"
-                     height="250px"/>
+                         height="250px"/>
                 </div>
             </t>
         </t>
