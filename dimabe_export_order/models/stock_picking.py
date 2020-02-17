@@ -109,7 +109,7 @@ class StockPicking(models.Model):
 
     guide_number = fields.Char(string="Numero de Guia")
 
-    picture = fields.Many2many(rel="ir.attachment")
+    picture = fields.Many2many(related="ir.attachment")
 
     @api.multi
     def generate_report(self):
