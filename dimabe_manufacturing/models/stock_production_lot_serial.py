@@ -103,11 +103,11 @@ class StockProductionLotSerial(models.Model):
                 'reserved_to_production_id': None
             })
 
-            stock_move = item.production_id.move_raw_ids.filtered(
+            stock_move = item.reserved_to_production_id.move_raw_ids.filtered(
                 lambda a: a.product_id == item.stock_production_lot_id.product_id
             )
 
-            raise models.ValidationError(item.production_id)
+            raise models.ValidationError(stock_move)
 
             move_line = stock_move.active_move_line_ids.filtered(
                 lambda a: a.lot_id.id == item.stock_production_lot_id.id
