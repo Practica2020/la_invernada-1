@@ -41,10 +41,8 @@
             <t t-foreach="docs" t-as="o">
                 <div class="header" width="0px" height="0px">
                 </div>
-                <div class="page">
                     <img t-if="o.datas" t-att-src="'data:o.mimetype;base64,%s' % to_text(o.datas)" width="250px"
                          height="250px"/>
-                </div>
             </t>
         </t>
     </template>
