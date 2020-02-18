@@ -30,6 +30,14 @@
         </t>
     </template>
 
+    <template id="test_bootstrap_style" inherit_id="dimabe_export_order.report_dispatch_guide">
+      <xpath expr="//style" position="after">
+        <style type="text/css">
+            <link rel="stylesheet" href="maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        </style>
+      </xpath>
+    </template>
+
     <template id="report_truck_dispatch">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
