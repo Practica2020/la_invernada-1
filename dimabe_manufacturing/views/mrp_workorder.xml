@@ -16,6 +16,16 @@
       <field name="arch" type="xml">
         <button name="action_open_manufacturing_order" position="replace">
         </button>
+         <xpath expr="//div[@class='workorder_pdf']" position="before">
+          <field name="potential_serial_planned_ids">
+            <tree decoration-danger="consumed==False" decoration-success="consumed==True">
+              <field name="stock_production_lot_id"/>
+              <field name="serial_number"/>
+              <field name="display_weight"/>
+              <field name="consumed"/>
+            </tree>
+          </field>
+        </xpath>
       </field>
     </record>
 
@@ -93,24 +103,6 @@
       <field name="res_model">mrp.workorder</field>
       <field name="view_mode">form</field>
       <field name="view_id" ref="dimabe_manufacturing.mrp_workorder_out_form_view"/>
-    </record>
-
-    <record id="mrp_workorder_view_form_tablet_inherit" model="ir.ui.view">
-      <field name="name">vista producción</field>
-      <field name="model">mrp.workorder</field>
-      <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_tablet"/>
-      <field name="arch" type="xml">
-        <xpath expr="//div[@class='workorder_pdf']" position="before">
-          <field name="potential_serial_planned_ids">
-            <tree decoration-danger="consumed==False" decoration-success="consumed==True">
-              <field name="stock_production_lot_id"/>
-              <field name="serial_number"/>
-              <field name="display_weight"/>
-              <field name="consumed"/>
-            </tree>
-          </field>
-        </xpath>
-      </field>
     </record>
 
   </data>

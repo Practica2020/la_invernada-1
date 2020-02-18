@@ -104,6 +104,7 @@ class MrpWorkorder(models.Model):
     def on_barcode_scanned(self, barcode):
 
         qty_done = self.qty_done
+        raise models.ValidationError(self.test_type)
         custom_serial = self.env['stock.production.lot.serial'].search([
             '|',
             ('serial_number', '=', barcode),
