@@ -13,17 +13,17 @@
                             <table style="margin:auto;">
                                 <tr>
                                     <td style="text-align:center;">
-                                        <span  t-field="res_company.name"></span>
+                                        <span t-field="res_company.name"></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="text-align:center;">
-                                        <span  t-field="res_company.street"></span>
+                                        <span t-field="res_company.street"></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="text-align:center;">
-                                        <span  t-field="res_company.city"></span>
+                                        <span t-field="res_company.city"></span>
                                         <span t-field="res_company.country_id"></span>
                                     </td>
                                 </tr>
@@ -31,7 +31,27 @@
                         </div>
                         <div style="width:33.3%;float:right;">
                             <div>
-
+                                <table>
+                                    <tr>
+                                        <td>
+                                            R.U.T:<span t-field="res_company.invoice_rut"></span>
+                                        </td>
+                                    </tr>
+                                    <tr><td></td></tr>
+                                    <tr><td></td></tr>
+                                    <tr>
+                                        <td>
+                                            GUIA DE DESPACHO ELECTRONICA
+                                        </td>
+                                    </tr>
+                                    <tr><td></td></tr>
+                                    <tr><td></td></tr>
+                                    <tr>
+                                        <td>
+                                            <span t-field="d.guide_number"></span>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>
