@@ -125,8 +125,12 @@
                     <br/>
                     <div style="width:100%;height:50%;border:1px solid;">
                         <table style="width:100%" cellspacing="10">
-                            <t t-foreach="d.move_line_ids_without_package" t-as="m">
-                                <span t-esc="m"></span>
+                            <t t-foreach="d.move_ids_without_package" t-as="m">
+                                <tr>
+                                    <td>
+                                        <span t-esc="m.quantity_done"></span>
+                                    </td>
+                                </tr>
                             </t>
                         </table>
                     </div>
