@@ -6,7 +6,7 @@ class PotentialLot(models.Model):
     _description = 'posibles lotes para planificación de producción'
 
     def __init__(self):
-
+        super(PotentialLot, self).__init__()
         self.potential_serial_ids.with_context(production_id=self.mrp_production_id)
         models._logger.error('entro al init {}'.format(self.env.context))
 
