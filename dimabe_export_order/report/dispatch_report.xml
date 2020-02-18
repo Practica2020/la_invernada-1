@@ -103,7 +103,7 @@
                                     <strong>COMUNA:</strong>
                                 </td>
                                 <td>
-                                    <span t-field="d.partner_id.state"></span>
+                                    <span t-field="d.partner_id.state_id"></span>
                                 </td>
                                 <td>
                                     <strong>VENCTO:</strong>
