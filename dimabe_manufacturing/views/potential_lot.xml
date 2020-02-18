@@ -21,14 +21,16 @@
         </div>
         <div>
           <group>
-            <field name="potential_serial_ids" context="{'mrp_production_id': mrp_production_id}">
+            <field name="potential_serial_ids" context="{'default_production_id': mrp_production_id}">
               <tree>
+                <field name="production_id" invisible="1" />
                 <field name="reserved_to_production_id"/>
                 <field name="consumed" invisible="1"/>
                 <button string="reservar"
                         name="reserve_serial"
                         attrs="{'invisible':['|',('reserved_to_production_id', '>', 0),('consumed','=',True)]}"
                         type="object"
+                        context="{'mrp_production_id': production_id}"
                 />
 
                 <button string="quitar reservar"
@@ -44,12 +46,5 @@
         </div>
       </form>
     </field>
-  </record>
-
-  <record id="potential_lot_form_action" model="ir.actions.act_window">
-    <field name="name">potencial lot acción</field>
-    <field name="res_model">potential.lot</field>
-    <field name="view_mode">tree,form</field>
-    <field name="context" eval="{'lala': 11}" />
   </record>
 </odoo>
