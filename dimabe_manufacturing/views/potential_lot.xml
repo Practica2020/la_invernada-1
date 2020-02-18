@@ -23,14 +23,13 @@
           <group>
             <field name="potential_serial_ids" context="{'production_ids': mrp_production_id}">
               <tree>
-                <field name="production_id" />
                 <field name="reserved_to_production_id"/>
                 <field name="consumed" invisible="1"/>
                 <button string="reservar"
                         name="reserve_serial"
                         attrs="{'invisible':['|',('reserved_to_production_id', '>', 0),('consumed','=',True)]}"
                         type="object"
-                        context="{'production_id': context['production_id']}"
+                        context="context"
                 />
 
                 <button string="quitar reservar"
