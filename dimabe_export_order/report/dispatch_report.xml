@@ -136,7 +136,13 @@
                                     <td>
                                         <span t-field="m.product_id"></span>
                                         <br/>
-                                        <t t-esc="d.type_of_dispatch">
+                                        <t t-if="d.type_of_dispatch == 'exp'">
+                                            <table>
+                                                <tr>
+                                                    <td></td>
+                                                    <td><span t-field="d.net_weight_dispatch"></span></td>
+                                                </tr>
+                                            </table>
                                         </t>
                                     </td>
                                     <td>
