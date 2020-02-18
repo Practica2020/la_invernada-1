@@ -29,25 +29,25 @@
                                 </tr>
                             </table>
                         </div>
-                        <div style="width:33.3%;float:right;">
+                        <div style="width:33%;float:right;border:5px solid;">
                             <div>
                                 <table>
                                     <tr>
-                                        <td>
+                                        <td style="text-align:center;">
                                             R.U.T:<span t-field="res_company.invoice_rut"></span>
                                         </td>
                                     </tr>
                                     <tr><td></td></tr>
                                     <tr><td></td></tr>
                                     <tr>
-                                        <td>
+                                        <td style="text-align:center;">
                                             GUIA DE DESPACHO ELECTRONICA
                                         </td>
                                     </tr>
                                     <tr><td></td></tr>
                                     <tr><td></td></tr>
                                     <tr>
-                                        <td>
+                                        <td style="text-align:center;">
                                             <span t-field="d.guide_number"></span>
                                         </td>
                                     </tr>
