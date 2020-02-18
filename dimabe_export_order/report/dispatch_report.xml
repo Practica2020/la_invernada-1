@@ -89,12 +89,16 @@
                             <td><span t-field="d.partner_id.phone"></span></td>
                         </tr>
                         <tr>
-                            <td><strong></strong></td>
-                            <td><strong></strong></td>
+                            <td><strong>COMUNA:</strong></td>
+                            <td><span t-field="d.partner_id.state"></span></td>
+                            <td><strong>VENCTO:</strong></td>
+                            <td>&nbsp;</td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td></td>
+                            <td><strong>GIRO:</strong></td>
+                            <td>&nbsp;</td>
+                            <td><strong>COND.PAGO:</strong></td>
+                            <td>&nbsp;</td>
                         </tr>
                     </table>
                 </div>
