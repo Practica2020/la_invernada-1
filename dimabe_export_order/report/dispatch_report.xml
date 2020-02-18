@@ -32,6 +32,7 @@
                         <br/>
                         <t t-if='d.type_of_dispatch == "exp"'>UIA DE DESPACHO ELECTRONICA</t>
                         <t t-elif="d.type_of_dispatch == 'nac'">GUIA DE DESPACHO ELECTRONICA</t>
+
                         <br/>
                         <br/>
                         <span t-field="d.guide_number"></span>
