@@ -101,16 +101,29 @@ class MrpWorkorder(models.Model):
 
         return super(MrpWorkorder, self).open_tablet_view()
 
+    def action_next(self):
+        self.validate_code(self.lot_id.name)
+        return super(MrpWorkorder, self).action_next()
+
     def on_barcode_scanned(self, barcode):
 
         qty_done = self.qty_done
 
+        custom_serial = self.validate_code(barcode)
+        barcode = custom_serial.stock_production_lot_id.name
+        custom_serial.write({
+            'consumed': True
+        })
+        super(MrpWorkorder, self).on_barcode_scanned(barcode)
+        self.qty_done = qty_done + custom_serial.display_weight
+        self.test_type = 'register_consumed_materials'
+
+    def validate_code(self, barcode):
         custom_serial = self.env['stock.production.lot.serial'].search([
             '|',
             ('serial_number', '=', barcode),
             ('stock_production_lot_id.name', '=', barcode)
         ])
-
         if not custom_serial:
             raise models.ValidationError('no se encontró ningún lote asociado al código ingresado')
         if custom_serial.consumed:
@@ -119,14 +132,9 @@ class MrpWorkorder(models.Model):
             if not self.potential_serial_planned_ids.filtered(
                     lambda a: a.serial_number == barcode
             ):
-                raise models.ValidationError('el código escaneado no se encuentra dentro de la planificación de esta producción')
-            barcode = custom_serial.stock_production_lot_id.name
-            custom_serial.write({
-                'consumed': True
-            })
-        super(MrpWorkorder, self).on_barcode_scanned(barcode)
-        self.qty_done = qty_done + custom_serial.display_weight
-        self.test_type = 'register_consumed_materials'
+                raise models.ValidationError(
+                    'el código escaneado no se encuentra dentro de la planificación de esta producción')
+        return custom_serial
 
     def open_out_form_view(self):
 
