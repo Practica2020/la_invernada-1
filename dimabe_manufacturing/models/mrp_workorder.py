@@ -127,7 +127,6 @@ class MrpWorkorder(models.Model):
         super(MrpWorkorder, self).on_barcode_scanned(barcode)
         self.qty_done = qty_done + custom_serial.display_weight
         self.test_type = 'register_consumed_materials'
-        self._next()
 
     def open_out_form_view(self):
 
