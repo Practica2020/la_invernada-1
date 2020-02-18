@@ -23,7 +23,7 @@
           <group>
             <field name="potential_serial_ids" context="{'default_production_id': mrp_production_id}">
               <tree>
-                <field name="production_id" invisible="1" />
+                <field name="production_id" invisible="0" />
                 <field name="reserved_to_production_id"/>
                 <field name="consumed" invisible="1"/>
                 <button string="reservar"
