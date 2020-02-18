@@ -5,11 +5,6 @@ class PotentialLot(models.Model):
     _name = 'potential.lot'
     _description = 'posibles lotes para planificación de producción'
 
-    def init(self):
-
-        self.potential_serial_ids.with_context(production_id=self.mrp_production_id)
-        models._logger.error('entro al init {}'.format(self.env.context))
-
     name = fields.Char('lote', related='stock_production_lot_id.name')
 
     lot_product_id = fields.Many2one(
@@ -26,7 +21,8 @@ class PotentialLot(models.Model):
     potential_serial_ids = fields.One2many(
         'stock.production.lot.serial',
         related='stock_production_lot_id.stock_production_lot_serial_ids',
-        domain=[('consumed', '!=', True)]
+        domain=[('consumed', 'is', False)],
+        context={'production_id': mrp_production_id}
     )
 
     mrp_production_id = fields.Many2one('mrp.production', 'Producción')
