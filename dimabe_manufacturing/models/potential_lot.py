@@ -5,6 +5,9 @@ class PotentialLot(models.Model):
     _name = 'potential.lot'
     _description = 'posibles lotes para planificación de producción'
 
+    def init(self):
+        self.env.production_id = self.mrp_production_id.id
+
     name = fields.Char('lote', related='stock_production_lot_id.name')
 
     lot_product_id = fields.Many2one(
@@ -22,7 +25,7 @@ class PotentialLot(models.Model):
         'stock.production.lot.serial',
         related='stock_production_lot_id.stock_production_lot_serial_ids',
         domain=[('consumed', '!=', True)],
-        context=lambda self: self._get_conext()
+        context={'production_id': lambda self: self.production_id}
     )
 
     mrp_production_id = fields.Many2one('mrp.production', 'Producción')
@@ -35,10 +38,6 @@ class PotentialLot(models.Model):
     qty_to_reserve = fields.Float('Cantidad Reservada')
 
     is_reserved = fields.Boolean('Reservado')
-
-    @api.model
-    def _get_context(self):
-        return {'production_id': self.mrp_production_id}
 
     @api.model
     def get_stock_quant(self):
