@@ -1,4 +1,4 @@
-from odoo import fields, models, api
+from odoo import fields, models, api, http
 
 
 class StockProductionLotSerial(models.Model):
@@ -52,8 +52,8 @@ class StockProductionLotSerial(models.Model):
 
     @api.multi
     def reserve_serial(self):
-        models._logger.error(self.env.context)
-        models._logger.error(self.env)
+        models.ValidationError(http.request.httprequest)
+
         if 'production_id' in self.env.context:
             raise models.ValidationError(self.env.context['production_id'])
         if 'params' in self.env.context and 'id' in self.env.context['params']:
