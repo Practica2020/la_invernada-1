@@ -137,7 +137,7 @@
                                         <span t-field="m.product_id"></span>
                                     </td>
                                     <td>
-                                        <span t-field="m.product_id.lts_price"></span>
+                                        <span t-field="m.product_id.lst_price"></span>
                                     </td>
                                 </tr>
                             </t>
