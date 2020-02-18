@@ -122,9 +122,7 @@ class MrpWorkorder(models.Model):
     def validate_code(self, barcode):
         for item in self:
             custom_serial = item.env['stock.production.lot.serial'].search([
-                '|',
                 ('serial_number', '=', barcode),
-                ('stock_production_lot_id.name', '=', barcode)
             ])
 
             if custom_serial:
