@@ -5,9 +5,16 @@
             <div class="page" style="text-align:center;">
                 <t t-foreach="docs" t-as="d">
                     <div>
-                        <div style="border:1px solid;width:33.3%;float: left;">
+                        <div style="width:33.3%;float: left;">
                             <img t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)"
                                  style="width:33.3%;height:15%;"/>
+                        </div>
+                        <div style="width:33.3%">
+                            <table>
+                                <tr><span t-field="res_company.name"></span></tr>
+                                <tr><span t-field="res_company.street"></span></tr>
+                                <tr><span t-field="res_company.city"></span><span t-field="res_company.country_id"></span></tr>
+                            </table>
                         </div>
                     </div>
                 </t>
