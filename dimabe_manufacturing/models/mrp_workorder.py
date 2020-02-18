@@ -102,7 +102,6 @@ class MrpWorkorder(models.Model):
         return super(MrpWorkorder, self).open_tablet_view()
 
     def action_next(self):
-        raise models.ValidationError(self.lot_id.name)
         self.validate_code(self.lot_id.name)
         return super(MrpWorkorder, self).action_next()
 
@@ -125,6 +124,7 @@ class MrpWorkorder(models.Model):
             ('serial_number', '=', barcode),
             ('stock_production_lot_id.name', '=', barcode)
         ])
+        raise models.ValidationError(custom_serial)
         if not custom_serial:
             raise models.ValidationError('no se encontró ningún lote asociado al código ingresado')
         if custom_serial.consumed:
