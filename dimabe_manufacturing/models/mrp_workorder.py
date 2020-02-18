@@ -103,8 +103,6 @@ class MrpWorkorder(models.Model):
 
     def on_barcode_scanned(self, barcode):
 
-        raise models.ValidationError(barcode)
-
         qty_done = self.qty_done
 
         custom_serial = self.env['stock.production.lot.serial'].search([
@@ -112,6 +110,7 @@ class MrpWorkorder(models.Model):
             ('serial_number', '=', barcode),
             ('stock_production_lot_id.name', '=', barcode)
         ])
+        raise models.ValidationError(custom_serial)
         if not custom_serial:
             raise models.ValidationError('no se encontró ningún lote asociado al código ingresado')
         if custom_serial.consumed:
