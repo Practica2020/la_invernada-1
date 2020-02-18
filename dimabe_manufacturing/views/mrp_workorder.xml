@@ -22,7 +22,7 @@
               <field name="stock_production_lot_id"/>
               <field name="serial_number"/>
               <field name="display_weight"/>
-              <field name="consumed"/>
+              <field name="consumed" widget="boolean_toggle"/>
             </tree>
           </field>
         </xpath>
