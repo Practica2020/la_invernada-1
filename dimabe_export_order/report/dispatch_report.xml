@@ -7,7 +7,7 @@
                     <div>
                         <div style="width:33.3%;float:left;">
                             <img t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)"
-                                 style="height:75px;width:230px;"/>
+                                 style="height:75px;width:33.3%;"/>
                         </div>
                         <div style="width:33.3%;margin:0 auto;">
                             <table style="text-align:center;">
