@@ -20,9 +20,15 @@ class PotentialLot(models.Model):
 
     potential_serial_ids = fields.One2many(
         'stock.production.lot.serial',
-        related='stock_production_lot_id.stock_production_lot_serial_ids',
-        domain=[('consumed', 'is', False)]
+        compute='_compute_potential_serial_ids',
     )
+
+    @api.multi
+    def _compute_potential_serial_ids(self):
+        for item in self:
+            item.potential_serial_ids = item.stock_production_lot_id.stock_production_lot_serial_ids.filtered(
+                lambda a: a.consumed is False and a.reserved_to_production_id != item.mrp_production_id
+            ).with_context(mrp_production_id=item.mrp_production_id)
 
     mrp_production_id = fields.Many2one('mrp.production', 'Producción')
 
