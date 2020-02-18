@@ -2,11 +2,11 @@
 <odoo>
     <template id="report_dispatch_guide">
         <t t-call="web.html_container">
-            <div class="page">
+            <div class="page" style="text-align:center;">
                 <t t-foreach="docs" t-as="d">
                     <div>
                         <div style="border:1px solid;width:33.3%;float: left;">1</div>
-                        <div style="border:1px solid;width:33.3%;margin:0 auto;">2</div>
+                        <div style="border:1px solid;width:33.3%;display:inline-block;">2</div>
                         <div style="border:1px solid;width:33.3%;float: right;">3</div>
                     </div>
                 </t>
