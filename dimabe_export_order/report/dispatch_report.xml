@@ -125,7 +125,7 @@
                     <br/>
                     <div style="width:100%;height:50%;border:1px solid;">
                         <table style="width:100%" cellspacing="10">
-                            <t t-foreach="move_ids_without_package" t-as="m">
+                            <t t-foreach="move_line_ids_without_package" t-as="m">
                                 <span t-esc="m"></span>
                             </t>
                         </table>
