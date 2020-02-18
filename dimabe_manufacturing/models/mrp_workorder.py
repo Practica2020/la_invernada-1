@@ -121,7 +121,7 @@ class MrpWorkorder(models.Model):
             ):
                 raise models.ValidationError('el código escaneado no se encuentra dentro de la planificación de esta producción')
             barcode = custom_serial.stock_production_lot_id.name
-            custom_serial.sudo().update({
+            custom_serial.sudo().write({
                 'consumed': True
             })
         super(MrpWorkorder, self).on_barcode_scanned(barcode)
