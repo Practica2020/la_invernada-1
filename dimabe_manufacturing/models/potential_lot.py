@@ -25,7 +25,7 @@ class PotentialLot(models.Model):
         'stock.production.lot.serial',
         related='stock_production_lot_id.stock_production_lot_serial_ids',
         domain=[('consumed', '!=', True)],
-        context={'production_id': lambda self: self.production_id}
+        context={'production_id': lambda self: self.mrp_production_id}
     )
 
     mrp_production_id = fields.Many2one('mrp.production', 'Producción')
