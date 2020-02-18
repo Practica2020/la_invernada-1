@@ -12,18 +12,18 @@
                         <div style="width:33.3%;width:50%;margin:auto;padding:10px;">
                             <table style="margin:auto;">
                                 <tr>
-                                    <td>
-                                        <span style="text-align:center;" t-field="res_company.name"></span>
+                                    <td style="text-align:center;">
+                                        <span  t-field="res_company.name"></span>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <span style="text-align:center;" t-field="res_company.street"></span>
+                                    <td style="text-align:center;">
+                                        <span  t-field="res_company.street"></span>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <span style="text-align:center;" t-field="res_company.city"></span>
+                                    <td style="text-align:center;">
+                                        <span  t-field="res_company.city"></span>
                                         <span t-field="res_company.country_id"></span>
                                     </td>
                                 </tr>
