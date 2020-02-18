@@ -21,7 +21,7 @@
         </div>
         <div>
           <group>
-            <field name="potential_serial_ids" context="{'production_id': mrp_production_id}">
+            <field name="potential_serial_ids" context="{'production_ids': mrp_production_id}">
               <tree>
                 <field name="production_id" />
                 <field name="reserved_to_production_id"/>
