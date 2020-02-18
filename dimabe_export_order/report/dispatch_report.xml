@@ -30,13 +30,11 @@
         </t>
     </template>
 
-    <template id="test_bootstrap_style" inherit_id="dimabe_export_order.report_dispatch_guide">
-      <xpath expr="//head" position="after">
-        <style type="text/css">
-            <link rel="stylesheet" href="maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-        </style>
-      </xpath>
-    </template>
+    <template id="minimal_layout_inherit" inherit_id="dimabe_export_order.report_dispatch_guide">
+            <xpath expr="//head" position="inside">
+                <link rel='stylesheet' href="maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+            </xpath>
+        </template>
 
     <template id="report_truck_dispatch">
         <t t-call="web.html_container">
