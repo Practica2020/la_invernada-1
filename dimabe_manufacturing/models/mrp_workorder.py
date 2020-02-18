@@ -102,6 +102,7 @@ class MrpWorkorder(models.Model):
         return super(MrpWorkorder, self).open_tablet_view()
 
     def action_next(self):
+        raise models.ValidationError(self.lot_id.name)
         self.validate_code(self.lot_id.name)
         return super(MrpWorkorder, self).action_next()
 
