@@ -139,61 +139,41 @@ class MrpProduction(models.Model):
                 'has_mrp_production': True
             })
 
-        return res
+        return res.with_context(params={
+            'id': res.id
+        })
 
-    @api.multi
-    def button_plan(self):
-        for order in self:
-            total_reserved = sum(order.move_raw_ids.filtered(
-                lambda a: not a.product_id.categ_id.reserve_ignore).mapped('reserved_availability')
-                                 )
-            if total_reserved < order.product_qty:
-                raise models.ValidationError(
-                    'la cantidad a consumir ({}) no puede ser menor a la cantidad a producir ({})'.format(
-                        total_reserved, order.product_qty
-                    )
-                )
-
-            for stock_move in order.move_raw_ids:
-                if not stock_move.product_id.categ_id.reserve_ignore:
-                    stock_move.product_uom_qty = stock_move.reserved_availability
-
-                if stock_move.product_uom_qty % 1 > 0 and stock_move.product_uom.category_id.measure_type == 'unit':
-                    stock_move.product_uom_qty = stock_move.product_uom_qty + 1 - stock_move.product_uom_qty % 1
-
-                stock_move.unit_factor = stock_move.product_uom_qty / order.product_qty
-                if stock_move.product_uom_qty == 0 and not stock_move.product_id.categ_id.reserve_ignore and\
-                        stock_move.scrapped is False:
-                    models._logger.error(stock_move.product_id.name)
-                    stock_move.update({
-                        'raw_material_production_id': None
-                    })
-            order.move_raw_ids = order.move_raw_ids.filtered(
-                lambda a: a.raw_material_production_id.id == order.id
-            )
-
-            # real_bom_data = []
-            # real_product_qty = order.bom_id.product_qty
-            #
-            # order.bom_id.product_qty = order.product_uom_id._compute_quantity(order.product_qty,
-            #                                                                    order.bom_id.product_uom_id)
-            #
-            # for bom_line in order.bom_id.bom_line_ids:
-            #     raw_line = order.move_raw_ids.filtered(lambda a: a.product_id == bom_line.product_id)
-            #     if raw_line:
-            #         real_bom_data.append({
-            #             'product_id': bom_line.product_id,
-            #             'product_qty': bom_line.product_qty
-            #         })
-            #         bom_line.product_qty = raw_line.product_uom_qty
-
-            res = super(MrpProduction, order).button_plan()
-
-            # for rd in real_bom_data:
-            #     bl = order.bom_id.bom_line_ids.filtered(lambda a: a.product_id == rd['product_id'])
-            #     if bl:
-            #         bl.product_qty = rd['product_qty']
-            #
-            # order.bom_id.product_qty = real_product_qty
-
-            return res
+    # @api.multi
+    # def button_plan(self):
+    #     for order in self:
+    #         total_reserved = sum(order.move_raw_ids.filtered(
+    #             lambda a: not a.product_id.categ_id.reserve_ignore).mapped('reserved_availability')
+    #                              )
+    #         if total_reserved < order.product_qty:
+    #             raise models.ValidationError(
+    #                 'la cantidad a consumir ({}) no puede ser menor a la cantidad a producir ({})'.format(
+    #                     total_reserved, order.product_qty
+    #                 )
+    #             )
+    #
+    #         for stock_move in order.move_raw_ids:
+    #             if not stock_move.product_id.categ_id.reserve_ignore:
+    #                 stock_move.product_uom_qty = stock_move.reserved_availability
+    #
+    #             if stock_move.product_uom_qty % 1 > 0 and stock_move.product_uom.category_id.measure_type == 'unit':
+    #                 stock_move.product_uom_qty = stock_move.product_uom_qty + 1 - stock_move.product_uom_qty % 1
+    #
+    #             stock_move.unit_factor = stock_move.product_uom_qty / order.product_qty
+    #             if stock_move.product_uom_qty == 0 and not stock_move.product_id.categ_id.reserve_ignore and\
+    #                     stock_move.scrapped is False:
+    #                 models._logger.error(stock_move.product_id.name)
+    #                 stock_move.update({
+    #                     'raw_material_production_id': None
+    #                 })
+    #         order.move_raw_ids = order.move_raw_ids.filtered(
+    #             lambda a: a.raw_material_production_id.id == order.id
+    #         )
+    #
+    #         res = super(MrpProduction, order).button_plan()
+    #
+    #         return res
