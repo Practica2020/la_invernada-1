@@ -6,7 +6,7 @@
                 <t t-foreach="docs" t-as="d">
                     <div>
                         <div style="border:1px solid;width:33.3%;float: left;">1</div>
-                        <div style="border:1px solid;width:33.3%;display:inline-block;">2</div>
+                        <div style="border:1px solid;width:33.2%;display:inline-block;">2</div>
                         <div style="border:1px solid;width:33.3%;float: right;">3</div>
                     </div>
                 </t>
