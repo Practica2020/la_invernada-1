@@ -10,7 +10,7 @@
                                  style="height:75px;width:230px;"/>
                         </div>
                         <div style="width:33.3%">
-                            <table>
+                            <table style="margin:0 auto;">
                                 <tr><span t-field="res_company.name"></span></tr>
                                 <tr><span t-field="res_company.street"></span></tr>
                                 <tr><span t-field="res_company.city"></span><span t-field="res_company.country_id"></span></tr>
