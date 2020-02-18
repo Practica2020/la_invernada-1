@@ -45,4 +45,11 @@
       </form>
     </field>
   </record>
+
+  <record id="potential_lot_form_action" model="ir.actions.act_window">
+    <field name="name">potencial lot acción</field>
+    <field name="res_model">potential.lot</field>
+    <field name="view_mode">tree,form</field>
+    <field name="context" eval="{'lala': 11}" />
+  </record>
 </odoo>

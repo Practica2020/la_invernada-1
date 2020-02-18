@@ -21,8 +21,7 @@ class PotentialLot(models.Model):
     potential_serial_ids = fields.One2many(
         'stock.production.lot.serial',
         related='stock_production_lot_id.stock_production_lot_serial_ids',
-        domain=[('consumed', 'is', False)],
-        context={'production_id': mrp_production_id}
+        domain=[('consumed', 'is', False)]
     )
 
     mrp_production_id = fields.Many2one('mrp.production', 'Producción')
