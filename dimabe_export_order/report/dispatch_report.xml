@@ -33,7 +33,7 @@
                         <span style="text-align='center'">GUIA DE DESPACHO ELECTRONICA</span>
                         <br/>
                         <br/>
-                        <span t-field="d.guide_number" style="margin-bottom:0px"></span>
+                        <span t-field="d.guide_number" style="position:absolute;bottom:0"></span>
                     </div>
                 </t>
             </div>
