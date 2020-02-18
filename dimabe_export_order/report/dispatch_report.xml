@@ -68,11 +68,12 @@
                 <br/>
                 <div style="width:50%;height:9%;"></div>
                 <br/>
-                <div style="width:90%;height:15%;border:1px solid;">2
+                <div style="width:90%;height:15%;border:1px solid;">
                     <table border="1">
                         <tr>
-                            <td></td>
-                            <td></td>
+                            <td>
+                                SEÑOR(ES):<span t-field="d.partner_id"></span>
+                            </td>
                             <td></td>
                         </tr>
                         <tr>
