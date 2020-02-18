@@ -9,7 +9,7 @@
                             <img t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)"
                                  style="height:75px;"/>
                         </div>
-                        <div style="width:252px;margin:auto;padding:10px;">
+                        <div style="width:252px;margin:auto;padding:10px;border:2px solid;">
                             <table style="margin:auto;">
                                 <tr>
                                     <td style="text-align:center;">
@@ -29,31 +29,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div style="width:252px;border:2px solid;position:absolute;top:0;right:502;">
-                            <div>
-                                <table>
-                                    <tr>
-                                        <td style="text-align:center;">
-                                            R.U.T:<span t-field="res_company.invoice_rut"></span>
-                                        </td>
-                                    </tr>
-                                    <tr><td></td></tr>
-                                    <tr><td></td></tr>
-                                    <tr>
-                                        <td style="text-align:center;">
-                                            GUIA DE DESPACHO ELECTRONICA
-                                        </td>
-                                    </tr>
-                                    <tr><td></td></tr>
-                                    <tr><td></td></tr>
-                                    <tr>
-                                        <td style="text-align:center;">
-                                            <span t-field="d.guide_number"></span>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
+
                     </div>
                 </t>
             </div>
