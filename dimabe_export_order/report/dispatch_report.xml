@@ -5,14 +5,10 @@
             <div class="page">
                 <t t-foreach="docs" t-as="d">
                     <div class="row">
-                        <div class="col-4">
-                            1
-                        </div>
-                        <div class="col-4">
-                            2
-                        </div>
-                        <div class="col-4">
-                            3
+                        <div clas="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card</h5>
+                            </div>
                         </div>
                     </div>
                 </t>
