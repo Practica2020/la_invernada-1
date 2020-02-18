@@ -92,7 +92,8 @@ class StockProductionLotSerial(models.Model):
                         })
                     ]
                 })
-
+        else:
+            raise models.ValidationError('no se pudo identificar producción')
         #     item.is_reserved = True
 
     @api.multi
