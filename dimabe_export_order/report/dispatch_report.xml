@@ -136,7 +136,7 @@
                                     <td>
                                         <span t-field="m.product_id"></span>
                                         <br/>
-                                        <t t-esc="o.type_of_dispatch">
+                                        <t t-esc="d.type_of_dispatch">
                                         </t>
                                     </td>
                                     <td>
