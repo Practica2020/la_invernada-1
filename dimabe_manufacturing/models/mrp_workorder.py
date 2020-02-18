@@ -104,7 +104,7 @@ class MrpWorkorder(models.Model):
     def on_barcode_scanned(self, barcode):
 
         qty_done = self.qty_done
-        raise models.ValidationError(self.test_type)
+
         custom_serial = self.env['stock.production.lot.serial'].search([
             '|',
             ('serial_number', '=', barcode),
@@ -125,7 +125,8 @@ class MrpWorkorder(models.Model):
             })
         super(MrpWorkorder, self).on_barcode_scanned(barcode)
         self.qty_done = qty_done + custom_serial.display_weight
-        self.action_next()
+        self.test_type = 'register_consumed_materials'
+        self._next()
 
     def open_out_form_view(self):
 
