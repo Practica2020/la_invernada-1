@@ -110,7 +110,7 @@ class MrpWorkorder(models.Model):
             ('serial_number', '=', barcode),
             ('stock_production_lot_id.name', '=', barcode)
         ])
-        raise models.ValidationError(custom_serial)
+
         if not custom_serial:
             raise models.ValidationError('no se encontró ningún lote asociado al código ingresado')
         if custom_serial.consumed:
