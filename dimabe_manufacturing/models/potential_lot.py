@@ -28,7 +28,9 @@ class PotentialLot(models.Model):
         for item in self:
             item.potential_serial_ids = item.stock_production_lot_id.stock_production_lot_serial_ids.filtered(
                 lambda a: a.consumed is False and (a.reserved_to_production_id == item.mrp_production_id or not a.reserved_to_production_id)
-            ).with_context(detault_reserved_to_production_id=item.mrp_production_id.id)
+            )
+            for i in item:
+                i.reserved_to_production_id = item.mrp_production_id.id
 
     mrp_production_id = fields.Many2one('mrp.production', 'Producción')
 
