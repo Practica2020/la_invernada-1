@@ -52,7 +52,7 @@ class StockProductionLotSerial(models.Model):
 
     @api.multi
     def reserve_serial(self):
-        models._logger.error(http.request)
+        models._logger.error(http.request.full_path)
 
         if 'production_id' in self.env.context:
             raise models.ValidationError(self.env.context['production_id'])
