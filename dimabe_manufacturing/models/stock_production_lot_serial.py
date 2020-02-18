@@ -53,6 +53,8 @@ class StockProductionLotSerial(models.Model):
     @api.multi
     def reserve_serial(self):
         models._logger.error(self.env.context)
+        if 'production_id' in self.env.context:
+            raise models.ValidationError(self.env.context['production_id'])
         if 'params' in self.env.context and 'id' in self.env.context['params']:
             production_id = self.env.context['params']['id']
             production = self.env['mrp.production'].search([('id', '=', production_id)])
