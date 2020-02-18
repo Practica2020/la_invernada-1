@@ -11,6 +11,7 @@
               <field name="lot_balance"/>
             </group>
             <group>
+              <field name="mrp_production_id" />
               <field name="lot_product_id"/>
               <button name="confirm_reserve"
                       class="oe_highlight"
@@ -20,7 +21,7 @@
         </div>
         <div>
           <group>
-            <field name="potential_serial_ids">
+            <field name="potential_serial_ids" context="{'production_id': mrp_production_id}">
               <tree>
                 <field name="reserved_to_production_id"/>
                 <field name="consumed" invisible="1"/>
