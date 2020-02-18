@@ -134,6 +134,10 @@
                             <th>
                                 Valor Unitario
                             </th>
+                            <t t-foreach="move_line_ids_without_package" t-as="m">
+                                <tr><span t-field="m.product_uom_qty"></span></tr>
+                            </t>
+
                         </table>
                     </div>
                     <br/>
