@@ -92,13 +92,13 @@
                             <td><strong>COMUNA:</strong></td>
                             <td><span t-field="d.partner_id.state"></span></td>
                             <td><strong>VENCTO:</strong></td>
-                            <td>&nbsp;</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td><strong>GIRO:</strong></td>
-                            <td>&nbsp;</td>
+                            <td></td>
                             <td><strong>COND.PAGO:</strong></td>
-                            <td>&nbsp;</td>
+                            <td></td>
                         </tr>
                     </table>
                 </div>
