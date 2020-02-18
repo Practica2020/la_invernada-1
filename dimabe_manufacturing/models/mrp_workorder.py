@@ -124,17 +124,17 @@ class MrpWorkorder(models.Model):
             ('serial_number', '=', barcode),
             ('stock_production_lot_id.name', '=', barcode)
         ])
-        raise models.ValidationError(custom_serial)
-        if not custom_serial:
-            raise models.ValidationError('no se encontró ningún lote asociado al código ingresado')
-        if custom_serial.consumed:
-            raise models.ValidationError('este código ya ha sido consumido')
-        if not custom_serial.stock_production_lot_id.product_id.categ_id.reserve_ignore:
-            if not self.potential_serial_planned_ids.filtered(
-                    lambda a: a.serial_number == barcode
-            ):
-                raise models.ValidationError(
-                    'el código escaneado no se encuentra dentro de la planificación de esta producción')
+
+        if custom_serial:
+            if custom_serial.consumed:
+                raise models.ValidationError('este código ya ha sido consumido')
+            if not custom_serial.stock_production_lot_id.product_id.categ_id.reserve_ignore:
+                if not self.potential_serial_planned_ids.filtered(
+                        lambda a: a.serial_number == barcode
+                ):
+                    raise models.ValidationError(
+                        'el código escaneado no se encuentra dentro de la planificación de esta producción')
+
         return custom_serial
 
     def open_out_form_view(self):
