@@ -5,9 +5,9 @@
             <div class="page" style="text-align:center;">
                 <t t-foreach="docs" t-as="d">
                     <div style="display:grid;grid:150px / auto auto auto;grid-gap:10px">
-                        <div class="item1"></div>
-                        <div class="item2"></div>
-                        <div class="item3"></div>
+                        <div class="item1">1</div>
+                        <div class="item2">2</div>
+                        <div class="item3">3</div>
                     </div>
                 </t>
             </div>
