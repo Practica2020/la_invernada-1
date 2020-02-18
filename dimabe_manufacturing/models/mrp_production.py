@@ -164,6 +164,7 @@ class MrpProduction(models.Model):
                 stock_move.unit_factor = stock_move.product_uom_qty / order.product_qty
                 if stock_move.product_uom_qty == 0 and not stock_move.product_id.categ_id.reserve_ignore and\
                         stock_move.scrapped is False:
+                    models._logger.error(stock_move.product_id.name)
                     stock_move.update({
                         'raw_material_production_id': None
                     })

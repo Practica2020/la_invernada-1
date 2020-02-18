@@ -81,8 +81,6 @@ class MrpWorkorder(models.Model):
 
         for check in self.finished_product_check_ids:
 
-            raise models.ValidationError(self.finished_product_check_ids.mapped('title'))
-
             if check.component_is_byproduct:
                 if not check.lot_id:
                     lot_tmp = self.env['stock.production.lot'].create({
