@@ -9,7 +9,7 @@
                             <img t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)"
                                  style="height:75px;"/>
                         </div>
-                        <div style="width:33.3%;align:center;">
+                        <div style="width:33.3%;" align="center">
                             <table style="text-align:center;">
                                 <tr><td><span t-field="res_company.name"></span></td></tr>
                                 <tr><td><span t-field="res_company.street"></span></td></tr>
