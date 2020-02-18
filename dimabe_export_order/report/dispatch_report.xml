@@ -128,7 +128,7 @@
                             <t t-foreach="move_ids_without_package" t-as="m">
                                 <tr>
                                     <td>
-                                        <span t-field="m.quantity_done"></span>
+                                        <span t-esc="m.quantity_done"></span>
                                     </td>
                                 </tr>
                             </t>
