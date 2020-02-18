@@ -137,10 +137,6 @@
                                         <span t-field="m.product_id"></span>
                                         <br/>
                                         <t t-esc="o.type_of_dispatch">
-                                            1
-                                        </t>
-                                        <t t-elif="o.type_of_dispatch == 'nac'">
-                                            2
                                         </t>
                                     </td>
                                     <td>
