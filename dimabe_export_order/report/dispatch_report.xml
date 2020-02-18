@@ -29,7 +29,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div style="width:252px;float: right;border:2px solid;margin-top:0px;">
+                        <div style="width:252px;float: right;border:2px solid;position:absolute;top:0px;">
                             <div>
                                 <table>
                                     <tr>
