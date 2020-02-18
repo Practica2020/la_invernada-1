@@ -24,8 +24,8 @@
                         <br/>
                         <span t-field="res_company.country_id"></span>
                     </div>
-                    <div style="position: absolute;left:65%;top:10px;width:300px;height:150px;text-align: center;
-                    font-family: Arial, Helvetica, sans-serif; border:10px solid;">
+                    <div style="position: absolute;left:63%;top:10px;width:300px;height:150px;text-align: center;
+                    font-family: Arial, Helvetica, sans-serif; border:5px solid;">
                         R.U.T
                         <span t-esc="res_company.invoice_rut"></span>
                         <br/>
