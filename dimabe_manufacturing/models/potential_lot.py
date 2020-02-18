@@ -23,13 +23,6 @@ class PotentialLot(models.Model):
         compute='_compute_potential_serial_ids',
     )
 
-    @api.multi
-    def _compute_potential_serial_ids(self):
-        for item in self:
-            item.potential_serial_ids = item.stock_production_lot_id.stock_production_lot_serial_ids.filtered(
-                lambda a: a.consumed is False and (a.reserved_to_production_id == item.mrp_production_id or not a.reserved_to_production_id)
-            )
-
     mrp_production_id = fields.Many2one('mrp.production', 'Producción')
 
     mrp_production_state = fields.Selection(
@@ -40,6 +33,13 @@ class PotentialLot(models.Model):
     qty_to_reserve = fields.Float('Cantidad Reservada')
 
     is_reserved = fields.Boolean('Reservado')
+
+    @api.multi
+    def _compute_potential_serial_ids(self):
+        for item in self:
+            item.potential_serial_ids = item.stock_production_lot_id.stock_production_lot_serial_ids.filtered(
+                lambda a: a.consumed is False and (a.reserved_to_production_id == item.mrp_production_id or not a.reserved_to_production_id)
+            )
 
     @api.model
     def get_stock_quant(self):
