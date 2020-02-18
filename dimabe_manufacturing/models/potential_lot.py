@@ -6,7 +6,9 @@ class PotentialLot(models.Model):
     _description = 'posibles lotes para planificación de producción'
 
     def init(self):
+
         self.potential_serial_ids.with_context(production_id=self.mrp_production_id)
+        models._logger.error('entro al init {}'.format(self.env.context))
 
     name = fields.Char('lote', related='stock_production_lot_id.name')
 
