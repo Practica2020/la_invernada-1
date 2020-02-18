@@ -48,14 +48,14 @@
                                     <tr><td></td></tr>
                                     <tr>
                                         <td style="text-align:center;">
-                                            <span t-field="d.guide_number"></span>
+                                            N° <span t-field="d.guide_number"></span>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
                         </div>
                     </div>
-                    <div style="height:50px;"></div>
+                    <div style="width:50px;border:1px solid;"></div>
                 </t>
             </div>
         </t>
