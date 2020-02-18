@@ -74,7 +74,9 @@
                             <td>
                                 SEÑOR(ES):<span t-field="d.partner_id"></span>
                             </td>
-                            <td></td>
+                            <td>
+                                R.U.T: <span t-esc="d.partner_id.invoice_rut"></span>
+                            </td>
                         </tr>
                         <tr>
                             <td></td>
