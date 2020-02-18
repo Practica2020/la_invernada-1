@@ -5,7 +5,7 @@
             <div class="page" style="text-align:center;">
                 <t t-foreach="docs" t-as="d">
                     <div>
-                        <div style="width:33.3%;float:left;">
+                        <div style="width:30%;float:left;">
                             <img t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)"
                                  style="height:75px;"/>
                         </div>
@@ -29,7 +29,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div style="width:30%;float:right;border:5px solid;margin-top:0">
+                        <div style="width:33.3%;float:right;border:5px solid;margin-top:0">
                             <div>
                                 <table>
                                     <tr>
