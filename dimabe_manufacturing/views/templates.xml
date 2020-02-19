@@ -1,5 +1,5 @@
 <odoo>
-    <template id="assets_frontend" inherit_id="web.assets_frontend">
+    <template id="production_assets" inherit_id="web.assets_backend">
         <xpath expr="." position="inside">
             <script src="/dimabe_manufacturing/static/src/js/production_tablet_view.js"
                     type="text/javascript"
