@@ -131,7 +131,7 @@ class StockPicking(models.Model):
 
     @api.multi
     def generate_report(self):
-        models._logger.error(self.current_data.id)
+        models._logger.error(self.current_data)
         return self.env.ref('dimabe_export_order.action_dispatch_label_report') \
             .report_action(self.picture)
 
