@@ -115,6 +115,8 @@ class StockPicking(models.Model):
 
     sell_sag = fields.Char(string="Sello SAG")
 
+    gps_lock = fields.Char(string="Candado GPS")
+
     dus_number = fields.Integer(string="Numero DUS")
 
     picture = fields.Many2many("ir.attachment", string="Fotos Camion")
