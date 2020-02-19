@@ -121,8 +121,7 @@ class MrpWorkorder(models.Model):
         })
         self.env.cr.commit()
 
-
-
+        self._next()
 
     def validate_code(self, barcode):
 
