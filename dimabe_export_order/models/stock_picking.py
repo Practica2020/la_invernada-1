@@ -127,11 +127,9 @@ class StockPicking(models.Model):
 
     sell_shipping = fields.Char(string="Sello Naviera")
 
-    current_data = fields.Char('res.users', 'Usuario', default=lambda self: self.env.user.name)
 
     @api.multi
     def generate_report(self):
-        models._logger.error(self.current_data)
         return self.env.ref('dimabe_export_order.action_dispatch_label_report') \
             .report_action(self.picture)
 
