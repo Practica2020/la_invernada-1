@@ -72,8 +72,6 @@ class PotentialLot(models.Model):
 
             item.is_reserved = True
 
-    #     item.is_reserved = True
-
     @api.multi
     def confirm_reserve(self):
         for item in self:
