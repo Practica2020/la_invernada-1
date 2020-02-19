@@ -169,11 +169,11 @@
                                 <tr>
                                     <td>NAVE:</td>
                                     <td>
-                                        <t t-if="type_transport == 'terrestre'">
+                                        <t t-if="d.shipping_id.type_transport == 'terrestre'">
                                             <span t-field="d.type_transport"></span>
                                         </t>
-                                        <t t-elif="type_transport != 'terrestre'">
-                                            <span t-field="d.ship"></span>
+                                        <t t-elif="d.shipping_id.type_transport != 'terrestre'">
+                                            <span t-field="d.shipping_id.ship"></span>
                                         </t>
                                     </td>
                                 </tr>
