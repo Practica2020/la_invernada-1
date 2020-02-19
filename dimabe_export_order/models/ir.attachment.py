@@ -2,7 +2,7 @@ from odoo import models,fields,api
 
 class IrAttachment(models.Model):
     _inherit = "ir.attachment"
-    _order = "asc"
+
 
     @api.multi
     def get_full_url(self):
