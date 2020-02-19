@@ -124,26 +124,26 @@
                     </div>
                     <br/>
                     <div style="width:100%;height:50%;border:1px solid;">
-                        <table style="width:100%;border:1px solid;" cellspacing="10">
-                            <th style="border-right:1px solid;">CANTIDAD</th>
-                            <th style="border-right:1px solid;">DETALLES</th>
-                            <th style="border-right:1px solid;">VALOR UNITARIO</th>
+                        <table style="width:100%;" border="1" cellspacing="10">
+                            <th>CANTIDAD</th>
+                            <th>DETALLES</th>
+                            <th >VALOR UNITARIO</th>
                             <t t-foreach="d.move_ids_without_package" t-as="m">
                                 <tr>
-                                    <td style="border-right:1px solid;">
+                                    <td>
                                         <t t-esc="'{0:,.2f}'.format(int(m.quantity_done))"/>
                                     </td>
-                                    <td style="border-right:1px solid;">
+                                    <td>
                                         <span t-field="m.product_id"></span>
                                     </td>
-                                    <td style="border-right:1px solid;">
+                                    <td>
                                         <span t-field="m.product_id.lst_price"></span>
                                     </td>
                                 </tr>
                             </t>
                         </table>
                         <t t-if="d.type_of_dispatch == 'exp'">
-                            <table style="position:absolute;margin-left:auto;margin-right:auto;left:0;right:0;top:40%;bottom:30%;border:1px solid;">
+                            <table style="position:absolute;margin-left:auto;margin-right:auto;top:40%;bottom:30%;border:1px solid;">
                                 <tr>
                                     <td style="padding: 15px;">KILOS NETOS</td>
                                     <td >
