@@ -66,7 +66,7 @@ class PotentialLot(models.Model):
         for item in self:
             serial_to_reserve = item.potential_serial_ids.filtered(lambda a: not a.reserved_to_production_id)
 
-            serial_to_reserve.reserve_serial()
+            serial_to_reserve.with_context(mrp_production_id=item.mrp_production_id.id).reserve_serial()
 
             item.qty_to_reserve = item.get_total_reserved()
 

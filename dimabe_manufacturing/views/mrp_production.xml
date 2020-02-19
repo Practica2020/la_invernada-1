@@ -42,7 +42,9 @@
           <field name="lot_id"/>
         </xpath>
         <xpath expr="//page[3]" position="after">
-          <page string="Seleccionar Lote">
+          <page string="Seleccionar Lote"
+                attrs="{'invisible':[('state','=','done')]}"
+          >
             <group>
               <field name="client_search_id" attrs="{'invisible':[('state','=','done')]}"/>
               <field name="product_search_id" attrs="{'invisible':[('state','=','done')]}"/>
@@ -68,6 +70,11 @@
                 </tree>
               </field>
             </group>
+          </page>
+          <page string="Códigos Utilizados"
+                attrs="{'invisible':[('state','!=','done')]}"
+          >
+
           </page>
         </xpath>
       </field>
