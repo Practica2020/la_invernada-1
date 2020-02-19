@@ -143,15 +143,12 @@
                             </t>
                         </table>
                         <t t-if="d.type_of_dispatch == 'exp'">
-                            <table style="position:absolute;left:40%;right:50%;top:50%;bottom:25%;border:1px solid;">
+                            <table style="position:absolute;left:40%;right:60%;top:50%;bottom:25%;border:1px solid;">
                                 <tr>
                                     <td>KILOS NETOS</td>
                                     <td>
                                         <span t-field="d.net_weight_dispatch"></span>
                                     </td>
-                                    <td colspan="2">N° CONTENEDOR</td>
-                                    <td></td>
-                                    <td colspan="2"><span t-field="d.container_number"></span></td>
                                 </tr>
                                 <tr>
                                     <td>KILOS BRUTOS</td>
