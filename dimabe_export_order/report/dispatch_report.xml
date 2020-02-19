@@ -282,10 +282,21 @@
                         <table>
                             <tr>
                                 <td>Nombre:</td>
-                                <td style="border-bottom:1px dotted;width:250px;"></td>
+                                <td style="border-bottom:1pt dotted black;width:50%;"></td>
                                 <td>Rut:</td>
-                                <td style="border-bottom:1px dotted;width:250px;"></td>
+                                <td style="border-bottom:1pt dotted black;width:50%;"></td>
                             </tr>
+                            <tr>
+                                <td>Recinto:</td>
+                                <td style="border-bottom:1pt dotted black;width:50%;"></td>
+                            </tr>
+                            <tr>
+                                <td>Fecha:</td>
+                                <td style="border-bottom:1pt dotted black;width:50%;"></td>
+                                <td>Firma:</td>
+                                <td style="border-bottom:1pt dotted black;width:50%;"></td>
+                            </tr>
+
                         </table>
                     </div>
                     <br/>
