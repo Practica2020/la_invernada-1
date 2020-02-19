@@ -124,7 +124,7 @@
                     </div>
                     <br/>
                     <div style="width:100%;height:50%;border:1px solid;">
-                        <table style="width:100%" cellspacing="10">
+                        <table style="width:100%;border:1px solid;" cellspacing="10">
                             <th style="border-right:1px solid;">CANTIDAD</th>
                             <th style="border-right:1px solid;">DETALLES</th>
                             <th style="border-right:1px solid;">VALOR UNITARIO</th>
