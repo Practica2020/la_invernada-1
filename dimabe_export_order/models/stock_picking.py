@@ -109,7 +109,7 @@ class StockPicking(models.Model):
 
     note_dispatched = fields.Text(string="Nota")
 
-    sell_truck = fields.Char(string="Sello de Invernada")
+    sell_truck = fields.Char(string="Sello de Camión")
 
     guide_number = fields.Char(string="Numero de Guia")
 
@@ -119,18 +119,17 @@ class StockPicking(models.Model):
 
     dus_number = fields.Integer(string="Numero DUS")
 
-    picture = fields.Many2many("ir.attachment", string="Fotos Camion")
+    picture = fields.Many2many("ir.attachment", string="Fotos Camión")
 
     file = fields.Char(related="picture.datas_fname")
 
-    type_of_dispatch = fields.Selection([('exp', 'Exportacion'), ('nac', 'Nacional')], string="Tipo de Despacho")
+    type_of_dispatch = fields.Selection([('exp', 'Exportación'), ('nac', 'Nacional')], string="Tipo de Despacho")
 
     sell_shipping = fields.Char(string="Sello Naviera")
 
 
     @api.multi
     def generate_report(self):
-        models._logger.error(self.env.user)
         return self.env.ref('dimabe_export_order.action_dispatch_label_report') \
             .report_action(self.picture)
 
