@@ -130,13 +130,13 @@
                             <th style="border-right:1px solid;">VALOR UNITARIO</th>
                             <t t-foreach="d.move_ids_without_package" t-as="m">
                                 <tr>
-                                    <td style="border-right=1px solid;">
+                                    <td style="border-right:1px solid;">
                                         <t t-esc="'{0:,.2f}'.format(int(m.quantity_done))"/>
                                     </td>
-                                    <td style="border-right=1px solid;">
+                                    <td style="border-right:1px solid;">
                                         <span t-field="m.product_id"></span>
                                     </td>
-                                    <td style="border-right=1px solid;">
+                                    <td style="border-right:1px solid;">
                                         <span t-field="m.product_id.lst_price"></span>
                                     </td>
                                 </tr>
