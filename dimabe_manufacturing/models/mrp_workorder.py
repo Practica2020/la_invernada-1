@@ -102,7 +102,12 @@ class MrpWorkorder(models.Model):
         return super(MrpWorkorder, self).open_tablet_view()
 
     def action_next(self):
-        self.validate_code(self.lot_id.name)
+        custom_serial = self.validate_code(self.lot_id.name)
+        raise models.ValidationError(
+            '{} {} {}'.format(
+                custom_serial, custom_serial.consumed, self.qty_done
+            )
+        )
         return super(MrpWorkorder, self).action_next()
 
     def on_barcode_scanned(self, barcode):
