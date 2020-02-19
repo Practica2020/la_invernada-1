@@ -37,7 +37,7 @@ class MrpWorkorder(models.Model):
     @api.multi
     def _compute_byproduct_move_line_ids(self):
         for item in self:
-            item.byproduct_move_line_ids = item.active_move_line_ids  # .filtered(lambda a: not a.is_raw)
+            item.byproduct_move_line_ids = item.active_move_line_ids.filtered(lambda a: not a.is_raw)
 
     @api.multi
     def _compute_material_product_ids(self):
