@@ -141,7 +141,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="display:none;"></td>
+                                    <td border="0"></td>
                                     <td>
                                         <t t-if="d.type_of_dispatch == 'exp'">
                                             <table style="border:1px solid;">
