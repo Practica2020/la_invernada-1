@@ -137,6 +137,7 @@ class MrpWorkorder(models.Model):
 
             if not lot_search:
                 raise models.ValidationError('no se encontró registro asociado al código ingresado')
+
             if not lot_search.product_id.categ_id.reserve_ignore:
                 raise models.ValidationError(
                     'el código escaneado no se encuentra dentro de la planificación de esta producción'
