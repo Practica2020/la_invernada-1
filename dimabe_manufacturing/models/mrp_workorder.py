@@ -130,7 +130,7 @@ class MrpWorkorder(models.Model):
         })
 
     def validate_lot_code(self, lot_code):
-        if lot_code not in self.potential_serial_planned_ids.mapped('stock_production_lor_id.name'):
+        if lot_code not in self.potential_serial_planned_ids.mapped('stock_production_lot_id.name'):
             lot_search = self.env['stock.production.lot'].search([
                 ('name', '=', lot_code)
             ])
