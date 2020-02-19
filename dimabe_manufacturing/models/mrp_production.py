@@ -120,7 +120,7 @@ class MrpProduction(models.Model):
     @api.multi
     def button_mark_done(self):
         self.calculate_done()
-        self.potential_lot_ids.filtered(lambda a: not a.is_reserved).unlink()
+        self.potential_lot_ids.filtered(lambda a: not a.qty_to_reserve > 0).unlink()
         return super(MrpProduction, self).button_mark_done()
 
     @api.model
