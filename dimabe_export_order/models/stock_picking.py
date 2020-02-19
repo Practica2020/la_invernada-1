@@ -97,11 +97,53 @@ class StockPicking(models.Model):
         'Tipo de contenedor'
     )
 
-    @api.model
-    def _get_product_variety(self):
-        _logger = logging.getLogger(__name__)
-        for item in self.variety:
-            _logger.debug(item)
+    net_weight_dispatch = fields.Integer(string="Kilos Netos")
+
+    gross_weight_dispatch = fields.Integer(string="Kilos Brutos")
+
+    tare_container_weight_dispatch = fields.Integer(string="Tara Contenedor")
+
+    container_weight = fields.Integer(string="Peso Contenedor")
+
+    vgm_weight_dispatch = fields.Integer(string="Peso VGM",compute="get_vgm_weight",store=True)
+
+    note_dispatched = fields.Text(string="Nota")
+
+    sell_truck = fields.Char(string="Sello de Invernada")
+
+    guide_number = fields.Char(string="Numero de Guia")
+
+    sell_sag = fields.Char(string="Sello SAG")
+
+    gps_lock = fields.Char(string="Candado GPS")
+
+    dus_number = fields.Integer(string="Numero DUS")
+
+    picture = fields.Many2many("ir.attachment", string="Fotos Camion")
+
+    file = fields.Char(related="picture.datas_fname")
+
+    type_of_dispatch = fields.Selection([('exp', 'Exportacion'), ('nac', 'Nacional')],string="Tipo de Despacho")
+
+    sell_shipping = fields.Char(string="Sello Naviera")
+
+
+
+    @api.multi
+    def generate_report(self):
+        return self.env.ref('dimabe_export_order.action_dispatch_label_report') \
+            .report_action(self.picture)
+
+    @api.multi
+    def get_full_url(self):
+        self.ensure_one()
+        base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
+        return base_url
+
+    @api.one
+    @api.depends('tare_container_weight_dispatch','container_weight')
+    def get_vgm_weight(self):
+        self.vgm_weight_dispatch = self.tare_container_weight_dispatch + self.container_weight
 
     @api.model
     @api.depends('freight_value', 'safe_value')

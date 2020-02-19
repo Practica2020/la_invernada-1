@@ -10,7 +10,8 @@ class PurchaseOrder(models.Model):
         ('to approve', 'To Approve'),
         ('purchase', 'Purchase Order'),
         ('done', 'Locked'),
-        ('cancel', 'Rechazado')
+        ('cancel', 'Rechazado'),
+        ('purchase sent', 'Orden de Compra Enviada')
     ], string='Status', readonly=True, index=True, copy=False, default='draft', track_visibility='onchange')
 
     boss_approval_id = fields.Many2one(
@@ -48,8 +49,8 @@ class PurchaseOrder(models.Model):
                     'boss_approval_id': self.env.user.id,
                     'boss_approval_date': fields.datetime.now()
                 })
-        res = super(PurchaseOrder, self).action_rfq_send()
 
+        res = super(PurchaseOrder, self).action_rfq_send()
         return res
 
     @api.multi
@@ -65,7 +66,6 @@ class PurchaseOrder(models.Model):
 
         approve_message = self.message_ids.filtered(lambda x: x.subtype_id.name == 'SdP aprobada')
         if approve_message:
-            models._logger()
             approve_message = approve_message[0]
             return '{} {}'.format(approve_message.author_id.name, approve_message.date)
         return ''
@@ -82,6 +82,8 @@ class PurchaseOrder(models.Model):
         email_list = [
             usr.partner_id.email for usr in user_group.users if usr.partner_id.email
         ]
+        models._logger.error(user_group)
+        models._logger.error(email_list)
         return ','.join(email_list)
 
     @api.model
@@ -102,4 +104,3 @@ class PurchaseOrder(models.Model):
                     if not line.price_unit or line.price_unit == 0:
                         raise models.ValidationError('debe agregar precio unitario')
         return res
-
