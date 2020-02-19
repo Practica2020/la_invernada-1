@@ -123,6 +123,9 @@ class StockPicking(models.Model):
 
     type_of_dispatch = fields.Selection([('exp', 'Exportacion'), ('nac', 'Nacional')],string="Tipo de Despacho")
 
+    sell_shipping = fields.Char(string="Sello Naviera")
+
+
 
     @api.multi
     def generate_report(self):
