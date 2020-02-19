@@ -36,8 +36,7 @@ class MrpWorkorder(models.Model):
             )
 
     def _inverse_potential_lot_planned_ids(self):
-        models._logger.error(self)
-        raise models.ValidationError(self)
+        raise models.ValidationError(self.potential_serial_planned_ids.mapped('consumed'))
 
     @api.multi
     def _compute_byproduct_move_line_ids(self):
