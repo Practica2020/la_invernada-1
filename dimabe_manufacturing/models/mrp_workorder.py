@@ -116,16 +116,8 @@ class MrpWorkorder(models.Model):
         self.qty_done = qty_done + custom_serial.display_weight
         self.test_type = 'register_consumed_materials'
 
-        custom_serial.consumed = True
-        custom_serial.write({
-            'calculated_weight': custom_serial.calculated_weight,
-            'consumed': True,
-            'display_weight': custom_serial.display_weight,
-            'production_id': custom_serial.production_id.id,
-            'real_weight': custom_serial.real_weight,
-            'reserved_to_production_id': custom_serial.reserved_to_production_id.id,
-            'serial_number': custom_serial.serial_number,
-            'stock_production_lot_id': custom_serial.stock_production_lot_id.id
+        custom_serial.update({
+            'consumed': True
         })
 
     def validate_code(self, barcode):
@@ -143,6 +135,9 @@ class MrpWorkorder(models.Model):
                 ):
                     raise models.ValidationError(
                         'el código escaneado no se encuentra dentro de la planificación de esta producción')
+            return self.potential_serial_planned_ids.filtered(
+                lambda a: a.serial_number == barcode
+            )
 
         return custom_serial
 
