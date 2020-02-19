@@ -36,7 +36,7 @@ class MrpWorkorder(models.Model):
             )
 
     def _inverse_potential_lot_planned_ids(self):
-        for lot_serial in self.potential_serial_planned_ids.mapped('consumed'):
+        for lot_serial in self.potential_serial_planned_ids:
             serial = self.production_id.potential_lot_ids.mapped('potential_serial_ids').filtered(
                 lambda b: b.id == lot_serial.id
             )
