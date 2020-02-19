@@ -105,7 +105,7 @@ class StockPicking(models.Model):
 
     container_weight = fields.Integer(string="Peso Contenedor")
 
-    vgm_weight_dispatch = fields.Integer(string="Peso VGM",compute="get_vgm_weight",store=True)
+    vgm_weight_dispatch = fields.Integer(string="Peso VGM", compute="get_vgm_weight", store=True)
 
     note_dispatched = fields.Text(string="Nota")
 
@@ -123,11 +123,11 @@ class StockPicking(models.Model):
 
     file = fields.Char(related="picture.datas_fname")
 
-    type_of_dispatch = fields.Selection([('exp', 'Exportacion'), ('nac', 'Nacional')],string="Tipo de Despacho")
+    type_of_dispatch = fields.Selection([('exp', 'Exportacion'), ('nac', 'Nacional')], string="Tipo de Despacho")
 
     sell_shipping = fields.Char(string="Sello Naviera")
 
-
+    current_data = fields.Many2one('res.users', 'Usuario', default=lambda self: self.env.user)
 
     @api.multi
     def generate_report(self):
@@ -141,7 +141,7 @@ class StockPicking(models.Model):
         return base_url
 
     @api.one
-    @api.depends('tare_container_weight_dispatch','container_weight')
+    @api.depends('tare_container_weight_dispatch', 'container_weight')
     def get_vgm_weight(self):
         self.vgm_weight_dispatch = self.tare_container_weight_dispatch + self.container_weight
 
