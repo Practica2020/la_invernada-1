@@ -113,13 +113,6 @@ class MrpWorkorder(models.Model):
 
     def action_next(self):
         self.validate_lot_code(self.lot_id.name)
-        raise models.ValidationError(
-            '{} {} {}'.format(
-                self.potential_serial_planned_ids,
-                self.potential_serial_planned_ids.mapped('consumed'),
-                self.qty_done
-            )
-        )
 
         return super(MrpWorkorder, self).action_next()
 
@@ -163,23 +156,6 @@ class MrpWorkorder(models.Model):
                 raise models.ValidationError('este código ya ha sido consumido')
             return custom_serial
         self.validate_lot_code(barcode)
-
-        # custom_serial = self.env['stock.production.lot.serial'].search([
-        #     ('serial_number', '=', barcode),
-        # ])
-        #
-        # if custom_serial:
-        #     if custom_serial.consumed:
-        #         raise models.ValidationError('este código ya ha sido consumido')
-        #     if not custom_serial.stock_production_lot_id.product_id.categ_id.reserve_ignore:
-        #         if not self.potential_serial_planned_ids.filtered(
-        #                 lambda a: a.serial_number == barcode
-        #         ):
-        #             raise models.ValidationError(
-        #                 'el código escaneado no se encuentra dentro de la planificación de esta producción')
-        #     return self.potential_serial_planned_ids.filtered(
-        #         lambda a: a.serial_number == barcode
-        #     )
 
         return custom_serial
 
