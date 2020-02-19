@@ -249,6 +249,7 @@
                                     </td>
                                 </tr>
                             </table>
+
                         </t>
                         <t t-elif="d.type_of_dispatch == 'nac'">
                             <table style="width:433px;position:absolute;left:189px;right:250px;top:495px;bottom:30%;border:1px solid;">
@@ -272,7 +273,9 @@
                                 </tr>
                                 <t t-if="d.carrier_cart_patent != ''">
                                     <td>PATENTE CARRO</td>
-                                    <td><span t-field="d.carrier_cart_patent"></span></td>
+                                    <td>
+                                        <span t-field="d.carrier_cart_patent"></span>
+                                    </td>
                                 </t>
                             </table>
                         </t>
