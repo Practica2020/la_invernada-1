@@ -121,11 +121,11 @@ class MrpWorkorder(models.Model):
             'calculated_weight': custom_serial.calculated_weight,
             'consumed': True,
             'display_weight': custom_serial.display_weight,
-            'production_id': custom_serial.production_id,
+            'production_id': custom_serial.production_id.id,
             'real_weight': custom_serial.real_weight,
-            'reserved_to_production_id': custom_serial.reserved_to_production_id,
+            'reserved_to_production_id': custom_serial.reserved_to_production_id.id,
             'serial_number': custom_serial.serial_number,
-            'stock_production_lot_id': custom_serial.stock_production_lot_id
+            'stock_production_lot_id': custom_serial.stock_production_lot_id.id
         })
 
     def validate_code(self, barcode):
