@@ -128,7 +128,6 @@ class MrpWorkorder(models.Model):
 
         super(MrpWorkorder, self).on_barcode_scanned(barcode)
         self.qty_done = qty_done + custom_serial.display_weight
-        self.test_type = 'register_consumed_materials'
 
         custom_serial.update({
             'consumed': True
