@@ -13,6 +13,11 @@ class MrpProduction(models.Model):
         nullable=True
     )
 
+    # consumed_material_ids = fields.One2many(
+    #     'stock.production.lot.serial',
+    #     related='workorder_ids.mapped(potential_serial_planned_ids)'
+    # )
+
     required_date_moving_to_production = fields.Datetime(
         'Fecha Requerida de Movimiento a Producción',
         default=datetime.utcnow()
