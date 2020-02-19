@@ -144,7 +144,7 @@
                                     <td border="0"></td>
                                     <td>
                                         <t t-if="d.type_of_dispatch == 'exp'">
-                                            <table style="border:1px solid;" border="1">
+                                            <table style="border:1px solid;">
                                                 <tr>
                                                     <td>KILOS NETOS</td>
                                                     <td>
