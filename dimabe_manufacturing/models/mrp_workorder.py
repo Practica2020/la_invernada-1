@@ -112,7 +112,7 @@ class MrpWorkorder(models.Model):
         custom_serial = self.validate_code(barcode)
         barcode = custom_serial.stock_production_lot_id.name
 
-        custom_serial.update({
+        custom_serial.write({
             'consumed': True
         })
         super(MrpWorkorder, self).on_barcode_scanned(barcode)
