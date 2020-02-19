@@ -108,6 +108,7 @@ class MrpWorkorder(models.Model):
                 custom_serial, custom_serial.consumed, self.qty_done
             )
         )
+
         return super(MrpWorkorder, self).action_next()
 
     def on_barcode_scanned(self, barcode):
