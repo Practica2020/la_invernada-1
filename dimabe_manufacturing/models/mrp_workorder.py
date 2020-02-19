@@ -110,7 +110,8 @@ class MrpWorkorder(models.Model):
         qty_done = self.qty_done
 
         custom_serial = self.validate_code(barcode)
-        barcode = custom_serial.stock_production_lot_id.name
+        if custom_serial:
+            barcode = custom_serial.stock_production_lot_id.name
 
         super(MrpWorkorder, self).on_barcode_scanned(barcode)
         self.qty_done = qty_done + custom_serial.display_weight
@@ -122,22 +123,40 @@ class MrpWorkorder(models.Model):
 
     def validate_code(self, barcode):
 
-        custom_serial = self.env['stock.production.lot.serial'].search([
-            ('serial_number', '=', barcode),
-        ])
-
+        custom_serial = self.potential_serial_planned_ids.filtered(
+            lambda a: a.serial_number == barcode
+        )
         if custom_serial:
             if custom_serial.consumed:
                 raise models.ValidationError('este código ya ha sido consumido')
-            if not custom_serial.stock_production_lot_id.product_id.categ_id.reserve_ignore:
-                if not self.potential_serial_planned_ids.filtered(
-                        lambda a: a.serial_number == barcode
-                ):
-                    raise models.ValidationError(
-                        'el código escaneado no se encuentra dentro de la planificación de esta producción')
-            return self.potential_serial_planned_ids.filtered(
-                lambda a: a.serial_number == barcode
+            return custom_serial
+        lot_search = self.env['stock.production.lot'].search([
+            ('name', '=', barcode)
+        ])
+
+        if lot_search:
+            raise models.ValidationError('no se encontró registro asociado al código ingresado')
+        if not lot_search.product_id.categ_id.reserve_ignore:
+            raise models.ValidationError(
+                'el código escaneado no se encuentra dentro de la planificación de esta producción'
             )
+
+        # custom_serial = self.env['stock.production.lot.serial'].search([
+        #     ('serial_number', '=', barcode),
+        # ])
+        #
+        # if custom_serial:
+        #     if custom_serial.consumed:
+        #         raise models.ValidationError('este código ya ha sido consumido')
+        #     if not custom_serial.stock_production_lot_id.product_id.categ_id.reserve_ignore:
+        #         if not self.potential_serial_planned_ids.filtered(
+        #                 lambda a: a.serial_number == barcode
+        #         ):
+        #             raise models.ValidationError(
+        #                 'el código escaneado no se encuentra dentro de la planificación de esta producción')
+        #     return self.potential_serial_planned_ids.filtered(
+        #         lambda a: a.serial_number == barcode
+        #     )
 
         return custom_serial
 
