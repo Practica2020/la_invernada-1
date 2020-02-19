@@ -279,7 +279,7 @@
                     </div>
                     <br/>
                     <div style="width:100%;height:10%;border:1px solid;">
-
+                        <table></table>
                     </div>
                     <br/>
                 </t>
@@ -287,7 +287,7 @@
         </t>
     </template>
 
-    <template id=" report_truck_dispatch">
+    <template id="report_truck_dispatch">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <img t-att-src="'data:o.mimetype;base64,%s' % to_text(o.datas)" width="210px" height="272px" HSPACE="40"
