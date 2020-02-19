@@ -80,12 +80,10 @@
                 <tree readonly="1">
                   <field name="product_id"/>
                   <field name="lot_id" widget="many2onebutton"/>
-                  <field name="is_raw" />
                 </tree>
               </field>
             </group>
-            <group >
-<!--              attrs="{'invisible':[('state', '=', 'done')]}"-->
+            <group attrs="{'invisible':[('state', '=', 'done')]}">
               <h2>Otras Salidas</h2>
               <field name="byproduct_move_line_ids"
                      readonly="1">
