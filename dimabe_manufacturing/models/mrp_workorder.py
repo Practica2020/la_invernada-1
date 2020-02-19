@@ -114,7 +114,9 @@ class MrpWorkorder(models.Model):
     def action_next(self):
         self.validate_lot_code(self.lot_id.name)
 
-        return super(MrpWorkorder, self).action_next()
+        super(MrpWorkorder, self).action_next()
+
+        self.qty_done = 0
 
     def on_barcode_scanned(self, barcode):
 
