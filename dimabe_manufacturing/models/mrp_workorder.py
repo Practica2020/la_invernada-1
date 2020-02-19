@@ -112,12 +112,17 @@ class MrpWorkorder(models.Model):
         custom_serial = self.validate_code(barcode)
         barcode = custom_serial.stock_production_lot_id.name
 
-        custom_serial.update({
-            'consumed': True
-        })
         super(MrpWorkorder, self).on_barcode_scanned(barcode)
         self.qty_done = qty_done + custom_serial.display_weight
         self.test_type = 'register_consumed_materials'
+
+        custom_serial.update({
+            'consumed': True
+        })
+        self.env.cr.commit()
+
+
+
 
     def validate_code(self, barcode):
 
