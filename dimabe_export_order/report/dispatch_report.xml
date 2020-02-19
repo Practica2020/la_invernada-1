@@ -251,7 +251,7 @@
                             </table>
                         </t>
                         <t t-elif="d.type_of_dispatch == 'nac'">
-                            <table style="position:absolute;left:180px;right:250px;top:495px;bottom:30%;border:1px solid;">
+                            <table style="position:absolute;left:189px;right:250px;top:495px;bottom:30%;border:1px solid;">
                                 <tr>
                                     <td>CHOFER</td>
                                     <td>
