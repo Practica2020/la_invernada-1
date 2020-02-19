@@ -22,7 +22,8 @@ class MrpWorkorder(models.Model):
 
     potential_serial_planned_ids = fields.One2many(
         'stock.production.lot.serial',
-        compute='_compute_potential_lot_planned_ids'
+        compute='_compute_potential_lot_planned_ids',
+        inverse='_inverse_potential_lot_planned_ids'
     )
 
     @api.multi
@@ -33,6 +34,9 @@ class MrpWorkorder(models.Model):
             ).mapped('potential_serial_ids').filtered(
                 lambda b: b.reserved_to_production_id == item.production_id
             )
+
+    def _inverse_potential_lot_planned_ids(self):
+        raise models.ValidationError(self)
 
     @api.multi
     def _compute_byproduct_move_line_ids(self):
