@@ -17,7 +17,7 @@
                 </field>
                 <xpath expr="//page[@name='extra']" position="after">
                     <page string="COMEX" id="export_data"
-                          attrs="{'invisible':[('picking_type_code', '!=', 'outgoing')]}" readonly="true"
+                          attrs="{'invisible':[('picking_type_code', '!=', 'outgoing')]}" readonly="True"
                         >
                         <group name="export_data"
                                position="inside"
