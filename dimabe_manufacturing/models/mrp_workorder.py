@@ -116,12 +116,12 @@ class MrpWorkorder(models.Model):
 
         self.validate_lot_code(self.lot_id.name)
 
-        raise models.ValidationError('action_next {} {} {} {}'.format(
-            self.potential_serial_planned_ids.mapped('consumed'),
-            self.qty_done,
-            self.lot_id.name,
-            self.test_type
-        ))
+        # raise models.ValidationError('action_next {} {} {} {}'.format(
+        #     self.potential_serial_planned_ids.mapped('consumed'),
+        #     self.qty_done,
+        #     self.lot_id.name,
+        #     self.test_type
+        # ))
 
         super(MrpWorkorder, self).action_next()
 
