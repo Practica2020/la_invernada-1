@@ -68,7 +68,8 @@
       <field name="priority">20</field>
       <field name="arch" type="xml">
         <form>
-          <group>
+          <div>
+            <group>
             <group>
               <h2>Salida Principal</h2>
               <field name="state" readonly="1"/>
@@ -98,6 +99,12 @@
               </field>
             </group>
           </group>
+          </div>
+          <div>
+            <group>
+              <field name="summary_out_serial_ids" />
+            </group>
+          </div>
         </form>
       </field>
     </record>

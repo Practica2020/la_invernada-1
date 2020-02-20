@@ -74,7 +74,7 @@
           <page string="Códigos Utilizados"
                 attrs="{'invisible':[('state','!=','done')]}"
           >
-
+            <field name="consumed_material_ids" />
           </page>
         </xpath>
       </field>

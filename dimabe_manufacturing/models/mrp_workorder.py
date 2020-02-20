@@ -9,6 +9,11 @@ class MrpWorkorder(models.Model):
         related='production_id.finished_move_line_ids'
     )
 
+    summary_out_serial_ids = fields.One2many(
+        'stock.production.lot.serial',
+        compute='_compute_summary_out_serial_ids'
+    )
+
     material_product_ids = fields.One2many(
         'product.product',
         compute='_compute_material_product_ids'
@@ -36,7 +41,6 @@ class MrpWorkorder(models.Model):
             )
 
     def _inverse_potential_lot_planned_ids(self):
-        # raise models.ValidationError('inverse {}'.format(self.potential_serial_planned_ids.mapped('consumed')))
 
         for lot_serial in self.potential_serial_planned_ids:
             serial = self.production_id.potential_lot_ids.mapped(
@@ -47,6 +51,17 @@ class MrpWorkorder(models.Model):
             serial.update({
                 'consumed': lot_serial.consumed
             })
+
+    @api.multi
+    def _compute_summary_out_serial_ids(self):
+        for item in self:
+            item.summary_out_serial_ids = item.final_lot_id.stock_production_lot_serial_ids
+            if item.byproduct_move_line_ids:
+                item.summary_out_serial_ids += item.byproduct_move_line_ids.mapped(
+                    'lot_id'
+                ).mapped(
+                    'stock_production_lot_serial_ids'
+                )
 
     @api.multi
     def _compute_byproduct_move_line_ids(self):
@@ -135,7 +150,6 @@ class MrpWorkorder(models.Model):
             'consumed': True
         })
         self._compute_potential_lot_planned_ids()
-        # self.action_next()
 
     @api.model
     def lot_is_byproduct(self):
