@@ -107,7 +107,7 @@ class StockPicking(models.Model):
 
     vgm_weight_dispatch = fields.Integer(string="Peso VGM", compute="get_vgm_weight", store=True)
 
-    note_dispatched = fields.Many2Many(string="Nota", related="custom.note")
+    note_dispatched = fields.Many2Many(related="custom.note")
 
     sell_truck = fields.Char(string="Sello de Camión")
 
