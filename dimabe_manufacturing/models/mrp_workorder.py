@@ -121,8 +121,9 @@ class MrpWorkorder(models.Model):
         #         if not check.component_id.categ_id.is_canning:
         #             check.qty_done = 0
         #         self.action_skip()
-
+        i = 0
         while self.current_quality_check_id:
+            i += 1
             check = self.current_quality_check_id
             if not check.component_is_byproduct:
                 check.qty_done = 0
@@ -138,6 +139,9 @@ class MrpWorkorder(models.Model):
                 if check.quality_state == 'none':
                     self.action_next()
 
+            models._logger.error(check.component_id.display_name)
+            if i > 100:
+                continue
         self.action_first_skipped_step()
 
         return super(MrpWorkorder, self).open_tablet_view()
