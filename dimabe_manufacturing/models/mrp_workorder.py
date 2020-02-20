@@ -123,7 +123,7 @@ class MrpWorkorder(models.Model):
         #         self.action_skip()
         i = 0
         while self.current_quality_check_id:
-            models._logger.error(self.current_quality_check_id)
+            models._logger.error(self.current_quality_check_id.component_id.display_name)
             self.action_skip()
             i += 1
             if i > 50:
