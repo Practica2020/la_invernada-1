@@ -89,7 +89,6 @@
                             </group>
                             <group string="Fotos de Camión">
                                 <field name="picture" widget="many2many_binary"/>
-                                <field name="picture" widget="many2many_kanban"/>
                                 <button string="Crear Reporte" name="generate_report" type="object"/>
                             </group>
                         </group>

@@ -5,6 +5,8 @@ class IrAttachment(models.Model):
     _sort = "create_date asc"
 
 
+
+
     @api.multi
     def get_full_url(self):
         self.ensure_one()
