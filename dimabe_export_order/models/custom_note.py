@@ -15,6 +15,5 @@ class CustomNote(models.Model):
 
     @api.model
     def get_full_note(self):
-        message = list(self.body)
-        models._logger.error(dict(self._fields['destiny'].selection).get(self.destiny))
-        return self.body + self.destiny + self.footer
+        self.body.replace('{destino}',dict(self._fields['destiny'].selection).get(self.destiny))
+        return self.body
