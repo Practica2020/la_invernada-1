@@ -2,7 +2,7 @@ from odoo import fields, models, api
 
 
 class PurchaseOrder(models.Model):
-    _inherit = 'purchase.order'
+    _inherit = 'purchase.order, mail.composer.message'
 
     state = fields.Selection([
         ('draft', 'RFQ'),
@@ -43,16 +43,16 @@ class PurchaseOrder(models.Model):
 
     @api.multi
     def action_rfq_send(self):
-      raise models.ValidationError('Llegaste a usar el metodo action_rfq_send') #aquí llego si comento lo que esta abajo
+      #raise models.ValidationError('Llegaste a usar el metodo action_rfq_send') #aquí llego si comento lo que esta abajo
       
-     #   for item in self:
-      #      if not item.boss_approval_id:
-       #       item.update({
-        #            'boss_approval_id': self.env.user.id,
-         #           'boss_approval_date': fields.datetime.now()
-          #      })
-        #res = super(PurchaseOrder, self).action_rfq_send()
-        #return res
+        for item in self:
+            if not item.boss_approval_id:
+              item.update({
+                    'boss_approval_id': self.env.user.id,
+                    'boss_approval_date': fields.datetime.now()
+                })
+        res = super(PurchaseOrder, self).action_rfq_send()
+        return res
       
 
     @api.multi
