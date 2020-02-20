@@ -139,7 +139,11 @@ class MrpWorkorder(models.Model):
                 if check.quality_state == 'none':
                     self.action_next()
 
-            models._logger.error(check.component_id.display_name)
+            models._logger.error('{} {} {}'.format(
+                check.component_id.display_name,
+                check.qty_done,
+                self.qty_done
+            ))
             if i > 100:
                 continue
         self.action_first_skipped_step()
