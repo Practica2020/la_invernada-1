@@ -87,7 +87,7 @@
                                     <field name="dus_number"/>
                                     <field name="sell_shipping"/>
                                 </group>
-                                <group attrs="{'invisible':[('type_of_dispatch','==','exp')]}">
+                                <group attrs="{'invisible':[('type_of_dispatch','==','exp')]}" width="100%%">
                                     <field name="type_of_transfer"/>
                                 </group>
                             </group>
