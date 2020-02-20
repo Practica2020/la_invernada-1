@@ -138,13 +138,10 @@ class MrpWorkorder(models.Model):
         super(MrpWorkorder, self).on_barcode_scanned(barcode)
         self.qty_done = qty_done + custom_serial.display_weight
 
-        custom_serial.update({
-            'consumed': True
-        })
-
         custom_serial.write({
             'consumed': True
         })
+        self._compute_potential_lot_planned_ids()
         # self.action_next()
 
     @api.model
