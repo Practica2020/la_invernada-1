@@ -175,7 +175,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>NOTA</td>
-                                                    <td colspan="2" style="text-transform:uppercase;" nowrap="nowrap">
+                                                    <td colspan="2" >
                                                         <t t-esc="d.note_dispatched.get_full_note()"></t>
                                                     </td>
                                                     <td></td>
