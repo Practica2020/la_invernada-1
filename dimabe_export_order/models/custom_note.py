@@ -12,3 +12,7 @@ class CustomNote(models.Model):
     )
 
     footer = fields.Text(string="Pie nota")
+
+    @api.model
+    def get_full_note(self):
+        return self.body + self.destiny + self.footer

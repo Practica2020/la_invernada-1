@@ -176,7 +176,7 @@
                                 <tr>
                                     <td>NOTA</td>
                                     <td>
-                                        <span t-field="d.note_dispatched"></span>
+                                        <t t-esc="d.note_dispatched.get_full_note()"></t>
                                     </td>
                                 </tr>
                                 <tr>
