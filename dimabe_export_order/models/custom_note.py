@@ -16,5 +16,5 @@ class CustomNote(models.Model):
     @api.model
     def get_full_note(self):
         message = list(self.body)
-        models._logger.error("SSSSSSSSSSSSSSSSSSSSSS".format(message))
+        models._logger.error("SSSSSSSSSSSSSSSSSSSSSS {}".format(message))
         return self.body + self.destiny + self.footer
