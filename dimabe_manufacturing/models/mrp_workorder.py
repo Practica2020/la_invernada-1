@@ -110,6 +110,7 @@ class MrpWorkorder(models.Model):
                     self.action_next()
 
             else:
+                models._logger.error(check.component_id.categ_id.is_canning)
                 if not check.component_id.categ_id.is_canning:
                     check.qty_done = 0
                 self.action_skip()
