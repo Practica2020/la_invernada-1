@@ -15,7 +15,7 @@ class MrpProduction(models.Model):
 
     consumed_material_ids = fields.One2many(
         'stock.production.lot.serial',
-        related='workorder_ids.mapped(potential_serial_planned_ids)'
+        related='workorder_ids.potential_serial_planned_ids'
     )
 
     required_date_moving_to_production = fields.Datetime(
