@@ -116,9 +116,11 @@ class MrpWorkorder(models.Model):
 
         self.validate_lot_code(self.lot_id.name)
 
-        raise models.ValidationError('action_next {} {}'.format(
+        raise models.ValidationError('action_next {} {} {} {}'.format(
             self.potential_serial_planned_ids.mapped('consumed'),
-            self.qty_done
+            self.qty_done,
+            self.lot_id.name,
+            self.test_type
         ))
 
         super(MrpWorkorder, self).action_next()
@@ -136,9 +138,15 @@ class MrpWorkorder(models.Model):
         super(MrpWorkorder, self).on_barcode_scanned(barcode)
         self.qty_done = qty_done + custom_serial.display_weight
 
+        custom_serial.update({
+            'consumed': True
+        })
+
         custom_serial.write({
             'consumed': True
         })
+
+
 
         self.action_next()
 
