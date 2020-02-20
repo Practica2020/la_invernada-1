@@ -12,7 +12,7 @@ class PurchaseOrder(models.Model):
         ('done', 'Locked'),
         ('cancel', 'Rechazado'),
         ('purchase sent', 'Orden de Compra Enviada')
-    ], string='Status', readonly=True, index=True, copy=False, default='draft', track_visibility='onchange')
+    ], string='Status', readonly=True, index=True, copy=False, default='draft')#, track_visibility='onchange')
 
     boss_approval_id = fields.Many2one(
         'res.users',
@@ -104,3 +104,7 @@ class PurchaseOrder(models.Model):
                     if not line.price_unit or line.price_unit == 0:
                         raise models.ValidationError('debe agregar precio unitario')
         return res
+
+    def action_send_mail(self):
+        raise  models.ValidationError('Mensaje de prueba')
+
