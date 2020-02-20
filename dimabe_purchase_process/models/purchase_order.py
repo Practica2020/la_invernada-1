@@ -52,7 +52,7 @@ class PurchaseOrder(models.Model):
                     'boss_approval_date': fields.datetime.now()
                 })
         if(self.state=='purchase'):
-            self.state='purchase sent'
+            self.state='draft'
 
         res = super(PurchaseOrder, self).action_rfq_send()
         return res
