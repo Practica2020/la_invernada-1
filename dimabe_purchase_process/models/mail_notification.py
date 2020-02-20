@@ -9,3 +9,7 @@ class MailNotification(models.Model):
         if res_model is 'purchase.order':
             return ""
 
+    @api.model
+    def action_send_mail(self):
+        raise models.ValidationError('sigma')
+
