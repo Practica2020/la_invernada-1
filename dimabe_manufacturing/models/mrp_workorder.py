@@ -142,7 +142,7 @@ class MrpWorkorder(models.Model):
                 check.component_id.display_name,
                 check.qty_done,
                 self.qty_done,
-                self.component_remainig_qty
+                self.component_remaining_qty
             ))
             if i > 10:
                 break
