@@ -74,7 +74,13 @@
           <page string="Códigos Utilizados"
                 attrs="{'invisible':[('state','!=','done')]}"
           >
-            <field name="consumed_material_ids" />
+            <field name="consumed_material_ids" >
+              <tree>
+                <field name="stock_production_lot_id"/>
+                <field name="serial_number"/>
+                <field name="display_weight"/>
+              </tree>
+            </field>
           </page>
         </xpath>
       </field>
