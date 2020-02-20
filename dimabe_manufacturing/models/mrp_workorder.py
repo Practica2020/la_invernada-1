@@ -135,7 +135,6 @@ class MrpWorkorder(models.Model):
                     'is_prd_lot': True
                 })
                 check.lot_id = lot_tmp.id
-                self.qty_done = check.qty_done
                 if check.quality_state == 'none':
                     self.action_next()
 
@@ -144,7 +143,7 @@ class MrpWorkorder(models.Model):
                 check.qty_done,
                 self.qty_done
             ))
-            if i > 100:
+            if i > 10:
                 break
         self.action_first_skipped_step()
 
