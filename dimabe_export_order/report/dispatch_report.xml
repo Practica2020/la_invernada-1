@@ -175,7 +175,7 @@
                                 </tr>
                                 <tr>
                                     <td>NOTA</td>
-                                    <td>
+                                    <td nowrap="nowrap">
                                         <t t-esc="d.note_dispatched.get_full_note()"></t>
                                     </td>
                                 </tr>
