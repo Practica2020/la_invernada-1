@@ -56,9 +56,16 @@ class MrpWorkorder(models.Model):
     @api.multi
     def _compute_summary_out_serial_ids(self):
         for item in self:
-            item.summary_out_serial_ids = item.final_lot_id.stock_production_lot_serial_ids
-            if item.byproduct_move_line_ids:
-                item.summary_out_serial_ids += item.byproduct_move_line_ids.mapped(
+            if item.final_lot_id:
+                item.summary_out_serial_ids = item.final_lot_id.stock_production_lot_serial_ids
+                if item.byproduct_move_line_ids:
+                    item.summary_out_serial_ids += item.byproduct_move_line_ids.mapped(
+                        'lot_id'
+                    ).mapped(
+                        'stock_production_lot_serial_ids'
+                    )
+            else:
+                item.summary_out_serial_ids = item.production_finished_move_line_ids.mapped(
                     'lot_id'
                 ).mapped(
                     'stock_production_lot_serial_ids'
