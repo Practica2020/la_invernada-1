@@ -105,9 +105,10 @@ class MrpWorkorder(models.Model):
                     check.lot_id = lot_tmp.id
                     if not self.lot_id:
                         self.lot_id = lot_tmp
-                models._logger.error('{} {} {} {} {} {}'.format(
+                models._logger.error('{} {} {} {} {} {} {} {}'.format(
                     check.lot_id.name, check.component_id.display_name, check.quality_state, self.lot_id.name,
-                    self.current_quality_check_id, check.id
+                    self.current_quality_check_id,self.current_quality_check_id.component_id.display_name,
+                    check.id.component_id.display_name
                 ))
                 if check.quality_state == 'none':
                     models._logger.error('action_next')
