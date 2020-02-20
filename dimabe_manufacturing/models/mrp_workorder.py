@@ -98,6 +98,7 @@ class MrpWorkorder(models.Model):
                 self.qty_done, self.current_quality_check_id.component_id.display_name
             ))
             if check.component_is_byproduct:
+                models._logger.error('es subproducto {}'.format(check.component_id.display_name))
                 if not check.lot_id:
                     lot_tmp = self.env['stock.production.lot'].create({
                         'name': self.env['ir.sequence'].next_by_code('mrp.workorder'),
@@ -108,6 +109,7 @@ class MrpWorkorder(models.Model):
                     self.update({
                         'qty_done': check.qty_done
                     })
+                    models._logger.error('lote {} a {}'.format(lot_tmp.name, check.component_id.display_name))
 
                 if check.quality_state == 'none':
                     models._logger.error('action_next')
@@ -115,6 +117,7 @@ class MrpWorkorder(models.Model):
                     models._logger.error('2 {} {}'.format(self.qty_done, self.current_quality_check_id))
 
             else:
+                models._logger.error('no es subproducto'.format(check.component_id.display_name))
                 if not check.component_id.categ_id.is_canning:
                     check.qty_done = 0
                 self.action_skip()
