@@ -120,6 +120,12 @@
                                 </td>
                                 <td><![CDATA[&nbsp;]]></td>
                             </tr>
+                            <tr>
+                                <td>
+                                    <strong>TIPO DE TRASLADO:</strong>
+                                </td>
+                                <td><t t-esc="d.type_of_transfer"></t> </td>
+                            </tr>
                         </table>
                     </div>
                     <div style="width:100%;height:50%;border:1px solid;">

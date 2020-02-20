@@ -123,10 +123,12 @@ class StockPicking(models.Model):
 
     file = fields.Char(related="picture.datas_fname")
 
-    type_of_transfer = fields.Selection(
+    type_of_transfer_list = fields.Selection(
         [('1', 'Operacion constituye venta'), ('2', 'Ventas por efectuar'), ('3', 'Consignaciones'),
          ('4', 'Entrega gratuita'), ('5', 'Traslado internos'), ('6', 'Otros traslados no venta'),
          ('7', 'Guia de devolucion'), ('8', 'Traslado para exportación no venta'), ('9', 'Venta para exportacion')])
+
+    type_of_transfer = fields.Char(string="Tipo de Traslado", compute="get_type_of_transfer")
 
     type_of_dispatch = fields.Selection([('exp', 'Exportación'), ('nac', 'Nacional')], string="Tipo de Despacho")
 
@@ -136,6 +138,11 @@ class StockPicking(models.Model):
     def generate_report(self):
         return self.env.ref('dimabe_export_order.action_dispatch_label_report') \
             .report_action(self.picture)
+
+    @api.model
+    def get_type_of_transfer(self):
+        type_of_transfer = dict(self._fields['type_of_transfer_list'].selection).get(self.type_of_transfer_list)
+        return type_of_transfer
 
     @api.multi
     def get_full_url(self):
