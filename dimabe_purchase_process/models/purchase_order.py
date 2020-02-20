@@ -43,7 +43,7 @@ class PurchaseOrder(models.Model):
 
     @api.multi
     def action_rfq_send(self):
-      raise models.ValidationError('prueba') #aquí llego si comento lo que esta abajo
+      raise models.ValidationError('Llegaste a usar el metodo action_rfq_send') #aquí llego si comento lo que esta abajo
       
      #   for item in self:
       #      if not item.boss_approval_id:
