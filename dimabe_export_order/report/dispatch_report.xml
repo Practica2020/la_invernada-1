@@ -175,11 +175,11 @@
                                                 </tr>
                                                 <tr>
                                                     <td>NOTA</td>
-                                                    <td colspan="2" >
+                                                    <td colspan="3" >
                                                         <t t-esc="d.note_dispatched.get_full_note()"></t>
                                                     </td>
                                                     <td></td>
-
+                                                    <td></td>
                                                 </tr>
                                                 <tr>
                                                     <td>NAVE:</td>
