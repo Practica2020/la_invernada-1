@@ -133,7 +133,7 @@ class StockPicking(models.Model):
          ('7', 'Guia de devolucion'),
          ('8', 'Traslado para exportación no venta'),
          ('9', 'Venta para exportacion')]
-        ,string="Tipo de Traslado"
+        , string="Tipo de Traslado"
     )
 
     type_of_transfer = fields.Char(compute="get_type_of_transfer")
@@ -141,6 +141,8 @@ class StockPicking(models.Model):
     type_of_dispatch = fields.Selection([('exp', 'Exportación'), ('nac', 'Nacional')], string="Tipo de Despacho")
 
     sell_shipping = fields.Char(string="Sello Naviera")
+
+    current_user = fields.Many2one('res.users','Currrent User',default=lambda self:self.env.user)
 
     @api.multi
     def generate_report(self):
@@ -150,8 +152,7 @@ class StockPicking(models.Model):
     @api.multi
     def get_type_of_transfer(self):
         self.type_of_transfer = dict(self._fields['type_of_transfer_list'].selection).get(self.type_of_transfer_list)
-        models._logger.error(dict(self._fields['type_of_transfer_list'].selection).get(self.type_of_transfer_list))
-        models._logger.error(self.type_of_transfer)
+        models._logger.error(self.current_user)
         return self.type_of_transfer
 
     @api.multi

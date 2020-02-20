@@ -30,7 +30,7 @@
                                     <!--
                                     <field name="reserved_amount"/>
                                     -->
-                                    <field name="shipping_number" readonly="1"/>
+                                    <field name="shipping_number" />
                                     <field name="contract_correlative_view"/>
                                     <field name="contract_correlative" invisible="1"/>
                                     <field name="shipping_id"/>
