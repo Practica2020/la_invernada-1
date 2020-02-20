@@ -18,7 +18,8 @@
         </button>
          <xpath expr="//div[@class='workorder_pdf']" position="before">
           <field name="potential_serial_planned_ids" >
-            <tree decoration-danger="consumed==False" decoration-success="consumed==True">
+            <tree decoration-danger="consumed==False" decoration-success="consumed==True"
+                  delete="false" create="false">
               <field name="stock_production_lot_id"/>
               <field name="serial_number"/>
               <field name="display_weight"/>
