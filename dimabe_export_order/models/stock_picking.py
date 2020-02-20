@@ -142,7 +142,7 @@ class StockPicking(models.Model):
 
     sell_shipping = fields.Char(string="Sello Naviera")
 
-    current_user = fields.Many2one('res.users','Currrent User',default=lambda self:self.env.user)
+    current_user = fields.Many2one('res.users', 'Currrent User', default=lambda self: self.env.user)
 
     @api.multi
     def generate_report(self):
