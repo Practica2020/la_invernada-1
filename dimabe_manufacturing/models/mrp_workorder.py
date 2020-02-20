@@ -36,7 +36,7 @@ class MrpWorkorder(models.Model):
             )
 
     def _inverse_potential_lot_planned_ids(self):
-        raise models.ValidationError(self.potential_serial_planned_ids.mapped('consumed'))
+        raise models.ValidationError('inverse {}'.format(self.potential_serial_planned_ids.mapped('consumed')))
 
         for lot_serial in self.potential_serial_planned_ids:
             serial = self.production_id.potential_lot_ids.mapped(
@@ -116,7 +116,7 @@ class MrpWorkorder(models.Model):
 
         self.validate_lot_code(self.lot_id.name)
 
-        raise models.ValidationError('{} {}'.format(
+        raise models.ValidationError('action_next {} {}'.format(
             self.potential_serial_planned_ids.mapped('consumed'),
             self.qty_done
         ))
