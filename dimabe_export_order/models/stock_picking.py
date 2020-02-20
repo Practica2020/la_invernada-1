@@ -123,6 +123,9 @@ class StockPicking(models.Model):
 
     file = fields.Char(related="picture.datas_fname")
 
+    type_of_transfer = fields.Selection(
+        [('1', 'Operacion constituye venta'), ('2', 'Ventas por efectuar'), ('3', 'Consignacion')])
+
     type_of_dispatch = fields.Selection([('exp', 'Exportación'), ('nac', 'Nacional')], string="Tipo de Despacho")
 
     sell_shipping = fields.Char(string="Sello Naviera")
