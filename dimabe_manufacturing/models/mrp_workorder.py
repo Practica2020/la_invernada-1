@@ -1,4 +1,4 @@
-from odoo import fields, models, api
+from odoo import fields, models, api, exceptions
 
 
 class MrpWorkorder(models.Model):
@@ -111,7 +111,10 @@ class MrpWorkorder(models.Model):
                 ))
                 if check.quality_state == 'none':
                     models._logger.error('action_next')
-                    self.action_next()
+                    try:
+                        self.action_next()
+                    except exceptions:
+                        raise models.ValidationError(exceptions)
                     models._logger.error('2 {} {}'.format(self.qty_done, self.current_quality_check_id))
 
             else:
