@@ -145,7 +145,7 @@ class MrpWorkorder(models.Model):
                 self.qty_done
             ))
             if i > 100:
-                continue
+                break
         self.action_first_skipped_step()
 
         return super(MrpWorkorder, self).open_tablet_view()
