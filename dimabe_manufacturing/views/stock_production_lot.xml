@@ -6,7 +6,12 @@
     <field name="arch" type="xml">
       <group name="main_group" position="inside">
         <field name="is_prd_lot" invisible="1" />
-        <field name="stock_production_lot_serial_ids">
+        <field name="is_standard_weight" widget="boolean_toggle"
+               attrs="{'invisible':[('is_prd_lot','=',False)]}"
+        />
+        <field name="stock_production_lot_serial_ids"
+               attrs="{'readonly':[('is_standard_weight','=',True)]}"
+        >
           <tree editable="bottom">
             <field name="stock_production_lot_id" readonly="1"/>
             <field name="belongs_to_prd_lot" invisible="1" />

@@ -6,6 +6,8 @@ class StockProductionLot(models.Model):
 
     is_prd_lot = fields.Boolean('Es Lote de salida de Proceso')
 
+    is_standard_weight = fields.Boolean('Series Peso Estandar')
+
     stock_production_lot_serial_ids = fields.One2many(
         'stock.production.lot.serial',
         'stock_production_lot_id',
