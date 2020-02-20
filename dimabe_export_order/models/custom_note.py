@@ -1,15 +1,14 @@
-from odoo import models, fields, api
+from odoo import models, fields
+
 
 class CustomNote(models.Model):
     _name = "custom.note"
 
-    body = fields.Text('Cuerpo')
+    body = fields.Text(string="Cuerpo nota")
 
-    destiny = fields.Selection([
-            ('andes', 'Los Andes'),
-            ('sanantonio', 'San Antonio'),
-        ], string='Destino', default='andes')
+    destiny = fields.Selection(
+        selection=[('andes', 'Los Andes'), ('sanantonio', 'San Antonio'), ('valparaiso', 'Valparaiso')],
+        string="Destino"
+    )
 
-    footer = fields.Char('Pie')
-
-    
+    footer = fields.Text(string="Pie nota")
