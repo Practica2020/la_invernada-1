@@ -93,28 +93,28 @@ class MrpWorkorder(models.Model):
 
     def open_tablet_view(self):
 
-        for check in self.finished_product_check_ids:
-
-            if check.component_is_byproduct:
-                if not check.lot_id:
-                    lot_tmp = self.env['stock.production.lot'].create({
-                        'name': self.env['ir.sequence'].next_by_code('mrp.workorder'),
-                        'product_id': check.component_id.id,
-                        'is_prd_lot': True
-                    })
-                    check.lot_id = lot_tmp.id
-                    if not self.lot_id:
-                        self.lot_id = lot_tmp
-                models._logger.error('{} {}'.format(self.qty_done, check.qty_done))
-                if check.quality_state == 'none':
-                    self.action_next()
-
-            else:
-                if not check.component_id.categ_id.is_canning:
-                    check.qty_done = 0
-                self.action_skip()
-
-        self.action_first_skipped_step()
+        # for check in self.finished_product_check_ids:
+        #
+        #     if check.component_is_byproduct:
+        #         if not check.lot_id:
+        #             lot_tmp = self.env['stock.production.lot'].create({
+        #                 'name': self.env['ir.sequence'].next_by_code('mrp.workorder'),
+        #                 'product_id': check.component_id.id,
+        #                 'is_prd_lot': True
+        #             })
+        #             check.lot_id = lot_tmp.id
+        #             if not self.lot_id:
+        #                 self.lot_id = lot_tmp
+        #         models._logger.error('{} {}'.format(self.qty_done, check.qty_done))
+        #         if check.quality_state == 'none':
+        #             self.action_next()
+        #
+        #     else:
+        #         if not check.component_id.categ_id.is_canning:
+        #             check.qty_done = 0
+        #         self.action_skip()
+        #
+        # self.action_first_skipped_step()
 
         return super(MrpWorkorder, self).open_tablet_view()
 
