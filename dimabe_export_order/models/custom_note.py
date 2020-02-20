@@ -22,3 +22,11 @@ class CustomNote(models.Model):
         full_note = full_note.replace('{destino}', destiny)
         full_note = full_note.upper()
         return full_note
+
+    @api.model
+    def get_footer_note(self):
+        destiny = dict(self._fields['destiny'].selection).get(self.destiny)
+        full_footer = self.footer
+        full_footer = full_footer.replace('{destino}',destiny)
+        full_footer = full_footer.upper()
+        return full_footer
