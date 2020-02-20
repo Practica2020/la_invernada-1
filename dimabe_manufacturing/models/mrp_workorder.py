@@ -105,7 +105,7 @@ class MrpWorkorder(models.Model):
                     check.lot_id = lot_tmp.id
                 if check.quality_state == 'none':
                     models._logger.error('{} {}'.format(
-                        check.lot_id.name, check.component_id.name
+                        check.lot_id.name, check.component_id.display_name
                     ))
                     self.action_next()
 
