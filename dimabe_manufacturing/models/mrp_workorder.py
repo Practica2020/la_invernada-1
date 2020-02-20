@@ -145,10 +145,7 @@ class MrpWorkorder(models.Model):
         custom_serial.write({
             'consumed': True
         })
-
-
-
-        self.action_next()
+        # self.action_next()
 
     @api.model
     def lot_is_byproduct(self):
