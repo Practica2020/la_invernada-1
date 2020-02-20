@@ -9,14 +9,14 @@
         <field name="is_standard_weight" widget="boolean_toggle"
                attrs="{'invisible':[('is_prd_lot','=',False)]}"
         />
-        <div>
-          <div style="max-width:30%;">
+        <div class="row">
+          <div class="col-md-4">
             <field name="standard_weight" />
           </div>
-          <div style="max-width:30%;">
+          <div class="col-md-4">
             <field name="total_serial" />
           </div>
-          <div style="max-width:30%;">
+          <div class="col-md-4">
             <button string="Generar" />
           </div>
         </div>
