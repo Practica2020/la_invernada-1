@@ -147,7 +147,7 @@ class StockPicking(models.Model):
         return self.env.ref('dimabe_export_order.action_dispatch_label_report') \
             .report_action(self.picture)
 
-    @api.model
+    @api.multi
     def get_type_of_transfer(self):
         type_of_transfer = dict(self._fields['type_of_transfer_list'].selection).get(self.type_of_transfer_list)
         models._logger.error(type_of_transfer)
