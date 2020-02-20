@@ -30,7 +30,7 @@
                                     <!--
                                     <field name="reserved_amount"/>
                                     -->
-                                    <field name="shipping_number"/>
+                                    <field name="shipping_number" readonly="1"/>
                                     <field name="contract_correlative_view"/>
                                     <field name="contract_correlative" invisible="1"/>
                                     <field name="shipping_id"/>
@@ -72,7 +72,7 @@
                                 <group>
                                     <field name="type_of_dispatch" widget="radio"/>
                                 </group>
-                                <group attrs="{'invisible':[('type_of_dispatch','!=','exp')]}" >
+                                <group attrs="{'invisible':[('type_of_dispatch','!=','exp')]}">
                                     <field name="net_weight_dispatch"/>
                                     <field name="gross_weight_dispatch"/>
                                     <field name="tare_container_weight_dispatch"/>
@@ -86,7 +86,7 @@
                                     <field name="dus_number"/>
                                     <field name="sell_shipping"/>
                                 </group>
-                                <group attrs="{'invisible':[('type_of_dispatch','==','exp')]}" style="width:100%%" >
+                                <group attrs="{'invisible':[('type_of_dispatch','==','exp')]}" style="width:100%%">
                                     <field name="type_of_transfer_list"/>
                                 </group>
                             </group>
