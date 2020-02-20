@@ -104,9 +104,12 @@ class MrpWorkorder(models.Model):
                     })
                     check.lot_id = lot_tmp.id
                     self.qty_done = check.qty_done
-                models._logger.error('{} {} '.format(self.qty_done, check.qty_done))
+                models._logger.error('{} {} '.format(
+                    self.qty_done, self.current_quality_check_id
+                ))
                 if check.quality_state == 'none':
                     self.action_next()
+                    models._logger.error('{} {}'.format(self.qty_done, self.current_quality_check_id))
 
             else:
                 if not check.component_id.categ_id.is_canning:
