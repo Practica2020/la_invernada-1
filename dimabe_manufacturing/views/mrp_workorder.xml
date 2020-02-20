@@ -19,10 +19,10 @@
          <xpath expr="//div[@class='workorder_pdf']" position="before">
           <field name="potential_serial_planned_ids" >
             <tree decoration-danger="consumed==False" decoration-success="consumed==True"
-                  delete="false" create="false">
-              <field name="stock_production_lot_id"/>
-              <field name="serial_number"/>
-              <field name="display_weight"/>
+                  delete="false" create="false" editable="bottom">
+              <field name="stock_production_lot_id" readonly="1"/>
+              <field name="serial_number" readonly="1"/>
+              <field name="display_weight" readonly="1"/>
               <field name="consumed" widget="boolean_toggle"/>
             </tree>
           </field>
