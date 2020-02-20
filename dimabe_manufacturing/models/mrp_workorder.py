@@ -117,7 +117,7 @@ class MrpWorkorder(models.Model):
                     models._logger.error('2 {} {}'.format(self.qty_done, self.current_quality_check_id))
 
             else:
-                models._logger.error('no es subproducto'.format(check.component_id.display_name))
+                models._logger.error('no es subproducto {}'.format(check.component_id.display_name))
                 if not check.component_id.categ_id.is_canning:
                     check.qty_done = 0
                 self.action_skip()
