@@ -94,7 +94,9 @@ class MrpWorkorder(models.Model):
     def open_tablet_view(self):
 
         for check in self.finished_product_check_ids:
-
+            models._logger.error('1 {} {} '.format(
+                self.qty_done, self.current_quality_check_id.component_id.display_name
+            ))
             if check.component_is_byproduct:
                 if not check.lot_id:
                     lot_tmp = self.env['stock.production.lot'].create({
@@ -106,9 +108,7 @@ class MrpWorkorder(models.Model):
                     self.update({
                         'qty_done': check.qty_done
                     })
-                models._logger.error('1 {} {} '.format(
-                    self.qty_done, self.current_quality_check_id.component_id.display_name
-                ))
+
                 if check.quality_state == 'none':
                     models._logger.error('action_next')
                     self.action_next()
