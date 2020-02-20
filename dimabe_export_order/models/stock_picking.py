@@ -107,7 +107,7 @@ class StockPicking(models.Model):
 
     vgm_weight_dispatch = fields.Integer(string="Peso VGM", compute="get_vgm_weight", store=True)
 
-    note_dispatched = fields.Many2one(string="Nota",related="custom.note")
+    note_dispatched = fields.Many2one(string="Nota", related="custom.note")
 
     sell_truck = fields.Char(string="Sello de Camión")
 
@@ -126,7 +126,6 @@ class StockPicking(models.Model):
     type_of_dispatch = fields.Selection([('exp', 'Exportación'), ('nac', 'Nacional')], string="Tipo de Despacho")
 
     sell_shipping = fields.Char(string="Sello Naviera")
-
 
     @api.multi
     def generate_report(self):
