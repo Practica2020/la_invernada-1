@@ -138,10 +138,11 @@ class MrpWorkorder(models.Model):
                 if check.quality_state == 'none':
                     self.action_next()
 
-            models._logger.error('{} {} {}'.format(
+            models._logger.error('{} {} {} {}'.format(
                 check.component_id.display_name,
                 check.qty_done,
-                self.qty_done
+                self.qty_done,
+                self.component_remainig_qty
             ))
             if i > 10:
                 break
