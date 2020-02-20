@@ -175,7 +175,7 @@
                                 </tr>
                                 <tr>
                                     <td>NOTA</td>
-                                    <td style="width:40%">
+                                    <td style="width:20%">
                                         <t t-esc="d.note_dispatched.get_full_note()"></t>
                                     </td>
                                 </tr>
