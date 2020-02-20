@@ -10,8 +10,8 @@ class PurchaseOrder(models.Model):
         ('to approve', 'To Approve'),
         ('purchase', 'Purchase Order'),
         ('done', 'Locked'),
-        ('cancel', 'Rechazado'),
-        ('purchase sent', 'Orden de Compra Enviada')
+        ('cancel', 'Rejected'),
+        ('purchase sent', 'Purchase Order Sent')
     ], string='Status', readonly=True, index=True, copy=False, default='draft', track_visibility='onchange')
 
     boss_approval_id = fields.Many2one(
