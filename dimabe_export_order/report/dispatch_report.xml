@@ -266,7 +266,12 @@
                                                 <tr style="border_right:1px solid;">
                                                     <td>CHOFER</td>
                                                     <td>
-                                                        <span t-field="d.carrier_id"></span>
+                                                        <t t-if="d.carrier_id == None">
+                                                            <![CDATA[&nbsp;]]>
+                                                        </t>
+                                                        <t t-elif="d.carrier_id != None">
+                                                            <span t-field="d.carrier_id"></span>
+                                                        </t>
                                                     </td>
                                                 </tr>
                                                 <tr style="border_right:1px solid;">
