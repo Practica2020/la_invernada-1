@@ -107,14 +107,11 @@ class MrpWorkorder(models.Model):
                         'qty_done': check.qty_done
                     })
                 models._logger.error('1 {} {} '.format(
-                    self.qty_done, self.current_quality_check_id
+                    self.qty_done, self.current_quality_check_id.component_id.display_name
                 ))
                 if check.quality_state == 'none':
                     models._logger.error('action_next')
-                    try:
-                        self.action_next()
-                    except exceptions:
-                        raise models.ValidationError(exceptions)
+                    self.action_next()
                     models._logger.error('2 {} {}'.format(self.qty_done, self.current_quality_check_id))
 
             else:
