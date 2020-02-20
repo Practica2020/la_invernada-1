@@ -5,55 +5,41 @@
     <field name="inherit_id" ref="stock.view_production_lot_form_simple"/>
     <field name="arch" type="xml">
       <group name="main_group" position="inside">
-        <div>
-          <group>
-            <field name="is_prd_lot" invisible="1"/>
-            <field name="is_standard_weight" widget="boolean_toggle"
-                   attrs="{'invisible':[('is_prd_lot','=',False)]}"
+        <field name="is_prd_lot" invisible="1"/>
+        <field name="is_standard_weight" widget="boolean_toggle"
+               attrs="{'invisible':[('is_prd_lot','=',False)]}"
+        />
+
+        <field name="standard_weight"
+               attrs="{'invisible':[('is_standard_weight','=',False)]}"
+        />
+        <field name="total_serial"
+               attrs="{'invisible':[('is_standard_weight','=',False)]}"
+        />
+        <button string="Generar"
+                attrs="{'invisible':[('is_standard_weight','=',False)]}"
+        />
+
+        <field name="stock_production_lot_serial_ids"
+               attrs="{'readonly':[('is_standard_weight','=',True)]}"
+        >
+          <tree editable="bottom">
+            <field name="stock_production_lot_id" readonly="1"/>
+            <field name="belongs_to_prd_lot" invisible="1"/>
+            <field name="display_weight"
+                   attrs="{'readonly':[('belongs_to_prd_lot', '=', False)]}"
             />
-          </group>
-        </div>
-        <div>
-          <group>
-            <div class="row">
-              <div class="col-md-4">
-                <field name="standard_weight"/>
-              </div>
-              <div class="col-md-4">
-                <field name="total_serial"/>
-              </div>
-              <div class="col-md-4">
-                <button string="Generar"/>
-              </div>
-            </div>
-          </group>
-        </div>
-        <div>
-          <group>
-            <field name="stock_production_lot_serial_ids"
-                   attrs="{'readonly':[('is_standard_weight','=',True)]}"
-            >
-              <tree editable="bottom">
-                <field name="stock_production_lot_id" readonly="1"/>
-                <field name="belongs_to_prd_lot" invisible="1"/>
-                <field name="display_weight"
-                       attrs="{'readonly':[('belongs_to_prd_lot', '=', False)]}"
-                />
-                <field name="serial_number" readonly="1"/>
-                <field name="production_id"
-                       readonly="1"
-                       widget="many2onebutton"
-                />
-                <button name="print_serial_label"
-                        type="object" string="Imprimir"
-                        attrs="{'invisible':['|',('serial_number', '=', False), ('production_id', '=', False)]}"
-                />
-              </tree>
-            </field>
-          </group>
-        </div>
-
-
+            <field name="serial_number" readonly="1"/>
+            <field name="production_id"
+                   readonly="1"
+                   widget="many2onebutton"
+            />
+            <button name="print_serial_label"
+                    type="object" string="Imprimir"
+                    attrs="{'invisible':['|',('serial_number', '=', False), ('production_id', '=', False)]}"
+            />
+          </tree>
+        </field>
       </group>
     </field>
   </record>
