@@ -140,6 +140,8 @@ class MrpWorkorder(models.Model):
             'consumed': True
         })
 
+        self.action_next()
+
     @api.model
     def lot_is_byproduct(self):
         return self.finished_product_check_ids.filtered(
