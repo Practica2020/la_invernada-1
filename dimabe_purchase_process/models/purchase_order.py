@@ -51,8 +51,8 @@ class PurchaseOrder(models.Model):
         #            'boss_approval_id': self.env.user.id,
          #           'boss_approval_date': fields.datetime.now()
           #      })
-        res = super(PurchaseOrder, self).action_rfq_send()
-        return res
+        #res = super(PurchaseOrder, self).action_rfq_send()
+        #return res
       
 
     @api.multi
