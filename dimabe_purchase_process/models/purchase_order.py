@@ -42,15 +42,15 @@ class PurchaseOrder(models.Model):
 
     @api.multi
     def action_rfq_send(self):
-        for item in self:
-            if not item.boss_approval_id:
-                item.update({
-                    'boss_approval_id': self.env.user.id,
-                    'boss_approval_date': fields.datetime.now()
-                })
-        res = super(PurchaseOrder, self).action_rfq_send()
-
-        return res
+          raise models.validationError('este es un mensaje de prueba')
+      #  for item in self:
+       #     if not item.boss_approval_id:
+        #        item.update({
+         #           'boss_approval_id': self.env.user.id,
+          #          'boss_approval_date': fields.datetime.now()
+           #     })
+        #res = super(PurchaseOrder, self).action_rfq_send()
+        #return res
 
     @api.multi
     def button_confirm(self):
