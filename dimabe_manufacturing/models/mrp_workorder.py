@@ -136,7 +136,9 @@ class MrpWorkorder(models.Model):
         super(MrpWorkorder, self).on_barcode_scanned(barcode)
         self.qty_done = qty_done + custom_serial.display_weight
 
-        custom_serial.consumed = True
+        custom_serial.write({
+            'consumed': True
+        })
 
     @api.model
     def lot_is_byproduct(self):
