@@ -143,7 +143,7 @@
                                     <td></td>
                                     <td>
                                         <t t-if="d.type_of_dispatch == 'exp'">
-                                            <table style="position:absolute;left:189px;right:250px;top:495px;bottom:30%;border:1px solid;">
+                                            <table style="border:1px solid;">
                                                 <tr>
                                                     <td style="padding: 15px;">KILOS NETOS</td>
                                                     <td>
@@ -252,7 +252,7 @@
 
                                         </t>
                                         <t t-elif="d.type_of_dispatch == 'nac'">
-                                            <table style="width:433px;position:absolute;left:189px;right:250px;top:495px;bottom:30%;border:1px solid;">
+                                            <table style="width:433px;border:1px solid;">
                                                 <tr style="border_right:1px solid;">
                                                     <td>CHOFER</td>
                                                     <td>
