@@ -16,8 +16,5 @@ class CustomNote(models.Model):
     @api.model
     def get_full_note(self):
         message = list(self.body)
-        index = 0
-        for letter in message:
-            models._logger.error(letter)
-            index += 1
+        models._logger.error(dict(self._fields['Destino'].selection).get(self.destiny))
         return self.body + self.destiny + self.footer
