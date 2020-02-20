@@ -10,8 +10,8 @@ class PurchaseOrder(models.Model):
         ('to approve', 'To Approve'),
         ('purchase', 'Purchase Order'),
         ('done', 'Locked'),
-        ('cancel', 'Rejected'),
-        ('purchase sent', 'Purchase Order Sent')
+        ('cancel', 'Rechazado'),
+        ('purchase sent', 'Orden de Compra Enviada')
     ], string='Status', readonly=True, index=True, copy=False, default='draft', track_visibility='onchange')
 
     boss_approval_id = fields.Many2one(
@@ -51,6 +51,7 @@ class PurchaseOrder(models.Model):
                     'boss_approval_id': self.env.user.id,
                     'boss_approval_date': fields.datetime.now()
                 })
+        self.state=self.action_rfq_send()       
         res = super(PurchaseOrder, self).action_rfq_send()
         return res
       
