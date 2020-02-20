@@ -10,8 +10,8 @@ class PurchaseOrder(models.Model):
         ('to approve', 'To Approve'),
         ('purchase', 'Purchase Order'),
         ('done', 'Locked'),
-        ('cancel', 'Rechazado'),
-        ('purchase sent', 'Orden de Compra Enviada')
+        ('cancel', 'Rechazado porque si'),
+        ('purchase sent', 'Orden de Compra Enviada y lista para procesar')
     ], string='Status', readonly=True, index=True, copy=False, default='draft', track_visibility='onchange')
 
     boss_approval_id = fields.Many2one(
@@ -84,7 +84,6 @@ class PurchaseOrder(models.Model):
         ]
         models._logger.error(user_group)
         models._logger.error(email_list)
-        self.action_rfq_send()
         return ','.join(email_list)
 
     @api.model
