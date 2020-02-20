@@ -8,6 +8,10 @@ class StockProductionLot(models.Model):
 
     is_standard_weight = fields.Boolean('Series Peso Estandar')
 
+    standard_weight = fields.Float('Peso Estandar')
+
+    total_serial = fields.Integer('Cantidad de Series')
+
     stock_production_lot_serial_ids = fields.One2many(
         'stock.production.lot.serial',
         'stock_production_lot_id',
