@@ -106,7 +106,9 @@ class PurchaseOrder(models.Model):
         return res
 
     
+    @api.multi
     def action_send_mail(self):
-        raise models.ValidationError('mensaje de prueba')
-
+        
+        res = super(PurchaseOrder,self).action_send_mail(self)
+        return res
 
