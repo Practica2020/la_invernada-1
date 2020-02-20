@@ -102,7 +102,13 @@
           </div>
           <div>
             <group>
-              <field name="summary_out_serial_ids" />
+              <field name="summary_out_serial_ids">
+                <tree>
+                  <field name="stock_production_lot_id" />
+                  <field name="serial_number" />
+                  <field name="display_weight" />
+                </tree>
+              </field>
             </group>
           </div>
         </form>

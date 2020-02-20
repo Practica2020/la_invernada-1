@@ -11,7 +11,8 @@ class MrpWorkorder(models.Model):
 
     summary_out_serial_ids = fields.One2many(
         'stock.production.lot.serial',
-        compute='_compute_summary_out_serial_ids'
+        compute='_compute_summary_out_serial_ids',
+        string='Resumen de Salidas'
     )
 
     material_product_ids = fields.One2many(
