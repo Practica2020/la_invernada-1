@@ -12,7 +12,7 @@ class PurchaseOrder(models.Model):
         ('done', 'Locked'),
         ('cancel', 'Rechazado'),
         ('purchase sent', 'Orden de Compra Enviada')
-    ], string='Status', readonly=True, index=True, copy=False, default='draft')#, track_visibility='onchange')
+    ], string='Status', readonly=True, index=True, copy=False, default='draft', track_visibility='onchange')
 
     boss_approval_id = fields.Many2one(
         'res.users',
@@ -45,13 +45,13 @@ class PurchaseOrder(models.Model):
     def action_rfq_send(self):
         for item in self:
             if not item.boss_approval_id:
-                item.update({
+              item.update({
                     'boss_approval_id': self.env.user.id,
                     'boss_approval_date': fields.datetime.now()
                 })
-
         res = super(PurchaseOrder, self).action_rfq_send()
         return res
+      
 
     @api.multi
     def button_confirm(self):
@@ -105,6 +105,8 @@ class PurchaseOrder(models.Model):
                         raise models.ValidationError('debe agregar precio unitario')
         return res
 
+    
     def action_send_mail(self):
-        raise  models.ValidationError('Mensaje de prueba')
+        raise models.ValidationError('mensaje de prueba')
+
 
