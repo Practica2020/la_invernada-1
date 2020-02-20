@@ -20,4 +20,5 @@ class CustomNote(models.Model):
         destiny = dict(self._fields['destiny'].selection).get(self.destiny)
         full_note = self.body
         full_note = full_note.replace('{destino}', destiny)
+        full_note = full_note.upper()
         return full_note
