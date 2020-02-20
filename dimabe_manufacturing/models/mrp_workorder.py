@@ -92,61 +92,22 @@ class MrpWorkorder(models.Model):
         return res
 
     def open_tablet_view(self):
-
-        # for check in self.finished_product_check_ids:
-        #     models._logger.error('1 {} {} '.format(
-        #         self.qty_done, self.current_quality_check_id.component_id.display_name
-        #     ))
-        #     if check.component_is_byproduct:
-        #         models._logger.error('es subproducto {}'.format(check.component_id.display_name))
-        #         if not check.lot_id:
-        #             lot_tmp = self.env['stock.production.lot'].create({
-        #                 'name': self.env['ir.sequence'].next_by_code('mrp.workorder'),
-        #                 'product_id': check.component_id.id,
-        #                 'is_prd_lot': True
-        #             })
-        #             check.lot_id = lot_tmp.id
-        #             self.update({
-        #                 'qty_done': check.qty_done
-        #             })
-        #             models._logger.error('lote {} a {}'.format(lot_tmp.name, check.component_id.display_name))
-        #
-        #         if check.quality_state == 'none':
-        #             models._logger.error('action_next')
-        #             self.action_next()
-        #             models._logger.error('2 {} {}'.format(self.qty_done, self.current_quality_check_id))
-        #
-        #     else:
-        #         models._logger.error('no es subproducto {}'.format(check.component_id.display_name))
-        #         if not check.component_id.categ_id.is_canning:
-        #             check.qty_done = 0
-        #         self.action_skip()
-        i = 0
         while self.current_quality_check_id:
-            i += 1
             check = self.current_quality_check_id
             if not check.component_is_byproduct:
                 check.qty_done = 0
                 self.action_skip()
             else:
-                lot_tmp = self.env['stock.production.lot'].create({
-                    'name': self.env['ir.sequence'].next_by_code('mrp.workorder'),
-                    'product_id': check.component_id.id,
-                    'is_prd_lot': True
-                })
-                check.lot_id = lot_tmp.id
-                check.qty_done = self.component_remaining_qty
-                if check.quality_state == 'none':
-                    self.action_next()
-
-            models._logger.error('{} {} {} {}'.format(
-                check.component_id.display_name,
-                check.qty_done,
-                self.qty_done,
-                self.component_remaining_qty
-            ))
-            if i > 10:
-                break
+                if not check.lot_id:
+                    lot_tmp = self.env['stock.production.lot'].create({
+                        'name': self.env['ir.sequence'].next_by_code('mrp.workorder'),
+                        'product_id': check.component_id.id,
+                        'is_prd_lot': True
+                    })
+                    check.lot_id = lot_tmp.id
+                    check.qty_done = self.component_remaining_qty
+                    if check.quality_state == 'none':
+                        self.action_next()
         self.action_first_skipped_step()
 
         return super(MrpWorkorder, self).open_tablet_view()
