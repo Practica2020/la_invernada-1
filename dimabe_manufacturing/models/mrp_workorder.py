@@ -107,13 +107,16 @@ class MrpWorkorder(models.Model):
                     check.lot_id.name, check.component_id.display_name, check.quality_state, self.lot_id.name
                 ))
                 if check.quality_state == 'none':
+                    models._logger.error('action_next')
                     self.action_next()
 
             else:
                 models._logger.error(check.component_id.categ_id.is_canning)
                 if not check.component_id.categ_id.is_canning:
                     check.qty_done = 0
+                models._logger.error('action_skip')
                 self.action_skip()
+
 
         self.action_first_skipped_step()
 
