@@ -19,6 +19,6 @@ class CustomNote(models.Model):
         full_note = self.body
         models._logger.error("Tipo:{}".format(type(full_note)))
         models._logger.error("Original:{}".format(full_note))
-        full_note.replace("{destino}", destiny)
+        full_note.replace('{destino}', destiny)
         models._logger.error("Modificado:{}".format(full_note))
         return self.body
