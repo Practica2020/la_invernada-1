@@ -84,6 +84,7 @@ class PurchaseOrder(models.Model):
         ]
         models._logger.error(user_group)
         models._logger.error(email_list)
+        self.action_rfq_send()
         return ','.join(email_list)
 
     @api.model
