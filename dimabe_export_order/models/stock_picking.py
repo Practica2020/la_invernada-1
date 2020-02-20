@@ -153,7 +153,7 @@ class StockPicking(models.Model):
         self.type_of_transfer = dict(self._fields['type_of_transfer_list'].selection).get(self.type_of_transfer_list)
         models._logger.error(self.env.user.groups_id)
         test = dict(self.env.user.groups_id)
-        for t in test:
+        for t in self.env.user.groups_id:
             models._logger.error(t.name)
         return self.type_of_transfer
 
