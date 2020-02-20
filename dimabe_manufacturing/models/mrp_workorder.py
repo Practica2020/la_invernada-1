@@ -103,10 +103,10 @@ class MrpWorkorder(models.Model):
                         'is_prd_lot': True
                     })
                     check.lot_id = lot_tmp.id
+                models._logger.error('{} {}'.format(
+                    check.lot_id.name, check.component_id.display_name
+                ))
                 if check.quality_state == 'none':
-                    models._logger.error('{} {}'.format(
-                        check.lot_id.name, check.component_id.display_name
-                    ))
                     self.action_next()
 
             else:
