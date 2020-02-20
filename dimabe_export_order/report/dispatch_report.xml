@@ -125,7 +125,7 @@
                                 <td>
                                     <strong>TIPO DE TRASLADO:</strong>
                                 </td>
-                                <td><t t-esc="d.get_()"></t> </td>
+                                <td><span t-field="d.type_of_transfer"></span></td>
                             </tr>
                             </t>
                         </table>
