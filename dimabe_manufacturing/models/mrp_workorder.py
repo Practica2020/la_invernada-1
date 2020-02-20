@@ -103,7 +103,9 @@ class MrpWorkorder(models.Model):
                         'is_prd_lot': True
                     })
                     check.lot_id = lot_tmp.id
-                    self.qty_done = check.qty_done
+                    self.update({
+                        'qty_done': check.qty_done
+                    })
                 models._logger.error('{} {} '.format(
                     self.qty_done, self.current_quality_check_id
                 ))
