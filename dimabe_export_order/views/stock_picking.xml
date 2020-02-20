@@ -78,7 +78,7 @@
                                         <field name="tare_container_weight_dispatch"/>
                                         <field name="container_weight"/>
                                         <field name="vgm_weight_dispatch" readonly="1"/>
-                                        <field name="note_dispatched" widget="many2many_kanban"/>
+                                        <field name="note_dispatched"/>
                                         <field name="sell_truck"/>
                                         <field name="guide_number"/>
                                         <field name="sell_sag"/>
