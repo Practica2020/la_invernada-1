@@ -62,7 +62,7 @@
             </group>      
            <group name="transport_page" position="inside">
               <!--  <field name="cart_patent"/> --> 
-              <field name="truck_patent"/> 
+              <field name="carrier_truck_patent"/> 
             </group>
           </page>
         </xpath>
