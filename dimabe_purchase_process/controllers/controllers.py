@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
 from odoo import http
 
-# class DimabePurchaseProcess(http.Controller):
-#     @http.route('/dimabe_purchase_process/dimabe_purchase_process/', auth='public')
+# class Reception(http.Controller):
+#     @http.route('/dimabe_reception/dimabe_reception/', auth='public')
 #     def index(self, **kw):
 #         return "Hello, world"
 
-#     @http.route('/dimabe_purchase_process/dimabe_purchase_process/objects/', auth='public')
+#     @http.route('/dimabe_reception/dimabe_reception/objects/', auth='public')
 #     def list(self, **kw):
-#         return http.request.render('dimabe_purchase_process.listing', {
-#             'root': '/dimabe_purchase_process/dimabe_purchase_process',
-#             'objects': http.request.env['dimabe_purchase_process.dimabe_purchase_process'].search([]),
+#         return http.request.render('dimabe_reception.listing', {
+#             'root': '/dimabe_reception/dimabe_reception',
+#             'objects': http.request.env['dimabe_reception.dimabe_reception'].search([]),
 #         })
 
-#     @http.route('/dimabe_purchase_process/dimabe_purchase_process/objects/<model("dimabe_purchase_process.dimabe_purchase_process"):obj>/', auth='public')
+#     @http.route('/dimabe_reception/dimabe_reception/objects/<model("dimabe_reception.dimabe_reception"):obj>/', auth='public')
 #     def object(self, obj, **kw):
-#         return http.request.render('dimabe_purchase_process.object', {
+#         return http.request.render('dimabe_reception.object', {
 #             'object': obj
 #         })

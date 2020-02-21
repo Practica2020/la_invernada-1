@@ -1,13 +1,7 @@
-from odoo import fields, models
+from odoo import models, fields
 
 
 class ResCompany(models.Model):
     _inherit = 'res.company'
 
-    billing_mail = fields.Char(
-        'Casilla de Correo para Facturación'
-    )
-
-    billing_email = fields.Char(
-        'Correo Electrónico para Facturación'
-    )
+    sag_code = fields.Char('CSG')
