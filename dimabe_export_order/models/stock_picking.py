@@ -141,7 +141,7 @@ class StockPicking(models.Model):
 
     sell_shipping = fields.Char(string="Sello Naviera")
 
-    permissions_users = fields.Many2many(rel="res.groups")
+    permissions_users = fields.Many2many()
 
 
     @api.multi
