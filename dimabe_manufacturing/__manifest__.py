@@ -20,6 +20,7 @@
     # any module necessary for this one to work correctly
     'depends': [
         'base',
+        'web',
         'dimabe_reception',
         'mrp',
         'mrp_workorder',
@@ -39,7 +40,9 @@
         'views/mrp_dispatched.xml',
         'views/mrp_workcenter.xml',
         'views/quality_analysis.xml',
-        'views/product_category.xml'
+        'views/product_category.xml',
+        'views/potential_lot.xml',
+        'views/templates.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -1,4 +1,5 @@
 from odoo import fields, models, api
+from datetime import datetime
 
 
 class MrpProduction(models.Model):
@@ -10,6 +11,27 @@ class MrpProduction(models.Model):
         'res.partner',
         'Buscar Cliente',
         nullable=True
+    )
+
+    # show_finished_move_line_ids = fields.One2many(
+    #     'stock.move.line',
+    #     compute='_compute_show_finished_move_line_ids'
+    # )
+
+    consumed_material_ids = fields.One2many(
+        'stock.production.lot.serial',
+        related='workorder_ids.potential_serial_planned_ids'
+    )
+
+    required_date_moving_to_production = fields.Datetime(
+        'Fecha Requerida de Movimiento a Producción',
+        default=datetime.utcnow()
+    )
+
+    product_search_id = fields.Many2one(
+        'product.product',
+        'Buscar Producto',
+        nullable=True,
     )
 
     product_lot = fields.Many2one(
@@ -30,7 +52,25 @@ class MrpProduction(models.Model):
         'Posibles Lotes'
     )
 
-    @api.onchange('client_search_id')
+    # @api.multi
+    # def _compute_show_finished_move_line_ids(self):
+    #     for item in self:
+    #         to_show = []
+    #         for move_line in item.finished_move_line_ids:
+    #             models._logger.error('{} {}'.format(move_line, to_show))
+    #             if not filter(
+    #                 lambda a: a.lot_id == move_line.lot_id,
+    #                 to_show
+    #             ):
+    #
+    #                 move_line.qty_done = sum(item.finished_move_line_ids.filtered(
+    #                     lambda a: a.lot_id == move_line.lot_id
+    #                 ).mapped('qty_done'))
+    #                 to_show.append(move_line)
+    #         item.show_finished_move_line_ids = to_show
+    #         raise models.ValidationError(to_show)
+
+    @api.onchange('client_search_id', 'product_search_id')
     def onchange_client_search_id(self):
         for production in self:
             filtered_lot_ids = production.get_potential_lot_ids()
@@ -73,6 +113,8 @@ class MrpProduction(models.Model):
                 lambda a: not a.product_id.categ_id.reserve_ignore
             ).mapped('product_id.id'))),
         ]
+        if self.product_search_id:
+            domain += [('product_id.id', '=', self.product_search_id.id)]
         res = []
         if self.client_search_id:
             client_lot_ids = self.env['quality.analysis'].search([
@@ -106,11 +148,15 @@ class MrpProduction(models.Model):
     @api.multi
     def button_mark_done(self):
         self.calculate_done()
+        self.potential_lot_ids.filtered(lambda a: not a.qty_to_reserve > 0).unlink()
         return super(MrpProduction, self).button_mark_done()
 
     @api.model
     def create(self, values_list):
         res = super(MrpProduction, self).create(values_list)
+
+        # if not res.client_search_id and not res.potential_lot_ids:
+        res.onchange_client_search_id()
 
         stock_picking = self.env['stock.picking'].search([
             ('name', '=', res.origin)
@@ -144,7 +190,9 @@ class MrpProduction(models.Model):
                     stock_move.product_uom_qty = stock_move.product_uom_qty + 1 - stock_move.product_uom_qty % 1
 
                 stock_move.unit_factor = stock_move.product_uom_qty / order.product_qty
-                if stock_move.product_uom_qty == 0 and not stock_move.product_id.categ_id.reserve_ignore:
+                if stock_move.product_uom_qty == 0 and not stock_move.product_id.categ_id.reserve_ignore and\
+                        stock_move.scrapped is False:
+                    models._logger.error(stock_move.product_id.name)
                     stock_move.update({
                         'raw_material_production_id': None
                     })
@@ -152,28 +200,6 @@ class MrpProduction(models.Model):
                 lambda a: a.raw_material_production_id.id == order.id
             )
 
-            # real_bom_data = []
-            # real_product_qty = order.bom_id.product_qty
-            #
-            # order.bom_id.product_qty = order.product_uom_id._compute_quantity(order.product_qty,
-            #                                                                    order.bom_id.product_uom_id)
-            #
-            # for bom_line in order.bom_id.bom_line_ids:
-            #     raw_line = order.move_raw_ids.filtered(lambda a: a.product_id == bom_line.product_id)
-            #     if raw_line:
-            #         real_bom_data.append({
-            #             'product_id': bom_line.product_id,
-            #             'product_qty': bom_line.product_qty
-            #         })
-            #         bom_line.product_qty = raw_line.product_uom_qty
-
             res = super(MrpProduction, order).button_plan()
-
-            # for rd in real_bom_data:
-            #     bl = order.bom_id.bom_line_ids.filtered(lambda a: a.product_id == rd['product_id'])
-            #     if bl:
-            #         bl.product_qty = rd['product_qty']
-            #
-            # order.bom_id.product_qty = real_product_qty
 
             return res
