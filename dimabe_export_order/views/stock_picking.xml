@@ -91,7 +91,9 @@
                                     <field name="sell_sag"/>
                                     <field name="gps_lock"/>
                                     <field name="gps_button"/>
+                                    <button style="pointer-events:none;" class="oe_inline badge badge-secondary">
                                     <field name="hour_arrival" widget="mrp_time_counter" options="{'round_off':True,'time_only':True}"/>
+                                    </button>
                                     <field name="dus_number"/>
                                     <field name="sell_shipping"/>
                                 </group>
