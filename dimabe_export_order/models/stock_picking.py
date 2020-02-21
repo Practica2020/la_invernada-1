@@ -141,6 +141,8 @@ class StockPicking(models.Model):
 
     sell_shipping = fields.Char(string="Sello Naviera")
 
+    permissions_users = fields.Many2many(rel="res.groups")
+
 
     @api.multi
     def generate_report(self):
@@ -149,6 +151,8 @@ class StockPicking(models.Model):
 
     @api.multi
     def get_type_of_transfer(self):
+        for i in self.permissions_users:
+            models._logger.error(i.name)
         self.type_of_transfer = \
             dict(self._fields['type_of_transfer_list'].selection).get(self.type_of_transfer_list)
         return self.type_of_transfer
