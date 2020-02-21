@@ -76,19 +76,19 @@ class StockPicking(models.Model):
         related='carrier_id.cell_number'
     )
 
-  #  carrier_truck_patent = fields.Char(
-   #     'Patente Camión',
-    #    related='carrier_id.truck_patent'
-    #)
+    carrier_truck_patent = fields.Char(
+        'Patente Camión',
+        related='carrier_id.truck_patent'
+    )
 
-   # carrier_cart_patent = fields.Char(
-   #     'Patente Carro',
-   #     related='carrier_id.cart_patent'
-   # )
+    carrier_cart_patent = fields.Char(
+        'Patente Carro',
+        related='carrier_id.cart_patent'
+    )
 
-    transport_patent = fields.Char('Patente', related='carrier_id.transport_patent')
+   # transport_patent = fields.Char('Patente', related='carrier_id.transport_patent')
     
-    transport_is_truck = fields.Boolean('Es camión', related='carrier_id.transport_is_truck')
+   # transport_is_truck = fields.Boolean('Es camión', related='carrier_id.transport_is_truck')
 
 
     hr_alert_notification_count = fields.Integer('Conteo de notificación de retraso de camión')
