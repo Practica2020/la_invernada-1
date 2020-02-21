@@ -142,7 +142,6 @@ class StockPicking(models.Model):
 
     sell_shipping = fields.Char(string="Sello Naviera")
 
-
     @api.multi
     def generate_report(self):
         return self.env.ref('dimabe_export_order.action_dispatch_label_report') \
@@ -150,22 +149,15 @@ class StockPicking(models.Model):
 
     @api.multi
     def get_type_of_transfer(self):
-        self.type_of_transfer = dict(self._fields['type_of_transfer_list'].selection).get(self.type_of_transfer_list)
-        models._logger.error(self.env.user.groups_id)
-        for t in self.env.user.groups_id:
-            models._logger.error(t.name)
+        self.type_of_transfer = \
+            dict(self._fields['type_of_transfer_list'].selection).get(self.type_of_transfer_list)
         return self.type_of_transfer
-
-    @api.multi
-    def get_full_url(self):
-        self.ensure_one()
-        base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
-        return base_url
 
     @api.one
     @api.depends('tare_container_weight_dispatch', 'container_weight')
     def get_vgm_weight(self):
-        self.vgm_weight_dispatch = self.tare_container_weight_dispatch + self.container_weight
+        self.vgm_weight_dispatch = \
+            self.tare_container_weight_dispatch + self.container_weight
 
     @api.model
     @api.depends('freight_value', 'safe_value')
