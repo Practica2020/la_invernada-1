@@ -84,6 +84,8 @@
                                     <field name="guide_number"/>
                                     <field name="sell_sag"/>
                                     <field name="gps_lock"/>
+                                    <field name="gps_button"/>
+                                    <field name="hour_arrival" widget="float_time"/>
                                     <field name="dus_number"/>
                                     <field name="sell_shipping"/>
                                 </group>
