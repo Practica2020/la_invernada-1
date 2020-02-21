@@ -52,19 +52,19 @@
           />
         </field>
         <xpath expr="//page[@name='note']" position="after">
-          <page string="Not Transportista" name="carrier_page" attrs="{'invisible':[('picking_type_code', 'not in', ('outgoing', 'incoming'))]}">
+          <page string="Transporte" name="carrier_page" attrs="{'invisible':[('picking_type_code', 'not in', ('outgoing', 'incoming'))]}">
             <group name="carrier_page" position="inside">
-              <field name="carrier_id"/>
-              <field name="carrier_rut"/>
-              <field name="carrier_cell_phone"/>
-              <field name="carrier_truck_patent"/>
-              <field name="carrier_cart_patent"/>
+             <!-- <field name="carrier_id"/> -->
+              <!-- <field name="carrier_rut"/> -->
+               <!-- <field name="carrier_cell_phone"/> -->
+              <field name="carrier_truck_patent"/> 
+              <field name="carrier_cart_patent"/> 
             </group>
           </page>
         </xpath>
       </field>
     </record>
-
+               
     <record id="stock_picking_list" model="ir.ui.view">
       <field name="name">stock picking list</field>
       <field name="model">stock.picking</field>
