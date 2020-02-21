@@ -68,4 +68,5 @@ class StockProductionLot(models.Model):
             serial_ids += list(item.stock_production_lot_serial_ids.filtered(
                 lambda a: a.consumed
             ).mapped('id'))
+
             item.stock_production_lot_serial_ids = [(6, 0, serial_ids)]
