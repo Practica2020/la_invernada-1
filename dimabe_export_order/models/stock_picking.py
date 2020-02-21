@@ -149,7 +149,7 @@ class StockPicking(models.Model):
     @api.multi
     def get_type_of_transfer(self):
         for item in self.env.user.groups_id:
-            if item.name == "Despacho":
+            if item.name == "Despachos":
                 models._logger.error("Read Only")
             else:
                 models._logger.error("Modificable")
