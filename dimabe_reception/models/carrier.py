@@ -6,20 +6,20 @@ class Carrier(models.Model):
     _name = 'custom.carrier'
 
     name = fields.Char(
-        'Conductor',
+        'Conductor TIS BUT A SCRATCH',
         required=True
     )
 
     rut = fields.Char(
-        'Rut',
+        'Rut TIS BUT A SCRATCH',
         required=True
     )
 
-    cell_number = fields.Char('Número de celular')
+    cell_number = fields.Char('Número de celular TIS BUT A SCRATCH')
 
-    truck_patent = fields.Char('Patente Camión')
+    truck_patent = fields.Char('Patente Camión TIS BUT A SCRATCH')
 
-    cart_patent = fields.Char('Patente Carro')
+    cart_patent = fields.Char('Patente Carro TIS BUT A SCRATCH')
 
     @api.model
     def create(self, values_list):
