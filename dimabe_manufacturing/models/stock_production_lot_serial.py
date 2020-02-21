@@ -39,6 +39,12 @@ class StockProductionLotSerial(models.Model):
                 res.production_id = work_order.production_id[0].id
         return res
 
+    @api.model
+    def unlink(self):
+        if self.consumed:
+            raise models.ValidationError('este registro ya fue consumido, no puede ser eliminado')
+        return super(StockProductionLotSerial, self).unlink()
+
     @api.multi
     def print_serial_label(self):
         return self.env.ref(
