@@ -31,9 +31,9 @@ class Carrier(models.Model):
         vals = self._prepare_data(vals)
         return super(Carrier, self).write(vals)
 
-    def _prepare_data(self, values_list):
-        if 'truck_patent' in values_list:
-            values_list['truck_patent'] = str.upper(values_list['truck_patent'])
-        if 'cart_patent' in values_list:
-            values_list['cart_patent'] = str.upper(values_list['cart_patent'])
-        return values_list
+    #def _prepare_data(self, values_list):
+    #    if 'truck_patent' in values_list:
+    #        values_list['truck_patent'] = str.upper(values_list['truck_patent'])
+    #    if 'cart_patent' in values_list:
+    #        values_list['cart_patent'] = str.upper(values_list['cart_patent'])
+    #    return values_list
