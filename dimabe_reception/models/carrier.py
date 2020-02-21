@@ -15,11 +15,11 @@ class Carrier(models.Model):
         required=True
     )
 
-    cell_number = fields.Char('Celular')
+    cell_number = fields.Char('Número de celular')
 
-    truck_patent = fields.Char('Patente Camión')
+    #truck_patent = fields.Char('Patente Camión')
 
-    cart_patent = fields.Char('Patente Carro')
+    #cart_patent = fields.Char('Patente Carro')
 
     @api.model
     def create(self, values_list):
