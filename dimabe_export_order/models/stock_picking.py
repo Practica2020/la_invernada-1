@@ -148,7 +148,7 @@ class StockPicking(models.Model):
 
     @api.multi
     def get_type_of_transfer(self):
-        for item in self.env.users.groups:
+        for item in self.env.user.groups_id:
             models._logger.error(item.name)
         self.type_of_transfer = \
             dict(self._fields['type_of_transfer_list'].selection).get(self.type_of_transfer_list)
