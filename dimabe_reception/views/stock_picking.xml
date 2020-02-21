@@ -64,9 +64,10 @@
                 <field name="transport_patent"/> 
               <field name="transport_is_truck"/> 
             </group>
-          -->
+          
             
           </page>
+          -->
         </xpath>
 
       
