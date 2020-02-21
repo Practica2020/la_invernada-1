@@ -31,12 +31,12 @@
                                     <field name="reserved_amount"/>
                                     -->
                                     <field name="is_dispatcher" invisible="1"/>
-                                    <field name="shipping_number"  attrs="{'readonly':[('is_dispatcher','=','True')]}"/>
-                                    <field name="contract_correlative_view" attrs="{'readonly':[('is_dispatcher','=','True')]}"/>
+                                    <field name="shipping_number"  />
+                                    <field name="contract_correlative_view" />
                                     <field name="contract_correlative" invisible="1"/>
                                     <field name="shipping_id" readonly="is_dispatcher"/>
-                                    <field name="agent_id" attrs="{'readonly':[('is_dispatcher','=','True')]}"/>
-                                    <field name="total_commission" attrs="{'readonly':[('is_dispatcher','=','True')]}"/>
+                                    <field name="agent_id" />
+                                    <field name="total_commission"/>
                                     <field name="charging_mode"/>
                                     <field name="booking_number"/>
                                     <field name="bl_number"/>
