@@ -57,7 +57,7 @@ class MrpProduction(models.Model):
         for item in self:
             to_show = []
             for move_line in item.finished_move_line_ids:
-                if not item.show_finished_move_line_ids.filtered(
+                if not list(to_show).filtered(
                     lambda a: a.lot_id == move_line.lot_id
                 ):
                     move_line.qty_done = sum(item.finished_move_line_ids.filtered(
