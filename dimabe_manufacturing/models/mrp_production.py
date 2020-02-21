@@ -64,8 +64,6 @@ class MrpProduction(models.Model):
                 else:
                     existing_move.qty_done += move_line.qty_done
 
-            raise models.ValidationError(item.show_finished_move_line_ids)
-
     @api.onchange('client_search_id', 'product_search_id')
     def onchange_client_search_id(self):
         for production in self:
