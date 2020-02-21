@@ -152,7 +152,7 @@ class MrpWorkorder(models.Model):
             barcode = custom_serial.stock_production_lot_id.name
 
         res = super(MrpWorkorder, self).on_barcode_scanned(barcode)
-        if 'warning' in res:
+        if res:
             return res
         self.qty_done = qty_done + custom_serial.display_weight
 
