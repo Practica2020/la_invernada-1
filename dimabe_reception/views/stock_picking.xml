@@ -51,7 +51,7 @@
                  attrs="{'invisible':[('is_mp_reception', '=', False)]}"
           />
         </field>
-        <!--
+        
         <xpath expr="//page[@name='note']" position="after">
           <page string="Transporte" name="carrier_page" attrs="{'invisible':[('picking_type_code', 'not in', ('outgoing', 'incoming'))]}">
             <group name="carrier_page" position="inside">
@@ -68,7 +68,7 @@
           </page>
         </xpath>
 
-      -->
+      
       </field>
     </record>
                
