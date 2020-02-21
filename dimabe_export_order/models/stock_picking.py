@@ -143,6 +143,8 @@ class StockPicking(models.Model):
 
     is_dispatcher = fields.Integer(compute="get_permision")
 
+    time_truck = fields.Float(string="Conteo camion planta")
+
     @api.multi
     def generate_report(self):
 
