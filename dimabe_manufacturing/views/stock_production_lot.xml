@@ -34,7 +34,7 @@
             />
             <field name="serial_number" readonly="1"/>
             <field name="production_id"
-                   readonly="1"
+                   readonly="0"
                    widget="many2onebutton"
             />
             <button name="print_serial_label"
