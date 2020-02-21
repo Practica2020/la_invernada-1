@@ -51,10 +51,10 @@ class PurchaseOrder(models.Model):
                     'boss_approval_id': self.env.user.id,
                     'boss_approval_date': fields.datetime.now()
                 })
-        if(self.state=='purchase'):
-            self.state='purchase sent'
+        if(self.state=='purchase'): #esto no debiese ser asi!
+            self.state='purchase sent' #esto no debiese ser asi!
 
-        res = super(PurchaseOrder, self).action_rfq_send()
+        res = super(PurchaseOrder, self).action_rfq_send() #esto llama a la clase padre para que haga lo que tiene que hacer
         return res
       
 
