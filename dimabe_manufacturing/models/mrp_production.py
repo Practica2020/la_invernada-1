@@ -63,6 +63,7 @@ class MrpProduction(models.Model):
                     item.show_finished_move_line_ids += move_line
                 else:
                     existing_move.qty_done += move_line.qty_done
+                    models._logger.error('{} {}'.format(existing_move.qty_done, move_line.qty_done))
 
     @api.onchange('client_search_id', 'product_search_id')
     def onchange_client_search_id(self):
