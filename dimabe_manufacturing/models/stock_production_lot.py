@@ -36,7 +36,7 @@ class StockProductionLot(models.Model):
             res = super(StockProductionLot, self).write(values)
             counter = 0
             if item.is_standard_weight:
-                for counter in item.qty_standard_serial:
+                for counter in range(item.qty_standard_serial):
                     tmp = '00{}'.format(counter)
                     serial = item.stock_production_lot_serial_ids.filtered(
                         lambda a: a.serial_number == item.name + tmp[-3:]
