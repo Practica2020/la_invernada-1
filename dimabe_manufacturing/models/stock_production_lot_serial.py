@@ -20,6 +20,11 @@ class StockProductionLotSerial(models.Model):
         nullable=True
     )
 
+    stock_product_id = fields.Many2one(
+        'product.product',
+        related='stock_production_lot_id.product_id'
+    )
+
     consumed = fields.Boolean('Consumido')
 
     @api.model
