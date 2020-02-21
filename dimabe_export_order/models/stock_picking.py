@@ -141,19 +141,23 @@ class StockPicking(models.Model):
 
     sell_shipping = fields.Char(string="Sello Naviera")
 
-    permissions_users = fields.Many2many()
-
+    is_dispatcher = fields.Boolean(default=False,compute='get_permision')
 
     @api.multi
     def generate_report(self):
+        models._logger.error(self.is_dispatcher)
         return self.env.ref('dimabe_export_order.action_dispatch_label_report') \
             .report_action(self.picture)
 
     @api.multi
+    def get_permision(self):
+        for i in self.env.user.groups_id:
+            if i.name == "Despachos":
+               self.is_dispatcher = True
+
+
+    @api.multi
     def get_type_of_transfer(self):
-        self.permissions_users = self.env.user.groups_id
-        for i in self.permissions_users:
-            models._logger.error(i.name)
         self.type_of_transfer = \
             dict(self._fields['type_of_transfer_list'].selection).get(self.type_of_transfer_list)
         return self.type_of_transfer
