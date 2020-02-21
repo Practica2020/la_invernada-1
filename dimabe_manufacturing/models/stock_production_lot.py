@@ -56,7 +56,7 @@ class StockProductionLot(models.Model):
                         serial.update({
                             'display_weight': item.standard_weight
                         })
-                    serial_ids.append(serial.id)
+                        serial_ids.append(serial.id)
                 else:
                     new_serial = item.env['stock.production.lot.serial'].create({
                         'stock_production_lot_serial_id': item.id,
@@ -65,4 +65,7 @@ class StockProductionLot(models.Model):
                         'belong_to_prd_lot': True
                     })
                     serial_ids.append(new_serial.id)
+            serial_ids += list(item.stock_production_lot_serial_ids.filtered(
+                lambda a: a.consumed
+            ).mapped('id'))
             item.stock_production_lot_serial_ids = [(6, 0, serial_ids)]
