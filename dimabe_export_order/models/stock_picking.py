@@ -150,7 +150,7 @@ class StockPicking(models.Model):
     @api.multi
     def get_type_of_transfer(self):
         date = self.create_date
-        models._logger.error(date.date)
+        models._logger.error(date.date())
         self.type_of_transfer = \
             dict(self._fields['type_of_transfer_list'].selection).get(self.type_of_transfer_list)
         return self.type_of_transfer
