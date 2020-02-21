@@ -12,4 +12,3 @@ from . import stock_picking
 from . import stock_move
 from . import ir_attachment
 from . import custom_note
-from . import res_groups
