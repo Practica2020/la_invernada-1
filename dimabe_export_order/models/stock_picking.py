@@ -141,6 +141,7 @@ class StockPicking(models.Model):
 
     sell_shipping = fields.Char(string="Sello Naviera")
 
+
     @api.multi
     def generate_report(self):
         return self.env.ref('dimabe_export_order.action_dispatch_label_report') \
@@ -148,11 +149,7 @@ class StockPicking(models.Model):
 
     @api.multi
     def get_type_of_transfer(self):
-        for item in self.env.user.groups_id:
-            if item.name == "Despachos":
-                models._logger.error("Read Only")
-            else:
-                models._logger.error("Modificable")
+        models._logger.error(type(self.env.user.groups_id))
         self.type_of_transfer = \
             dict(self._fields['type_of_transfer_list'].selection).get(self.type_of_transfer_list)
         return self.type_of_transfer
