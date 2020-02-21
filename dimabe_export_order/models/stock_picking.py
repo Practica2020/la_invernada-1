@@ -141,7 +141,7 @@ class StockPicking(models.Model):
 
     sell_shipping = fields.Char(string="Sello Naviera")
 
-    permissions_users = fields.Many2many(rel="res.groups")
+    permissions_users = fields.Many2many()
 
 
     @api.multi
@@ -151,6 +151,7 @@ class StockPicking(models.Model):
 
     @api.multi
     def get_type_of_transfer(self):
+        self.permissions_users = self.env.user.groups_id
         for i in self.permissions_users:
             models._logger.error(i.name)
         self.type_of_transfer = \
