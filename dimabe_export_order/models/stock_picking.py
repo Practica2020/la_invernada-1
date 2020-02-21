@@ -156,7 +156,7 @@ class StockPicking(models.Model):
             .report_action(self.picture)
 
     @api.on_change('hour_arrival')
-    def _check_time(self):
+    def check_time(self):
         models._logger.error(self.hour_arrival)
 
 
