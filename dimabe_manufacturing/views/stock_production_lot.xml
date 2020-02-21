@@ -13,7 +13,7 @@
         <field name="standard_weight"
                attrs="{'invisible':[('is_standard_weight','=',False)]}"
         />
-        <field name="total_serial"
+        <field name="qty_standard_serial"
                attrs="{'invisible':[('is_standard_weight','=',False)]}"
         />
         <button string="Generar" class="oe_highlight"
