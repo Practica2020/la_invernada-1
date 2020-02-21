@@ -6,8 +6,6 @@ class StockPicking(models.Model):
 
     delivery_date = fields.Datetime('Fecha de entrega')
 
-    elapsed_time = fields.Char(rel="stock.picking.elapsed_time")
-
     shipping_number = fields.Integer('Número Embarque')
 
     shipping_id = fields.Many2one(
@@ -151,7 +149,6 @@ class StockPicking(models.Model):
     @api.multi
     def get_type_of_transfer(self):
         date = self.create_date
-        models._logger.error(date.date())
         self.type_of_transfer = \
             dict(self._fields['type_of_transfer_list'].selection).get(self.type_of_transfer_list)
         return self.type_of_transfer
@@ -159,7 +156,8 @@ class StockPicking(models.Model):
     @api.one
     @api.depends('tare_container_weight_dispatch', 'container_weight')
     def get_vgm_weight(self):
-        models._logger.error(self.create_date)
+        for item in self.env.users.groups:
+            models._logger.error(item.name)
         self.vgm_weight_dispatch = \
             self.tare_container_weight_dispatch + self.container_weight
 
