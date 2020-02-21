@@ -59,7 +59,7 @@ class StockProductionLot(models.Model):
                 else:
                     new_serial = item.env['stock.production.lot.serial'].create({
                         'stock_production_lot_serial_id': item.id,
-                        'dislay_weight': item.standard_weight,
+                        'display_weight': item.standard_weight,
                         'serial_number': item.name + tmp[-3:],
                         'belong_to_prd_lot': True
                     })
