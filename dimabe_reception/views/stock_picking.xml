@@ -61,12 +61,10 @@
                 <field name="carrier_cell_phone"/> 
             </group>      
            <group name="transport_page" position="inside">
-                <field name="cart_patent"/> 
+              <!--  <field name="cart_patent"/> --> 
               <field name="truck_patent"/> 
             </group>
-            
           </page>
-          
         </xpath>
       
       </field>
