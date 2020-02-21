@@ -25,7 +25,7 @@
         <field name="stock_production_lot_serial_ids"
                attrs="{'readonly':[('is_standard_weight','=',True)]}"
         >
-          <tree editable="bottom">
+          <tree editable="bottom" attrs="{'delete':[('consumed','=',False)]}">
             <field name="stock_production_lot_id" readonly="1"/>
             <field name="belongs_to_prd_lot" invisible="1"/>
             <field name="consumed" invisible="0" />
