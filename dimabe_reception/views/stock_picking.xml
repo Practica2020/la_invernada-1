@@ -51,7 +51,7 @@
                  attrs="{'invisible':[('is_mp_reception', '=', False)]}"
           />
         </field>
-       <!-- <xpath expr="//page[@name='note']" position="after"> -->
+        <xpath expr="//page[@name='note']" position="after"> 
           <page string="Transportista" name="carrier_page" attrs="{'invisible':[('picking_type_code', 'not in', ('outgoing', 'incoming'))]}">
             <group name="carrier_page" position="inside">
               <field name="carrier_id"/>
@@ -60,11 +60,12 @@
          </group>
          <group name="carrier_page" position="inside">
           <field name="carrier_id"/>
-          <field name="transport_patent"/> 
+         <!-- <field name="transport_patent"/> 
         <field name="transport_is_truck"/> 
+      -->
      </group>
           </page>
-        <!-- </xpath> -->
+         </xpath> 
       </field>
     </record>
 
