@@ -1,5 +1,11 @@
 <odoo>
     <data>
+        <template id="assets_backend" name="mrp assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/mrp/static/src/js/mrp.js"></script>
+            <script type="text/javascript" src="/mrp/static/src/js/mrp_bom_report.js"></script>
+        </xpath>
+        </template>
         <record id="stock_picking_form_inherit" model="ir.ui.view">
             <field name="name">Export Page</field>
             <field name="model">stock.picking</field>
@@ -85,7 +91,7 @@
                                     <field name="sell_sag"/>
                                     <field name="gps_lock"/>
                                     <field name="gps_button"/>
-                                    <field name="hour_arrival" widget="float_time" options="{'round_off':True,'time_only':True}"/>
+                                    <field name="hour_arrival" widget="mrp_time_counter" options="{'round_off':True,'time_only':True}"/>
                                     <field name="dus_number"/>
                                     <field name="sell_shipping"/>
                                 </group>
