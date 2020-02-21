@@ -55,23 +55,16 @@ class MrpProduction(models.Model):
     @api.multi
     def _compute_show_finished_move_line_ids(self):
         for item in self:
-            to_show = []
             for move_line in item.finished_move_line_ids:
-                models._logger.error('{} {} {}'.format(move_line, to_show,filter(
-                    lambda a: a.lot_id == move_line.lot_id,
-                    to_show
-                )))
-                if not filter(
-                    lambda a: a.lot_id == move_line.lot_id,
-                    to_show
-                ):
-                    models._logger.error('entro al if')
-                    move_line.qty_done = sum(item.finished_move_line_ids.filtered(
+                existing_move = item.show_finished_move_line_ids.filtered(
                         lambda a: a.lot_id == move_line.lot_id
-                    ).mapped('qty_done'))
-                    to_show.append(move_line)
-            item.show_finished_move_line_ids = to_show
-            raise models.ValidationError(to_show)
+                )
+                if not existing_move:
+                    item.show_finished_move_line_ids += move_line
+                else:
+                    existing_move.qty_done += move_line.qty_done
+
+            raise models.ValidationError(item.show_finished_move_line_ids)
 
     @api.onchange('client_search_id', 'product_search_id')
     def onchange_client_search_id(self):
@@ -193,7 +186,7 @@ class MrpProduction(models.Model):
                     stock_move.product_uom_qty = stock_move.product_uom_qty + 1 - stock_move.product_uom_qty % 1
 
                 stock_move.unit_factor = stock_move.product_uom_qty / order.product_qty
-                if stock_move.product_uom_qty == 0 and not stock_move.product_id.categ_id.reserve_ignore and\
+                if stock_move.product_uom_qty == 0 and not stock_move.product_id.categ_id.reserve_ignore and \
                         stock_move.scrapped is False:
                     models._logger.error(stock_move.product_id.name)
                     stock_move.update({
