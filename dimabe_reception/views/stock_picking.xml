@@ -60,7 +60,7 @@
          </group>
          <group name="carrier_page" position="inside">
           <field name="carrier_id"/>
-        <field name="truck_patent"/> 
+        <field name="carrier_truck_patent"/> 
           <field name="cart_patent"/> 
      </group>
           </page>
