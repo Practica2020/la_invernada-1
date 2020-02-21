@@ -97,6 +97,9 @@
                         </group>
                     </page>
                 </xpath>
+                <xpath expr="//attr[@name='elapsed_time']" position="attributes">
+                    <attribute name="readonly">0</attribute>
+                </xpath>
             </field>
         </record>
     </data>
