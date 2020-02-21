@@ -97,7 +97,7 @@
                         </group>
                     </page>
                 </xpath>
-                <field name="elapsed_time" readonly="0"/>
+
             </field>
         </record>
     </data>
