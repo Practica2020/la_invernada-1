@@ -51,12 +51,11 @@ class StockProductionLot(models.Model):
                 serial = item.stock_production_lot_serial_ids.filtered(
                     lambda a: a.serial_number == item.name + tmp[-3:]
                 )
-                if serial and not serial.consumed:
-                    serial.update({
-                        'display_weight': item.standard_weight
-                    })
-                    serial_ids.append(serial.id)
-                if serial.consumed:
+                if serial:
+                    if not serial.consumed:
+                        serial.update({
+                            'display_weight': item.standard_weight
+                        })
                     serial_ids.append(serial.id)
                 else:
                     new_serial = item.env['stock.production.lot.serial'].create({
