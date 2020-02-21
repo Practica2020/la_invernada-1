@@ -1,5 +1,5 @@
 from odoo import models, fields, api
-import logging
+import dateutil.parser
 
 
 class StockPicking(models.Model):
@@ -149,6 +149,9 @@ class StockPicking(models.Model):
 
     @api.multi
     def get_type_of_transfer(self):
+        date = self.create_date
+        date_format = dateutil.parser.parse(date).date()
+        models._logger.error(date_format)
         self.type_of_transfer = \
             dict(self._fields['type_of_transfer_list'].selection).get(self.type_of_transfer_list)
         return self.type_of_transfer
