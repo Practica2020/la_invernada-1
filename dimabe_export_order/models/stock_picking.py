@@ -141,7 +141,7 @@ class StockPicking(models.Model):
 
     sell_shipping = fields.Char(string="Sello Naviera")
 
-    is_dispatcher = fields.Boolean(default=False,compute='get_permision')
+    is_dispatcher = fields.Boolean(compute="get_permision")
 
     @api.multi
     def generate_report(self):
@@ -153,8 +153,7 @@ class StockPicking(models.Model):
     def get_permision(self):
         for i in self.env.user.groups_id:
             if i.name == "Despachos":
-               self.is_dispatcher = True
-
+                self.is_dispatcher = True
 
     @api.multi
     def get_type_of_transfer(self):
