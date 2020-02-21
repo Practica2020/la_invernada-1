@@ -151,13 +151,14 @@ class MrpWorkorder(models.Model):
         if custom_serial:
             barcode = custom_serial.stock_production_lot_id.name
 
-        super(MrpWorkorder, self).on_barcode_scanned(barcode)
+        res = super(MrpWorkorder, self).on_barcode_scanned(barcode)
         self.qty_done = qty_done + custom_serial.display_weight
 
         custom_serial.update({
             'consumed': True
         })
         self._compute_potential_lot_planned_ids()
+        return res
 
     @api.model
     def lot_is_byproduct(self):
