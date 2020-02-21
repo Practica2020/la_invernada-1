@@ -69,7 +69,7 @@
                     <div style="width:50%;height:9%;"></div>
                     <br/>
                     <div style="width:100%;height:15%;border:1px solid;">
-                        <span t-field="d.create_date"></span>
+                        <span t-esc="d.create_date.date()"></span>
                         <table style="width:100%;margin:auto;" cellspacing="10">
                             <tr>
                                 <td>
