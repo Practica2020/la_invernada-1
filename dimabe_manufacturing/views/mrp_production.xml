@@ -25,7 +25,7 @@
           <field name="product_uom_id"/>
           <field name="lot_id"/>
         </xpath>
-        <xpath expr="//page[@name='miscellaneous']" position="after">
+        <xpath expr="//page[3]" position="after">
           <page string="Seleccionar Lote">
             <group>
               <field name="client_search_id" attrs="{'invisible':[('state','=','done')]}" />
