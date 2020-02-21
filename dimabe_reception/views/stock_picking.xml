@@ -57,12 +57,13 @@
               <field name="carrier_id"/>
               <field name="carrier_rut"/>
               <field name="carrier_cell_phone"/>
+
+              <field name="transport_id"/>
          </group>
-         <group name="transport_page" position="inside">
-           <field name="transport_id"/> 
+         
 
      <!--  -->
-     </group>
+     
           </page>
          </xpath>  
       </field>
