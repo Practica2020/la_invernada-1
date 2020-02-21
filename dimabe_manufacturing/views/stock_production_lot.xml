@@ -37,7 +37,6 @@
                    readonly="1"
                    widget="many2onebutton"
             />
-            <field name="reserved_to_production_id" />
             <button name="print_serial_label"
                     type="object" string="Imprimir"
                     attrs="{'invisible':['|',('serial_number', '=', False), ('production_id', '=', False)]}"
