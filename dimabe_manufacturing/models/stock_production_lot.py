@@ -51,7 +51,7 @@ class StockProductionLot(models.Model):
                 serial = item.stock_production_lot_serial_ids.filtered(
                     lambda a: a.serial_number == item.name + tmp[-3:]
                 )
-                if serial:
+                if serial and not serial.consumed:
                     serial.update({
                         'display_weight': item.standard_weight
                     })
