@@ -104,7 +104,7 @@ class StockPicking(models.Model):
 
     container_weight = fields.Integer(string="Peso Contenedor")
 
-    vgm_weight = fields.Integer(string="Peso VGM", compute="get_vgm_weigth")
+    vgm_weight = fields.Integer(string="Peso VGM", compute="get_vgm_weight")
 
     note = fields.Many2one('custom.note')
 
