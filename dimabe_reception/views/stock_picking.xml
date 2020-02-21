@@ -61,9 +61,9 @@
             <!--  <field name="carrier_cart_patent"/> --> 
             </group>
             <group name="transport_page" position="inside">
-              <field name="transport_id"/>
-            <field name="transport_truck_patent"/>
-            <field name="transport_cart_patent"/> 
+              <field name="carrier_id"/>
+            <field name="carrier_truck_patent"/>
+            <field name="carrier_cart_patent"/> 
             </group>
           </page>
         </xpath>
