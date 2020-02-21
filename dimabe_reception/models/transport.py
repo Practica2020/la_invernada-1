@@ -1,35 +1,20 @@
 from odoo import models, fields, api
 
+class Transport(models.Model):
+    _name = 'custom_transport'
 
-class Carrier(models.Model):
-
-    _name = 'custom.carrier'
-
-    name = fields.Char(
-        'Conductor',
-        required=True
-    )
-
-    rut = fields.Char(
-        'Rut',
-        required=True
-    )
-
-    cell_number = fields.Char('Celular')
-
-    #truck_patent = fields.Char('Patente Camión')
-
-    #cart_patent = fields.Char('Patente Carro')
+    truck_patent = fields.Char('Patente Camión')
+    cart_patent = fields.Char('Patente Carro')
 
     @api.model
     def create(self, values_list):
         values_list = self._prepare_data(values_list)
-        return super(Carrier, self).create(values_list)
+        return super(Transport, self).create(values_list)
 
     @api.multi
     def write(self, vals):
         vals = self._prepare_data(vals)
-        return super(Carrier, self).write(vals)
+        return super(Transport, self).write(vals)
 
     def _prepare_data(self, values_list):
         if 'truck_patent' in values_list:
@@ -37,3 +22,4 @@ class Carrier(models.Model):
         if 'cart_patent' in values_list:
             values_list['cart_patent'] = str.upper(values_list['cart_patent'])
         return values_list
+
