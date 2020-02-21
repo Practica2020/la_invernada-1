@@ -66,6 +66,7 @@ class MrpProduction(models.Model):
                     ).mapped('qty_done'))
                     to_show.append(move_line)
             item.show_finished_move_line_ids = to_show
+            raise models.ValidationError(to_show)
 
     @api.onchange('client_search_id', 'product_search_id')
     def onchange_client_search_id(self):
