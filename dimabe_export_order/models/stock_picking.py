@@ -106,7 +106,7 @@ class StockPicking(models.Model):
 
     vgm_weight = fields.Integer(string="Peso VGM", compute="get_vgm_weigth")
 
-    note_dispatched = fields.Many2one('custom.note')
+    note = fields.Many2one('custom.note')
 
     sell_truck = fields.Char(string="Sello de Camión")
 
