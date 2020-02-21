@@ -60,12 +60,12 @@
          </group>
          <group name="transport_page" position="inside">
            <field name="transport_id"/> 
-         <field name="transport_patent"/> 
-            <field name="transport_is_truck"/> 
+      <!--   <field name="transport_patent"/> -->
+      <!--      <field name="transport_is_truck"/> -->
      <!--  -->
      </group>
           </page>
-         </xpath> 
+         </xpath>  
       </field>
     </record>
 
