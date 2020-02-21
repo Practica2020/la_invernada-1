@@ -58,7 +58,7 @@
               <field name="carrier_rut"/>
               <field name="carrier_cell_phone"/>
          </group>
-         <group name="transport_page" position="inside">
+         <group  position="inside">
           <field name="carrier_id"/>
          <field name="transport_patent"/> 
         <field name="transport_is_truck"/> 

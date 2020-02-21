@@ -1,6 +1,5 @@
 from odoo import models, fields, api
 
-
 class Transport(models.Model):
 
     _name = 'custom.transport'
