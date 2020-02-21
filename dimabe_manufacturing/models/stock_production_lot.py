@@ -54,7 +54,7 @@ class StockProductionLot(models.Model):
                             'serial_number': item.name + tmp[-3:],
                             'belong_to_prd_lot': True
                         })
-                        serial_ids.append(new_serial)
+                        serial_ids.append(new_serial.id)
                 item.stock_production_lot_serial_ids = [(6, 0, serial_ids)]
             else:
 
