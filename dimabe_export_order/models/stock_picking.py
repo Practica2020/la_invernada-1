@@ -96,35 +96,33 @@ class StockPicking(models.Model):
         'Tipo de contenedor'
     )
 
-    net_weight = fields.Integer(string="Kilos Netos")
+    net_weight_dispatch = fields.Integer(string="Kilos Netos")
 
-    gross_weight = fields.Integer(string="Kilos Brutos")
+    gross_weight_dispatch = fields.Integer(string="Kilos Brutos")
 
-    tare_container_weight = fields.Integer(string="Tara Contenedor")
+    tare_container_weight_dispatch = fields.Integer(string="Tara Contenedor")
 
     container_weight = fields.Integer(string="Peso Contenedor")
 
-    vgm_weight = fields.Integer(string="Peso VGM", compute="get_vgm_weight")
+    vgm_weight_dispatch = fields.Integer(string="Peso VGM", compute="get_vgm_weight", store=True)
 
-    note = fields.Many2one('custom.note')
+    note_dispatched = fields.Many2one('custom.note')
 
     sell_truck = fields.Char(string="Sello de Camión")
 
-    guide_number = fields.Char(string="N° de Guia")
+    guide_number = fields.Char(string="Numero de Guia")
 
     sell_sag = fields.Char(string="Sello SAG")
 
-    gps_lock = fields.Char(string="Candado SAG")
+    gps_lock = fields.Char(string="Candado GPS")
 
     gps_button = fields.Char(string="Botón GPS")
 
-    transport = fields.Char(string="Transporte")
-
-    hour_arrived = fields.Float(string="Hora de Llegada")
-
-    hour_departure = fields.Float(string="Hora de Salida")
-
     dus_number = fields.Integer(string="Numero DUS")
+
+    picture = fields.Many2many("ir.attachment", string="Fotos Camión")
+
+    file = fields.Char(related="picture.datas_fname")
 
     type_of_transfer_list = fields.Selection(
         [('1', 'Operacion constituye venta'),
@@ -147,10 +145,13 @@ class StockPicking(models.Model):
 
     is_dispatcher = fields.Integer(compute="get_permision")
 
-    picture = fields.Many2many('ir.attachment',string='Fotos Camíon')
+    hour_arrival = fields.Float(string="Hora de Llegada")
+
+    hour_departure = fields.Float(string="Hora de Salida")
 
     @api.multi
     def generate_report(self):
+
         return self.env.ref('dimabe_export_order.action_dispatch_label_report') \
             .report_action(self.picture)
 
@@ -162,6 +163,7 @@ class StockPicking(models.Model):
 
     @api.multi
     def get_type_of_transfer(self):
+        models._logger.error(self.is_dispatcher)
         self.type_of_transfer = \
             dict(self._fields['type_of_transfer_list'].selection).get(self.type_of_transfer_list)
         return self.type_of_transfer
@@ -170,8 +172,8 @@ class StockPicking(models.Model):
     @api.depends('tare_container_weight_dispatch', 'container_weight')
     def get_vgm_weight(self):
 
-        self.vgm_weight = \
-            self.tare_container_weight + self.container_weight
+        self.vgm_weight_dispatch = \
+            self.tare_container_weight_dispatch + self.container_weight
 
     @api.model
     @api.depends('freight_value', 'safe_value')
