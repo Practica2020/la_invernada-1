@@ -4,12 +4,12 @@ class Transport(models.Model):
         
     transport_patent = fields.Char(
         'Patente ',
-        related='carrier_id.transport_patent'
+        related='transport_id.transport_patent'
     )
 
     transport_is_truck = fields.Boolean(
         'Es camión?',
-        related='carrier_id.transport_is_truck'
+        related='transport_id.transport_is_truck'
     )
 
     @api.model
