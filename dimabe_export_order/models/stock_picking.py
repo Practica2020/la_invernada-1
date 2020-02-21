@@ -96,9 +96,9 @@ class StockPicking(models.Model):
         'Tipo de contenedor'
     )
 
-    net_weigth = fields.Integer(string="Kilos Netos")
+    net_weight = fields.Integer(string="Kilos Netos")
 
-    gross_weigth = fields.Integer(string="Kilos Brutos")
+    gross_weight = fields.Integer(string="Kilos Brutos")
 
     tare_container_weight = fields.Integer(string="Tara Contenedor")
 
