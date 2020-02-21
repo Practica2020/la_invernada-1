@@ -16,7 +16,7 @@
         <field name="qty_standard_serial"
                attrs="{'invisible':[('is_standard_weight','=',False)]}"
         />
-        <button string="Generar" class="oe_highlight"
+        <button string="Generar Series Estandar" class="oe_highlight"
                 attrs="{'invisible':[('is_standard_weight','=',False)]}"
                 type="object"
                 name="generate_standard_serial"
