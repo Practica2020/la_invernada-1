@@ -159,7 +159,6 @@ class StockPicking(models.Model):
     def check_time(self):
         models._logger.error(self.hour_arrival)
 
-
     @api.multi
     def get_permision(self):
         for i in self.env.user.groups_id:
