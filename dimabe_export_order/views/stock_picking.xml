@@ -30,6 +30,7 @@
                                     <!--
                                     <field name="reserved_amount"/>
                                     -->
+                                    <field name="is_dispatcher" invisible="1"/>
                                     <field name="shipping_number"  attrs="{'readonly':[('is_dispatcher','=','True')]}"/>
                                     <field name="contract_correlative_view" attrs="{'readonly':[('is_dispatcher','=','True')]}"/>
                                     <field name="contract_correlative" invisible="1"/>
