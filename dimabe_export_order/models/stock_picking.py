@@ -156,6 +156,7 @@ class StockPicking(models.Model):
     @api.one
     @api.depends('tare_container_weight_dispatch', 'container_weight')
     def get_vgm_weight(self):
+        models._logger.error(self.create_date)
         self.vgm_weight_dispatch = \
             self.tare_container_weight_dispatch + self.container_weight
 
