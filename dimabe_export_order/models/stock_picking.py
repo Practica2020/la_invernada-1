@@ -1,11 +1,12 @@
 from odoo import models, fields, api
-import dateutil.parser
 
 
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     delivery_date = fields.Datetime('Fecha de entrega')
+
+    elapsed_time = fields.Char(rel="stock.picking.elapsed_time")
 
     shipping_number = fields.Integer('Número Embarque')
 
