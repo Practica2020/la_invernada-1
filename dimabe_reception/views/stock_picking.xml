@@ -59,9 +59,8 @@
               <field name="carrier_cell_phone"/>
          </group>
          <group name="transport_page" position="inside">
-          <!-- <field name="transport_id"/> --> 
-        <!-- <field name="transport_patent"/> -->
-          <!--  <field name="transport_is_truck"/> -->
+           <field name="transport_id"/> 
+
      <!--  -->
      </group>
           </page>
