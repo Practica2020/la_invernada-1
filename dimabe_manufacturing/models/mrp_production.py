@@ -13,10 +13,10 @@ class MrpProduction(models.Model):
         nullable=True
     )
 
-    # show_finished_move_line_ids = fields.One2many(
-    #     'stock.move.line',
-    #     compute='_compute_show_finished_move_line_ids'
-    # )
+    show_finished_move_line_ids = fields.One2many(
+        'stock.move.line',
+        compute='_compute_show_finished_move_line_ids'
+    )
 
     consumed_material_ids = fields.One2many(
         'stock.production.lot.serial',
@@ -52,23 +52,23 @@ class MrpProduction(models.Model):
         'Posibles Lotes'
     )
 
-    # @api.multi
-    # def _compute_show_finished_move_line_ids(self):
-    #     for item in self:
-    #         to_show = []
-    #         for move_line in item.finished_move_line_ids:
-    #             models._logger.error('{} {}'.format(move_line, to_show))
-    #             if not filter(
-    #                 lambda a: a.lot_id == move_line.lot_id,
-    #                 to_show
-    #             ):
-    #
-    #                 move_line.qty_done = sum(item.finished_move_line_ids.filtered(
-    #                     lambda a: a.lot_id == move_line.lot_id
-    #                 ).mapped('qty_done'))
-    #                 to_show.append(move_line)
-    #         item.show_finished_move_line_ids = to_show
-    #         raise models.ValidationError(to_show)
+    @api.multi
+    def _compute_show_finished_move_line_ids(self):
+        for item in self:
+            to_show = []
+            for move_line in item.finished_move_line_ids:
+                models._logger.error('{} {}'.format(move_line, to_show))
+                if not filter(
+                    lambda a: a.lot_id == move_line.lot_id,
+                    to_show
+                ):
+                    models._logger.error('entro al if')
+                    move_line.qty_done = sum(item.finished_move_line_ids.filtered(
+                        lambda a: a.lot_id == move_line.lot_id
+                    ).mapped('qty_done'))
+                    to_show.append(move_line)
+            item.show_finished_move_line_ids = to_show
+            raise models.ValidationError(to_show)
 
     @api.onchange('client_search_id', 'product_search_id')
     def onchange_client_search_id(self):
