@@ -57,9 +57,12 @@
               <field name="carrier_id"/>
               <field name="carrier_rut"/>
               <field name="carrier_cell_phone"/>
-           <!--   <field name="carrier_truck_patent"/> -->
-            <!--  <field name="carrier_cart_patent"/> -->
             </group>
+        <group>
+             <field name="transport_id"/>
+             <field name="carrier_truck_patent"/> 
+             <field name="carrier_cart_patent"/> 
+        </group>
           </page>
         </xpath>
       </field>
