@@ -155,6 +155,11 @@ class StockPicking(models.Model):
         return self.env.ref('dimabe_export_order.action_dispatch_label_report') \
             .report_action(self.picture)
 
+    @api.on_change('hour_arrival')
+    def _check_time(self):
+        models._logger.error(self.hour_arrival)
+
+
     @api.multi
     def get_permision(self):
         for i in self.env.user.groups_id:
