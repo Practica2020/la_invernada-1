@@ -85,7 +85,7 @@
                                     <field name="gps_lock"/>
                                     <field name="dus_number"/>
                                     <field name="sell_shipping"/>
-                                    <field name="time_truck" widget="mrp_time_counter"/>
+                                    <field name="time_truck" widget="float_time"/>
                                 </group>
                                 <group attrs="{'invisible':[('type_of_dispatch','==','exp')]}" style="width:100%%">
                                     <field name="type_of_transfer_list"/>
