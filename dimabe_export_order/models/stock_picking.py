@@ -155,7 +155,7 @@ class StockPicking(models.Model):
         return self.env.ref('dimabe_export_order.action_dispatch_label_report') \
             .report_action(self.picture)
 
-    @api.on_change('hour_arrival')
+    @api.onchange('hour_arrival')
     def check_time(self):
         models._logger.error(self.hour_arrival)
 
