@@ -37,7 +37,7 @@
                                     <field name="shipping_id" attrs="{'readonly':[('is_dispatcher', '=', '1')]}"/>
                                     <field name="agent_id" />
                                     <field name="total_commission"/>
-                                    <field name="charging_mode"/>
+                                    <field name="charging_mode" attrs="{'readonly':[('is_dispatcher', '=', '1')]}"/>
                                     <field name="booking_number"/>
                                     <field name="bl_number"/>
                                     <field name="container_number"
