@@ -60,6 +60,11 @@
            <!--   <field name="carrier_truck_patent"/> -->
             <!--  <field name="carrier_cart_patent"/> -->
             </group>
+            <group name="transport_page" position="inside">
+              <field name="carrier_id"/>
+            <field name="carrier_truck_patent"/>
+            <field name="carrier_cart_patent"/> 
+            </group>
           </page>
         </xpath>
       </field>
