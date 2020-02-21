@@ -57,7 +57,10 @@ class MrpProduction(models.Model):
         for item in self:
             to_show = []
             for move_line in item.finished_move_line_ids:
-                models._logger.error('{} {}'.format(move_line, to_show))
+                models._logger.error('{} {} {}'.format(move_line, to_show,filter(
+                    lambda a: a.lot_id == move_line.lot_id,
+                    to_show
+                )))
                 if not filter(
                     lambda a: a.lot_id == move_line.lot_id,
                     to_show
