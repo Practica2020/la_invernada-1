@@ -34,7 +34,7 @@
                                     <field name="shipping_number"  attrs="{'readonly':[('is_dispatcher','=','True')]}"/>
                                     <field name="contract_correlative_view" attrs="{'readonly':[('is_dispatcher','=','True')]}"/>
                                     <field name="contract_correlative" invisible="1"/>
-                                    <field name="shipping_id" attrs="{'readonly':[('is_dispatcher','=','True')]}"/>
+                                    <field name="shipping_id" readonly="1"/>
                                     <field name="agent_id" attrs="{'readonly':[('is_dispatcher','=','True')]}"/>
                                     <field name="total_commission" attrs="{'readonly':[('is_dispatcher','=','True')]}"/>
                                     <field name="charging_mode"/>
