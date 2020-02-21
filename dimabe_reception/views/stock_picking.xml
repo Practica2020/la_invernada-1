@@ -59,13 +59,11 @@
              <field name="carrier_id"/>  
                <field name="carrier_rut"/>  
                 <field name="carrier_cell_phone"/> 
-            </group>
-            <!--
+            </group>      
            <group name="transport_page" position="inside">
-                <field name="transport_patent"/> 
-              <field name="transport_is_truck"/> 
+                <field name="cart_patent"/> 
+              <field name="truck_patent"/> 
             </group>
-          -->
             
           </page>
           
