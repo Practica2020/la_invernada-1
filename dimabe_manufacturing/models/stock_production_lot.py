@@ -56,6 +56,8 @@ class StockProductionLot(models.Model):
                         'display_weight': item.standard_weight
                     })
                     serial_ids.append(serial.id)
+                if serial.consumed:
+                    serial_ids.append(serial.id)
                 else:
                     new_serial = item.env['stock.production.lot.serial'].create({
                         'stock_production_lot_serial_id': item.id,
