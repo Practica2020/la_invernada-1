@@ -5,9 +5,9 @@
             <div class="page" style="margin:auto;">
                 <t t-foreach="docs" t-as="d">
                     <div style="width:100%;display:inline-block;">
-                        <div style="width:33,3%;">3</div>
-                        <div style="width:33,3%;">3</div>
-                        <div style="width:33,3%;">3</div>
+                        <div style="width:250px">3</div>
+                        <div style="width:252px;">3</div>
+                        <div style="width:260px;">3</div>
                     </div>
                 </t>
             </div>
@@ -31,7 +31,7 @@
         <field name="dpi">90</field>
     </record>
 
-    <report id="action_dispatch_guide_report" string="Guia de despacho" model="stock.picking" report_type="qweb-html"
+    <report id="action_dispatch_guide_report" string="Guia de despacho" model="stock.picking" report_type="qweb-pdf"
             name="dimabe_export_order.report_dispatch_guide" menu="True" paperformat="paper_format_letter_custom"
     />
     <report id="action_dispatch_label_report" string="Informe despacho" model="ir.attachment" report_type="qweb-pdf"
