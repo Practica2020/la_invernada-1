@@ -3,9 +3,9 @@
     <template id="report_dispatch_guide">
         <t t-call="web.html_container">
             <div class="page" style="margin:auto;">
-                <div class="col-4"></div>
-                <div class="col-4"></div>
-                <div class="col-4"></div>
+                <div class="col-4">3</div>
+                <div class="col-4">3</div>
+                <div class="col-4">3</div>
             </div>
         </t>
     </template>
