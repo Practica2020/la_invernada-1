@@ -2,7 +2,7 @@
 <odoo>
     <template id="report_dispatch_guide">
         <t t-call="web.html_container">
-            <div class="page" style="margin:auto;">
+            <div class="page">
                 <t t-foreach="docs" t-as="d">
                     <div style="width:90%;display:inline-block;">
                         <div style="width: 252px;">3</div>
