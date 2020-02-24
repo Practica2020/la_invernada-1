@@ -213,7 +213,12 @@
                                                     <tr>
                                                         <td>PESO VGM:</td>
                                                         <td>
-                                                            <span t-field="d.vgm_weight_dispatch"></span>
+                                                            <t t-if="d.vgm_weight_dispatch == None">
+                                                                <td><![CDATA[&nbsp;]]></td>
+                                                            </t>
+                                                            <t t-if="d.vgm_weight_dispatch != None">
+                                                                <span t-field="d.vgm_weight_dispatch"></span>
+                                                            </t>
                                                         </td>
                                                     </tr>
                                                     <tr>
