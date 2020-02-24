@@ -5,6 +5,8 @@ from datetime import datetime
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
+    stock_picking_id = fields.Many2one('stock.picking', 'Despacho')
+
     stock_lots = fields.Many2one("stock.production.lot")
 
     client_search_id = fields.Many2one(

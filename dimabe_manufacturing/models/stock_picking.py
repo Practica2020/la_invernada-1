@@ -24,18 +24,19 @@ class StockPicking(models.Model):
 
     @api.multi
     def return_action(self):
-        procurement_group = self.env['procurement.group'].search([
-            ('name', '=', self.origin)
-        ])
+        # procurement_group = self.env['procurement.group'].search([
+        #     ('name', '=', self.origin)
+        # ])
 
-        if procurement_group:
-            procurement_group = procurement_group[0]
+        # if procurement_group:
+        #     procurement_group = procurement_group[0]
 
         context = {
             'default_product_id': self.product_id.id,
             'default_product_uom_qty': self.quantity_requested,
             'default_origin': self.name,
-            'default_procurement_group_id': procurement_group.id,
+            # 'default_procurement_group_id': procurement_group.id,
+            'default_stock_picking_id': self.id,
             'default_client_search_id': self.partner_id.id,
             'default_requested_qty': self.quantity_requested
         }
