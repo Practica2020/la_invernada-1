@@ -157,6 +157,10 @@ class StockPicking(models.Model):
     @api.one
     @api.depends('reception_type_selection', 'picking_type_id')
     def _compute_is_mp_reception(self):
+        models._logger.error('{} {}'.format(self.reception_type_selection,self.picking_type_id))
+        models._logger.error('{} {}'.format(self.picking_type_id.warehouse_id.name,
+                                            self.picking_type_id.name))
+
         self.is_mp_reception = self.reception_type_selection == 'mp' or\
                                'Materia Prima' in self.picking_type_id.warehouse_id.name and \
                                'Recepciones' in self.picking_type_id.name
