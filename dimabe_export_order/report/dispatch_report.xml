@@ -322,9 +322,9 @@
                                                         <td>
                                                             <span t-field="d.carrier_truck_patent"></span>
                                                         </td>
-                                                        <td>Hora Salida</td>
+                                                        <td>Hora Llegada:</td>
                                                         <td>
-                                                            <span t-field="d.hour_departure"></span>
+                                                            <t t-esc="'%02d:%02d' % (int(d.hour_arrival),d.hour_arrival % 1 * 60)"/>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -332,10 +332,11 @@
                                                         <td>
                                                             <span t-field="d.carrier_cart_patent"></span>
                                                         </td>
-                                                        <td>Hora Llegada:</td>
+                                                        <td>Hora Salida</td>
                                                         <td>
-                                                            <t t-esc="'%02d:%02d' % (int(d.hour_arrival),d.hour_arrival % 1 * 60)"/>
+                                                            <t t-esc="'%02d:%02d' % (int(d.hour_departure),d.hour_departure % 1 * 60)"/>
                                                         </td>
+
                                                     </tr>
                                                 </table>
                                                 <span style="text-align:center;"
