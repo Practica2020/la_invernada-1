@@ -32,7 +32,7 @@ class StockPicking(models.Model):
         compute='_get_correlative_text'
     )
 
-    elapsed_time_dispatch = fields.Float(string="Hora de Camión en Planta")
+ #   elapsed_time_dispatch = fields.Float(string="Hora de Camión en Planta")
 
     consignee_id = fields.Many2one(
         'res.partner',
