@@ -154,7 +154,8 @@
                                 <t t-if="m.id == d.move_ids_without_package[-1].id">
                                     <tr>
                                         <td></td>
-                                        <td>
+
+                                        <td colspan="2">
                                             <t t-if="d.type_of_dispatch == 'exp'">
                                                 <table style="border:1px solid;">
                                                     <tr>
@@ -375,6 +376,7 @@
                                                 </table>
                                             </t>
                                         </td>
+                                        <td></td>
                                     </tr>
                                 </t>
                             </t>
