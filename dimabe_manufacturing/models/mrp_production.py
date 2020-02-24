@@ -60,10 +60,14 @@ class MrpProduction(models.Model):
                         lambda a: a.lot_id == move_line.lot_id
                 )
                 if not existing_move:
-                    move_line.tmp_qty_done = move_line.qty_done
+                    move_line.update({
+                        'tmp_qty_done': move_line.qty_done
+                    })
                     item.show_finished_move_line_ids += move_line
                 else:
-                    existing_move.tmp_qty_done += move_line.qty_done
+                    existing_move.update({
+                        'tmp_qty_done': existing_move.tmp_qty_done + move_line.qty_done
+                    })
 
     @api.onchange('client_search_id', 'product_search_id')
     def onchange_client_search_id(self):
