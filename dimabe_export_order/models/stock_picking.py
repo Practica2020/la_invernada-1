@@ -198,7 +198,8 @@ class StockPicking(models.Model):
     )
 
     truck_in_date = fields.Datetime(
-        string="Entrada Camión"
+        string="Entrada Camión",
+        readonly=False
     )
 
     @api.multi
