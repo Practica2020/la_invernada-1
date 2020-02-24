@@ -334,7 +334,7 @@
                                                         </td>
                                                         <td>Hora Llegada:</td>
                                                         <td>
-                                                            <t t-esc="'%02d:%02d' % (int(d.hour_arrival),hour_arrival % 1 * 60)"/>
+                                                            <t t-esc="'%02d:%02d' % (int(d.hour_arrival),d.hour_arrival % 1 * 60)"/>
                                                         </td>
                                                     </tr>
                                                 </table>
