@@ -334,7 +334,7 @@
                                                         </td>
                                                         <td>Hora Llegada:</td>
                                                         <td>
-                                                            <span t-field="d.hour_arrival" t-field-option="{'widget':'float_time'}"></span>
+                                                            <t t-esc="'%02d:%02d' % (int(d.hour_arrival),hour_arrival % 1 * 60)"/>
                                                         </td>
                                                     </tr>
                                                 </table>
