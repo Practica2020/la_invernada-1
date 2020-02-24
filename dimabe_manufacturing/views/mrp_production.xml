@@ -36,7 +36,7 @@
         <field name="origin" position="attributes">
           <attribute name="invisible">1</attribute>
         </field>
-        <xpath expr="//page[2]/field[@name='finished_move_line_ids']" postition="replace">
+        <field name="finished_move_line_ids" postition="replace">
           <field name="show_finished_move_line_ids">
             <tree>
               <field name="product_id"/>
@@ -46,7 +46,7 @@
               <field name="product_uom_id"/>
             </tree>
           </field>
-        </xpath>
+        </field>
         <xpath expr="//page[3]" position="after">
           <page string="Seleccionar Lote"
                 attrs="{'invisible':[('state','=','done')]}"
