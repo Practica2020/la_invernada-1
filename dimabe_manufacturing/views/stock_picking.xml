@@ -6,9 +6,7 @@
     <field name="arch" type="xml">
       <page name="note" position="after">
         <page name="packing_list" string="Packing List">
-          <group>
-            lalal
-          </group>
+
         </page>
       </page>
     </field>
