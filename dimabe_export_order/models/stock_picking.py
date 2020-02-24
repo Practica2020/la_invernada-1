@@ -32,6 +32,8 @@ class StockPicking(models.Model):
         compute='_get_correlative_text'
     )
 
+    elapsed_time_dispatch = fields.Float(string="Hora de Camión en Planta")
+
     consignee_id = fields.Many2one(
         'res.partner',
         'Consignatario',
@@ -204,9 +206,6 @@ class StockPicking(models.Model):
 
     @api.multi
     def generate_report(self):
-        test = self.hour_arrival - self.hour_departure
-
-        models._logger.error(test)
         return self.env.ref('dimabe_export_order.action_dispatch_label_report') \
             .report_action(self.picture)
 
