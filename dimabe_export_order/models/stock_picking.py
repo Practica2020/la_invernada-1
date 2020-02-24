@@ -205,6 +205,7 @@ class StockPicking(models.Model):
     @api.multi
     def generate_report(self):
         test = self.hour_arrival - self.hour_departure
+
         models._logger.error(test)
         return self.env.ref('dimabe_export_order.action_dispatch_label_report') \
             .report_action(self.picture)
