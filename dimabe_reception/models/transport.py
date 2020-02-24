@@ -7,7 +7,7 @@ class Transport(models.Model):
     name = fields.Char(compute='_compute_name')
     
 
-    is_truck = fields.Boolean('Es camión?')
+    is_truck = fields.Boolean('El transporte es un camión?')
     
     patent = fields.Char('Patente')
 
