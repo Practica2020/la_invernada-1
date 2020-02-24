@@ -9,12 +9,24 @@ class MrpWorkorder(models.Model):
         related='production_id.finished_move_line_ids'
     )
 
+    material_product_ids = fields.One2many(
+        'product.product',
+        compute='_compute_material_product_ids'
+    )
+
+    @api.multi
+    def _compute_material_product_ids(self):
+        for item in self:
+            item.material_product_ids = item.production_id.move_raw_ids.mapped('product_id')
+
     @api.model
     def create(self, values_list):
         res = super(MrpWorkorder, self).create(values_list)
 
+        name = self.env['ir.sequence'].next_by_code('mrp.workorder')
+
         final_lot = self.env['stock.production.lot'].create({
-            'name': self.env['ir.sequence'].next_by_code('mrp.workorder'),
+            'name': name,
             'product_id': res.product_id.id
         })
 

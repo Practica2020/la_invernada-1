@@ -18,6 +18,7 @@ class Carrier(models.Model):
     cell_number = fields.Char('Número de celular')
 
   #  truck_patent = fields.Char('Patente Camión')
+    
   #  cart_patent = fields.Char('Patente Carro')
 
     @api.model

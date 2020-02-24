@@ -22,17 +22,24 @@
         'base',
         'dimabe_reception',
         'mrp',
-        'mrp_workorder'
+        'mrp_workorder',
+        'dimabe_export_order',
+        'dimabe_quality_integration'
     ],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'views/mrp_workorder.xml',
         'views/stock_production_lot_serial.xml',
         'views/stock_production_lot.xml',
         'views/mrp_production.xml',
-        'reports/lot_serial_label_report.xml'
+        'reports/lot_serial_label_report.xml',
+        'views/views.xml',
+        'views/mrp_dispatched.xml',
+        'views/mrp_workcenter.xml',
+        'views/quality_analysis.xml',
+        'views/product_category.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
