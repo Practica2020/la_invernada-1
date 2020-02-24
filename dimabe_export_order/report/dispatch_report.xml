@@ -202,11 +202,11 @@
                                                     <tr>
                                                         <td>TARA CONTE:</td>
                                                         <td>
-                                                            <t t-if="d.tare_weight_dispatch == None">
+                                                            <t t-if="d.tare_container_weight_dispatch == None">
                                                                 <td><![CDATA[&nbsp;]]></td>
                                                             </t>
-                                                            <t t-if="d.tare_weight_dispatch != None">
-                                                                <span t-field="d.tare_weight_dispatch"></span>
+                                                            <t t-if="d.tare_container_weight_dispatch != None">
+                                                                <span t-field="d.tare_container_weight_dispatch"></span>
                                                             </t>
                                                         </td>
                                                     </tr>
