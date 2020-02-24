@@ -159,14 +159,24 @@
                                                 <table style="border:1px solid;">
                                                     <tr>
                                                         <td>
-                                                            Kilos Netos
+                                                            KILOS NETOS
                                                         </td>
                                                         <td>
-                                                            <span t-field="d.net_weight_dispatch"></span>
+                                                            <t t-if="d.net_weight_dispatch == None">
+                                                                <td><![CDATA[&nbsp;]]></td>
+                                                            </t>
+                                                            <t t-if="d.net_weight_dispatch != None">
+                                                                <span t-field="d.net_weight_dispatch"></span>
+                                                            </t>
                                                         </td>
                                                         <td>N° Contenedor</td>
                                                         <td>
-                                                            <span t-field="d.container_number"></span>
+                                                            <t t-if="d.container_number == None">
+                                                                <td><![CDATA[&nbsp;]]></td>
+                                                            </t>
+                                                            <t t-if="d.container_number != None">
+                                                                <span t-field="d.container_number"></span>
+                                                            </t>
                                                         </td>
                                                     </tr>
                                                     <tr>
