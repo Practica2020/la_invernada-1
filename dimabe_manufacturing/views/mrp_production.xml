@@ -36,10 +36,16 @@
         <field name="origin" position="attributes">
           <attribute name="invisible">1</attribute>
         </field>
-        <xpath expr="//field[@name='finished_move_line_ids']/tree" postition="inside">
-          <field name="product_qty"/>
-          <field name="product_uom_id"/>
-          <field name="lot_id"/>
+        <xpath expr="//field[@name='finished_move_line_ids']/tree" postition="replace">
+          <field name="show_finished_move_line_ids">
+            <tree>
+              <field name="product_id"/>
+              <field name="lot_id"/>
+              <field name="count_stock_production_lot_serial"/>
+              <field name="tmp_qty_done"/>
+              <field name="product_uom_id"/>
+            </tree>
+          </field>
         </xpath>
         <xpath expr="//page[3]" position="after">
           <page string="Seleccionar Lote"
@@ -74,15 +80,6 @@
           <page string="Códigos Utilizados"
                 attrs="{'invisible':[('state','!=','done')]}"
           >
-            <field name="show_finished_move_line_ids">
-              <tree>
-                <field name="product_id"/>
-                <field name="lot_id"/>
-                <field name="count_stock_production_lot_serial"/>
-                <field name="tmp_qty_done"/>
-                <field name="product_uom_id"/>
-              </tree>
-            </field>
             <field name="consumed_material_ids">
               <tree>
                 <field name="stock_production_lot_id"/>
