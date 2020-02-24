@@ -10,7 +10,7 @@ class PurchaseOrder(models.Model):
         ('to approve', 'To Approve'),
         ('purchase', 'Purchase Order'),
         ('done', 'Locked'),
-        ('cancel', 'Rechazado'),
+        ('cancel', 'NOOOOOOO'),
         ('purchase sent', 'Orden de Compra Enviada')
     ], string='Status', readonly=True, index=True, copy=False, default='draft', track_visibility='onchange')
 
