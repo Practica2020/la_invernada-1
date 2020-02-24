@@ -37,14 +37,17 @@
           <attribute name="invisible">1</attribute>
         </field>
         <xpath expr="//page[2]" postition="inside">
-          <field name="show_finished_move_line_ids">
-            <tree>
-              <field name="product_id"/>
-              <field name="lot_id"/>
-              <field name="count_stock_production_lot_serial"/>
-              <field name="tmp_qty_done"/>
-              <field name="product_uom_id"/>
-            </tree>
+          <field name="finished_move_line_ids" position="replace">
+            <field name="show_finished_move_line_ids"
+                   attrs="{'readonly':[('is_locked','=',True)],'invisible':[('finished_move_line_ids','=',[])]}">
+              <tree>
+                <field name="product_id"/>
+                <field name="lot_id"/>
+                <field name="count_stock_production_lot_serial"/>
+                <field name="tmp_qty_done"/>
+                <field name="product_uom_id"/>
+              </tree>
+            </field>
           </field>
         </xpath>
         <xpath expr="//page[3]" position="after">
