@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="res_partner_form_inherit">
+            <field name="name">Formulario de Contacto</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <field name="vat" position="after">
+                    <field name="sag_code" attrs="{'invisible':[('supplier', '=', False)]}" />
+                    <field name="is_sag_active"  attrs="{'invisible':[('supplier', '=', False)]}" />
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>
