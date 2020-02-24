@@ -488,13 +488,13 @@
                             <tr>
                                 <th>PESO CON CARGA</th>
                                 <td>
-                                    <span t-field="dis.tare_container_weight_dispatch"></span>
+                                    <span t-field="dis.vgm_weight_dispatch"></span>
                                 </td>
                             </tr>
                             <tr>
                                 <th>PESO SIN CARGA</th>
                                 <td>
-                                    <span t-field="dis.gross_weight_dispatch"></span>
+                                    <span t-field="dis.tare_container_weight_dispatch"></span>
                                 </td>
                             </tr>
                             <tr>
