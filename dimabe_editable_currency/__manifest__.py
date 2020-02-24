@@ -22,7 +22,7 @@
     # any module necessary for this one to work correctly
     'depends': [
         'base',
-        'account_accountant'
+        'account'
     ],
 
     # always loaded
@@ -31,7 +31,6 @@
         'views/account_invoice.xml',
         'views/account_payment.xml',
         'views/templates.xml',
-        'views/account_move.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

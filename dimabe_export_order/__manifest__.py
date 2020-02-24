@@ -42,8 +42,7 @@
         'views/custom_client_identifier.xml',
         'views/stock_picking.xml',
         'views/sale_order.xml',
-        'views/views.xml',
-        'report/dispatch_report.xml'
+        'views/views.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

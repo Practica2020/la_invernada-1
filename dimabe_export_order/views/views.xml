@@ -35,7 +35,6 @@
               parent="contacts.res_partner_menu_config"
               action="custom_client_identifier_action_view"
     />
-
 <!--
     <menuitem id="menu_custom_contract"
               name="Contratos"

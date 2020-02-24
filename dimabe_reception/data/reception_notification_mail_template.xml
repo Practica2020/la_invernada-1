@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="truck_not_out_mail_template" model="mail.template">
+        <field name="name">truck not out template</field>
+        <field name="model_id" ref="dimabe_reception.model_stock_picking"/>
+        <field name="email_from">info@lainvernada.com</field>
+        <field name="email_to">
+            ${object.reception_alert.get_notify_elapsed_mails()}
+        </field>
+        <field name="subject">Alerta de Retraso en salida de camión</field>
+        <field name="body_html">
+            <![CDATA[
+                <p>Estimados,<br/><br/>
+                se informa que el camión asociado a la recepción ${object.name} ha sobrepasado la cantidad
+                de hr permitidas en la planta (${object.reception_alert.hr_alert} hr).
+                <br/>
+                </p>
+                Atte,<br/>
+                ${(object.company_id.name)}
+            ]]>
+        </field>
+    </record>
+
+    <record id="diff_weight_alert_mail_template" model="mail.template">
+        <field name="name">Alerta de Diferencia de Kg</field>
+        <field name="model_id" ref="dimabe_reception.model_stock_picking"/>
+        <field name="email_from">info@lainvernada.com</field>
+        <field name="email_to">
+            ${object.reception_alert.get_notify_diff_emails()}
+        </field>
+        <field name="subject">Alerta de Diferencia de kg en Recepción</field>
+        <field name="body_html">
+            <![CDATA[
+                <p>Estimado,</p>
+                <p>
+                se informa diferencia de kg mayor a ${object.reception_alert.kg_diff_alert}
+                </p>
+                Atte, <br/>
+                ${(object.company_id.name)}
+            ]]>
+        </field>
+    </record>
+</odoo>

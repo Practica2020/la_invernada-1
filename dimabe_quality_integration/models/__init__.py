@@ -12,5 +12,4 @@ from . import form_analysis
 from . import impurity_analysis
 from . import stock_move_line
 from . import stock_picking
-from . import stock_quant
 

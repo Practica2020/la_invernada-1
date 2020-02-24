@@ -1,6 +1,5 @@
 <odoo>
   <data>
-    
     <!-- explicit list view definition -->
     <!--
     <record model="ir.ui.view" id="dimabe_manufacturing.list">
