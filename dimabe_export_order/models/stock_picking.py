@@ -139,6 +139,8 @@ class StockPicking(models.Model):
 
     type_of_transfer = fields.Char(compute="get_type_of_transfer")
 
+    transport = fields.Char(string="Transporte")
+
     type_of_dispatch = fields.Selection([('exp', 'Exportación'), ('nac', 'Nacional')], string="Tipo de Despacho")
 
     sell_shipping = fields.Char(string="Sello Naviera")
