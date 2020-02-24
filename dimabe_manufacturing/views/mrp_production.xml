@@ -36,22 +36,7 @@
         <field name="origin" position="attributes">
           <attribute name="invisible">1</attribute>
         </field>
-        <xpath expr="//page[2]" postition="replace">
-          <page string="Productos Finalizados">
-            <group>
-              <field name="show_finished_move_line_ids"
-                     readonly="1">
-                <tree>
-                  <field name="product_id"/>
-                  <field name="lot_id"/>
-                  <field name="count_stock_production_lot_serial"/>
-                  <field name="tmp_qty_done"/>
-                  <field name="product_uom_id"/>
-                </tree>
-              </field>
-            </group>
-          </page>
-        </xpath>
+        <xpath expr="//page[2]" postition="replace" />
         <xpath expr="//page[3]" position="after">
           <page string="Seleccionar Lote"
                 attrs="{'invisible':[('state','=','done')]}"
