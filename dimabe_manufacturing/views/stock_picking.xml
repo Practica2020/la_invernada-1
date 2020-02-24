@@ -25,9 +25,7 @@
     <field name="res_model">stock.picking</field>
     <field name="view_mode">tree,form</field>
     <field name="view_id" ref="view_plan_stock_tree" />
-    <field name="domain">
-
-    </field>
+    <field name="domain">[]</field>
   </record>
 
   <menuitem name="Planificar Pedidos"
