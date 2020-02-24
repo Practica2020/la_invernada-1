@@ -334,7 +334,7 @@
                                                         </td>
                                                         <td>Hora Llegada:</td>
                                                         <td>
-                                                            <span t-field="d.hour_arrival"></span>
+                                                            <span t-field="d.hour_arrival" t-field-option="{'widget':'float_time'}"></span>
                                                         </td>
                                                     </tr>
                                                 </table>
