@@ -43,6 +43,7 @@
         </button>
         <button name="button_cancel" position="attributes">
           <attribute name="string">Rechazar</attribute>
+          <attribute name="state">"draft,to approve,sent,purchase,purchase sent"</attribute>
         </button>
         <xpath expr="//field[@name='incoterm_id']" position="after">
           <field name="provider_po_document" />
