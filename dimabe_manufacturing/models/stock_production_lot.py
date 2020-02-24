@@ -15,8 +15,6 @@ class StockProductionLot(models.Model):
         compute='_compute_total_serial'
     )
 
-    qty_to_reserve = fields.Float('Cantidad a Reservar')
-
     @api.multi
     def _compute_total_serial(self):
         for item in self:

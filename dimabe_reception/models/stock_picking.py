@@ -1,5 +1,5 @@
 from odoo import models, api, fields
-from datetime import datetime, timedelta
+from datetime import datetime
 
 
 class StockPicking(models.Model):
@@ -7,9 +7,7 @@ class StockPicking(models.Model):
 
     guide_number = fields.Integer('Número de Guía')
 
-    weight_guide = fields.Integer('Kilos Guía',
-                            compute='_compute_weight_guide',
-                            store=True)
+    weight_guide = fields.Integer('Kilos Guía')
 
     gross_weight = fields.Integer('Kilos Brutos')
 
@@ -38,7 +36,7 @@ class StockPicking(models.Model):
         ('mp', 'Materia Prima')
     ],
         default='ins',
-        string='Tipo de recepción'
+        string='Tipo de Recepción'
     )
 
     is_mp_reception = fields.Boolean(
@@ -48,7 +46,6 @@ class StockPicking(models.Model):
     )
 
     carrier_id = fields.Many2one('custom.carrier', 'Conductor')
-    
 
     truck_in_date = fields.Datetime(
         'Entrada de Camión',
@@ -77,37 +74,15 @@ class StockPicking(models.Model):
         related='carrier_id.cell_number'
     )
 
-   # carrier_truck_patent = fields.Char(
-   #     'Patente Camión',
-   #     related='carrier_id.truck_patent'
-   # )
+    carrier_truck_patent = fields.Char(
+        'Patente Camión',
+        related='carrier_id.truck_patent'
+    )
 
-   # carrier_cart_patent = fields.Char(
-   #     'Patente Carro',
-   #     related='carrier_id.cart_patent'
-   # )
-
-    truck_id = fields.Many2one(
-        'custom.transport',
-        'Patente de camión',
-         domain=[('is_truck', '=', False)] #True
-     )
-
-    cart_id = fields.Many2one(
-        'custom.transport',
-        'Patente de carro',
-        domain=[('is_truck', '=', True)] #False
-     )
-
-  #  transport_patent = fields.Char(
-  #      'Patente',
-  #       related='transport_id.patent'
-  #       )
-
-  #  transport_is_truck = fields.Boolean(
-  #      'Es camión?',
-  #       related='transport_id.is_truck'
-  #       )
+    carrier_cart_patent = fields.Char(
+        'Patente Carro',
+        related='carrier_id.cart_patent'
+    )
 
     hr_alert_notification_count = fields.Integer('Conteo de notificación de retraso de camión')
 
@@ -120,11 +95,6 @@ class StockPicking(models.Model):
 
     reception_alert = fields.Many2one('reception.alert.config')
 
-    harvest = fields.Char(
-        'Cosecha',
-        default=datetime.now().year
-    )
-
     @api.one
     @api.depends('tare_weight', 'gross_weight', 'move_ids_without_package', 'quality_weight')
     def _compute_net_weight(self):
@@ -132,12 +102,6 @@ class StockPicking(models.Model):
         if self.is_mp_reception:
             if self.canning_weight:
                 self.net_weight = self.net_weight - self.canning_weight
-    @api.one
-    @api.depends('move_ids_without_package')
-    def _compute_weight_guide(self):
-        if self.is_mp_reception:
-            if self.get_mp_move():
-                self.weight_guide = self.get_mp_move().product_uom_qty
 
     @api.one
     @api.depends('move_ids_without_package')
@@ -145,16 +109,7 @@ class StockPicking(models.Model):
         canning = self.get_canning_move()
         if len(canning) == 1 and canning.product_id.weight:
             self.canning_weight = canning.product_uom_qty * canning.product_id.weight
-    
-    @api.model
-    @api.onchange('gross_weight')
-    def on_change_gross_weight(self):
-        message = ''
-        if self.gross_weight < self.weight_guide:
-            message += 'Los kilos brutos deben ser mayor a los kilos de la guía'
-            self.gross_weight = 0
-        if message:
-            raise models.ValidationError(message)
+
     @api.one
     @api.depends('tare_weight', 'gross_weight', 'move_ids_without_package', )
     def _compute_production_net_weight(self):
@@ -175,11 +130,9 @@ class StockPicking(models.Model):
             self.elapsed_time = '00:00:00'
 
     @api.one
-    @api.depends('reception_type_selection', 'picking_type_id')
+    @api.depends('reception_type_selection')
     def _compute_is_mp_reception(self):
-        self.is_mp_reception = self.reception_type_selection == 'mp' or\
-                               'Materia Prima' in self.picking_type_id.warehouse_id.name and \
-                               'Recepciones' in self.picking_type_id.name
+        self.is_mp_reception = self.reception_type_selection == 'mp'
 
     @api.one
     @api.depends('production_net_weight', 'tare_weight', 'gross_weight', 'move_ids_without_package')
@@ -194,11 +147,11 @@ class StockPicking(models.Model):
 
     @api.model
     def get_mp_move(self):
-        return self.move_ids_without_package.filtered(lambda x: x.product_id.categ_id.is_mp is True)
+        return self.move_ids_without_package.filtered(lambda x: x.product_id.categ_id.is_mp == True)
 
     @api.model
     def get_canning_move(self):
-        return self.move_ids_without_package.filtered(lambda x: x.product_id.categ_id.is_canning is True)
+        return self.move_ids_without_package.filtered(lambda x: x.product_id.categ_id.is_canning == True)
 
     def _get_hours(self, init_date, finish_date):
         diff = str((finish_date - init_date))
@@ -211,36 +164,6 @@ class StockPicking(models.Model):
                 stock_picking.validate_mp_reception()
                 stock_picking.truck_in_date = fields.datetime.now()
             res = super(StockPicking, self).action_confirm()
-            mp_move = stock_picking.get_mp_move()
-
-            if mp_move and mp_move.move_line_ids and mp_move.picking_id \
-                    and mp_move.picking_id.picking_type_code == 'incoming':
-                for move_line in mp_move.move_line_ids:
-                    lot = self.env['stock.production.lot'].create({
-                        'name': stock_picking.name,
-                        'product_id': move_line.product_id.id
-                    })
-                    if lot:
-                        move_line.update({
-                            'lot_id': lot.id
-                        })
-
-                if mp_move.product_id.tracking == 'lot' and not mp_move.has_serial_generated:
-                    for stock_move_line in mp_move.move_line_ids:
-                        if mp_move.product_id.categ_id.is_mp:
-                            total_qty = mp_move.picking_id.get_canning_move().product_uom_qty
-                            calculated_weight = stock_move_line.qty_done / total_qty
-                            if stock_move_line.lot_id:
-
-                                for i in range(int(total_qty)):
-                                    tmp = '00{}'.format(i + 1)
-                                    self.env['stock.production.lot.serial'].create({
-                                        'calculated_weight': calculated_weight,
-                                        'stock_production_lot_id': stock_move_line.lot_id.id,
-                                        'serial_number': '{}{}'.format(stock_move_line.lot_name, tmp[-3:])
-                                    })
-
-                                mp_move.has_serial_generated = True
             return res
 
     @api.multi
@@ -250,26 +173,11 @@ class StockPicking(models.Model):
             if stock_picking.is_mp_reception:
                 if not stock_picking.gross_weight:
                     message = 'Debe agregar kg brutos \n'
-                if stock_picking.gross_weight < stock_picking.weight_guide:
-                    message += 'Los kilos de la Guía no pueden ser mayores a los Kilos brutos ingresados \n'
                 if not stock_picking.tare_weight:
-                    message += 'Debe agregar kg tara \n'
-                if not stock_picking.quality_weight and\
-                   'verde' not in str.lower(stock_picking.picking_type_id.warehouse_id.name):
-                    message += 'Los kilos de calidad aún no han sido registrados en el sistema,' \
-                               ' no es posible cerrar el ciclo de recepción'
+                    message = 'Debe agregar kg tara'
                 if message:
                     raise models.ValidationError(message)
-        res = super(StockPicking, self).button_validate()
-        self.sendKgNotify()
-        if self.get_mp_move():
-            mp_move = self.get_mp_move()
-            mp_move.quantity_done = self.net_weight
-            mp_move.product_uom_qty = self.weight_guide
-            if mp_move.has_serial_generated and self.avg_unitary_weight:
-                self.env['stock.production.lot.serial'].search([('stock_production_lot_id', '=', self.name)]).write({'real_weight': self.avg_unitary_weight})
-
-        return res
+        return super(StockPicking, self).button_validate()
 
     @api.model
     def validate_mp_reception(self):
@@ -292,25 +200,21 @@ class StockPicking(models.Model):
         base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
         return base_url
 
-    def sendKgNotify(self):
+    @api.multi
+    def notify_alerts(self):
+        alert_config = self.env['reception.alert.config'].search([])
+        if self.hr_alert_notification_count == 0 and self.elapsed_time > alert_config.hr_alert:
+            self.ensure_one()
+            self.reception_alert = alert_config
+            template_id = self.env.ref('dimabe_reception.truck_not_out_mail_template')
+            self.message_post_with_template(template_id.id)
+            self.hr_alert_notification_count += 1
+
         if self.kg_diff_alert_notification_count == 0:
             if self.weight_guide > 0 and self.net_weight > 0:
-                alert_config = self.env['reception.alert.config'].search([])
                 if abs(self.weight_guide - self.net_weight) > alert_config.kg_diff_alert:
                     self.ensure_one()
                     self.reception_alert = alert_config
                     template_id = self.env.ref('dimabe_reception.diff_weight_alert_mail_template')
                     self.message_post_with_template(template_id.id)
                     self.kg_diff_alert_notification_count += self.kg_diff_alert_notification_count
-
-    
-    @api.multi
-    def notify_alerts(self):
-        alert_config = self.env['reception.alert.config'].search([])
-        elapsed_datetime = datetime.strptime(self.elapsed_time, '%H:%M:%S')
-        if self.hr_alert_notification_count == 0 and elapsed_datetime.hour >= alert_config.hr_alert:
-            self.ensure_one()
-            self.reception_alert = alert_config
-            template_id = self.env.ref('dimabe_reception.truck_not_out_mail_template')
-            self.message_post_with_template(template_id.id)
-            self.hr_alert_notification_count += 1

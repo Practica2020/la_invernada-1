@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# noinspection PyStatementEffect
 {
     'name': "Integración Calidad Dimabe",
 
@@ -22,10 +21,8 @@
     # any module necessary for this one to work correctly
     'depends': [
         'base',
-        'mrp',
         'stock',
         'dimabe_jwt_token',
-        'dimabe_reception'
     ],
     # always loaded
     'data': [
@@ -39,7 +36,7 @@
         'views/form_analysis.xml',
         'views/impurity_analysis.xml',
         'views/quality_analysis.xml',
-        'views/humidity_analysis.xml',
+
     ],
     # only loaded in demonstration mode
     'demo': [

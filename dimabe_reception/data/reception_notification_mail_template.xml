@@ -33,40 +33,8 @@
             <![CDATA[
                 <p>Estimado,</p>
                 <p>
-                se informa diferencia de kg
+                se informa diferencia de kg mayor a ${object.reception_alert.kg_diff_alert}
                 </p>
-                <table>
-                    <tr>
-                        <td>Empresa:</td> 
-                        <td>
-                            <strong>${object.partner_id.name}</strong>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Nro Lote
-                        </td>
-                        <td>
-                            <strong>${object.name}</strong>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Nro de Guía</td>
-                        <td>${object.guide_number}</td>
-                    </tr>
-                    <tr>
-                        <td>Kilos Guía</td>
-                        <td>${object.weight_guide}</td>
-                    </tr>
-                    <tr>
-                        <td>Kilos Netos</td>
-                        <td>${object.net_weight}</td>
-                    </tr>
-                    <tr>
-                        <td>Diferencia</td>
-                        <td>${(object.net_weight - object.weight_guide)}</td>
-                    </tr>
-                </table>    
                 Atte, <br/>
                 ${(object.company_id.name)}
             ]]>
