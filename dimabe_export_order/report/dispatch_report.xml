@@ -515,7 +515,7 @@
             <t t-foreach="docs" t-as="d">
                 <div class="page" style="width:365px;float:left;">
                     <img t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)"
-                                 style="height:365px;"/>
+                                 style="height:100px;"/>
                 </div>
             </t>
         </t>
