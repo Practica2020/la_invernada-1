@@ -42,7 +42,7 @@
               <field name="state" invisible="1" />
               <field name="show_finished_move_line_ids"
                    attrs="{'readonly':[('is_locked','=',True)],'invisible':[('finished_move_line_ids','=',[])]}">
-              <tree decoration-muted="state in ('done','cancel')">
+              <tree>
                 <field name="product_id"/>
                 <field name="lot_id"/>
                 <field name="count_stock_production_lot_serial"/>
