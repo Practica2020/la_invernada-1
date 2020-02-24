@@ -2,28 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Proceso de Solicitud de Compras</title>
 </head>
 <body>
-<h1>Configuraciones:</h1>
+<h1>Proceso de solicitud de compras</h1>
+<hr>
+<h2>Para cambiar archivo adjunto en correo</h2>
 <ul>
     <li>
-        crear accion planificada con el siguiente código:
-
-        <pre>
-            <code>
-                stock_picking_list = env['stock.picking'].search(['|', ('hr_alert_notification_count', '=', None), ('kg_diff_alert_notification_count', '=', None)])
-
-                for stock_picking in stock_picking_list:
-                  stock_picking.notify_alerts()
-           </code>
-        </pre>
-
+        en modo debug buscar plantilla <strong>Purchase Order: Send PO</strong> en
+        <strong>Técnico > Correo electrónico > Plantillas</strong>
     </li>
     <li>
-        en la vista stock.view_picking_form agregar a la pestaña <strong>Operations</strong>
-        el <strong>name='operations'</strong>
+        editar campo <strong>Informe Opcional a generar y adjuntar</strong> y seleccionar el reporte que necestite
     </li>
 </ul>
+
 </body>
 </html>
