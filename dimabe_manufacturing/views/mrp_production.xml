@@ -37,7 +37,6 @@
           <attribute name="invisible">1</attribute>
         </field>
         <xpath expr="//page[2]" postition="inside">
-          <field name="finished_move_line_ids" position="replace"></field>
           <field name="show_finished_move_line_ids"
                  attrs="{'readonly':[('is_locked','=',True)],'invisible':[('finished_move_line_ids','=',[])]}">
             <tree>
