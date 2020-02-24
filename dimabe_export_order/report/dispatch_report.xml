@@ -519,15 +519,7 @@
         </t>
     </template>
 
-    <template id="report_packing_list">
-        <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="d">
-                <div class="page" style="width:365px;float:left;">
-                    <img t-att-src="'data:image/png,base64,%s' to_text(res_company.logo)"/>
-                </div>
-            </t>
-        </t>
-    </template>
+
 
     <record id="paper_format_letter_custom" model="report.paperformat">
         <field name="name">Carta Custom</field>
@@ -561,8 +553,7 @@
     <!--            report_type="qweb-pdf"-->
     <!--            name="dimabe_export_order.report_weight_dispatch" menu="True" paperformat="paper_format_letter_horizontal"/>-->
 
-    <report id="action_dispatch_packing_list" string="Packing List" model="stock.picking" report_type="qweb-pdf"
-            name="dimabe_export_order.report_packing_list" menu="True" paperformat="paper_format_letter_custom"/>
+
 
     <report id="action_dispatch_guide_report" string="Guia de despacho" model="stock.picking" report_type="qweb-pdf"
             name="dimabe_export_order.report_dispatch_guide" menu="True" paperformat="paper_format_letter_custom"
