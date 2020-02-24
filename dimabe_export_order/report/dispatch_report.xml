@@ -171,12 +171,35 @@
                                                 <tr>
                                                     <td>Kilos Brutos</td>
                                                     <td>
-                                                        <span t-field="d.gross_weigth_dispatch"></span>
+                                                        <span t-field="d.gross_weight_dispatch"></span>
                                                     </td>
                                                     <td>Selllo Naviera</td>
                                                     <td>
                                                         <span t-field="d.sell_shipping"></span>
                                                     </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tara Conte</td>
+                                                    <td>
+                                                        <span t-field="d.tare_container_weight_dispatch"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Peso VGM</td>
+                                                    <td>
+                                                        <span t-field="d.vgm_weight_dispatch"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Nota</td>
+                                                    <td colspan="3">
+                                                        <t t-esc="d.note_dispatched.get_full_note()"></t>
+                                                    </td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Nave:</td>
                                                 </tr>
                                             </table>
                                             <span style="text-align:center;"
