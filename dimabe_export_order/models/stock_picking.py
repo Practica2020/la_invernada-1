@@ -204,7 +204,7 @@ class StockPicking(models.Model):
 
     @api.multi
     def generate_report(self):
-        models._logger.error(self.truck_in_date)
+        models._logger.error("Hora de Llegada {}, Hora de Salida {}".format(self.hour_arrival,self.hour_departure))
         return self.env.ref('dimabe_export_order.action_dispatch_label_report') \
             .report_action(self.picture)
 
