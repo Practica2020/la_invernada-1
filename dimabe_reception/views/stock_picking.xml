@@ -16,7 +16,7 @@
           </attribute>
         </xpath>
         <field name="picking_type_id" position="after">
-         <!-- <field name="sag_code"/> -->
+          <field name="sag_code"/>
 
           <field name="is_mp_reception"
                  invisible="1"

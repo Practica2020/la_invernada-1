@@ -86,6 +86,7 @@ class StockPicking(models.Model):
    #     'Patente Carro',
    #     related='carrier_id.cart_patent'
    # )
+
     truck_id = fields.Many2one(
         'custom.transport',
         'Patente de camión',
