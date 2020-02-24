@@ -1,14 +1,18 @@
 <odoo>
-  <record id="stock_picking_plan_stock_form_view" model="ir.ui.view">
-    <field name="name">Formulario Planificación de pedidos</field>
+  <record id="view_picking_form_inherit" model="ir.ui.view">
+    <field name="name">Formulario Despacho</field>
     <field name="model">stock.picking</field>
+    <field name="inherit_id" ref="stock.view_picking_form" />
     <field name="arch" type="xml">
-      <form>
-        planificación pedidos
-      </form>
+      <page name="note" position="after">
+        <page name="packing_list" string="Packing List">
+          <group>
+            lalal
+          </group>
+        </page>
+      </page>
     </field>
   </record>
-
   <record id="view_plan_stock_tree" model="ir.ui.view">
     <field name="name">listado de pedidos pendientes</field>
     <field name="model">stock.picking</field>
