@@ -162,8 +162,9 @@ class StockPicking(models.Model):
                                             self.picking_type_id.name))
 
         self.is_mp_reception = self.reception_type_selection == 'mp' or\
+                               self.picking_type_id.warehouse_id.name and\
                                'Materia Prima' in self.picking_type_id.warehouse_id.name and \
-                               'Recepciones' in self.picking_type_id.name
+                               self.picking_type_id.name and 'Recepciones' in self.picking_type_id.name
 
     @api.one
     @api.depends('production_net_weight', 'tare_weight', 'gross_weight', 'move_ids_without_package')
