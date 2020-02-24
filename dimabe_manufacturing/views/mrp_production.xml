@@ -36,7 +36,7 @@
         <field name="origin" position="attributes">
           <attribute name="invisible">1</attribute>
         </field>
-        <field expr="//page[2]/field[@name='finished_move_line_ids']" postition="inside">
+        <field expr="//page[2]" postition="inside">
           <field name="show_finished_move_line_ids">
             <tree>
               <field name="product_id"/>
