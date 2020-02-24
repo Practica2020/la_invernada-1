@@ -36,8 +36,10 @@
         <field name="origin" position="attributes">
           <attribute name="invisible">1</attribute>
         </field>
-        <xpath expr="//page[2]" postition="attributes">
-          <attribute name="invisible">1</attribute>
+        <xpath expr="//page[2]" postition="inside">
+          <field name="finished_move_line_ids" position="attributes">
+            <attribute name="invisible">1</attribute>
+          </field>
         </xpath>
         <xpath expr="//page[3]" position="after">
           <page string="Seleccionar Lote"
