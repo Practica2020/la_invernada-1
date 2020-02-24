@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+        <record id="dimabe_reception.custom_transport_act_window" model="ir.ui.view">
+            <field name="name">transport form</field>
+            <field name="model">custom.transport</field>
+            <field name="arch" type="xml">
+                    <form >
+                        <group>                      
+                            <group>
+                          
+                                <field name="is_truck"/>
+                           
+                            </group>
+                        
+                            <group>
+                                
+                                <field name="patent"/>
+                               
+                            </group>
+
+                        </group>
+
+
+
+                    </form>
+            </field>
+        </record>
+    </data>
+</odoo>
