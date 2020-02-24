@@ -1,5 +1,4 @@
 from odoo import models, fields, api
-import logging
 
 
 class StockPicking(models.Model):
@@ -105,11 +104,11 @@ class StockPicking(models.Model):
 
     container_weight = fields.Integer(string="Peso Contenedor")
 
-    vgm_weight_dispatch = fields.Integer(string="Peso VGM",compute="get_vgm_weight",store=True)
+    vgm_weight_dispatch = fields.Integer(string="Peso VGM", compute="get_vgm_weight", store=True)
 
-    note_dispatched = fields.Text(string="Nota")
+    note_dispatched = fields.Many2one('custom.note')
 
-    sell_truck = fields.Char(string="Sello de Invernada")
+    sell_truck = fields.Char(string="Sello de Camión")
 
     guide_number = fields.Char(string="Numero de Guia")
 
@@ -117,33 +116,70 @@ class StockPicking(models.Model):
 
     gps_lock = fields.Char(string="Candado GPS")
 
+    gps_button = fields.Char(string="Botón GPS")
+
     dus_number = fields.Integer(string="Numero DUS")
 
-    picture = fields.Many2many("ir.attachment", string="Fotos Camion")
+    picture = fields.Many2many("ir.attachment", string="Fotos Camión")
 
     file = fields.Char(related="picture.datas_fname")
 
-    type_of_dispatch = fields.Selection([('exp', 'Exportacion'), ('nac', 'Nacional')],string="Tipo de Despacho")
+    type_of_transfer_list = fields.Selection(
+        [('1', 'Operacion constituye venta'),
+         ('2', 'Ventas por efectuar'),
+         ('3', 'Consignaciones'),
+         ('4', 'Entrega gratuita'),
+         ('5', 'Traslado internos'),
+         ('6', 'Otros traslados no venta'),
+         ('7', 'Guia de devolucion'),
+         ('8', 'Traslado para exportación no venta'),
+         ('9', 'Venta para exportacion')]
+        , string="Tipo de Traslado"
+    )
+
+    type_of_transfer = fields.Char(compute="get_type_of_transfer")
+
+    transport = fields.Char(string="Transporte")
+
+    type_of_dispatch = fields.Selection([('exp', 'Exportación'), ('nac', 'Nacional')], string="Tipo de Despacho")
 
     sell_shipping = fields.Char(string="Sello Naviera")
 
+    is_dispatcher = fields.Integer(compute="get_permision")
 
+    hour_arrival = fields.Float(string="Hora de Llegada")
+
+    hour_departure = fields.Float(string="Hora de Salida")
 
     @api.multi
     def generate_report(self):
+
         return self.env.ref('dimabe_export_order.action_dispatch_label_report') \
             .report_action(self.picture)
 
+    @api.onchange('hour_arrival')
+    def check_time(self):
+        models._logger.error(self.hour_arrival)
+
     @api.multi
-    def get_full_url(self):
-        self.ensure_one()
-        base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
-        return base_url
+    def get_permision(self):
+        for i in self.env.user.groups_id:
+            if i.name == "Despachos":
+                self.is_dispatcher = 1
+
+    @api.multi
+    def get_type_of_transfer(self):
+        models._logger.error(self.is_dispatcher)
+        self.type_of_transfer = \
+            dict(self._fields['type_of_transfer_list'].selection).get(self.type_of_transfer_list)
+        return self.type_of_transfer
 
     @api.one
-    @api.depends('tare_container_weight_dispatch','container_weight')
+    @api.depends('tare_container_weight_dispatch', 'container_weight')
     def get_vgm_weight(self):
-        self.vgm_weight_dispatch = self.tare_container_weight_dispatch + self.container_weight
+
+        self.vgm_weight_dispatch = \
+            self.tare_container_weight_dispatch + self.container_weight
 
     @api.model
     @api.depends('freight_value', 'safe_value')
