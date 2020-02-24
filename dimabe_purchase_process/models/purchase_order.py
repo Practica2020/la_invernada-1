@@ -10,7 +10,7 @@ class PurchaseOrder(models.Model):
         ('to approve', 'To Approve'),
         ('purchase', 'Purchase Order'),
         ('done', 'Locked'),
-        ('cancel', 'NOOOOOOO'),
+        ('cancel', 'Rechazado'),
         ('purchase sent', 'Orden de Compra Enviada')
     ], string='Status', readonly=True, index=True, copy=False, default='draft', track_visibility='onchange')
 
@@ -43,7 +43,7 @@ class PurchaseOrder(models.Model):
 
     @api.multi
     def action_rfq_send(self):
-    #  raise models.ValidationError('Hasta aquí llego en ambos botones llamando a action_rfq_send') #aquí llego si comento lo que esta abajo
+    #  raise models.ValidationError('Llegaste a usar el metodo action_rfq_send') #aquí llego si comento lo que esta abajo
       
         for item in self:
             if not item.boss_approval_id:
@@ -51,11 +51,12 @@ class PurchaseOrder(models.Model):
                     'boss_approval_id': self.env.user.id,
                     'boss_approval_date': fields.datetime.now()
                 })
-        if(self.state=='purchase'): #este if verifica que el pedido este en un estado en el que se haya confirmado la compra
-            self.state='purchase sent' #si así fue, entonces cambia el estado a "orden de compra enviada"
+        if(self.state=='purchase'):
+            self.state='purchase sent'
 
         res = super(PurchaseOrder, self).action_rfq_send()
         return res
+      
 
     @api.multi
     def button_confirm(self):
@@ -108,3 +109,10 @@ class PurchaseOrder(models.Model):
                     if not line.price_unit or line.price_unit == 0:
                         raise models.ValidationError('debe agregar precio unitario')
         return res
+
+    
+    @api.multi
+    def action_send_mail(self):
+        raise models.ValidationError('prueba')
+    
+

@@ -9,3 +9,4 @@ class MailNotification(models.Model):
         if res_model is 'purchase.order':
             return ""
 
+
