@@ -1,0 +1,24 @@
+<odoo>
+  <record id="stock_picking_plan_stock_form_view" model="ir.ui.view">
+    <field name="name">Formulario Planificación de pedidos</field>
+    <field name="model">stock.picking</field>
+    <field name="arch" type="xml">
+      <form>
+        planificación pedidos
+      </form>
+    </field>
+  </record>
+
+  <record id="plan_stock_action" model="ir.actions.act_window">
+    <field name="name">Planificación de Pedidos</field>
+    <field name="res_model">stock.picking</field>
+    <field name="view_mode">tree,form</field>
+
+  </record>
+
+  <menuitem name="Planificar Pedidos"
+            id="order_plan_menu"
+            parent="mrp.mrp_planning_menu_root"
+            action="plan_stock_action"
+  />
+</odoo>
