@@ -57,6 +57,7 @@
               <field name="carrier_id"/>
               <field name="carrier_rut"/>
               <field name="carrier_cell_phone"/>
+              <field name="carrier_cell_phone"/>
               <field name="truck_id"/>
               <field name="cart_id"/>
          </group>
